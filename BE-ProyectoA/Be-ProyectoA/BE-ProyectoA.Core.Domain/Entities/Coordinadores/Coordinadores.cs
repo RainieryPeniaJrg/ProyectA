@@ -7,7 +7,6 @@ namespace BE_ProyectoA.Core.Domain.Entities.Coordinador
     public sealed class Coordinadores : AggregateRoot  
     {
 
-
         //constructor principal
         public Coordinadores() { }
         //contructor con parametros para quitar los nulo y 
