@@ -6,7 +6,6 @@ namespace BE_ProyectoA.Core.Domain.Entities.Coordinador
 {
     public sealed class SubCoordinadores : AggregateRoot  
     {
-
         //constructor principal
         public SubCoordinadores() { }
         //contructor con parametros para quitar los nulo y 
@@ -31,7 +30,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.Coordinador
         public int CantidadVotantes { get; set; } 
         public Cedula Cedula { get; private set; } 
         public bool Activo {  get; private set; }
-        public Direccion Direccion { get; set; }
+        public Direccion Direccion { get; private set; }
         public NumeroTelefono NumeroTelefono { get; private set; }
     }
 }

@@ -3,9 +3,8 @@ using BE_ProyectoA.Core.Domain.ValueObjects;
 
 namespace BE_ProyectoA.Core.Domain.Entities.Director
 {
-    public class Directores : AggregateRoot
+    public sealed class Directores : AggregateRoot
     {
-
         public Directores() { }
         public Directores(DirectoresId id, string nombre, string apellido, int cantidadVotantes, Cedula cedula, NumeroTelefono numeroTelefono, bool activo)
         {
@@ -16,8 +15,6 @@ namespace BE_ProyectoA.Core.Domain.Entities.Director
             Cedula = cedula;
             CantidadVotantes = cantidadVotantes;
             Activo = activo;
-
-
         
         }
         public DirectoresId Id { get; set; }

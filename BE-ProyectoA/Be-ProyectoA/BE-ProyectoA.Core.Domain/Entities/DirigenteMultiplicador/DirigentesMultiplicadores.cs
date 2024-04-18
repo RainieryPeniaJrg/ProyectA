@@ -3,7 +3,7 @@ using BE_ProyectoA.Core.Domain.ValueObjects;
 
 namespace BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador
 {
-    public class DirigentesMultiplicadores : AggregateRoot
+    public sealed class DirigentesMultiplicadores : AggregateRoot
     {
         //constructor
         public DirigentesMultiplicadores() { }
