@@ -1,12 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 
 namespace BE_ProyectoA.Core.Domain.ValueObjects
 {
-    internal class NumeroTelefono
+    public partial record NumeroTelefono
     {
+        private const int DefaultLengtht = 11;
+
+        private const string Pattern = @"^(\+?1-)?(\()?809|829|849(\))?[-.]?\d{3}[-.]?\d{4}$";
+
+        private NumeroTelefono(string value) => Value = value;
+
+
+        public static NumeroTelefono? Create(string value)
+        {
+            if (string.IsNullOrEmpty(value) || !PhoneNumberRegex().IsMatch(value) || value.Length != DefaultLengtht)
+            {
+                return null;
+            }
+
+            return new NumeroTelefono(value);
+
+        }
+
+        public string Value { get; init; }
+
+        [GeneratedRegex(Pattern)]
+        private static partial Regex PhoneNumberRegex();
     }
 }
