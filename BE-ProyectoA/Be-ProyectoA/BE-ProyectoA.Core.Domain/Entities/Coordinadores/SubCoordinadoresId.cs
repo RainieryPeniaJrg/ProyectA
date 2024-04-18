@@ -1,5 +1,5 @@
 ﻿namespace BE_ProyectoA.Core.Domain.Entities.Coordinadores
 {
-    public record CoordinadoresId(Guid Value);
+    public record SubCoordinadoresId(Guid Value);
     
 }
