@@ -8,7 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ErrorOr" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BE-ProyectoA.Core.Application\BE-ProyectoA.Core.Application.csproj" />
+    <ProjectReference Include="..\BE-ProyectoA.Infraestructure.Persistence\BE-ProyectoA.Infraestructure.Persistence.csproj" />
+    <ProjectReference Include="..\BE-ProyectoA.Persistence.Identity\BE-ProyectoA.Persistence.Identity.csproj" />
   </ItemGroup>
 
 </Project>
