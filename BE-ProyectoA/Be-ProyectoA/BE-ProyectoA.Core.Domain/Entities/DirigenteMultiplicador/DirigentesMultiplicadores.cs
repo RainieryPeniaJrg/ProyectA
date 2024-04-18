@@ -3,14 +3,13 @@ using BE_ProyectoA.Core.Domain.ValueObjects;
 
 namespace BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador
 {
-    public sealed class DirigenteMultiplicador : AggregateRoot
+    public class DirigentesMultiplicadores : AggregateRoot
     {
-
         //constructor
-        public DirigenteMultiplicador() { }
+        public DirigentesMultiplicadores() { }
 
         //constructor para inicilizar los atributos
-        public DirigenteMultiplicador(DirigenteMultiplicadorId id,Cedula cedula,NumeroTelefono numeroTelefono, string nombre,string apellido,bool activo, Direccion direccion)
+        public DirigentesMultiplicadores(DirigentesMultiplicadoresId id,Cedula cedula,NumeroTelefono numeroTelefono, string nombre,string apellido,bool activo, Direccion direccion, int cantidadVotantes)
         {
             Id = id;
             Nombre = nombre;
@@ -19,12 +18,13 @@ namespace BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador
             NumeroTelefono = numeroTelefono;
             Activo = activo;
             Direccion = direccion;
+            CantidadVotantes = cantidadVotantes;
         }
-        public DirigenteMultiplicadorId Id { get; set; }
+        public DirigentesMultiplicadoresId Id { get; set; }
         public string Nombre { get; set; } = string.Empty;
         public string Apellido { get; set; } = string.Empty;
         public string NombreCompleto => $"{Nombre} {Apellido}";
-        public int CantidadVotos { get; set; }
+        public int CantidadVotantes { get; set; }
         public Cedula Cedula { get; private set; }
         public NumeroTelefono NumeroTelefono { get; private set; }
         public Direccion Direccion { get; set; }

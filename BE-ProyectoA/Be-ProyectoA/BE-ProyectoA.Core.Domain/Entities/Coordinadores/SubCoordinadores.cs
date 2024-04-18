@@ -17,7 +17,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.Coordinador
             Nombre = nombre;
             Apellido = apellido;
             Cedula = cedula;
-            CantidadVotos = cantidadVotos;
+            CantidadVotantes = cantidadVotos;
             NumeroTelefono = numeroTelefono;
             Activo = activo;
             Direccion = direccion;
@@ -28,7 +28,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.Coordinador
         public string Nombre { get; set; }  = string.Empty;
         public string Apellido { get; set; } = string.Empty;
         public string NombreCompleto => $"{Nombre} {Apellido}";
-        public int CantidadVotos { get; set; } 
+        public int CantidadVotantes { get; set; } 
         public Cedula Cedula { get; private set; } 
         public bool Activo {  get; private set; }
         public Direccion Direccion { get; set; }

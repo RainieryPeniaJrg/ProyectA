@@ -1,5 +1,5 @@
 ﻿namespace BE_ProyectoA.Core.Domain.Entities.Director
 {
-    public record DirectorId(Guid Value);
+    public record DirectoresId(Guid Value);
   
 }
