@@ -11,7 +11,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.Coordinador
         public SubCoordinadores() { }
         //contructor con parametros para quitar los nulo y 
         //usar el metodo actualizar
-        public SubCoordinadores(SubCoordinadoresId id,string nombre, string apellido, int cantidadVotos, NumeroTelefono numeroTelefono, Cedula cedula, bool activo)
+        public SubCoordinadores(SubCoordinadoresId id,string nombre, string apellido, int cantidadVotos, NumeroTelefono numeroTelefono, Cedula cedula, bool activo, Direccion direccion)
         {
             Id = id;
             Nombre = nombre;
@@ -20,6 +20,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.Coordinador
             CantidadVotos = cantidadVotos;
             NumeroTelefono = numeroTelefono;
             Activo = activo;
+            Direccion = direccion;
             
 
         }
@@ -29,7 +30,8 @@ namespace BE_ProyectoA.Core.Domain.Entities.Coordinador
         public string NombreCompleto => $"{Nombre} {Apellido}";
         public int CantidadVotos { get; set; } 
         public Cedula Cedula { get; private set; } 
-        public bool Activo {  get; private set; }   
+        public bool Activo {  get; private set; }
+        public Direccion Direccion { get; set; }
         public NumeroTelefono NumeroTelefono { get; private set; }
     }
 }

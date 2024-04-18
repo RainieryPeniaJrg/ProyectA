@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "C:\\Proyecto A\\BE-ProyectoA\\Be-ProyectoA\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D5BD2FDC-5E92-4B1F-A1F0-BA32F3FEEBE4}|BE-ProyectoA.Core.Domain\\BE-ProyectoA.Core.Domain.csproj|c:\\proyecto a\\be-proyectoa\\be-proyectoa\\be-proyectoa.core.domain\\entities\\coordinadorgeneral\\coordinadorgeneral.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D5BD2FDC-5E92-4B1F-A1F0-BA32F3FEEBE4}|BE-ProyectoA.Core.Domain\\BE-ProyectoA.Core.Domain.csproj|solutionrelative:be-proyectoa.core.domain\\entities\\coordinadorgeneral\\coordinadorgeneral.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D5BD2FDC-5E92-4B1F-A1F0-BA32F3FEEBE4}|BE-ProyectoA.Core.Domain\\BE-ProyectoA.Core.Domain.csproj|c:\\proyecto a\\be-proyectoa\\be-proyectoa\\be-proyectoa.core.domain\\entities\\coordinadorgeneral\\coordinadorgeneralid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D5BD2FDC-5E92-4B1F-A1F0-BA32F3FEEBE4}|BE-ProyectoA.Core.Domain\\BE-ProyectoA.Core.Domain.csproj|solutionrelative:be-proyectoa.core.domain\\entities\\coordinadorgeneral\\coordinadorgeneralid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D5BD2FDC-5E92-4B1F-A1F0-BA32F3FEEBE4}|BE-ProyectoA.Core.Domain\\BE-ProyectoA.Core.Domain.csproj|c:\\proyecto a\\be-proyectoa\\be-proyectoa\\be-proyectoa.core.domain\\entities\\dirigentemultiplicador\\dirigentemultiplicador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5BD2FDC-5E92-4B1F-A1F0-BA32F3FEEBE4}|BE-ProyectoA.Core.Domain\\BE-ProyectoA.Core.Domain.csproj|solutionrelative:be-proyectoa.core.domain\\entities\\dirigentemultiplicador\\dirigentemultiplicador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D5BD2FDC-5E92-4B1F-A1F0-BA32F3FEEBE4}|BE-ProyectoA.Core.Domain\\BE-ProyectoA.Core.Domain.csproj|c:\\proyecto a\\be-proyectoa\\be-proyectoa\\be-proyectoa.core.domain\\entities\\coordinadores\\subcoordinadores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D5BD2FDC-5E92-4B1F-A1F0-BA32F3FEEBE4}|BE-ProyectoA.Core.Domain\\BE-ProyectoA.Core.Domain.csproj|solutionrelative:be-proyectoa.core.domain\\entities\\coordinadores\\subcoordinadores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D5BD2FDC-5E92-4B1F-A1F0-BA32F3FEEBE4}|BE-ProyectoA.Core.Domain\\BE-ProyectoA.Core.Domain.csproj|c:\\proyecto a\\be-proyectoa\\be-proyectoa\\be-proyectoa.core.domain\\entities\\dirigentemultiplicador\\dirigentemultiplicador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D5BD2FDC-5E92-4B1F-A1F0-BA32F3FEEBE4}|BE-ProyectoA.Core.Domain\\BE-ProyectoA.Core.Domain.csproj|solutionrelative:be-proyectoa.core.domain\\entities\\dirigentemultiplicador\\dirigentemultiplicador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D5BD2FDC-5E92-4B1F-A1F0-BA32F3FEEBE4}|BE-ProyectoA.Core.Domain\\BE-ProyectoA.Core.Domain.csproj|c:\\proyecto a\\be-proyectoa\\be-proyectoa\\be-proyectoa.core.domain\\entities\\coordinadores\\subcoordinadoresid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5BD2FDC-5E92-4B1F-A1F0-BA32F3FEEBE4}|BE-ProyectoA.Core.Domain\\BE-ProyectoA.Core.Domain.csproj|solutionrelative:be-proyectoa.core.domain\\entities\\coordinadores\\subcoordinadoresid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5BD2FDC-5E92-4B1F-A1F0-BA32F3FEEBE4}|BE-ProyectoA.Core.Domain\\BE-ProyectoA.Core.Domain.csproj|c:\\proyecto a\\be-proyectoa\\be-proyectoa\\be-proyectoa.core.domain\\entities\\coordinadorgeneral\\coordinadorgeneral.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5BD2FDC-5E92-4B1F-A1F0-BA32F3FEEBE4}|BE-ProyectoA.Core.Domain\\BE-ProyectoA.Core.Domain.csproj|solutionrelative:be-proyectoa.core.domain\\entities\\coordinadorgeneral\\coordinadorgeneral.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5BD2FDC-5E92-4B1F-A1F0-BA32F3FEEBE4}|BE-ProyectoA.Core.Domain\\BE-ProyectoA.Core.Domain.csproj|c:\\proyecto a\\be-proyectoa\\be-proyectoa\\be-proyectoa.core.domain\\entities\\coordinadorgeneral\\coordinadorgeneralid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5BD2FDC-5E92-4B1F-A1F0-BA32F3FEEBE4}|BE-ProyectoA.Core.Domain\\BE-ProyectoA.Core.Domain.csproj|solutionrelative:be-proyectoa.core.domain\\entities\\coordinadorgeneral\\coordinadorgeneralid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D5BD2FDC-5E92-4B1F-A1F0-BA32F3FEEBE4}|BE-ProyectoA.Core.Domain\\BE-ProyectoA.Core.Domain.csproj|c:\\proyecto a\\be-proyectoa\\be-proyectoa\\be-proyectoa.core.domain\\entities\\dirigentemultiplicador\\dirigentemultiplicadorid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -29,10 +33,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{D5BD2FDC-5E92-4B1F-A1F0-BA32F3FEEBE4}|BE-ProyectoA.Core.Domain\\BE-ProyectoA.Core.Domain.csproj|c:\\proyecto a\\be-proyectoa\\be-proyectoa\\be-proyectoa.core.domain\\entities\\director\\directorid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D5BD2FDC-5E92-4B1F-A1F0-BA32F3FEEBE4}|BE-ProyectoA.Core.Domain\\BE-ProyectoA.Core.Domain.csproj|solutionrelative:be-proyectoa.core.domain\\entities\\director\\directorid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D5BD2FDC-5E92-4B1F-A1F0-BA32F3FEEBE4}|BE-ProyectoA.Core.Domain\\BE-ProyectoA.Core.Domain.csproj|c:\\proyecto a\\be-proyectoa\\be-proyectoa\\be-proyectoa.core.domain\\entities\\coordinadores\\subcoordinadoresid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D5BD2FDC-5E92-4B1F-A1F0-BA32F3FEEBE4}|BE-ProyectoA.Core.Domain\\BE-ProyectoA.Core.Domain.csproj|solutionrelative:be-proyectoa.core.domain\\entities\\coordinadores\\subcoordinadoresid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D5BD2FDC-5E92-4B1F-A1F0-BA32F3FEEBE4}|BE-ProyectoA.Core.Domain\\BE-ProyectoA.Core.Domain.csproj|c:\\proyecto a\\be-proyectoa\\be-proyectoa\\be-proyectoa.core.domain\\valueobjects\\direccion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -98,24 +98,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "CoordinadorGeneral.cs",
               "DocumentMoniker": "C:\\Proyecto A\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\CoordinadorGeneral\\CoordinadorGeneral.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Entities\\CoordinadorGeneral\\CoordinadorGeneral.cs",
               "ToolTip": "C:\\Proyecto A\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\CoordinadorGeneral\\CoordinadorGeneral.cs",
               "RelativeToolTip": "BE-ProyectoA.Core.Domain\\Entities\\CoordinadorGeneral\\CoordinadorGeneral.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAiwAkAAAAGAAAA",
+              "ViewState": "AQIAABYAAAAAAAAAAAAiwB0AAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-18T21:41:00.9Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "CoordinadorGeneralId.cs",
               "DocumentMoniker": "C:\\Proyecto A\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\CoordinadorGeneral\\CoordinadorGeneralId.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Entities\\CoordinadorGeneral\\CoordinadorGeneralId.cs",
@@ -128,7 +128,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
+              "Title": "SubCoordinadores.cs",
+              "DocumentMoniker": "C:\\Proyecto A\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\Coordinadores\\SubCoordinadores.cs",
+              "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Entities\\Coordinadores\\SubCoordinadores.cs",
+              "ToolTip": "C:\\Proyecto A\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\Coordinadores\\SubCoordinadores.cs",
+              "RelativeToolTip": "BE-ProyectoA.Core.Domain\\Entities\\Coordinadores\\SubCoordinadores.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAIBDwBYAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-18T20:13:18.676Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SubCoordinadoresId.cs",
+              "DocumentMoniker": "C:\\Proyecto A\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\Coordinadores\\SubCoordinadoresId.cs",
+              "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Entities\\Coordinadores\\SubCoordinadoresId.cs",
+              "ToolTip": "C:\\Proyecto A\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\Coordinadores\\SubCoordinadoresId.cs",
+              "RelativeToolTip": "BE-ProyectoA.Core.Domain\\Entities\\Coordinadores\\SubCoordinadoresId.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-18T21:11:09.737Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DirigenteMultiplicador.cs",
+              "DocumentMoniker": "C:\\Proyecto A\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\DirigenteMultiplicador\\DirigenteMultiplicador.cs",
+              "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Entities\\DirigenteMultiplicador\\DirigenteMultiplicador.cs",
+              "ToolTip": "C:\\Proyecto A\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\DirigenteMultiplicador\\DirigenteMultiplicador.cs",
+              "RelativeToolTip": "BE-ProyectoA.Core.Domain\\Entities\\DirigenteMultiplicador\\DirigenteMultiplicador.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAowBQAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-18T20:08:02.109Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "DirigenteMultiplicadorId.cs",
               "DocumentMoniker": "C:\\Proyecto A\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\DirigenteMultiplicador\\DirigenteMultiplicadorId.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Entities\\DirigenteMultiplicador\\DirigenteMultiplicadorId.cs",
@@ -142,19 +181,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "DirectorId.cs",
-              "DocumentMoniker": "C:\\Proyecto A\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\Director\\DirectorId.cs",
-              "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Entities\\Director\\DirectorId.cs",
-              "ToolTip": "C:\\Proyecto A\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\Director\\DirectorId.cs",
-              "RelativeToolTip": "BE-ProyectoA.Core.Domain\\Entities\\Director\\DirectorId.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAACAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-18T21:11:51.82Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "Director.cs",
               "DocumentMoniker": "C:\\Proyecto A\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\Director\\Director.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Entities\\Director\\Director.cs",
@@ -167,41 +193,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SubCoordinadores.cs",
-              "DocumentMoniker": "C:\\Proyecto A\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\Coordinadores\\SubCoordinadores.cs",
-              "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Entities\\Coordinadores\\SubCoordinadores.cs",
-              "ToolTip": "C:\\Proyecto A\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\Coordinadores\\SubCoordinadores.cs",
-              "RelativeToolTip": "BE-ProyectoA.Core.Domain\\Entities\\Coordinadores\\SubCoordinadores.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-18T20:13:18.676Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "SubCoordinadoresId.cs",
-              "DocumentMoniker": "C:\\Proyecto A\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\Coordinadores\\SubCoordinadoresId.cs",
-              "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Entities\\Coordinadores\\SubCoordinadoresId.cs",
-              "ToolTip": "C:\\Proyecto A\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\Coordinadores\\SubCoordinadoresId.cs",
-              "RelativeToolTip": "BE-ProyectoA.Core.Domain\\Entities\\Coordinadores\\SubCoordinadoresId.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAEAAAA",
+              "Title": "DirectorId.cs",
+              "DocumentMoniker": "C:\\Proyecto A\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\Director\\DirectorId.cs",
+              "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Entities\\Director\\DirectorId.cs",
+              "ToolTip": "C:\\Proyecto A\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\Director\\DirectorId.cs",
+              "RelativeToolTip": "BE-ProyectoA.Core.Domain\\Entities\\Director\\DirectorId.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-18T21:11:09.737Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DirigenteMultiplicador.cs",
-              "DocumentMoniker": "C:\\Proyecto A\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\DirigenteMultiplicador\\DirigenteMultiplicador.cs",
-              "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Entities\\DirigenteMultiplicador\\DirigenteMultiplicador.cs",
-              "ToolTip": "C:\\Proyecto A\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\DirigenteMultiplicador\\DirigenteMultiplicador.cs",
-              "RelativeToolTip": "BE-ProyectoA.Core.Domain\\Entities\\DirigenteMultiplicador\\DirigenteMultiplicador.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAiwAsAAAAzAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-18T20:08:02.109Z",
+              "WhenOpened": "2024-04-18T21:11:51.82Z",
               "EditorCaption": ""
             },
             {

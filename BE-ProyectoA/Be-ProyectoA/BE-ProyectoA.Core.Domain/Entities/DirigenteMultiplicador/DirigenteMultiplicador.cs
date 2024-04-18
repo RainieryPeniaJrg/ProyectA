@@ -10,7 +10,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador
         public DirigenteMultiplicador() { }
 
         //constructor para inicilizar los atributos
-        public DirigenteMultiplicador(DirigenteMultiplicadorId id,Cedula cedula,NumeroTelefono numeroTelefono, string nombre,string apellido,bool activo)
+        public DirigenteMultiplicador(DirigenteMultiplicadorId id,Cedula cedula,NumeroTelefono numeroTelefono, string nombre,string apellido,bool activo, Direccion direccion)
         {
             Id = id;
             Nombre = nombre;
@@ -18,6 +18,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador
             Cedula = cedula;
             NumeroTelefono = numeroTelefono;
             Activo = activo;
+            Direccion = direccion;
         }
         public DirigenteMultiplicadorId Id { get; set; }
         public string Nombre { get; set; } = string.Empty;
@@ -26,6 +27,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador
         public int CantidadVotos { get; set; }
         public Cedula Cedula { get; private set; }
         public NumeroTelefono NumeroTelefono { get; private set; }
+        public Direccion Direccion { get; set; }
         public bool Activo { get;  private set; }
 
     }
