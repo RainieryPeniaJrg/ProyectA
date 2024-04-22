@@ -1,4 +1,4 @@
-﻿namespace Presentation.BE_NetBanking.Api
+﻿namespace BE_ProyectoA.Presentation.WebApi
 {
     public static class DependencyInjection
     {

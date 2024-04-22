@@ -1,10 +1,8 @@
-﻿using BE.MovieApp.Core.Domain.Primitivies;
-using BE.MovieApp.Infraestructure.Persistence.persistence;
-using BE_ProyectoA.Core.Application.Data;
+﻿using BE_ProyectoA.Core.Application.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-namespace BE.MovieApp.Infraestructure.Persistence
+namespace BE_ProyectoA.Infraestructure.Persistence
 {
     public static class DependencyInjection
     {
@@ -17,7 +15,7 @@ namespace BE.MovieApp.Infraestructure.Persistence
 
         public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
         {
-                
+
             services.AddDbContext<ApplicationDbContext>
                 (
                          options =>

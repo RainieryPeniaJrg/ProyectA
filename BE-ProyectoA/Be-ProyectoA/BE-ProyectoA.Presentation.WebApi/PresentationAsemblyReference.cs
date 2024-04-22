@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Presentation.BE_NetBanking.Api
+namespace BE_ProyectoA.Presentation.WebApi
 {
     public class PresentationAssemblyReference
     {
