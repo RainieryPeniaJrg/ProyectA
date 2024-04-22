@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace BE_ProyectoA.Persistence.Identity.Seeds
 {
-    public static class DefaultSubCoordinado
+    public static class DefaultSubCoordinador
     { 
          public static async Task SeedAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
     {
