@@ -1,6 +1,7 @@
 ﻿using BE_ProyectoA.Core.Application.Dtos.Users;
 using BE_ProyectoA.Core.Application.Enums;
 using BE_ProyectoA.Core.Application.Interfaces;
+using BE_ProyectoA.Core.Application.Wrappers;
 using BE_ProyectoA.Core.Domain.Settings;
 using BE_ProyectoA.Persistence.Identity.Helpers;
 using BE_ProyectoA.Persistence.Identity.Model;
@@ -79,7 +80,7 @@ namespace BE_ProyectoA.Persistence.Identity.Services
 
                 if (result.Succeeded)
                 {
-                    await _userManager.AddToRoleAsync(user, Roles.cliente.ToString());
+                    await _userManager.AddToRoleAsync(user, Roles.dirigente.ToString());
                     return new Response<string>(user.Id, message: $"Usuario Registrado Exitosamente. {request.UserName}");
                 }
                 else

@@ -1,4 +1,6 @@
 ﻿using BE_ProyectoA.Core.Application.Data;
+using BE_ProyectoA.Core.Domain.Primitivies;
+using BE_ProyectoA.Infraestructure.Persistence.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

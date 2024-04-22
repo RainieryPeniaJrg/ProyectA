@@ -5,6 +5,7 @@ using BE_ProyectoA.Core.Domain.Entities.Director;
 using BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador;
 using BE_ProyectoA.Core.Domain.Entities.Grupos;
 using BE_ProyectoA.Core.Domain.Entities.Votantes;
+using BE_ProyectoA.Core.Domain.Primitivies;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
