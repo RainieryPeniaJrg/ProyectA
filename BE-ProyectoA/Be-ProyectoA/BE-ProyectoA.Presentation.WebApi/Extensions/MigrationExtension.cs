@@ -1,4 +1,4 @@
-﻿using Bet_NetBanking.Infraestructure.Persistence.Persistense;
+﻿using BE.MovieApp.Infraestructure.Persistence.persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace Presentation.BE_NetBanking.Api.Extensions
