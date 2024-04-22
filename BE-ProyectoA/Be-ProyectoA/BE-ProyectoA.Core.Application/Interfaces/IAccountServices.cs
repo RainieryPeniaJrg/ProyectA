@@ -1,5 +1,5 @@
-﻿using Be_NetBanking.Core.Application.Wrappers;
-using BE_ProyectoA.Core.Application.Dtos.Users;
+﻿using BE_ProyectoA.Core.Application.Dtos.Users;
+using BE_ProyectoA.Core.Application.Wrappers;
 
 namespace BE_ProyectoA.Core.Application.Interfaces
 {
