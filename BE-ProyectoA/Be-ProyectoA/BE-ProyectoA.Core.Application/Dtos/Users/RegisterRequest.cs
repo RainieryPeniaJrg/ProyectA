@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BE_ProyectoA.Core.Application.Dtos.Users
+﻿namespace BE_ProyectoA.Core.Application.Dtos.Users
 {
-    internal class RegisterRequest
+    public record RegisterRequest
     {
+        public string Nombre { get; set; } = string.Empty;
+        public string Apellido { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string UserName { get; set; } = string.Empty;
+        public string PassWord { get; set; } = string.Empty;
+        public string ConfirmPassWord { get; set; } = string.Empty;
     }
 }
