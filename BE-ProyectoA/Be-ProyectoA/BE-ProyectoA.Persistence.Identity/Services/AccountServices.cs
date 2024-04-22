@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BE_ProyectoA.Persistence.Identity.Services
+﻿namespace BE_ProyectoA.Persistence.Identity.Services
 {
-    internal class AccountServices
+    public class AccountServices
     {
     }
 }

@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BE_ProyectoA.Core.Application.Enums;
+using BE_ProyectoA.Persistence.Identity.Model;
+using Microsoft.AspNetCore.Identity;
 
 namespace BE_ProyectoA.Persistence.Identity.Seeds
 {
-    internal class DefaultRoles
+    public static class DefaultRoles
     {
+        public static async Task SeedAsync(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+        {
+            await roleManager.CreateAsync(new IdentityRole(Roles.administrador.ToString()));
+            await roleManager.CreateAsync(new IdentityRole(Roles.dirigente.ToString()));
+            await roleManager.CreateAsync(new IdentityRole(Roles.coordinador.ToString()));
+            await roleManager.CreateAsync(new IdentityRole(Roles.subcoordinador.ToString()));
+        }
     }
 }
