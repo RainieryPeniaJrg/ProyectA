@@ -1,4 +1,4 @@
-﻿using BE.MovieApp.Core.Domain.Primitivies;
+﻿using BE_ProyectoA.Core.Domain.Primitivies;
 using BE_ProyectoA.Core.Domain.ValueObjects;
 
 
