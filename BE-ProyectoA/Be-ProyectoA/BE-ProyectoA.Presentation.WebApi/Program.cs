@@ -1,6 +1,7 @@
 using BE_ProyectoA.Persistence.Identity.Model;
 using BE_ProyectoA.Persistence.Identity.Seeds;
 using Microsoft.AspNetCore.Identity;
+using Presentation.BE_NetBanking.Api.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +41,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.ApplyMigration();
 }
 
 app.UseHttpsRedirection();
