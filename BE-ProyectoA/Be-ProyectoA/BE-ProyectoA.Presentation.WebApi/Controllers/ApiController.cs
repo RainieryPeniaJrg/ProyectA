@@ -1,6 +1,7 @@
 ﻿using ErrorOr;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc;
+using BE_ProyectoA.Presentation.WebApi.Common.Http;
 
 namespace BE_ProyectoA.Presentation.WebApi.Controllers
 {

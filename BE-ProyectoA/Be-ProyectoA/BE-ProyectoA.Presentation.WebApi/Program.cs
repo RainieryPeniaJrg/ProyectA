@@ -5,6 +5,7 @@ using BE_ProyectoA.Persistence.Identity.Model;
 using BE_ProyectoA.Persistence.Identity.Seeds;
 using BE_ProyectoA.Presentation.WebApi;
 using BE_ProyectoA.Presentation.WebApi.Extensions;
+using BE_ProyectoA.Presentation.WebApi.Middlewares;
 using Microsoft.AspNetCore.Identity;
 
 
@@ -45,11 +46,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.ApplyMigration();
 }
+app.UseExceptionHandler("/error");
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.UseMiddleware<GlobalExceptionHandlingMiddleware>();
 app.Run();

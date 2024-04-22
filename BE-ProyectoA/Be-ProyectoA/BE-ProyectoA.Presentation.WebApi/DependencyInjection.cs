@@ -1,4 +1,6 @@
-﻿namespace BE_ProyectoA.Presentation.WebApi
+﻿using BE_ProyectoA.Presentation.WebApi.Middlewares;
+
+namespace BE_ProyectoA.Presentation.WebApi
 {
     public static class DependencyInjection
     {
@@ -8,6 +10,7 @@
             services.AddControllers();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
+            services.AddTransient<GlobalExceptionHandlingMiddleware>();
             return services;
         }
     }
