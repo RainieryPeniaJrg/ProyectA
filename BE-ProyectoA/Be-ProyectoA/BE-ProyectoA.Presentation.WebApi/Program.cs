@@ -1,5 +1,9 @@
+using BE_ProyectoA.Core.Application;
+using BE_ProyectoA.Infraestructure.Persistence;
+using BE_ProyectoA.Persistence.Identity;
 using BE_ProyectoA.Persistence.Identity.Model;
 using BE_ProyectoA.Persistence.Identity.Seeds;
+using BE_ProyectoA.Presentation.WebApi;
 using Microsoft.AspNetCore.Identity;
 
 
@@ -7,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddPresentationn().AddInfraEstructure(builder.Configuration).AddApplication(
+builder.Services.AddPresentationn().AddInfraEstructure(builder.Configuration).AddApplication().AddIndentityP(builder.Configuration);
 
 var app = builder.Build();
 
