@@ -11,7 +11,7 @@ namespace BE_ProyectoA.Persistence.Identity.Seeds
             var defaultUser = new ApplicationUser
             {
                 UserName = "userCliente",
-                Email = "userDirigente@mail.com",
+                Email = "userCoordinador@mail.com",
                 EmailConfirmed = true,
                 Nombre = "Alexis",
                 Apellido = "De leon ",
