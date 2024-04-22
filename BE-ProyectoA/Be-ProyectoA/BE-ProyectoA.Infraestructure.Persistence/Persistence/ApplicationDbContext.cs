@@ -1,18 +1,27 @@
-﻿using BE.MovieApp.Core.Application.Data;
-using BE.MovieApp.Core.Domain.ActorCharacter;
-using BE.MovieApp.Core.Domain.Actors;
-using BE.MovieApp.Core.Domain.Comments;
-using BE.MovieApp.Core.Domain.MovieCast;
-using BE.MovieApp.Core.Domain.Movies;
+﻿
 using BE.MovieApp.Core.Domain.Primitivies;
+using BE_ProyectoA.Core.Application.Data;
+using BE_ProyectoA.Core.Domain.Entities.Coordinador;
+using BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral;
+using BE_ProyectoA.Core.Domain.Entities.Director;
+using BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador;
+using BE_ProyectoA.Core.Domain.Entities.Grupos;
+using BE_ProyectoA.Core.Domain.Entities.Votantes;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace BE.MovieApp.Infraestructure.Persistence.persistence
 {
-    public class ApplicationDbContext : DbContext,IApplicationDbContext,IUnitOfWork
+    public class ApplicationDbContext : DbContext, IApplicationDbContext, IUnitOfWork
     {
         private readonly IPublisher _publisher;
+
+        public DbSet<SubCoordinadores> SubCoordinadores { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DbSet<CoordinadoresGenerales> CoordinadoresGenerales { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DbSet<Directores> Directores { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DbSet<DirigentesMultiplicadores> DirigentesMultiplicadores { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DbSet<Grupos> Grupos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DbSet<Votante> Votantes { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public ApplicationDbContext(IPublisher publisher, DbContextOptions options): base(options)
         {
@@ -20,21 +29,12 @@ namespace BE.MovieApp.Infraestructure.Persistence.persistence
           
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseLazyLoadingProxies(true).LogTo(s => System.Console.WriteLine(s));
-
-           
-        }
+        
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
         }
-        public DbSet<Movies> Movies { get; set; }
-        public DbSet<Actor> Actors { get; set; }
-        public DbSet<Comments> Comments { get; set; }
-        public DbSet<ActorCharacter> ActorCharacters { get; set; }
-        public DbSet<MovieCast> MoviesCasts { get; set; }
+      
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
