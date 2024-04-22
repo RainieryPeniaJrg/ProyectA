@@ -1,7 +1,7 @@
-﻿using BE.MovieApp.Infraestructure.Persistence.persistence;
+﻿using BE_ProyectoA.Infraestructure.Persistence.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace Presentation.BE_NetBanking.Api.Extensions
+namespace BE_ProyectoA.Presentation.WebApi.Extensions
 {
     public static class MigrationExtension
     {

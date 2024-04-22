@@ -1,7 +1,5 @@
-﻿
-using BE.MovieApp.Core.Domain.Primitivies;
-using BE_ProyectoA.Core.Application.Data;
-using BE_ProyectoA.Core.Domain.Entities.Coordinador;
+﻿using BE_ProyectoA.Core.Application.Data;
+using BE_ProyectoA.Core.Domain.Entities.Coordinadores;
 using BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral;
 using BE_ProyectoA.Core.Domain.Entities.Director;
 using BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador;
@@ -10,7 +8,7 @@ using BE_ProyectoA.Core.Domain.Entities.Votantes;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace BE.MovieApp.Infraestructure.Persistence.persistence
+namespace BE_ProyectoA.Infraestructure.Persistence.Persistence
 {
     public class ApplicationDbContext : DbContext, IApplicationDbContext, IUnitOfWork
     {
@@ -23,18 +21,18 @@ namespace BE.MovieApp.Infraestructure.Persistence.persistence
         public DbSet<Grupos> Grupos { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public DbSet<Votante> Votantes { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public ApplicationDbContext(IPublisher publisher, DbContextOptions options): base(options)
+        public ApplicationDbContext(IPublisher publisher, DbContextOptions options) : base(options)
         {
             _publisher = publisher ?? throw new ArgumentNullException(nameof(publisher));
-          
+
         }
 
-        
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
         }
-      
+
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {

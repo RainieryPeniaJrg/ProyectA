@@ -1,7 +1,7 @@
-﻿using Be_NetBanking.Core.Domain.Settings;
-using BE_ProyectoA.Core.Application.Dtos.Users;
+﻿using BE_ProyectoA.Core.Application.Dtos.Users;
 using BE_ProyectoA.Core.Application.Enums;
 using BE_ProyectoA.Core.Application.Interfaces;
+using BE_ProyectoA.Core.Domain.Settings;
 using BE_ProyectoA.Persistence.Identity.Helpers;
 using BE_ProyectoA.Persistence.Identity.Model;
 using Microsoft.AspNetCore.Identity;

@@ -1,4 +1,4 @@
-﻿namespace Be_NetBanking.Core.Domain.Settings
+﻿namespace BE_ProyectoA.Core.Domain.Settings
 {
     public class JWT
     {

@@ -1,4 +1,4 @@
-﻿namespace BE.MovieApp.Core.Domain.Primitivies
+﻿namespace BE_ProyectoA.Core.Domain.Primitivies
 {
     public abstract class AggregateRoot
     {
