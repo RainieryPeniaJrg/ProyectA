@@ -4,6 +4,7 @@ using BE_ProyectoA.Persistence.Identity;
 using BE_ProyectoA.Persistence.Identity.Model;
 using BE_ProyectoA.Persistence.Identity.Seeds;
 using BE_ProyectoA.Presentation.WebApi;
+using BE_ProyectoA.Presentation.WebApi.Extensions;
 using Microsoft.AspNetCore.Identity;
 
 
