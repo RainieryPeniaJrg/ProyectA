@@ -28,7 +28,6 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence
 
         }
 
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);

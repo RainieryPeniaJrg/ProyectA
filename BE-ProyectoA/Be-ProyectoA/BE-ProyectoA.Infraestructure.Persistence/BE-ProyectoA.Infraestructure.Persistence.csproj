@@ -16,4 +16,8 @@
     <ProjectReference Include="..\BE-ProyectoA.Core.Domain\BE-ProyectoA.Core.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Persistence\Configurations\" />
+  </ItemGroup>
+
 </Project>
