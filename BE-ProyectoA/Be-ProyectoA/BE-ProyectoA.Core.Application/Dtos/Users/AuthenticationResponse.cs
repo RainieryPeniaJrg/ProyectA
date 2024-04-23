@@ -2,7 +2,7 @@
 
 namespace BE_ProyectoA.Core.Application.Dtos.Users
 {
-    public record AuthenticationResponse
+    public record AuthenticationResponse 
     {
         public string Id { get; set; } = string.Empty;
         public string UserName { get; set; } = string.Empty;

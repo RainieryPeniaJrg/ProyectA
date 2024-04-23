@@ -1,4 +1,5 @@
 ﻿using BE_ProyectoA.Presentation.WebApi.Common.Http;
+using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;

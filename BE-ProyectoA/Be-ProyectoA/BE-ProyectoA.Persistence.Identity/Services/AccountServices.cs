@@ -41,6 +41,7 @@ namespace BE_ProyectoA.Persistence.Identity.Services
             response.JWToken = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
             response.Email = user.Email;
             response.UserName = user.UserName;
+          
 
             var roleList = await _userManager.GetRolesAsync(user).ConfigureAwait(false);
             response.Roles = roleList.ToList();

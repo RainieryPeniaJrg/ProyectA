@@ -6,7 +6,7 @@ using BE_ProyectoA.Presentation.WebApi.Common.Http;
 namespace BE_ProyectoA.Presentation.WebApi.Controllers
 {
     [ApiController]
-    public class ApiController : ControllerBase
+    public class ApiController  : ControllerBase
     {
         protected IActionResult Problem(List<Error> errors)
         {
