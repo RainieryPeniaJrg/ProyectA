@@ -4,23 +4,19 @@ namespace BE_ProyectoA.Core.Domain.ValueObjects
 {
     public partial record Cedula
     {
-        private const int DefaultLengtht = 11;
-
-        private const string Pattern = @"^\d{3}-\d{7}-\d$";
-
+        private const int DefaultLength = 13;
+        private const string Pattern = @"^\d{3}\d{7}\d{1}$";
 
         private Cedula(string value) => Value = value;
 
-
         public static Cedula? Create(string value)
         {
-            if (string.IsNullOrEmpty(value) || !CedulaRegex().IsMatch(value) || value.Length != DefaultLengtht)
+            if (string.IsNullOrEmpty(value) || !CedulaRegex().IsMatch(value))
             {
                 return null;
             }
 
             return new Cedula(value);
-
         }
 
         public string Value { get; init; }

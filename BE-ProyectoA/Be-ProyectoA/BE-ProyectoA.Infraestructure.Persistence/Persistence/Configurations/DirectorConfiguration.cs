@@ -17,7 +17,7 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
 
             builder.Property(D => D.NumeroTelefono).HasConversion(
                 numeroTelefono => numeroTelefono.Value, value => NumeroTelefono.Create(value)!)
-                .HasMaxLength(11);
+                .HasMaxLength(20);
 
             builder.Property(D=>D.Nombre).HasMaxLength(50);
 
@@ -26,12 +26,9 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
 
             builder.Ignore(D => D.NombreCompleto);
 
-            builder.Property(D => D.Nombre).HasMaxLength(50);
-
-
             builder.Property(D => D.Cedula).HasConversion(
                cedula => cedula.Value, value => Cedula.Create(value)!)
-               .HasMaxLength(11);
+               .HasMaxLength(20);
 
             builder.Property(D => D.Activo);
 

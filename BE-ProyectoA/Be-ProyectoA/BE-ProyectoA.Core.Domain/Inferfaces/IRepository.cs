@@ -13,6 +13,7 @@ namespace BE_ProyectoA.Core.Domain.Inferfaces
         Task UpdateAsync(TEntity[] entities);
         Task RemoveAsync(TEntity entity);
         Task RemoveAsync(TEntity[] entities);
+  
         Task SaveChangesAsync();
 
     }

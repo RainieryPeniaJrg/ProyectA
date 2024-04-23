@@ -1,6 +1,7 @@
 ﻿using BE_ProyectoA.Core.Domain.Inferfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repository
 {
@@ -72,5 +73,7 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repos
         {
             await _context.SaveChangesAsync();
         }
+
+       
     }
 }

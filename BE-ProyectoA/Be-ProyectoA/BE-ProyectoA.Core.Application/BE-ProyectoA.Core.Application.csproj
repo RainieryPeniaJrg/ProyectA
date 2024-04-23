@@ -23,4 +23,14 @@
     <ProjectReference Include="..\BE-ProyectoA.Core.Domain\BE-ProyectoA.Core.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Director\Query\GetAll\" />
+    <Folder Include="Director\Query\GetById\" />
+    <Folder Include="Dirigentes\" />
+    <Folder Include="CoordinadoresGenerales\" />
+    <Folder Include="Grupo\" />
+    <Folder Include="SubCoordinadores\" />
+    <Folder Include="Votantes\" />
+  </ItemGroup>
+
 </Project>

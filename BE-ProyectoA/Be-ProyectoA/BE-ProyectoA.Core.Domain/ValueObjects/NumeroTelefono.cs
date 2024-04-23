@@ -10,7 +10,6 @@ namespace BE_ProyectoA.Core.Domain.ValueObjects
 
         private NumeroTelefono(string value) => Value = value;
 
-
         public static NumeroTelefono? Create(string value)
         {
             if (string.IsNullOrEmpty(value) || !PhoneNumberRegex().IsMatch(value) || value.Length != DefaultLengtht)

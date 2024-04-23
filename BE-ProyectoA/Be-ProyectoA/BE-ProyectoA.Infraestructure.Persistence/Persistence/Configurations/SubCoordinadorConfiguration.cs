@@ -18,12 +18,12 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
 
             builder.Property(sc => sc.NumeroTelefono).HasConversion(
               numeroTelefono => numeroTelefono.Value, value => NumeroTelefono.Create(value)!)
-              .HasMaxLength(11);
+              .HasMaxLength(20);
 
 
             builder.Property(sc => sc.Cedula).HasConversion(
                cedula => cedula.Value, value => Cedula.Create(value)!)
-               .HasMaxLength(11);
+               .HasMaxLength(20);
 
             builder.Property(sc => sc.Activo);
 

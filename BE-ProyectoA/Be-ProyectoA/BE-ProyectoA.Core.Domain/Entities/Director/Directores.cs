@@ -17,7 +17,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.Director
             Activo = activo;
         
         }
-        public DirectoresId Id { get; set; }
+        public DirectoresId Id { get; private set; }
         public string Nombre { get;  private set; } = string.Empty;
         public string Apellido { get; private set; } = string.Empty;
         public string NombreCompleto => $"{Nombre} {Apellido}";
