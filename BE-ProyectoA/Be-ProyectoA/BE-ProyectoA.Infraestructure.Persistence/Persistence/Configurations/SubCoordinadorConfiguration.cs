@@ -41,6 +41,10 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
             builder.Property(sc => sc.Apellido).HasMaxLength(30);
 
             builder.Ignore(sc => sc.NombreCompleto);
+
+            builder.HasOne(sc=>sc.Coordinadores)
+                .WithMany(c=>c.SubCoordinadores)
+                .HasForeignKey(sc => sc.CoordinadorsGeneralesId);
         }
     }
 }

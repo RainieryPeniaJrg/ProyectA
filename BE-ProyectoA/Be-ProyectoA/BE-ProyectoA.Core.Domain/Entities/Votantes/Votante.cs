@@ -10,9 +10,9 @@ namespace BE_ProyectoA.Core.Domain.Entities.Votantes
         public Votante() { }
 
 
-        public Votante(string nombre,string apellido, VotanteId id,Cedula cedula, Direccion direccion, NumeroTelefono numeroTelefono, bool activo)
+        public Votante(VotanteId id,string nombre,string apellido,Cedula cedula, Direccion direccion, NumeroTelefono numeroTelefono, bool activo)
         {
-           Id = id;
+             Id = id;
             Nombre = nombre;
             Apellido = apellido;
             Cedula = cedula;
@@ -28,6 +28,11 @@ namespace BE_ProyectoA.Core.Domain.Entities.Votantes
         public Direccion Direccion { get; private set; }
         public NumeroTelefono NumeroTelefono { get; private set; }
         public bool Activo { get; private set; }
+
+        public static Votante UpdateVotante(Guid Id, string nombre,string apellido,Cedula cedula,Direccion direccion, NumeroTelefono numeroTelefono,bool activo)
+        {
+            return new Votante(new VotanteId(Id),nombre, apellido, cedula, direccion, numeroTelefono, activo);
+        }
         
 
     }

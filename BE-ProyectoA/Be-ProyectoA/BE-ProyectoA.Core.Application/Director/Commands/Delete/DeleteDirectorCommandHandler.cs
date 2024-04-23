@@ -13,7 +13,7 @@ namespace BE_ProyectoA.Core.Application.Director.Commands.Delete
 
         public async Task<ErrorOr<Unit>> Handle(DeleteDirectorCommand command, CancellationToken cancellationToken)
         {
-            var user = await _directorRepository.GetEntityAsync();
+            var user = await _directorRepository.GetByIdAsync(command.Id);
 
             if(user != null) 
             {
@@ -21,7 +21,7 @@ namespace BE_ProyectoA.Core.Application.Director.Commands.Delete
             {
                     return Error.NotFound("Director.NotFound", "director no encontrado");
                 }
-                await _directorRepository.RemoveAsync(user);
+                 _directorRepository.Delete(user);
                 await _unitOfWork.SaveChangesAsync(cancellationToken);
              
             }

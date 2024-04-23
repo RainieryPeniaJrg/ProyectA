@@ -2,7 +2,8 @@
 
 namespace BE_ProyectoA.Core.Domain.Entities.Votantes
 {
-    public interface IVotantesRepository : IRepository<Votante>
+    public interface IVotanteRepository : IRepository<Votante>
     {
+        
     }
 }

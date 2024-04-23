@@ -41,7 +41,7 @@ namespace BE_ProyectoA.Core.Application.Director.Commands.Create
                     true
 
                 );
-            await _directorRepository.SaveAsync(director);
+            await _directorRepository.AddAsync(director);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
             return Unit.Value;
                 

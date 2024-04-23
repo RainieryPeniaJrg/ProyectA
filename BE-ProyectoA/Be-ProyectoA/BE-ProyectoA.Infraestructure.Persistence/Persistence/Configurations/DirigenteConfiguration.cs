@@ -1,6 +1,4 @@
-﻿using BE_ProyectoA.Core.Domain.Entities.Coordinadores;
-using BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral;
-using BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador;
+﻿using BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador;
 using BE_ProyectoA.Core.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -42,6 +40,10 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
             builder.Property(d => d.Apellido).HasMaxLength(30);
 
             builder.Ignore(d => d.NombreCompleto);
+
+            builder.HasOne(d => d.SubCoordinadores)
+                .WithMany(c => c.DirigentesMultiplicadores)
+                .HasForeignKey(d => d.SubCoordinadoresId);
         }
     }
 }

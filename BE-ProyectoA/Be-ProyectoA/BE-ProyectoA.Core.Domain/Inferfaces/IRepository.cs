@@ -1,20 +1,15 @@
-﻿using System.Linq.Expressions;
-
-namespace BE_ProyectoA.Core.Domain.Inferfaces
+﻿namespace BE_ProyectoA.Core.Domain.Inferfaces
 {
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IRepository<T>
     {
-        Task<TEntity?> GetEntityAsync(Expression<Func<TEntity, bool>>? filter = null, bool tracked = true);
-        Task<List<TEntity>> GetEntitiesAsync(Expression<Func<TEntity, bool>>? filter = null);
-        Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> filter);
-        Task SaveAsync(TEntity entity);
-        Task SaveAsync(TEntity[] entities);
-        Task UpdateAsync(TEntity entity);
-        Task UpdateAsync(TEntity[] entities);
-        Task RemoveAsync(TEntity entity);
-        Task RemoveAsync(TEntity[] entities);
-  
-        Task SaveChangesAsync();
+        Task AddAsync(T entity, CancellationToken cancellationToken = default);
+        void Delete(T entity);
+        void Update(T entity);
 
+        Task<bool> ExistsAsync(object id, CancellationToken cancellationToken = default);
+        Task<T?> GetByIdAsync(object id, CancellationToken cancellationToken = default);
+
+        Task<List<T>> GetAll(CancellationToken cancellationToken = default);
+        Task<List<T>> GetBy(Func<T, bool> predicate, CancellationToken cancellationToken = default);
     }
 }

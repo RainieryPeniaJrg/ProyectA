@@ -42,7 +42,7 @@ namespace BE_ProyectoA.Infraestructure.Persistence
 
             services.AddScoped<ICoordinadorGeneralRepository, CoordinadoresGeneralesRepository>();
 
-            services.AddScoped<IVotantesRepository, VotanteRepository>();
+            services.AddScoped<IVotanteRepository, VotanteRepository>();
 
             services.AddScoped<IDirectoresRepository, DirectorRepository>();
 

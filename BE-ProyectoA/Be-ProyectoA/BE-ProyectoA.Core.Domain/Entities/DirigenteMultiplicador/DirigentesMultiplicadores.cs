@@ -1,4 +1,5 @@
-﻿using BE_ProyectoA.Core.Domain.Entities.GruposEntity;
+﻿using BE_ProyectoA.Core.Domain.Entities.Coordinadores;
+using BE_ProyectoA.Core.Domain.Entities.GruposEntity;
 using BE_ProyectoA.Core.Domain.Primitivies;
 using BE_ProyectoA.Core.Domain.ValueObjects;
 
@@ -31,6 +32,8 @@ namespace BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador
         public Direccion Direccion { get; set; }
         public bool Activo { get;  private set; }
         public ICollection<Grupos> Grupos { get; set; }
+        public SubCoordinadoresId SubCoordinadoresId { get; set; } 
+        public SubCoordinadores SubCoordinadores {  get; set; } 
 
     }
 }

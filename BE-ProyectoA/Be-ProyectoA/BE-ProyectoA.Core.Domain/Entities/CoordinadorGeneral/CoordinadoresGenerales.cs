@@ -1,4 +1,5 @@
-﻿using BE_ProyectoA.Core.Domain.Entities.GruposEntity;
+﻿using BE_ProyectoA.Core.Domain.Entities.Coordinadores;
+using BE_ProyectoA.Core.Domain.Entities.GruposEntity;
 using BE_ProyectoA.Core.Domain.Primitivies;
 using BE_ProyectoA.Core.Domain.ValueObjects;
 
@@ -31,6 +32,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral
         public int CantidadVotantes { get; set; }
         public bool Activo { get; set; }
         public ICollection<Grupos> Grupos { get; set; }
+        public ICollection <SubCoordinadores> SubCoordinadores { get; set;}
 
     }
 }

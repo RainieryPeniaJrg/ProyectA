@@ -1,79 +1,44 @@
 ﻿using BE_ProyectoA.Core.Domain.Inferfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Linq.Expressions;
+using System.Threading;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repository
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class Repository<T> : IRepository<T> where T : class
     {
         private readonly ApplicationDbContext _context;
-        private DbSet<TEntity> _dbSet;
 
         public Repository(ApplicationDbContext context)
         {
             _context = context;
-            _dbSet = _context.Set<TEntity>();
+        }
+        public async Task AddAsync(T entity, CancellationToken cancellationToken = default) =>
+        await _context.Set<T>().AddAsync(entity, cancellationToken);
+
+        public void Delete(T entity) => _context.Set<T>().Remove(entity);
+
+        public void Update(T entity) => _context.Set<T>().Update(entity);
+
+        public async Task<bool> ExistsAsync(object id, CancellationToken cancellationToken = default)
+        {
+            var keyValues = new[] { id };
+            var entity = await _context.Set<T>().FindAsync(keyValues, cancellationToken);
+            return entity != null;
         }
 
-        public virtual async Task<List<TEntity>> GetEntitiesAsync(Expression<Func<TEntity, bool>>? filter = null)
+        public async Task<T?> GetByIdAsync(object id, CancellationToken cancellationToken = default)
         {
-            IQueryable<TEntity> query = _dbSet;
+            var keyValues = new[] { id };
+            return await _context.Set<T>().FindAsync(keyValues, cancellationToken);
+        }
+        public async Task<List<T>> GetAll(CancellationToken cancellationToken = default) =>
+            await _context.Set<T>().ToListAsync(cancellationToken);
 
-            if (filter != null) query = query.Where(filter);
-
-            return await query.ToListAsync();
-        }
-        public virtual async Task<TEntity?> GetEntityAsync(Expression<Func<TEntity, bool>>? filter = null, bool tracked = true)
-        {
-            IQueryable<TEntity> query = _dbSet;
-
-            if (!tracked) query = query.AsNoTracking();
-
-            if (filter != null) query = query.Where(filter);
-
-            return await query.FirstOrDefaultAsync();
-        }
-        public virtual async Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> filter)
-        {
-            return await _dbSet.AnyAsync();
-        }
-        public virtual async Task SaveAsync(TEntity entity)
-        {
-            await _dbSet.AddAsync(entity);
-            await SaveChangesAsync();
-
-        }
-        public virtual async Task SaveAsync(TEntity[] entities)
-        {
-            await _dbSet.AddRangeAsync(entities);
-            await SaveChangesAsync();
-        }
-        public virtual async Task UpdateAsync(TEntity entity)
-        {
-            _dbSet.Update(entity);
-            await SaveChangesAsync();
-        }
-        public virtual async Task UpdateAsync(TEntity[] entities)
-        {
-            _dbSet.UpdateRange(entities);
-            await SaveChangesAsync();
-        }
-        public virtual async Task RemoveAsync(TEntity entity)
-        {
-            _dbSet.Remove(entity);
-            await SaveChangesAsync();
-        }
-        public virtual async Task RemoveAsync(TEntity[] entities)
-        {
-            _dbSet.RemoveRange(entities);
-            await SaveChangesAsync();
-        }
-        public virtual async Task SaveChangesAsync()
-        {
-            await _context.SaveChangesAsync();
-        }
-
-       
+        public Task<List<T>> GetBy(Func<T, bool> predicate, CancellationToken cancellationToken = default) =>
+                          Task.FromResult(_context.Set<T>().Where(predicate).ToList());
     }
 }
+    
