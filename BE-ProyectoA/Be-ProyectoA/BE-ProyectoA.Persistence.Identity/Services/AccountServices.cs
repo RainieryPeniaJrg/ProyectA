@@ -6,6 +6,7 @@ using BE_ProyectoA.Core.Domain.Settings;
 using BE_ProyectoA.Persistence.Identity.Helpers;
 using BE_ProyectoA.Persistence.Identity.Model;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -14,13 +15,13 @@ using System.Text;
 
 namespace BE_ProyectoA.Persistence.Identity.Services
 {
-    public class AccountServices(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<ApplicationUser> signInManager, DateTime dateTime, JWT jwt) : IAccountServices
+    public class AccountServices(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<ApplicationUser> signInManager, DateTime dateTime, IOptions<JWT> jwt) : IAccountServices
     {
         private readonly UserManager<ApplicationUser> _userManager = userManager;
         private readonly RoleManager<IdentityRole> _roleManager = roleManager;
         private readonly SignInManager<ApplicationUser> _signInManager = signInManager;
         private readonly DateTime _dateTime = dateTime;
-        private readonly JWT _jwt = jwt;
+        private readonly JWT _jwt = jwt.Value;
 
         public async Task<Response<AuthenticationResponse>> AuthenticatedAsync(AuthenticationRequest request, string ipAddress)
         {

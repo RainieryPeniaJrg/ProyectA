@@ -1,4 +1,7 @@
-﻿using BE_ProyectoA.Persistence.Identity.Context;
+﻿using BE_ProyectoA.Core.Application.Interfaces;
+using BE_ProyectoA.Persistence.Identity.Context;
+using BE_ProyectoA.Persistence.Identity.Model;
+using BE_ProyectoA.Persistence.Identity.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -29,7 +32,8 @@ namespace BE_ProyectoA.Persistence.Identity
 
 
             services.AddIdentityApiEndpoints<IdentityUser>()
-            .AddEntityFrameworkStores<IdentityContext>();
+            .AddEntityFrameworkStores<IdentityContext>()
+            .AddDefaultTokenProviders();
 
             services
             .AddAuthentication(options =>
@@ -93,13 +97,10 @@ namespace BE_ProyectoA.Persistence.Identity
                 options.SignIn.RequireConfirmedEmail = true;
             });
 
-
-
+            services.AddScoped<UserManager<ApplicationUser>>();
+            services.AddTransient<IAccountServices, AccountServices>();
             return services;
 
-
         }
-
-
+        }
     }
-}
