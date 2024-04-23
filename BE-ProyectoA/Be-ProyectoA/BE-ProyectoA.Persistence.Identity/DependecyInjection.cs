@@ -1,4 +1,6 @@
-﻿using BE_ProyectoA.Persistence.Identity.Context;
+﻿using BE_ProyectoA.Core.Application.Interfaces;
+using BE_ProyectoA.Persistence.Identity.Context;
+using BE_ProyectoA.Persistence.Identity.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -94,7 +96,7 @@ namespace BE_ProyectoA.Persistence.Identity
             });
 
 
-
+            services.AddScoped<IAccountServices, AccountServices>();
             return services;
 
 

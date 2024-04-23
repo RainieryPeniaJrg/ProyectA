@@ -9,10 +9,14 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AccountController(ISender mediator) : ApiController
+    public class AccountController : ApiController
     {
-        private readonly ISender _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+        private readonly ISender _mediator;
 
+        public AccountController(ISender mediator)
+        {
+            _mediator = mediator;
+        }
         [HttpPost("authenticate")]
          public async Task<IActionResult> AuthenticateAsync(AuthenticationRequest request)
         {
