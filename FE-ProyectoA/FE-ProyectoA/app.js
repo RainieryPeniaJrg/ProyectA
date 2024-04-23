@@ -6,7 +6,7 @@ const errorController = require("./controllers/errorController")
 const axios = require('axios')
 const app = express();
 
-app.engine("hbs", engine({ layoutsDir: 'views/layouts/', defaultLayout: '', extname: 'hbs' }));
+app.engine("hbs", engine({ layoutsDir: 'views/layouts/', defaultLayout: 'main-layout', extname: 'hbs' }));
 app.set("view engine", "hbs");
 app.set("views", "views") 
 

@@ -8,17 +8,11 @@ const router = express.Router();
 
 
 
-router.get("/", directorController.getGrupos)
-
-
-
-
-//RUTAS POR GET
-//router.get("/director", )
-//router.get("/director/grupos", directorController.getGrupos);
-//router.get("/director/coordinadores", );
-//router.get("/director/subcoordinadores", );
-//router.get("/director/dirigentes", );
+router.get("/", directorController.getHome);
+router.get("/grupos", directorController.getGrupos);
+router.get("/coordinadores",directorController.getCoordinadores);
+router.get("/subcoordinadores", directorController.getSubCoordinadores);
+router.get("/dirigentes",directorController.getDirigentes );
 
 //RUTAS POR POST
 //router.post("/director/agregar-votante");
