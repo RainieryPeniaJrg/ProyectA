@@ -165,3 +165,44 @@ i {
 		left: -25px;
 	}
 }
+
+
+main {
+	margin-top: 20px;
+	margin-left: 800px;
+	justify-content: center; 
+	align-items: center; 
+	height: calc(100vh - 50px); 
+  }
+  
+  
+  .navigation-button {
+	width: 150px; 
+	padding: 10px;
+	margin: 0 10px; 
+	border: none;
+	border-radius: 5px;
+	background-color: #FFA500; 
+	color: white;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	text-align: center; 
+	text-decoration: none;
+  }
+  
+ 
+  .navigation-button:hover {
+	background-color: #FF8C00; 
+  }
+  
+
+
+.contador-votos {
+	margin-top: 20px; 
+	font-size: 24px; 
+	color: red; 
+	font-weight: bold;
+  }
+  
+  
