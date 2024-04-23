@@ -13,7 +13,7 @@ namespace BE_ProyectoA.Core.Application.Director.Commands.Delete
 
         public async Task<ErrorOr<Unit>> Handle(DeleteDirectorCommand command, CancellationToken cancellationToken)
         {
-            var user = await _directorRepository.GetByIdAsync(command.Id);
+            var user = await _directorRepository.GetByIdAsync(command.Id, cancellationToken);
 
             if(user != null) 
             {

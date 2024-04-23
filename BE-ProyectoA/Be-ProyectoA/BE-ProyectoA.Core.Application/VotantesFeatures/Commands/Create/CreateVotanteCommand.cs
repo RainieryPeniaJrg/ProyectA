@@ -2,11 +2,11 @@
 using ErrorOr;
 using MediatR;
 
-namespace BE_ProyectoA.Core.Application.Votantes.Commands.Update
+
+namespace BE_ProyectoA.Core.Application.Votantes.Commands.Create
 {
-    public record UpdateVotanteCommand   
+    public record CreateVotanteCommand
         (
-         Guid Id,
          string Nombre,
          string Apellido,
         int CantidadVotantes,
@@ -15,6 +15,6 @@ namespace BE_ProyectoA.Core.Application.Votantes.Commands.Update
         bool Activo,
         string Sector,
         string Provincia
-        ): IRequest<ErrorOr<Unit>>;
-         
+        ) : IRequest<ErrorOr<Unit>>;
+
 }

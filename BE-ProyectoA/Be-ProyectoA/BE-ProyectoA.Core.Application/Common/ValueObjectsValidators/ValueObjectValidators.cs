@@ -1,0 +1,62 @@
+﻿using BE_ProyectoA.Core.Domain.ValueObjects;
+using ErrorOr;
+using MediatR;
+
+
+namespace BE_ProyectoA.Core.Application.Common.ValueObjectsValidators
+{
+    public class ValueObjectValidators
+    {
+        public static ErrorOr<Cedula> CedulaValidator(string cedulaParam)
+        {
+          
+            if (Cedula.Create(cedulaParam) is not Cedula cedula)
+            {
+               
+                return Error.Validation("La Cedula no es valida");
+            }
+            return cedula;
+        }
+
+        public static ErrorOr<NumeroTelefono> NumeroValidator(string numeroParams)
+        {
+
+            if (NumeroTelefono.Create(numeroParams) is not NumeroTelefono numeroTelefono)
+            {
+
+                return Error.Validation("Formato de numero de telfono no valido");
+            }
+            return numeroTelefono;
+        }
+
+        public static ErrorOr<Direccion> DireccionValidator(string provincia,string sector)
+        {
+
+            if (Direccion.Create(provincia,sector) is not Direccion direccion)
+            {
+
+                return Error.Validation("La direccion no es valida");
+            }
+            return direccion;
+        }
+
+        public static ErrorOr<Unit> ValidarDatos(string cedulaParam, string numeroParams, string provincia, string sector)
+        {
+            var cedulaResult = CedulaValidator(cedulaParam);
+            var numeroResult = NumeroValidator(numeroParams);
+            var direccionResult = DireccionValidator(provincia, sector);
+
+            if (cedulaResult.IsError)
+                return Error.Validation($"Cedula", $"{cedulaResult.Errors}");
+
+            if (numeroResult.IsError)
+                return Error.Validation($"numero", $"{numeroResult.Errors}");
+
+            if (direccionResult.IsError)
+                return Error.Validation($"direccion", $"{direccionResult.Errors}");
+
+            return Error.Custom(0,string.Empty , "No se encontraron errores");
+
+        }
+    }
+}

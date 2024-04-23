@@ -1,11 +1,11 @@
 ﻿using System.Diagnostics;
+using BE_ProyectoA.Presentation.WebApi.Common.Http;
 using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Presentation.WebApi.Common.Http;
 
-namespace Presentation.WebApi.Common.Errors
+namespace BE_ProyectoA.Presentation.WebApi.Common.Errors
 {
     public class ApiWithOnionProblemDetailFactory(ApiBehaviorOptions options) : ProblemDetailsFactory
     {
@@ -25,17 +25,17 @@ namespace Presentation.WebApi.Common.Errors
                 Detail = detail,
                 Instance = instance
             };
-            ApplyProblemDetailDefaults(httpContext,problemDetails,statusCode.Value);
+            ApplyProblemDetailDefaults(httpContext, problemDetails, statusCode.Value);
             return problemDetails;
         }
 
         public override ValidationProblemDetails CreateValidationProblemDetails(
             HttpContext httpContext,
-            ModelStateDictionary modelStateDictionary, 
+            ModelStateDictionary modelStateDictionary,
             int? statusCode = null,
             string? title = null,
             string? type = null,
-            string? detail = null, 
+            string? detail = null,
             string? instance = null)
         {
             if (modelStateDictionary == null)
@@ -84,7 +84,7 @@ namespace Presentation.WebApi.Common.Errors
 
             if (errors is not null)
             {
-                problemDetails.Extensions.Add("errorCodes",errors.Select(e=>e.Code));
+                problemDetails.Extensions.Add("errorCodes", errors.Select(e => e.Code));
 
             }
         }

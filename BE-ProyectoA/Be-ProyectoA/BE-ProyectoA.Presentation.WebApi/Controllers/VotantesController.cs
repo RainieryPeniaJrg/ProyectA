@@ -1,5 +1,4 @@
-﻿using BE_ProyectoA.Core.Application.Director.Commands.Create;
-using BE_ProyectoA.Core.Application.Director.Commands.Delete;
+﻿using BE_ProyectoA.Core.Application.Director.Commands.Delete;
 using BE_ProyectoA.Core.Application.Votantes.Commands.Create;
 using BE_ProyectoA.Core.Application.Votantes.Commands.Delete;
 using BE_ProyectoA.Core.Application.Votantes.Commands.Update;
@@ -65,7 +64,7 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
         }
 
 
-        [HttpDelete("ById/{id}")]
+        [HttpDelete("Delete/{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var deleteResult = await _mediator.Send(new DeleteVotanteCommand(id));
@@ -76,7 +75,7 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
             );
         }
 
-        [HttpGet("ByCedula/{id}")]
+        [HttpGet("ById/{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
             var votanteResult = await _mediator.Send(new GetByIdVotantesQuery(id));
@@ -88,7 +87,7 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
         }
 
 
-        [HttpGet("{cedula}")]
+        [HttpGet("ByCedula/{cedula}")]
         public async Task<IActionResult> GetByCedula(string cedula)
         {
             var votanteResult = await _mediator.Send(new GetByCedulaQuery(cedula));

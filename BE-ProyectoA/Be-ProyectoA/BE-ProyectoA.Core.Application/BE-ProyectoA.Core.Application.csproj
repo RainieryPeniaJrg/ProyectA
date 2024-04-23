@@ -24,12 +24,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="CoordinadoresGeneralesFeatures\Common\" />
+    <Folder Include="CoordinadoresGeneralesFeatures\Query\" />
     <Folder Include="Director\Query\GetAll\" />
     <Folder Include="Director\Query\GetById\" />
-    <Folder Include="Dirigentes\" />
-    <Folder Include="CoordinadoresGenerales\" />
-    <Folder Include="Grupo\" />
-    <Folder Include="SubCoordinadores\" />
+    <Folder Include="DirigentesFeatures\Commands\" />
+    <Folder Include="DirigentesFeatures\Commom\" />
+    <Folder Include="DirigentesFeatures\Querys\" />
+    <Folder Include="Grupo\Commands\" />
+    <Folder Include="Grupo\Common\" />
+    <Folder Include="Grupo\Querys\" />
+    <Folder Include="SubCoordinadorFeatures\Commands\Update\" />
+    <Folder Include="SubCoordinadorFeatures\Common\" />
+    <Folder Include="SubCoordinadorFeatures\Querys\" />
   </ItemGroup>
 
 </Project>

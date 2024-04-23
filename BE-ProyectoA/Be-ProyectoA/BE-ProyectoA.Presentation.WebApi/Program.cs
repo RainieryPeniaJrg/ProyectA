@@ -2,7 +2,8 @@ using BE_ProyectoA.Core.Application;
 using BE_ProyectoA.Infraestructure.Persistence;
 using BE_ProyectoA.Presentation.WebApi;
 using BE_ProyectoA.Presentation.WebApi.Extensions;
-using Microsoft.AspNetCore.Identity;
+
+
 
 
 var builder = WebApplication.CreateBuilder(args);

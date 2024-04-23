@@ -1,4 +1,4 @@
-﻿using BE_ProyectoA.Core.Application.Director.Commands.Create;
+﻿using BE_ProyectoA.Core.Application.Common.ValueObjectsValidators;
 using BE_ProyectoA.Core.Domain.Entities.Votantes;
 using BE_ProyectoA.Core.Domain.Primitivies;
 using BE_ProyectoA.Core.Domain.ValueObjects;
@@ -20,42 +20,36 @@ namespace BE_ProyectoA.Core.Application.Votantes.Commands.Create
 
         public async Task<ErrorOr<Unit>> Handle(CreateVotanteCommand command, CancellationToken cancellationToken)
         {
-        
+          
+            // Validar los datos de entrada
+            var validationResult = ValueObjectValidators.ValidarDatos(command.Cedula, command.NumeroTelefono, command.Provincia, command.Sector);
+            if (validationResult.IsError)
+                return validationResult;
 
-            if (NumeroTelefono.Create(command.NumeroTelefono) is not NumeroTelefono numeroTelefono)
-            {
-                return Error.Validation("Votantes.NumeroTelefono", "El numero de telefono no esta en un formato valido");
-            }
+            var numeroTelefono = NumeroTelefono.Create(command.NumeroTelefono);
+            var cedula = Cedula.Create(command.Cedula);
+            var direccion = Direccion.Create(command.Provincia, command.Sector);
+            // Crear el votante
 
-            if (Cedula.Create(command.Cedula) is not Cedula cedula)
-            {
-                return Error.Validation("Votantes.Cedula", "La Cedula no es valida");
-
-            }
-
-            if (Direccion.Create(command.Provincia,command.Sector) is not Direccion direccion)
-            {
-                return Error.Validation("Votantes.Direccion", "La Direccion no es valida");
-
-            }
-
-            var votante = new Votante
-                (
-                 new VotanteId(Guid.NewGuid()),
+            var votante = new Votante(
+                new VotanteId(Guid.NewGuid()),
                 command.Nombre,
                 command.Apellido,
-             
                 cedula,
                 direccion,
                 numeroTelefono,
                 true
-                
-                );
+            );
 
-             await _votantesRepository.AddAsync(votante, cancellationToken);
-             await _unitOfWork.SaveChangesAsync(cancellationToken);
-           
+            // Guardar el votante y realizar cambios en la unidad de trabajo
+            await _votantesRepository.AddAsync(votante, cancellationToken);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
+
             return Unit.Value;
         }
+
+       
+
+      
     }
 }

@@ -25,6 +25,37 @@ namespace BE_ProyectoA.Core.Domain.Entities.Coordinadores
 
 
         }
+
+        public SubCoordinadores(SubCoordinadoresId id, string nombre, string apellido, int cantidadVotos, NumeroTelefono numeroTelefono, Cedula cedula, bool activo, Direccion direccion, CoordinadoresGeneralesId coordinadorsGeneralesId, CoordinadoresGenerales coordinadores, ICollection<DirigentesMultiplicadores> dirigentesMultiplicadores, ICollection<Grupos> grupos)
+        {
+            Id = id;
+            Nombre = nombre;
+            Apellido = apellido;
+            Cedula = cedula;
+            CantidadVotantes = cantidadVotos;
+            NumeroTelefono = numeroTelefono;
+            Activo = activo;
+            Direccion = direccion;
+            CoordinadorsGeneralesId = coordinadorsGeneralesId;
+            Coordinadores = coordinadores;
+            DirigentesMultiplicadores = dirigentesMultiplicadores;
+            Grupos = grupos;
+        }
+
+        public SubCoordinadores(SubCoordinadoresId id, string nombre, string apellido, int cantidadVotos, NumeroTelefono numeroTelefono, Cedula cedula, bool activo, Direccion direccion, CoordinadoresGeneralesId coordinadorsGeneralesId, CoordinadoresGenerales coordinadores)
+        {
+            Id = id;
+            Nombre = nombre;
+            Apellido = apellido;
+            Cedula = cedula;
+            CantidadVotantes = cantidadVotos;
+            NumeroTelefono = numeroTelefono;
+            Activo = activo;
+            Direccion = direccion;
+            CoordinadorsGeneralesId = coordinadorsGeneralesId;
+            Coordinadores = coordinadores;
+          
+        }
         public SubCoordinadoresId Id { get; set; }
         public string Nombre { get; set; } = string.Empty;
         public string Apellido { get; set; } = string.Empty;
@@ -38,5 +69,10 @@ namespace BE_ProyectoA.Core.Domain.Entities.Coordinadores
         public ICollection <DirigentesMultiplicadores> DirigentesMultiplicadores { get; set; }
         public CoordinadoresGeneralesId CoordinadorsGeneralesId { get; set; }
         public CoordinadoresGenerales Coordinadores { get; set; }   
+
+        public static SubCoordinadores? Update(Guid id, string nombre, string apellido, int cantidadVotos, NumeroTelefono numeroTelefono, Cedula cedula, bool activo, Direccion direccion, CoordinadoresGeneralesId coordinadorsGeneralesId, CoordinadoresGenerales coordinadores, ICollection<DirigentesMultiplicadores> dirigentesMultiplicadores, ICollection<Grupos> grupos)
+        {
+            return new SubCoordinadores(new SubCoordinadoresId(id),nombre, apellido,cantidadVotos,numeroTelefono,cedula,activo, direccion, coordinadorsGeneralesId,coordinadores,dirigentesMultiplicadores,grupos);
+        }
     }
 }

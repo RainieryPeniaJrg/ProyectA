@@ -5,5 +5,6 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repos
 {
     public class CoordinadoresGeneralesRepository(ApplicationDbContext context) : Repository<CoordinadoresGenerales>(context), ICoordinadorGeneralRepository
     {
+
     }
 }

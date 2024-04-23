@@ -22,6 +22,21 @@ namespace BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador
             Direccion = direccion;
             CantidadVotantes = cantidadVotantes;
         }
+
+        public DirigentesMultiplicadores(DirigentesMultiplicadoresId id, Cedula cedula, NumeroTelefono numeroTelefono, string nombre, string apellido, bool activo, Direccion direccion, int cantidadVotantes, SubCoordinadoresId subCoordinadoresId, SubCoordinadores subCoordinadores, ICollection<Grupos> grupos)
+        {
+            Id = id;
+            Nombre = nombre;
+            Apellido = apellido;
+            Cedula = cedula;
+            NumeroTelefono = numeroTelefono;
+            Activo = activo;
+            Direccion = direccion;
+            CantidadVotantes = cantidadVotantes;
+            Grupos = grupos;
+            SubCoordinadores = subCoordinadores;
+            SubCoordinadoresId = subCoordinadoresId;
+        }
         public DirigentesMultiplicadoresId Id { get; set; }
         public string Nombre { get; set; } = string.Empty;
         public string Apellido { get; set; } = string.Empty;
@@ -34,6 +49,11 @@ namespace BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador
         public ICollection<Grupos> Grupos { get; set; }
         public SubCoordinadoresId SubCoordinadoresId { get; set; } 
         public SubCoordinadores SubCoordinadores {  get; set; } 
+
+        public static DirigentesMultiplicadores? Update(Guid id, Cedula cedula, NumeroTelefono numeroTelefono, string nombre, string apellido, bool activo, Direccion direccion, int cantidadVotantes, SubCoordinadoresId subCoordinadoresId, SubCoordinadores subCoordinadores, ICollection<Grupos> grupos)
+        {
+            return new DirigentesMultiplicadores(new DirigentesMultiplicadoresId(id),cedula,numeroTelefono,nombre,apellido,activo,direccion,cantidadVotantes,subCoordinadoresId,subCoordinadores,grupos);
+        }
 
     }
 }
