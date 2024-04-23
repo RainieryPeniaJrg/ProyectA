@@ -18,12 +18,10 @@ namespace BE_ProyectoA.Core.Application.Votantes.Querys.GetAll
         {
             IReadOnlyList<Votante> votantes = await _votanteRepository.GetAll(cancellationToken);
             
-           return votantes.Select(votante=> new VotantesResponse(
-               votante.Id.Value,
-               votante.NombreCompleto,
-               new 
-            
-             ))
+            return votantes.Select
+                (user=> new VotantesResponse (user.Id.Value, user.Nombre, user.Cedula, 
+                user.NumeroTelefono,new DireccionResponse(user.Direccion.Sector,user.Direccion.Sector),user.Activo)).ToList();
+           
         
         }
     }

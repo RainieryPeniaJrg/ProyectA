@@ -10,9 +10,9 @@ namespace BE_ProyectoA.Core.Application.Votantes.Commands.Create
     public class CreateVotanteCommandHandler : IRequestHandler<CreateVotanteCommand, ErrorOr<Unit>>
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IVotantesRepository _votantesRepository;
+        private readonly IVotanteRepository _votantesRepository;
 
-        public CreateVotanteCommandHandler(IUnitOfWork unitOfWork, IVotantesRepository votantesRepository)
+        public CreateVotanteCommandHandler(IUnitOfWork unitOfWork, IVotanteRepository votantesRepository)
         {
             _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
             _votantesRepository = votantesRepository ?? throw new ArgumentNullException(nameof(votantesRepository));
@@ -52,8 +52,8 @@ namespace BE_ProyectoA.Core.Application.Votantes.Commands.Create
                 
                 );
 
-             _votantesRepository.Add(votante);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+             await _votantesRepository.AddAsync(votante, cancellationToken);
+             await _unitOfWork.SaveChangesAsync(cancellationToken);
            
             return Unit.Value;
         }

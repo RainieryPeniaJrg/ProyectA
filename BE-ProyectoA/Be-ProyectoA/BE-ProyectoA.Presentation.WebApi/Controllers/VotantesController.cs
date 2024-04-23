@@ -1,6 +1,9 @@
 ﻿using BE_ProyectoA.Core.Application.Director.Commands.Create;
+using BE_ProyectoA.Core.Application.Director.Commands.Delete;
 using BE_ProyectoA.Core.Application.Votantes.Commands.Create;
+using BE_ProyectoA.Core.Application.Votantes.Commands.Delete;
 using BE_ProyectoA.Core.Application.Votantes.Commands.Update;
+using BE_ProyectoA.Core.Application.Votantes.Querys.GetAll;
 using BE_ProyectoA.Core.Domain.Entities.Votantes;
 using ErrorOr;
 using MediatR;
@@ -16,13 +19,17 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
     {
 
         private readonly ISender _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
-       
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var votanteResult = await _mediator.Send(new GetAllVotanteQuery());
+
+            return votanteResult.Match(
+                Votante => Ok(Votante),
+                errors => Problem(errors)
+            );
+        }
         // GET api/<VotantesController>/5
         [HttpGet("{id}")]
         public string Get(int id)
@@ -61,10 +68,15 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
         }
 
 
-        // DELETE api/<VotantesController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(Guid id)
         {
+            var deleteResult = await _mediator.Send(new DeleteVotanteCommand(id));
+
+            return deleteResult.Match(
+                votanteId => NoContent(),
+                errors => Problem(errors)
+            );
         }
     }
 }

@@ -9,9 +9,9 @@ namespace BE_ProyectoA.Core.Application.Votantes.Commands.Update
     public class UpdateVotanteCommandHandler : IRequestHandler<UpdateVotanteCommand, ErrorOr<Unit>>
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IVotantesRepository _votantesRepository;
+        private readonly IVotanteRepository _votantesRepository;
 
-        public UpdateVotanteCommandHandler(IUnitOfWork unitOfWork, IVotantesRepository votantesRepository)
+        public UpdateVotanteCommandHandler(IUnitOfWork unitOfWork, IVotanteRepository votantesRepository)
         {
             _unitOfWork = unitOfWork;
             _votantesRepository = votantesRepository;
