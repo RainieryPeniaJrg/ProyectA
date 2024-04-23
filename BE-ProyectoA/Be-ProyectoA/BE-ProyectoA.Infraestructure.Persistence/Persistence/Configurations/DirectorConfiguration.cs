@@ -18,6 +18,7 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
             builder.Property(D => D.NumeroTelefono).HasConversion(
                 numeroTelefono => numeroTelefono.Value, value => NumeroTelefono.Create(value)!)
                 .HasMaxLength(11);
+
             builder.Property(D=>D.Nombre).HasMaxLength(50);
 
             builder.Property(D => D.Apellido).HasMaxLength(50);

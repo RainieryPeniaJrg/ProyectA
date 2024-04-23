@@ -1,4 +1,5 @@
-﻿using BE_ProyectoA.Core.Domain.Primitivies;
+﻿using BE_ProyectoA.Core.Domain.Entities.GruposEntity;
+using BE_ProyectoA.Core.Domain.Primitivies;
 using BE_ProyectoA.Core.Domain.ValueObjects;
 
 namespace BE_ProyectoA.Core.Domain.Entities.Coordinadores
@@ -31,5 +32,6 @@ namespace BE_ProyectoA.Core.Domain.Entities.Coordinadores
         public bool Activo { get; private set; }
         public Direccion Direccion { get; private set; }
         public NumeroTelefono NumeroTelefono { get; private set; }
+        public ICollection<Grupos> Grupos { get; set; }
     }
 }

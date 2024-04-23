@@ -1,4 +1,5 @@
-﻿using BE_ProyectoA.Core.Domain.Primitivies;
+﻿using BE_ProyectoA.Core.Domain.Entities.GruposEntity;
+using BE_ProyectoA.Core.Domain.Primitivies;
 using BE_ProyectoA.Core.Domain.ValueObjects;
 
 namespace BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador
@@ -29,6 +30,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador
         public NumeroTelefono NumeroTelefono { get; private set; }
         public Direccion Direccion { get; set; }
         public bool Activo { get;  private set; }
+        public ICollection<Grupos> Grupos { get; set; }
 
     }
 }
