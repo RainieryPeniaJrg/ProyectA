@@ -1,4 +1,4 @@
-﻿using BE_ProyectoA.Core.Domain.Entities.Coordinador;
+﻿using BE_ProyectoA.Core.Domain.Entities.Coordinadores;
 using BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral;
 using BE_ProyectoA.Core.Domain.Entities.Director;
 using BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador;
@@ -16,6 +16,10 @@ namespace BE_ProyectoA.Core.Application.Data
         DbSet<DirigentesMultiplicadores> DirigentesMultiplicadores { get; set; }
         DbSet<Grupos> Grupos { get; set; }
         DbSet<Votante> Votantes { get; set; }
-        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
+
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default); 
+
+       
+
     }
 }
