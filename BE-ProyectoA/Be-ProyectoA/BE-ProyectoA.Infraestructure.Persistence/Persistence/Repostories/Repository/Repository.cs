@@ -1,4 +1,4 @@
-﻿using Be_NetBanking.Core.Domain.Interfaces;
+﻿using BE_ProyectoA.Core.Domain.Inferfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 

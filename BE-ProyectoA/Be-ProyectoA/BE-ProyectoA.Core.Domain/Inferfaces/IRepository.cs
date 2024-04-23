@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace Be_NetBanking.Core.Domain.Interfaces
+namespace BE_ProyectoA.Core.Domain.Inferfaces
 {
     public interface IRepository<TEntity> where TEntity : class
     {

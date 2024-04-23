@@ -1,5 +1,5 @@
-﻿using Be_NetBanking.Core.Domain.Interfaces;
-using BE_ProyectoA.Core.Domain.Entities.Coordinadores;
+﻿using BE_ProyectoA.Core.Domain.Entities.Coordinadores;
+using BE_ProyectoA.Core.Domain.Inferfaces;
 
 namespace BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral
 {
