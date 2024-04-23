@@ -1,8 +1,7 @@
-﻿using BE.MovieApp.Core.Domain.Primitivies;
-using BE_ProyectoA.Core.Domain.Entities.Coordinador;
-using BE_ProyectoA.Core.Domain.Entities.Coordinadores;
+﻿using BE_ProyectoA.Core.Domain.Entities.Coordinadores;
 using BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral;
 using BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador;
+using BE_ProyectoA.Core.Domain.Primitivies;
 
 
 namespace BE_ProyectoA.Core.Domain.Entities.Grupos

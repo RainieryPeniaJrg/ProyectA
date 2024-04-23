@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace BE.MovieApp.Core.Domain.Primitivies
+namespace BE_ProyectoA.Core.Domain.Primitivies
 {
 
     public record DomainEvents(Guid id) : INotification;
