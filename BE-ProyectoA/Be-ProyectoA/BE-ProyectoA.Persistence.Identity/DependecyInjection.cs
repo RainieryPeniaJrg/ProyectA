@@ -1,4 +1,6 @@
-﻿using BE_ProyectoA.Core.Application.Interfaces;
+﻿using Azure;
+using BE_ProyectoA.Core.Application.Interfaces;
+using BE_ProyectoA.Core.Domain.Settings;
 using BE_ProyectoA.Persistence.Identity.Context;
 using BE_ProyectoA.Persistence.Identity.Model;
 using BE_ProyectoA.Persistence.Identity.Services;
@@ -26,81 +28,63 @@ namespace BE_ProyectoA.Persistence.Identity
 
         public static IServiceCollection AddIdentitySettings(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<IdentityContext>(options => options.UseSqlServer(
-                configuration.GetConnectionString("IdentityConnection"),
-                b => b.MigrationsAssembly(typeof(IdentityContext).Assembly.FullName)));
+            services.AddDbContext<IdentityContext>(options =>
+             options.UseSqlServer(
+                 configuration.GetConnectionString("IdentityConnection"),
+                 b => b.MigrationsAssembly(typeof(IdentityContext).Assembly.FullName)));
 
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<IdentityContext>().AddDefaultTokenProviders();
 
-            services.AddIdentityApiEndpoints<IdentityUser>()
-            .AddEntityFrameworkStores<IdentityContext>()
-            .AddDefaultTokenProviders();
-
-            services
-            .AddAuthentication(options =>
+            services.AddTransient<IAccountServices, AccountServices>();
+            services.Configure<JWT>(configuration.GetSection("JWTSettings"));
+            services.AddAuthentication(options =>
             {
-                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-             .AddJwtBearer(options =>
-             {
-                 options.SaveToken = false;
-                 options.RequireHttpsMetadata = false;
-                 options.TokenValidationParameters = new TokenValidationParameters
-                 {
-                     ValidateIssuerSigningKey = true,
-                     ValidateIssuer = true,
-                     ValidateAudience = true,
-                     ValidateLifetime = true,
-                     ClockSkew = TimeSpan.Zero,
-                     ValidIssuer = configuration["JWT:Issuer"],
-                     ValidAudience = configuration["JWT:Audience"],
-                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Key"]))
-
-                 };
-                 options.Events = new JwtBearerEvents()
-                 {
-                     OnAuthenticationFailed = c =>
-                     {
-                         c.NoResult();
-                         c.Response.StatusCode = 500;
-                         c.Response.ContentType = "text/plain";
-                         return c.Response.WriteAsync(c.Exception.ToString());
-
-                     },
-                     OnChallenge = context =>
-                     {
-                         context.HandleResponse();
-                         context.Response.StatusCode = 401;
-                         context.Response.ContentType = "application/json";
-                         var result = JsonConvert.SerializeObject("Usted no esta autorizando");
-                         return context.Response.WriteAsync(result);
-
-                     },
-                     OnForbidden = context =>
-                     {
-                         context.Response.StatusCode = 403;
-                         context.Response.ContentType = "application/json";
-                         var result = JsonConvert.SerializeObject("Usted no tiene permisos sobre este recurso");
-                         return context.Response.WriteAsync(result);
-                     }
-
-                 };
-             });
-            services.Configure<IdentityOptions>(options =>
+            }).AddJwtBearer(o =>
             {
-                options.Password.RequiredLength = 8;
-                options.Password.RequireDigit = true;
-                options.Password.RequireLowercase = false;
-                options.Password.RequireUppercase = true;
-                options.Password.RequireNonAlphanumeric = true;
-                options.SignIn.RequireConfirmedEmail = true;
+                o.RequireHttpsMetadata = false;
+                o.SaveToken = false;
+                o.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero,
+                    ValidIssuer = configuration["JWTSettings:Issuer"],
+                    ValidAudience = configuration["JWTSettings:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWTSettings:Key"]))
+                };
+
+                o.Events = new JwtBearerEvents()
+                {
+                    OnAuthenticationFailed = c =>
+                    {
+                        c.NoResult();
+                        c.Response.StatusCode = 500;
+                        c.Response.ContentType = "text/plain";
+                        return c.Response.WriteAsync(c.Exception.ToString());
+                    },
+                    OnChallenge = context =>
+                    {
+                        context.HandleResponse();
+                        context.Response.StatusCode = 401;
+                        context.Response.ContentType = "application/json";
+                        var result = JsonConvert.SerializeObject(("Usted no esta autorizado"));
+                        return context.Response.WriteAsync(result);
+                    },
+                    OnForbidden = context =>
+                    {
+                        context.Response.StatusCode = 400;
+                        context.Response.ContentType = "application/json";
+                        var result = JsonConvert.SerializeObject(("Usted no tiene permisos sobre este recurso"));
+                        return context.Response.WriteAsync(result);
+                    }
+                };
             });
 
-            services.AddScoped<UserManager<ApplicationUser>>();
-            services.AddTransient<IAccountServices, AccountServices>();
             return services;
-
         }
-        }
+    }
     }
