@@ -30,8 +30,6 @@
     <Folder Include="CoordinadoresGenerales\" />
     <Folder Include="Grupo\" />
     <Folder Include="SubCoordinadores\" />
-    <Folder Include="Votantes\Querys\GetById\" />
-    <Folder Include="Votantes\Querys\GetBy\" />
   </ItemGroup>
 
 </Project>

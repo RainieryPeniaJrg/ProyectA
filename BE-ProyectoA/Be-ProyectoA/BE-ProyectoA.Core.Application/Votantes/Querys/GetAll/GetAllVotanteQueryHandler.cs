@@ -20,7 +20,7 @@ namespace BE_ProyectoA.Core.Application.Votantes.Querys.GetAll
             
             return votantes.Select
                 (user=> new VotantesResponse (user.Id.Value, user.Nombre, user.Cedula, 
-                user.NumeroTelefono,new DireccionResponse(user.Direccion.Sector,user.Direccion.Sector),user.Activo)).ToList();
+                user.NumeroTelefono, new DireccionResponse(user.Direccion.Sector,user.Direccion.Sector),user.Activo)).ToList();
            
         
         }

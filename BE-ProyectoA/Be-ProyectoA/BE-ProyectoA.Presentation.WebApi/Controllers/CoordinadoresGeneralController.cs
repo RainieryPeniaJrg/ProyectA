@@ -1,6 +1,8 @@
-﻿namespace BE_ProyectoA.Presentation.WebApi.Controllers
+﻿using MediatR;
+
+namespace BE_ProyectoA.Presentation.WebApi.Controllers
 {
-    public class CoordinadoresGeneralController
+    public class CoordinadoresGeneralController(ISender mediator) : ApiControllercs
     {
     }
 }

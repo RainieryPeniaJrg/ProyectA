@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BE_ProyectoA.Core.Application.Votantes.Commons;
+using ErrorOr;
+using MediatR;
 
 namespace BE_ProyectoA.Core.Application.Votantes.Querys.GetById
 {
-    internal class GetByIdVotantesQuery
-    {
-    }
+    public record GetByIdVotantesQuery(Guid Id) : IRequest<ErrorOr<VotantesResponse>>;
+    
+    
 }

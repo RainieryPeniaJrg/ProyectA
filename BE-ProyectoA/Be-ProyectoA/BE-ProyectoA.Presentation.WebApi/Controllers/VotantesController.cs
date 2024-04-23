@@ -4,6 +4,8 @@ using BE_ProyectoA.Core.Application.Votantes.Commands.Create;
 using BE_ProyectoA.Core.Application.Votantes.Commands.Delete;
 using BE_ProyectoA.Core.Application.Votantes.Commands.Update;
 using BE_ProyectoA.Core.Application.Votantes.Querys.GetAll;
+using BE_ProyectoA.Core.Application.Votantes.Querys.GetByCedulaQuery;
+using BE_ProyectoA.Core.Application.Votantes.Querys.GetById;
 using BE_ProyectoA.Core.Domain.Entities.Votantes;
 using ErrorOr;
 using MediatR;
@@ -20,7 +22,7 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
 
         private readonly ISender _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
 
-        [HttpGet]
+        [HttpGet ("GetAll")]
         public async Task<IActionResult> GetAll()
         {
             var votanteResult = await _mediator.Send(new GetAllVotanteQuery());
@@ -30,15 +32,10 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
                 errors => Problem(errors)
             );
         }
-        // GET api/<VotantesController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+        
 
         // POST api/<VotantesController>
-        [HttpPost]
+        [HttpPost ("Create")]
         public async Task<IActionResult> Create([FromBody] CreateVotanteCommand command )
         {
             var createResult = await _mediator.Send(command);
@@ -47,7 +44,7 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
                 errors => Problem(errors)
             );
         }
-        [HttpPut("{id}")]
+        [HttpPut("Update/{id}")]
         public async Task<IActionResult> Update(Guid id, [FromBody] UpdateVotanteCommand command)
         {
             if (command.Id != id)
@@ -68,13 +65,36 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
         }
 
 
-        [HttpDelete("{id}")]
+        [HttpDelete("ById/{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var deleteResult = await _mediator.Send(new DeleteVotanteCommand(id));
 
             return deleteResult.Match(
                 votanteId => NoContent(),
+                errors => Problem(errors)
+            );
+        }
+
+        [HttpGet("ByCedula/{id}")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var votanteResult = await _mediator.Send(new GetByIdVotantesQuery(id));
+
+            return votanteResult.Match(
+                votante => Ok(votante),
+                errors => Problem(errors)
+            );
+        }
+
+
+        [HttpGet("{cedula}")]
+        public async Task<IActionResult> GetByCedula(string cedula)
+        {
+            var votanteResult = await _mediator.Send(new GetByCedulaQuery(cedula));
+
+            return votanteResult.Match(
+                votante => Ok(votante),
                 errors => Problem(errors)
             );
         }
