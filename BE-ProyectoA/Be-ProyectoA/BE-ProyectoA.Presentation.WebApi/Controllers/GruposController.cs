@@ -1,4 +1,5 @@
 ﻿using BE_ProyectoA.Core.Application.GrupoFeatures.Commands.Create;
+using BE_ProyectoA.Core.Application.GrupoFeatures.Querys;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,19 +9,19 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
     {
         private readonly ISender _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
 
-        //[HttpGet("GetAll")]
-        //public async Task<IActionResult> GetAll()
-        //{
-        //    var votanteResult = await _mediator.Send(new GetAllVotanteQuery());
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var grupoResult = await _mediator.Send(new GetAllGruposQuery());
 
-        //    return votanteResult.Match(
-        //        Votante => Ok(Votante),
-        //        errors => Problem(errors)
-        //    );
-        //}
+            return grupoResult.Match(
+                grupo => Ok(grupo),
+                errors => Problem(errors)
+            );
+        }
 
 
-      
+
         [HttpPost("Create")]
         public async Task<IActionResult> Create([FromBody] CreateGruposCommand command)
         {
