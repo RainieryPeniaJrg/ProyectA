@@ -24,8 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CoordinadoresGeneralesFeatures\Common\" />
-    <Folder Include="CoordinadoresGeneralesFeatures\Query\" />
+    <Folder Include="CoordinadoresGeneralesFeatures\Query\GetById\" />
     <Folder Include="Director\Query\GetAll\" />
     <Folder Include="Director\Query\GetById\" />
     <Folder Include="DirigentesFeatures\Commands\" />

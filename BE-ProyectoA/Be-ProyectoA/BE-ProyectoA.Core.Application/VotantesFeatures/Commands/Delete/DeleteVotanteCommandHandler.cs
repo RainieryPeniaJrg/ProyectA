@@ -18,7 +18,7 @@ namespace BE_ProyectoA.Core.Application.Votantes.Commands.Delete
 
         public async Task<ErrorOr<Unit>> Handle(DeleteVotanteCommand command, CancellationToken cancellationToken)
         {
-            if (await _votantesRepository.GetByIdAsync(new VotanteId(command.Id)) is not Votante votante)
+            if (await _votantesRepository.GetByIdAsync(new VotanteId(command.Id), cancellationToken) is not Votante votante)
             {
                 return Error.NotFound("Customer.NotFound", "The customer with the provide Id was not found.");
             }

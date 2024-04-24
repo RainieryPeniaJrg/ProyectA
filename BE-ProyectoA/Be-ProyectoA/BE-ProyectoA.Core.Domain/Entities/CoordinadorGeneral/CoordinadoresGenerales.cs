@@ -24,6 +24,18 @@ namespace BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral
             CantidadVotantes = cantidadVotantes;
         }
 
+        public CoordinadoresGenerales(CoordinadoresGeneralesId id, string nombre, string apellido, Cedula cedula, NumeroTelefono numeroTelefono, bool activo, Direccion direccion)
+        {
+            Id = id;
+            Nombre = nombre;
+            Apellido = apellido;
+            Cedula = cedula;
+            NumeroTelefono = numeroTelefono;
+            Activo = activo;
+            Direccion = direccion;
+          
+        }
+
         public CoordinadoresGenerales(CoordinadoresGeneralesId id, string nombre, string apellido, Cedula cedula, NumeroTelefono numeroTelefono, bool activo, Direccion direccion, int cantidadVotantes, ICollection<Grupos> grupos, ICollection<SubCoordinadores> subCoordinadores)
         {
             Id = id;
@@ -50,9 +62,14 @@ namespace BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral
         public ICollection<Grupos> Grupos { get; set; }
         public ICollection <SubCoordinadores> SubCoordinadores { get; set;}
 
-        public static CoordinadoresGenerales? Update(Guid id,string nombre,string apellido,Cedula cedula,NumeroTelefono numeroTelefono,Direccion direccion,ICollection<Grupos> grupos, ICollection<SubCoordinadores> subCoordinadores,bool activo, int cantidadVotantes)
+        public static CoordinadoresGenerales? UpdateWithRelationShip(Guid id,string nombre,string apellido,Cedula cedula,NumeroTelefono numeroTelefono,Direccion direccion,ICollection<Grupos> grupos, ICollection<SubCoordinadores> subCoordinadores,bool activo, int cantidadVotantes)
         {
             return new CoordinadoresGenerales(new CoordinadoresGeneralesId(id), nombre, apellido, cedula, numeroTelefono, activo, direccion, cantidadVotantes, grupos, subCoordinadores);
+        }
+
+        public static CoordinadoresGenerales? UpdateWithOutRelationShip(Guid id, string nombre, string apellido, Cedula cedula, NumeroTelefono numeroTelefono, Direccion direccion, bool activo)
+        {
+            return new CoordinadoresGenerales(new CoordinadoresGeneralesId(id), nombre, apellido, cedula, numeroTelefono, activo, direccion);
         }
 
     }

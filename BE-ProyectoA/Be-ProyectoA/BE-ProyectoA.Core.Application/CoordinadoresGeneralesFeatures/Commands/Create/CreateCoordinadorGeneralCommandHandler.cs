@@ -23,16 +23,15 @@ namespace BE_ProyectoA.Core.Application.CoordinadoresGeneralesFeatures.Commands.
         public async Task<ErrorOr<Unit>> Handle(CreateCoordinadorCommand command, CancellationToken cancellationToken)
         {
             // Validar los datos de entrada
-            var validationResult = ValueObjectValidators.ValidarDatos(command.Cedula,command.NumeroTelefono,command.Provincia,command.Sector);
+            var validationResult = ValueObjectValidators.ValidarDatos(command.Cedula,command.NumeroTelefono,command.Provincia,command.Sector,command.casaElectoral);
             if (validationResult.IsError)
                 return validationResult;
 
-            // Crear el votante
-           
+   
 
             var numeroTelefono = NumeroTelefono.Create(command.NumeroTelefono);
             var cedula = Cedula.Create(command.Cedula);
-            var direccion = Direccion.Create(command.Provincia, command.Sector);
+            var direccion = Direccion.Create(command.Provincia, command.Sector, command.CantidadVotantes);
 
             var coordinador = new CoordinadoresGenerales
                 (

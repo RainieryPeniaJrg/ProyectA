@@ -29,10 +29,10 @@ namespace BE_ProyectoA.Core.Application.Common.ValueObjectsValidators
             return numeroTelefono;
         }
 
-        public static ErrorOr<Direccion> DireccionValidator(string provincia,string sector)
+        public static ErrorOr<Direccion> DireccionValidator(string provincia,string sector, int casaElectoral)
         {
 
-            if (Direccion.Create(provincia,sector) is not Direccion direccion)
+            if (Direccion.Create(provincia,sector, casaElectoral) is not Direccion direccion)
             {
 
                 return Error.Validation("La direccion no es valida");
@@ -40,11 +40,11 @@ namespace BE_ProyectoA.Core.Application.Common.ValueObjectsValidators
             return direccion;
         }
 
-        public static ErrorOr<Unit> ValidarDatos(string cedulaParam, string numeroParams, string provincia, string sector)
+        public static ErrorOr<Unit> ValidarDatos(string cedulaParam, string numeroParams, string provincia, string sector,int casaElectoral)
         {
             var cedulaResult = CedulaValidator(cedulaParam);
             var numeroResult = NumeroValidator(numeroParams);
-            var direccionResult = DireccionValidator(provincia, sector);
+            var direccionResult = DireccionValidator(provincia, sector, casaElectoral);
 
             if (cedulaResult.IsError)
                 return Error.Validation($"Cedula", $"{cedulaResult.Errors}");

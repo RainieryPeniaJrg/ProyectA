@@ -14,6 +14,7 @@ namespace BE_ProyectoA.Core.Application.Votantes.Commons
 
       (string Provincia,
         string Sector
+       
       );
 
 

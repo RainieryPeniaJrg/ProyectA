@@ -1,5 +1,8 @@
-﻿using BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral;
+﻿using BE_ProyectoA.Core.Application.Common.ValueObjectsValidators;
+using BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral;
+using BE_ProyectoA.Core.Domain.Entities.Votantes;
 using BE_ProyectoA.Core.Domain.Primitivies;
+using BE_ProyectoA.Core.Domain.ValueObjects;
 using ErrorOr;
 using MediatR;
 
@@ -24,7 +27,27 @@ namespace BE_ProyectoA.Core.Application.CoordinadoresGeneralesFeatures.Commands.
                 return Error.Validation("CoordinadorGeneral.NotFound", "El coordinador proporcionador no se encuentra");
             }
 
-            throw new NotImplementedException();
+            var validationResult = ValueObjectValidators.ValidarDatos(command.Cedula, command.NumeroTelefono, command.Provincia, command.Sector,command.CasaElectoral);
+            if (validationResult.IsError)
+                return validationResult;
+
+            var numeroTelefono = NumeroTelefono.Create(command.NumeroTelefono);
+            var cedula = Cedula.Create(command.Cedula);
+            var direccion = Direccion.Create(command.Provincia, command.Sector,command.CasaElectoral);
+
+            var coordinadores = CoordinadoresGenerales.UpdateWithOutRelationShip(command.Id, command.Nombre,
+                                                                                                    command.Apellido,
+                                                                                                    cedula,
+                                                                                                    numeroTelefono,
+                                                                                                    direccion,
+                                                                                                    command.Activo);
+
+
+
+            _coordinadorGeneralRepository.Update(coordinadores);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            return Unit.Value;
+
         }
     }
 }

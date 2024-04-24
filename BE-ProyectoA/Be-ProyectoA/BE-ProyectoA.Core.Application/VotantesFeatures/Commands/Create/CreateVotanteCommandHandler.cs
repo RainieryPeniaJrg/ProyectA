@@ -22,13 +22,13 @@ namespace BE_ProyectoA.Core.Application.Votantes.Commands.Create
         {
           
             // Validar los datos de entrada
-            var validationResult = ValueObjectValidators.ValidarDatos(command.Cedula, command.NumeroTelefono, command.Provincia, command.Sector);
+            var validationResult = ValueObjectValidators.ValidarDatos(command.Cedula, command.NumeroTelefono, command.Provincia, command.Sector, command.CasaElectoral);
             if (validationResult.IsError)
                 return validationResult;
 
             var numeroTelefono = NumeroTelefono.Create(command.NumeroTelefono);
             var cedula = Cedula.Create(command.Cedula);
-            var direccion = Direccion.Create(command.Provincia, command.Sector);
+            var direccion = Direccion.Create(command.Provincia, command.Sector,command.CasaElectoral);
             // Crear el votante
 
             var votante = new Votante(

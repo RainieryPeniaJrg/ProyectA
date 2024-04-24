@@ -33,6 +33,7 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
             {
                 direccionBuilder.Property(d => d.Provincia).HasMaxLength(30);
                 direccionBuilder.Property(d => d.Sector).HasMaxLength(30);
+                direccionBuilder.Property(d => d.CasaElectoral);
 
             });
 

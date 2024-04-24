@@ -44,6 +44,11 @@ namespace BE_ProyectoA.Core.Domain.Entities.GruposEntity
 
         public bool Active { get; private set; }
 
+        public static Grupos? Update(string nombreGrupo, Guid id, DirigentesMultiplicadoresId dirigentesMultiplicadoresId, DirigentesMultiplicadores dirigentesMultiplicadores, CoordinadoresGeneralesId coordinadoresGeneralesId, CoordinadoresGenerales coordinadoresGenerales, SubCoordinadoresId subCoordinadoresId, SubCoordinadores subCoordinadores, bool active)
+        {
+            return new Grupos(nombreGrupo, new GruposId(id), dirigentesMultiplicadoresId, dirigentesMultiplicadores, coordinadoresGeneralesId, coordinadoresGenerales, subCoordinadoresId, subCoordinadores, active);
+        }
+
 
 
 

@@ -1,4 +1,5 @@
-﻿using BE_ProyectoA.Core.Domain.Entities.Votantes;
+﻿using BE_ProyectoA.Core.Application.Common.ValueObjectsValidators;
+using BE_ProyectoA.Core.Domain.Entities.Votantes;
 using BE_ProyectoA.Core.Domain.Primitivies;
 using BE_ProyectoA.Core.Domain.ValueObjects;
 using ErrorOr;
@@ -19,27 +20,15 @@ namespace BE_ProyectoA.Core.Application.Votantes.Commands.Update
 
         public async Task<ErrorOr<Unit>> Handle(UpdateVotanteCommand command, CancellationToken cancellationToken)
         {
-            if(!await  _votantesRepository.ExistsAsync(new VotanteId(command.Id)))
-            {
-                return Error.NotFound("Votantes.NotFound", "The customer with the provide Id was not found.");
-            }
+            var numeroTelefono = NumeroTelefono.Create(command.NumeroTelefono);
+            var cedula = Cedula.Create(command.Cedula);
 
-            if (NumeroTelefono.Create(command.NumeroTelefono) is not NumeroTelefono numeroTelefono)
-            {
-                return Error.Validation("Votantes.NumeroTelefono", "El numero de telefono no esta en un formato valido");
-            }
+            var direccion = Direccion.Create(command.Provincia, command.Sector, command.CasaElectoral);
+            var validationResult = ValueObjectValidators.ValidarDatos(command.Cedula, command.NumeroTelefono, command.Provincia, command.Sector, command.CasaElectoral);
+            if (validationResult.IsError)
+                return validationResult;
 
-            if (Cedula.Create(command.Cedula) is not Cedula cedula)
-            {
-                return Error.Validation("Votantes.Cedula", "La Cedula no es valida");
-
-            }
-
-            if (Direccion.Create(command.Provincia, command.Sector) is not Direccion direccion)
-            {
-                return Error.Validation("Votantes.Direccion", "La Direccion no es valida");
-
-            }
+           
 
             Votante votante = Votante.UpdateVotante(command.Id, command.Nombre, command.Apellido, cedula, direccion, numeroTelefono, command.Activo); 
 
