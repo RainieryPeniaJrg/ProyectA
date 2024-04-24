@@ -2,9 +2,16 @@ const express = require("express");
 const { engine } = require('express-handlebars');
 const path = require("path")
 const directorRoute = require('./routes/director')
+const votanteRoute = require("./routes/votantes")
 const errorController = require("./controllers/errorController")
 const axios = require('axios')
+const bodyParser = require('body-parser');
 const app = express();
+
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 
 app.engine("hbs", engine({ layoutsDir: 'views/layouts/', defaultLayout: 'main-layout', extname: 'hbs' }));
 app.set("view engine", "hbs");
@@ -13,7 +20,7 @@ app.set("views", "views")
 
 
 app.use(directorRoute)
-
+app.use(votanteRoute)
 
 
 app.use(express.urlencoded({ extended: false }));

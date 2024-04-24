@@ -93,3 +93,85 @@ exports.getDirigentes = async (req, res) => {
         res.status(500).json({ mensaje: 'Error al obtener los dirigentes' });
     }
 };
+
+
+
+exports.getAgregarGrupos = async (req, res, next) => {
+    try {
+      
+
+     
+        res.render("director/agregar-grupo", {
+            title: "Agregar Grupo",
+          
+        });
+    } catch (error) {
+        console.error('Error al mostrar el formulario de agregar grupo:', error);
+        next(error); 
+    }
+};
+
+
+
+/*
+exports.getAgregarMiembros = async (req, res, next) => {
+    try {
+      
+
+     
+        res.render("director/agregar-miembro", {
+            title: "Agregar Grupo",
+          
+        });
+    } catch (error) {
+        console.error('Error al mostrar el formulario de agregar grupo:', error);
+        next(error); 
+    }
+};
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Controlador para agregar grupo
+exports.PostAgregarGrupo = async (req, res) => {
+    try {
+       
+        const { NombreGrupo, SubCoordinadores, Coordinadoresgeneral, Dirigentes, totalVotos } = req.body;
+
+      
+        const nuevoGrupo = {
+            NombreGrupo,
+            SubCoordinadores,
+            Coordinadoresgeneral,
+            Dirigentes,
+            totalVotos
+        };
+
+        console.log(nuevoGrupo)
+        const respuesta = await axios.post('URL api ', nuevoGrupo);
+
+       
+        res.status(201).json(respuesta.data);
+    } catch (error) {
+        
+        console.error('Error al agregar el grupo:', error);
+        res.status(500).json({ mensaje: 'Error al agregar el grupo' });
+    }
+};
+
