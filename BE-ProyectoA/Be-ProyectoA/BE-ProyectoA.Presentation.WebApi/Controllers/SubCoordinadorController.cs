@@ -1,10 +1,4 @@
 ﻿using BE_ProyectoA.Core.Application.SubCoordinadorFeatures.Commands.Create;
-using BE_ProyectoA.Core.Application.Votantes.Commands.Create;
-using BE_ProyectoA.Core.Application.Votantes.Commands.Delete;
-using BE_ProyectoA.Core.Application.Votantes.Commands.Update;
-using BE_ProyectoA.Core.Application.Votantes.Querys.GetAll;
-using BE_ProyectoA.Core.Application.Votantes.Querys.GetByCedulaQuery;
-using BE_ProyectoA.Core.Application.Votantes.Querys.GetById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

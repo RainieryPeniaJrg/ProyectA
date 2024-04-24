@@ -1,6 +1,6 @@
 ﻿using BE_ProyectoA.Core.Domain.ValueObjects;
 
-namespace BE_ProyectoA.Core.Application.Votantes.Commons
+namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commons
 {
     public record VotantesResponse(
             Guid Id,
@@ -14,7 +14,7 @@ namespace BE_ProyectoA.Core.Application.Votantes.Commons
 
       (string Provincia,
         string Sector
-       
+
       );
 
 

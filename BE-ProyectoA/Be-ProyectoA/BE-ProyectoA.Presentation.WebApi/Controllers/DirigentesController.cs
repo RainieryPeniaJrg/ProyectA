@@ -1,6 +1,7 @@
 ﻿using BE_ProyectoA.Core.Application.DirigentesFeatures.Commands.Create;
 using BE_ProyectoA.Core.Application.DirigentesFeatures.Commands.Delete;
 using BE_ProyectoA.Core.Application.DirigentesFeatures.Commands.Update;
+using BE_ProyectoA.Core.Application.DirigentesFeatures.Querys.GetAll;
 using ErrorOr;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -11,19 +12,19 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
     {
         private readonly ISender _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
 
-        //[HttpGet("GetAll")]
-        //public async Task<IActionResult> GetAll()
-        //{
-        //    var votanteResult = await _mediator.Send(new GetAllVotanteQuery());
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var result = await _mediator.Send(new GetAllDirigenteQuery());
 
-        //    return votanteResult.Match(
-        //        Votante => Ok(Votante),
-        //        errors => Problem(errors)
-        //    );
-        //}
+            return result.Match(
+                dirigente => Ok(dirigente),
+                errors => Problem(errors)
+            );
+        }
 
 
-    
+
         [HttpPost("Create")]
         public async Task<IActionResult> Create([FromBody] CreateDirigentesCommand command)
         {

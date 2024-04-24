@@ -1,6 +1,8 @@
-﻿namespace BE_ProyectoA.Core.Application.SubCoordinador.Commands.Delete
+﻿using ErrorOr;
+using MediatR;
+
+namespace BE_ProyectoA.Core.Application.SubCoordinadorFeatures.Commands.Delete
 {
-    internal class DeleteSubCoordinadorCommand
-    {
-    }
+    public record DeleteSubCoordinadorCommand(Guid Id) : IRequest<ErrorOr<Unit>>;
+
 }

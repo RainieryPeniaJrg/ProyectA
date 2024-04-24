@@ -27,13 +27,8 @@
     <Folder Include="CoordinadoresGeneralesFeatures\Query\GetById\" />
     <Folder Include="Director\Query\GetAll\" />
     <Folder Include="Director\Query\GetById\" />
-    <Folder Include="DirigentesFeatures\Commom\" />
-    <Folder Include="DirigentesFeatures\Querys\" />
     <Folder Include="GrupoFeatures\Common\" />
     <Folder Include="GrupoFeatures\Querys\" />
-    <Folder Include="SubCoordinadorFeatures\Commands\Update\" />
-    <Folder Include="SubCoordinadorFeatures\Common\" />
-    <Folder Include="SubCoordinadorFeatures\Querys\" />
   </ItemGroup>
 
 </Project>

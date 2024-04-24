@@ -1,10 +1,10 @@
-﻿using BE_ProyectoA.Core.Application.Votantes.Commons;
+﻿using BE_ProyectoA.Core.Application.VotantesFeatures.Commons;
 using BE_ProyectoA.Core.Domain.ValueObjects;
 using ErrorOr;
 using MediatR;
 
-namespace BE_ProyectoA.Core.Application.Votantes.Querys.GetByCedulaQuery
+namespace BE_ProyectoA.Core.Application.VotantesFeatures.Querys.GetByCedulaQuery
 {
-    public record GetByCedulaQuery (string Cedula): IRequest<ErrorOr<VotantesResponse>>;
-    
+    public record GetByCedulaQuery(string Cedula) : IRequest<ErrorOr<VotantesResponse>>;
+
 }
