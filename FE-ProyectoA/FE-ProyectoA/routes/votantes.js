@@ -8,7 +8,7 @@ const router = express.Router();
 
 
 
-
+router.get("/votantes", votanteController.getVotantes);
 router.get("/agregar-votante", votanteController.getAgregarVotante);
 router.post("/agregar-votante", votanteController.postAñadirVotante);
 
