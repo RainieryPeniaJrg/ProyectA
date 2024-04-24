@@ -78,9 +78,9 @@ namespace BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador
         public SubCoordinadoresId SubCoordinadoresId { get; set; } 
         public SubCoordinadores SubCoordinadores {  get; set; } 
 
-        public static DirigentesMultiplicadores? Update(Guid id, Cedula cedula, NumeroTelefono numeroTelefono, string nombre, string apellido, bool activo, Direccion direccion, int cantidadVotantes, SubCoordinadoresId subCoordinadoresId, SubCoordinadores subCoordinadores, ICollection<Grupos> grupos)
+        public static DirigentesMultiplicadores Update(Guid id, Cedula cedula, NumeroTelefono numeroTelefono, string nombre, string apellido, bool activo, Direccion direccion, int cantidadVotantes, SubCoordinadores subCoordinadores)
         {
-            return new DirigentesMultiplicadores(new DirigentesMultiplicadoresId(id),cedula,numeroTelefono,nombre,apellido,activo,direccion,cantidadVotantes,subCoordinadoresId,subCoordinadores,grupos);
+            return new DirigentesMultiplicadores(new DirigentesMultiplicadoresId(id),cedula,numeroTelefono,nombre,apellido,activo,direccion,cantidadVotantes,subCoordinadores);
         }
 
     }

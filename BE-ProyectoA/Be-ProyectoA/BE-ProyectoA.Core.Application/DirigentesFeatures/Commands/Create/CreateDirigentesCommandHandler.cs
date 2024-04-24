@@ -26,8 +26,11 @@ namespace BE_ProyectoA.Core.Application.DirigentesFeatures.Commands.Create
             var validationResult = ValueObjectValidators.ValidarDatos(command.Cedula, command.NumeroTelefono, command.Provincia, command.Sector, command.CasaElectoral);
             if (validationResult.IsError)
                 return validationResult;
+
             var numeroTelefono = NumeroTelefono.Create(command.NumeroTelefono);
+
             var cedula = Cedula.Create(command.Cedula);
+
             var direccion = Direccion.Create(command.Provincia, command.Sector, command.CasaElectoral);
 
             var IpSubCoordinador = new SubCoordinadoresId(command.SubCoordinadoresId);

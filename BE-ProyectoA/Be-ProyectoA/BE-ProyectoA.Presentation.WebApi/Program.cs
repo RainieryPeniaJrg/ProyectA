@@ -12,7 +12,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddPresentationn().AddInfraEstructure(builder.Configuration).AddApplication();
 
-var app = builder.Build();
 
 builder.Services.AddCors(options =>
 {
@@ -21,6 +20,8 @@ builder.Services.AddCors(options =>
         app.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
     });
 });
+var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

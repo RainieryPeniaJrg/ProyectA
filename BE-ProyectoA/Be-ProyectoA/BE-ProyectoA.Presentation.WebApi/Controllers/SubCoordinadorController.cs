@@ -61,7 +61,7 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
         //[HttpDelete("Delete/{id}")]
         //public async Task<IActionResult> Delete(Guid id)
         //{
-        //    var deleteResult = await _mediator.Send(new DeleteVotanteCommand(id));
+        //    var deleteResult = await _mediator.Send(new DeleteSubCoo (id));
 
         //    return deleteResult.Match(
         //        votanteId => NoContent(),

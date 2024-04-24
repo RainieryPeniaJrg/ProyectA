@@ -20,15 +20,20 @@ namespace BE_ProyectoA.Core.Application.Votantes.Commands.Update
 
         public async Task<ErrorOr<Unit>> Handle(UpdateVotanteCommand command, CancellationToken cancellationToken)
         {
-            var numeroTelefono = NumeroTelefono.Create(command.NumeroTelefono);
-            var cedula = Cedula.Create(command.Cedula);
+            if(!await  _votantesRepository.ExistsAsync(new VotanteId(command.Id), cancellationToken))
+            {
+                return Error.NotFound("Votantes.NotFound", "The customer with the provide Id was not found.");
+            }
 
-            var direccion = Direccion.Create(command.Provincia, command.Sector, command.CasaElectoral);
             var validationResult = ValueObjectValidators.ValidarDatos(command.Cedula, command.NumeroTelefono, command.Provincia, command.Sector, command.CasaElectoral);
             if (validationResult.IsError)
                 return validationResult;
 
-           
+            var numeroTelefono = NumeroTelefono.Create(command.NumeroTelefono);
+
+            var cedula = Cedula.Create(command.Cedula);
+
+            var direccion = Direccion.Create(command.Provincia, command.Sector, command.CasaElectoral);
 
             Votante votante = Votante.UpdateVotante(command.Id, command.Nombre, command.Apellido, cedula, direccion, numeroTelefono, command.Activo); 
 

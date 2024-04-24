@@ -1,5 +1,8 @@
 ﻿using BE_ProyectoA.Core.Application.CoordinadoresGeneralesFeatures.Commands.Create;
-using BE_ProyectoA.Core.Application.Votantes.Commands.Create;
+using BE_ProyectoA.Core.Application.CoordinadoresGeneralesFeatures.Commands.Delete;
+using BE_ProyectoA.Core.Application.CoordinadoresGeneralesFeatures.Commands.Update;
+using BE_ProyectoA.Core.Application.CoordinadoresGeneralesFeatures.Query.GetAll;
+using ErrorOr;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,19 +12,19 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
     {
         private readonly ISender _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
 
-        //[HttpGet("GetAll")]
-        //public async Task<IActionResult> GetAll()
-        //{
-        //    var votanteResult = await _mediator.Send(new GetAllVotanteQuery());
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var coordinadorResult = await _mediator.Send(new GetAllCoordinadorGeneralQuery());
 
-        //    return votanteResult.Match(
-        //        Votante => Ok(Votante),
-        //        errors => Problem(errors)
-        //    );
-        //}
+            return coordinadorResult.Match(
+                coordinador => Ok(coordinador),
+                errors => Problem(errors)
+            );
+        }
 
 
-     
+
         [HttpPost("Create")]
         public async Task<IActionResult> Create([FromBody] CreateCoordinadorCommand command)
         {
@@ -31,59 +34,39 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
                 errors => Problem(errors)
             );
         }
-        //[HttpPut("Update/{id}")]
-        //public async Task<IActionResult> Update(Guid id, [FromBody] UpdateVotanteCommand command)
-        //{
-        //    if (command.Id != id)
-        //    {
-        //        List<Error> errors = new()
-        //        {
-        //            Error.Validation("Customer.UpdateInvalid", "The request Id does not match with the url Id.")
-        //        };
-        //        return Problem(errors);
-        //    }
 
-        //    var updateResult = await _mediator.Send(command);
+        [HttpPut("Update/{id}")]
+        public async Task<IActionResult> Update(Guid id, [FromBody] UpdateCoordinadorGeneralCommand command)
+        {
+            if (command.Id != id)
+            {
+                List<Error> errors = new()
+                {
+                    Error.Validation("Customer.UpdateInvalid", "The request Id does not match with the url Id.")
+                };
+                return Problem(errors);
+            }
 
-        //    return updateResult.Match(
-        //        VotanteId => NoContent(),
-        //        errors => Problem(errors)
-        //    );
-        //}
+            var updateResult = await _mediator.Send(command);
 
-
-        //[HttpDelete("Delete/{id}")]
-        //public async Task<IActionResult> Delete(Guid id)
-        //{
-        //    var deleteResult = await _mediator.Send(new DeleteVotanteCommand(id));
-
-        //    return deleteResult.Match(
-        //        votanteId => NoContent(),
-        //        errors => Problem(errors)
-        //    );
-        //}
-
-        //[HttpGet("ById/{id}")]
-        //public async Task<IActionResult> GetById(Guid id)
-        //{
-        //    var votanteResult = await _mediator.Send(new GetByIdVotantesQuery(id));
-
-        //    return votanteResult.Match(
-        //        votante => Ok(votante),
-        //        errors => Problem(errors)
-        //    );
-        //}
+            return updateResult.Match(
+                coordinadorId => NoContent(),
+                errors => Problem(errors)
+            );
+        }
 
 
-        //[HttpGet("ByCedula/{cedula}")]
-        //public async Task<IActionResult> GetByCedula(string cedula)
-        //{
-        //    var votanteResult = await _mediator.Send(new GetByCedulaQuery(cedula));
+        [HttpDelete("Delete/{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var deleteResult = await _mediator.Send(new DeleteCoordinadorCommand(id));
 
-        //    return votanteResult.Match(
-        //        votante => Ok(votante),
-        //        errors => Problem(errors)
-        //    );
-        //}
+            return deleteResult.Match(
+                coordinadorId => NoContent(),
+                errors => Problem(errors)
+            );
+        }
+
+     
     }
 }
