@@ -1,5 +1,6 @@
 using BE_ProyectoA.Core.Application;
 using BE_ProyectoA.Infraestructure.Persistence;
+using BE_ProyectoA.Persistence.Identity.DependencyInjection;
 using BE_ProyectoA.Presentation.WebApi;
 using BE_ProyectoA.Presentation.WebApi.Extensions;
 
@@ -10,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddPresentationn().AddInfraEstructure(builder.Configuration).AddApplication();
+builder.Services.AddPresentationn().AddInfraEstructure(builder.Configuration).AddApplication().AddInfraestructureIdentity(builder.Configuration);
 
 
 builder.Services.AddCors(options =>
