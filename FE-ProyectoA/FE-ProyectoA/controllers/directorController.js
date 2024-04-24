@@ -1,4 +1,5 @@
 const axios = require("axios");
+const https = require('https');
 
 exports.getHome = async (req, res) => {
 
@@ -113,41 +114,6 @@ exports.getAgregarGrupos = async (req, res, next) => {
 
 
 
-/*
-exports.getAgregarMiembros = async (req, res, next) => {
-    try {
-      
-
-     
-        res.render("director/agregar-miembro", {
-            title: "Agregar Grupo",
-          
-        });
-    } catch (error) {
-        console.error('Error al mostrar el formulario de agregar grupo:', error);
-        next(error); 
-    }
-};
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Controlador para agregar grupo
 exports.PostAgregarGrupo = async (req, res) => {
     try {
@@ -174,4 +140,160 @@ exports.PostAgregarGrupo = async (req, res) => {
         res.status(500).json({ mensaje: 'Error al agregar el grupo' });
     }
 };
+
+
+
+exports.getAgregarCoordinador = async (req, res, next) => {
+    try {
+        
+
+    
+        res.render("miembros/agregar-coordinadores", {
+            title: "Agregar Coordinador",
+       
+        });
+    } catch (error) {
+      
+        console.error('Error al mostrar el formulario de agregar coordinaroes:', error);
+        next(error); 
+    }
+};
+
+
+
+exports.postAñadirCoordinador = async (req, res, next) => {
+    try {
+        // Obtener los datos del formulario enviado por el cliente
+        const { nombre, apellido, cedula, numeroTelefono, sector, provincia, Direccion_CasaElectoral } = req.body;
+
+        // Crear el objeto de coordinador con los datos recibidos
+        const nuevoCoordinador = {
+            nombre,
+            apellido,
+            cedula,
+            numeroTelefono,
+            sector,
+            provincia,
+            Direccion_CasaElectoral
+        };
+
+        // Hacer la solicitud POST a la API para agregar un coordinador
+        const respuesta = await axios.post('https://localhost:7299/api/CoordinadoresGeneral/Create', nuevoCoordinador, {
+            headers: {
+                'Content-Type': 'application/json',
+                'accept': '*/*'
+            },
+            httpsAgent: new https.Agent({ rejectUnauthorized: false }) 
+        });
+
+        // Redirigir al usuario a la página de inicio después de agregar el coordinador exitosamente
+        res.redirect('/home'); 
+    } catch (error) {
+        // Manejar errores
+        console.error('Error al añadir el coordinador:', error);
+        res.status(500).json({ mensaje: 'Error al añadir el coordinador' });
+    }
+};
+
+exports.getAgregarSubCoordinador = async (req, res, next) => {
+    try {
+        
+
+    
+        res.render("miembros/agregar-subcoordinador", {
+            title: "Agregar SubCoordinador",
+       
+        });
+    } catch (error) {
+      
+        console.error('Error al mostrar el formulario de agregar Subcoordinaroes:', error);
+        next(error); 
+    }
+};
+
+
+exports.postAgregarSubcoordinador = async (req, res, next) => {
+    try {
+        // Obtener los datos del formulario enviado por el cliente
+        const { nombre, apellido, cantidadVotantes, cedula, activo, provincia, sector, casaElectoral, numeroTelefono, coordinadorsGeneralesId } = req.body;
+
+        // Crear el objeto de subcoordinador con los datos recibidos
+        const nuevoSubcoordinador = {
+            nombre,
+            apellido,
+            cedula,
+            provincia,
+            sector,
+            casaElectoral,
+            numeroTelefono,
+            coordinadorsGeneralesId
+        };
+
+        // Hacer la solicitud POST a la API para agregar un subcoordinador
+        const respuesta = await axios.post('https://localhost:7299/api/SubCoordinador/Create', nuevoSubcoordinador, {
+            headers: {
+                'Content-Type': 'application/json',
+                'accept': '*/*'
+            },
+            httpsAgent: new https.Agent({ rejectUnauthorized: false }) 
+        });
+
+        // Redirigir al usuario a la página de inicio después de agregar el subcoordinador exitosamente
+        res.redirect('/home'); 
+    } catch (error) {
+        // Manejar errores
+        console.error('Error al añadir el subcoordinador:', error);
+        res.status(500).json({ mensaje: 'Error al añadir el subcoordinador' });
+    }
+};
+
+exports.getAgregarDirigente = async (req, res, next) => {
+    try {
+        
+
+    
+        res.render("miembros/agregar-dirigente", {
+            title: "Agregar Dirigentes",
+       
+        });
+    } catch (error) {
+      
+        console.error('Error al mostrar el formulario de agregar Dirigentes:', error);
+        next(error); 
+    }
+};
+
+
+exports.postAgregarDirigente = async (req, res) => {
+    try {
+        const { nombre, apellido, cantidadVotantes, cedula, numeroTelefono, provincia, sector, casaElectoral, activo, subCoordinadoresId } = req.body;
+
+        const nuevoDirigente = {
+            nombre,
+            apellido,
+        
+            cedula,
+            numeroTelefono,
+            provincia,
+            sector,
+            casaElectoral,
+            subCoordinadoresId
+        };
+
+        const respuesta = await axios.post('https://localhost:7299/api/Dirigentes/Create', nuevoDirigente, {
+            headers: {
+                'Content-Type': 'application/json',
+                'accept': '*/*'
+            },
+            httpsAgent: new https.Agent({ rejectUnauthorized: false }) 
+        });
+        res.redirect('/home'); 
+    } catch (error) {
+        console.error('Error al agregar el dirigente:', error);
+        res.status(500).json({ mensaje: 'Error al agregar el dirigente' });
+    }
+};
+
+
+
 
