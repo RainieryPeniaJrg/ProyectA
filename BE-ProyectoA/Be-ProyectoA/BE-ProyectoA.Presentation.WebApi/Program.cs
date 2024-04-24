@@ -14,7 +14,13 @@ builder.Services.AddPresentationn().AddInfraEstructure(builder.Configuration).Ad
 
 var app = builder.Build();
 
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("DefaultPolicy", app =>
+    {
+        app.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -23,6 +29,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.ApplyMigration();
 }
+app.UseCors("DefaultPolicy");
 
 app.UseHttpsRedirection();
 
