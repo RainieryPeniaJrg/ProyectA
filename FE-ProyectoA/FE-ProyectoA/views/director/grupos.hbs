@@ -1,8 +1,10 @@
 <main>
      <h1>Listado de Grupos</h1>
-    <ul>
+     <h2>Si desea agregar grupos pulse este boton</h2>
+     <a href="" class="navigation-button button-new-group">Agregar nuevo grupo</a>
+    <ul class="lista-grupo">
         {{#each grupos}}
-            <li>{{this}}</li> <!-- Suponiendo que cada grupo es un objeto o una cadena -->
+            <li>{{this}}</li> 
         {{/each}}
     </ul>
 </main>
