@@ -37,6 +37,34 @@ namespace BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador
             SubCoordinadores = subCoordinadores;
             SubCoordinadoresId = subCoordinadoresId;
         }
+
+        public DirigentesMultiplicadores(DirigentesMultiplicadoresId id, Cedula cedula, NumeroTelefono numeroTelefono, string nombre, string apellido, bool activo, Direccion direccion, int cantidadVotantes, SubCoordinadoresId subCoordinadoresId, SubCoordinadores subCoordinadores)
+        {
+            Id = id;
+            Nombre = nombre;
+            Apellido = apellido;
+            Cedula = cedula;
+            NumeroTelefono = numeroTelefono;
+            Activo = activo;
+            Direccion = direccion;
+            CantidadVotantes = cantidadVotantes;
+            SubCoordinadores = subCoordinadores;
+            SubCoordinadoresId = subCoordinadoresId;
+        }
+
+        public DirigentesMultiplicadores(DirigentesMultiplicadoresId id, Cedula cedula, NumeroTelefono numeroTelefono, string nombre, string apellido, bool activo, Direccion direccion, int cantidadVotantes, SubCoordinadores subCoordinadores)
+        {
+            Id = id;
+            Nombre = nombre;
+            Apellido = apellido;
+            Cedula = cedula;
+            NumeroTelefono = numeroTelefono;
+            Activo = activo;
+            Direccion = direccion;
+            CantidadVotantes = cantidadVotantes;
+            SubCoordinadores = subCoordinadores;
+           
+        }
         public DirigentesMultiplicadoresId Id { get; set; }
         public string Nombre { get; set; } = string.Empty;
         public string Apellido { get; set; } = string.Empty;

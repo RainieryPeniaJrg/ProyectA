@@ -14,7 +14,7 @@
 
         public static Direccion? Create(string provincia, string sector, int casaElectoral)
         {
-            if (string.IsNullOrEmpty(provincia) || string.IsNullOrEmpty(sector) || int.IsNegative(casaElectoral))
+            if (string.IsNullOrEmpty(provincia) || string.IsNullOrEmpty(sector))
             {
                 return null;
             }

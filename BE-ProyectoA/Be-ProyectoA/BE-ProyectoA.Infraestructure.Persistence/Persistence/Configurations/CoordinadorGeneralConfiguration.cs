@@ -20,6 +20,7 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
               .HasMaxLength(20);
 
 
+
             builder.Property(c => c.Cedula).HasConversion(
                cedula => cedula.Value, value => Cedula.Create(value)!)
                .HasMaxLength(20);
@@ -35,6 +36,8 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
                 direccionBuilder.Property(d => d.CasaElectoral);
                 
             });
+
+            builder.HasMany(c => c.SubCoordinadores).WithOne(sc => sc.Coordinadores).HasForeignKey(c => c.CoordinadorsGeneralesId);
 
             builder.Property(c=>c.Nombre).HasMaxLength(30);
 

@@ -26,6 +26,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.Coordinadores
 
         }
 
+
         public SubCoordinadores(SubCoordinadoresId id, string nombre, string apellido, int cantidadVotos, NumeroTelefono numeroTelefono, Cedula cedula, bool activo, Direccion direccion, CoordinadoresGeneralesId coordinadorsGeneralesId, CoordinadoresGenerales coordinadores, ICollection<DirigentesMultiplicadores> dirigentesMultiplicadores, ICollection<Grupos> grupos)
         {
             Id = id;
@@ -55,6 +56,20 @@ namespace BE_ProyectoA.Core.Domain.Entities.Coordinadores
             CoordinadorsGeneralesId = coordinadorsGeneralesId;
             Coordinadores = coordinadores;
           
+        }
+        public SubCoordinadores(SubCoordinadoresId id, string nombre, string apellido, int cantidadVotos, NumeroTelefono numeroTelefono, Cedula cedula, bool activo, Direccion direccion,CoordinadoresGenerales coordinadores)
+        {
+            Id = id;
+            Nombre = nombre;
+            Apellido = apellido;
+            Cedula = cedula;
+            CantidadVotantes = cantidadVotos;
+            NumeroTelefono = numeroTelefono;
+            Activo = activo;
+            Direccion = direccion;
+        
+            Coordinadores = coordinadores;
+
         }
         public SubCoordinadoresId Id { get; set; }
         public string Nombre { get; set; } = string.Empty;

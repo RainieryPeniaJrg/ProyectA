@@ -1,16 +1,13 @@
-﻿using BE_ProyectoA.Core.Application.Director.Commands.Delete;
-using BE_ProyectoA.Core.Application.Votantes.Commands.Create;
+﻿using BE_ProyectoA.Core.Application.Votantes.Commands.Create;
 using BE_ProyectoA.Core.Application.Votantes.Commands.Delete;
 using BE_ProyectoA.Core.Application.Votantes.Commands.Update;
 using BE_ProyectoA.Core.Application.Votantes.Querys.GetAll;
 using BE_ProyectoA.Core.Application.Votantes.Querys.GetByCedulaQuery;
 using BE_ProyectoA.Core.Application.Votantes.Querys.GetById;
-using BE_ProyectoA.Core.Domain.Entities.Votantes;
 using ErrorOr;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace BE_ProyectoA.Presentation.WebApi.Controllers
 {

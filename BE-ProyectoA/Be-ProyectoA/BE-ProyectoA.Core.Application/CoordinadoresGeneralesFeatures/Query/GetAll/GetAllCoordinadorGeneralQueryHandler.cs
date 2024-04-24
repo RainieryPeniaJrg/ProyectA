@@ -1,9 +1,5 @@
 ﻿using BE_ProyectoA.Core.Application.CoordinadoresGeneralesFeatures.Common;
-using BE_ProyectoA.Core.Application.Votantes.Commons;
 using BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral;
-using BE_ProyectoA.Core.Domain.Entities.Votantes;
-using BE_ProyectoA.Core.Domain.Primitivies;
-using BE_ProyectoA.Core.Domain.ValueObjects;
 using ErrorOr;
 using MediatR;
 

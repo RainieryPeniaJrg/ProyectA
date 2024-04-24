@@ -47,15 +47,15 @@ namespace BE_ProyectoA.Core.Application.Common.ValueObjectsValidators
             var direccionResult = DireccionValidator(provincia, sector, casaElectoral);
 
             if (cedulaResult.IsError)
-                return Error.Validation($"Cedula", $"{cedulaResult.Errors}");
+                return Error.Validation($"Cedula.Validation", $"{cedulaResult.Errors.FirstOrDefault()}");
 
             if (numeroResult.IsError)
-                return Error.Validation($"numero", $"{numeroResult.Errors}");
+                return Error.Validation($"numero.Validation", $"{numeroResult.Errors.FirstOrDefault()}");
 
             if (direccionResult.IsError)
-                return Error.Validation($"direccion", $"{direccionResult.Errors}");
+                return Error.Validation($"direccion.Validation", $"{direccionResult.Errors.FirstOrDefault()}");
 
-            return Error.Custom(0,string.Empty , "No se encontraron errores");
+            return Unit.Value;
 
         }
     }
