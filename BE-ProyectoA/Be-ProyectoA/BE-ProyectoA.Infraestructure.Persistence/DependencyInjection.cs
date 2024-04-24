@@ -26,26 +26,18 @@ namespace BE_ProyectoA.Infraestructure.Persistence
 
         public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
         {
-
-            services.AddDbContext<ApplicationDbContext>
-                (
-                         options =>
-                         options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IApplicationDbContext>(sp => sp.GetRequiredService<ApplicationDbContext>());
 
             services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<ApplicationDbContext>());
 
-            services.AddScoped<IDirigenteMultiplicadorRepository,DirigentesMultiplicadoresRepository>();
-
+            services.AddScoped<IDirigenteMultiplicadorRepository, DirigentesMultiplicadoresRepository>();
             services.AddScoped<ISubCoordinadorRepository, SubCoordinadoresRepository>();
-
             services.AddScoped<ICoordinadorGeneralRepository, CoordinadoresGeneralesRepository>();
-
             services.AddScoped<IVotanteRepository, VotanteRepository>();
-
             services.AddScoped<IDirectoresRepository, DirectorRepository>();
-
             services.AddScoped<IGruposRepository, GruposRepository>();
 
             return services;

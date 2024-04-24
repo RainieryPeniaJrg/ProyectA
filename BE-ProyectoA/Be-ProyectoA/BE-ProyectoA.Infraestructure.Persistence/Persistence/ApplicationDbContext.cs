@@ -11,9 +11,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BE_ProyectoA.Infraestructure.Persistence.Persistence
 {
-    public class ApplicationDbContext(IPublisher publisher, DbContextOptions options) : DbContext(options), IApplicationDbContext, IUnitOfWork
+    public class ApplicationDbContext : DbContext, IApplicationDbContext, IUnitOfWork
     {
-        private readonly IPublisher _publisher = publisher ?? throw new ArgumentNullException(nameof(publisher));
+        private readonly IPublisher _publisher;
+
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IPublisher publisher)
+            : base(options)
+        {
+            _publisher = publisher ?? throw new ArgumentNullException(nameof(publisher));
+        }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,7 +32,7 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence
         {
             var events = ChangeTracker.Entries<AggregateRoot>()
                 .Select(e => e.Entity)
-                .Where(e => e.GetDomainEvents().Any())
+                .Where(e => e.GetDomainEvents().Count != 0)
                 .SelectMany(e => e.GetDomainEvents());
 
             var result = await base.SaveChangesAsync(cancellationToken);
@@ -38,7 +45,6 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence
             return result;
 
         }
-
 
         public DbSet<SubCoordinadores> SubCoordinadores { get ; set; }
         public DbSet<CoordinadoresGenerales> CoordinadoresGenerales { get; set; }
