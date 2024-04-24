@@ -12,12 +12,12 @@ namespace BE_ProyectoA.Core.Application.DirigentesFeatures.Querys.GetAll
     public class GetAllDirigenteQueryHandler : IRequestHandler<GetAllDirigenteQuery, ErrorOr<IReadOnlyList<DirigenteResponse>>>
     {
         private readonly IDirigenteMultiplicadorRepository _dirigenteMultiplicadorRepository;
-        private readonly ISubCoordinadorRepository _subCoordinadorRepostory;
+      
 
         public GetAllDirigenteQueryHandler(IDirigenteMultiplicadorRepository dirigenteMultiplicadorRepository, ISubCoordinadorRepository subCoordinadorRepository)
         {
             _dirigenteMultiplicadorRepository = dirigenteMultiplicadorRepository;
-            _subCoordinadorRepostory = subCoordinadorRepository;
+           
         }
 
         public async Task<ErrorOr<IReadOnlyList<DirigenteResponse>>> Handle(GetAllDirigenteQuery query, CancellationToken cancellationToken)

@@ -12,6 +12,7 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repos
         { 
             _context = context;
         }
+
         public async Task<List<DirigentesMultiplicadores>> GetAllDirigenteMultiplicadores(CancellationToken cancellationToken = default)
         {
             return await _context.Set<DirigentesMultiplicadores>()
