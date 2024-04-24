@@ -30,7 +30,6 @@
     <Folder Include="DirigentesFeatures\Commands\Update\" />
     <Folder Include="DirigentesFeatures\Commom\" />
     <Folder Include="DirigentesFeatures\Querys\" />
-    <Folder Include="GrupoFeatures\Commands\Create\" />
     <Folder Include="GrupoFeatures\Common\" />
     <Folder Include="GrupoFeatures\Querys\" />
     <Folder Include="SubCoordinadorFeatures\Commands\Update\" />

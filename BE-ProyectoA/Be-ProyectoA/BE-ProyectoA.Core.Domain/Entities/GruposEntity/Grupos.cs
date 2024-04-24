@@ -27,6 +27,24 @@ namespace BE_ProyectoA.Core.Domain.Entities.GruposEntity
             CoordinadoresGeneralesId = coordinadoresGeneralesId;
 
         }
+
+        public Grupos(string nombreGrupo, GruposId id, DirigentesMultiplicadores dirigentesMultiplicadores,  CoordinadoresGenerales coordinadoresGenerales, SubCoordinadores subCoordinadores, bool active)
+        {
+            Active = active;
+
+            Id = id;
+            NombreGrupo = nombreGrupo;
+
+         
+            DirigentesMultiplicadores = dirigentesMultiplicadores;
+
+            SubCoordinadores = subCoordinadores;
+          
+
+            CoordinadoresGenerales = coordinadoresGenerales;
+         
+
+        }
         public GruposId Id { get; private set; }
         public string NombreGrupo { get; private set; }
 

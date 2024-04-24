@@ -1,4 +1,5 @@
-﻿using BE_ProyectoA.Core.Application.Votantes.Commands.Create;
+﻿using BE_ProyectoA.Core.Application.GrupoFeatures.Commands.Create;
+using BE_ProyectoA.Core.Application.Votantes.Commands.Create;
 using BE_ProyectoA.Core.Application.Votantes.Commands.Delete;
 using BE_ProyectoA.Core.Application.Votantes.Commands.Update;
 using BE_ProyectoA.Core.Application.Votantes.Querys.GetAll;
@@ -25,16 +26,16 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
         //}
 
 
-        //// POST api/<VotantesController>
-        //[HttpPost("Create")]
-        //public async Task<IActionResult> Create([FromBody] CreateVotanteCommand command)
-        //{
-        //    var createResult = await _mediator.Send(command);
-        //    return createResult.Match(
-        //        VotanteId => Ok(VotanteId),
-        //        errors => Problem(errors)
-        //    );
-        //}
+      
+        [HttpPost("Create")]
+        public async Task<IActionResult> Create([FromBody] CreateGruposCommand command)
+        {
+            var createResult = await _mediator.Send(command);
+            return createResult.Match(
+                GrupoId => Ok(GrupoId),
+                errors => Problem(errors)
+            );
+        }
         //[HttpPut("Update/{id}")]
         //public async Task<IActionResult> Update(Guid id, [FromBody] UpdateVotanteCommand command)
         //{
