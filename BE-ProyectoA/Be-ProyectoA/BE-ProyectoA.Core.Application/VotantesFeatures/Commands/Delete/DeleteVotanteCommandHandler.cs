@@ -3,7 +3,7 @@ using BE_ProyectoA.Core.Domain.Primitivies;
 using ErrorOr;
 using MediatR;
 
-namespace BE_ProyectoA.Core.Application.Votantes.Commands.Delete
+namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Delete
 {
     public class DeleteVotanteCommandHandler : IRequestHandler<DeleteVotanteCommand, ErrorOr<Unit>>
     {

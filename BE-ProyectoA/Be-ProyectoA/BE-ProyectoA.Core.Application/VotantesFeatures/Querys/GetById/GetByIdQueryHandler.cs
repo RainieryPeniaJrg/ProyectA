@@ -1,10 +1,10 @@
-﻿using BE_ProyectoA.Core.Application.Votantes.Commons;
+﻿using BE_ProyectoA.Core.Application.VotantesFeatures.Commons;
 using BE_ProyectoA.Core.Domain.Entities.Votantes;
 using ErrorOr;
 using MediatR;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
-namespace BE_ProyectoA.Core.Application.Votantes.Querys.GetById
+namespace BE_ProyectoA.Core.Application.VotantesFeatures.Querys.GetById
 {
     public class GetByIdQueryHandler : IRequestHandler<GetByIdVotantesQuery, ErrorOr<VotantesResponse>>
     {
@@ -24,7 +24,7 @@ namespace BE_ProyectoA.Core.Application.Votantes.Querys.GetById
             return new VotantesResponse(
                 votante.Id.Value, votante.NombreCompleto, votante.Cedula, votante.NumeroTelefono,
                 new DireccionResponse(votante.Direccion.Provincia, votante.Direccion.Sector), votante.Activo);
-            
+
         }
     }
 }

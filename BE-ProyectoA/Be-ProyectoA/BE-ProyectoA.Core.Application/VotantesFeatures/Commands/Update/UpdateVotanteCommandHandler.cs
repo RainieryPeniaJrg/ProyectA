@@ -5,7 +5,7 @@ using BE_ProyectoA.Core.Domain.ValueObjects;
 using ErrorOr;
 using MediatR;
 
-namespace BE_ProyectoA.Core.Application.Votantes.Commands.Update
+namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Update
 {
     public class UpdateVotanteCommandHandler : IRequestHandler<UpdateVotanteCommand, ErrorOr<Unit>>
     {
@@ -20,7 +20,7 @@ namespace BE_ProyectoA.Core.Application.Votantes.Commands.Update
 
         public async Task<ErrorOr<Unit>> Handle(UpdateVotanteCommand command, CancellationToken cancellationToken)
         {
-            if(!await  _votantesRepository.ExistsAsync(new VotanteId(command.Id), cancellationToken))
+            if (!await _votantesRepository.ExistsAsync(new VotanteId(command.Id), cancellationToken))
             {
                 return Error.NotFound("Votantes.NotFound", "The customer with the provide Id was not found.");
             }
@@ -35,9 +35,9 @@ namespace BE_ProyectoA.Core.Application.Votantes.Commands.Update
 
             var direccion = Direccion.Create(command.Provincia, command.Sector, command.CasaElectoral);
 
-            Votante votante = Votante.UpdateVotante(command.Id, command.Nombre, command.Apellido, cedula, direccion, numeroTelefono, command.Activo); 
+            Votante votante = Votante.UpdateVotante(command.Id, command.Nombre, command.Apellido, cedula, direccion, numeroTelefono, command.Activo);
 
-             _votantesRepository.Update(votante);
+            _votantesRepository.Update(votante);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
             return Unit.Value;
 
@@ -46,5 +46,5 @@ namespace BE_ProyectoA.Core.Application.Votantes.Commands.Update
 
 
     }
-    }
+}
 

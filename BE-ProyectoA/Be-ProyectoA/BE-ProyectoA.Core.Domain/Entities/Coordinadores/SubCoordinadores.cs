@@ -85,9 +85,11 @@ namespace BE_ProyectoA.Core.Domain.Entities.Coordinadores
         public CoordinadoresGeneralesId CoordinadorsGeneralesId { get; set; }
         public CoordinadoresGenerales Coordinadores { get; set; }   
 
-        public static SubCoordinadores? Update(Guid id, string nombre, string apellido, int cantidadVotos, NumeroTelefono numeroTelefono, Cedula cedula, bool activo, Direccion direccion, CoordinadoresGeneralesId coordinadorsGeneralesId, CoordinadoresGenerales coordinadores, ICollection<DirigentesMultiplicadores> dirigentesMultiplicadores, ICollection<Grupos> grupos)
+        public static SubCoordinadores Update(Guid id, string nombre, string apellido, int cantidadVotos, NumeroTelefono numeroTelefono, Cedula cedula, bool activo, Direccion direccion,CoordinadoresGenerales coordinadores)
         {
-            return new SubCoordinadores(new SubCoordinadoresId(id),nombre, apellido,cantidadVotos,numeroTelefono,cedula,activo, direccion, coordinadorsGeneralesId,coordinadores,dirigentesMultiplicadores,grupos);
+            return new SubCoordinadores(new SubCoordinadoresId(id),nombre, apellido,cantidadVotos,numeroTelefono,cedula,activo, direccion, coordinadores);
         }
+
+       
     }
 }

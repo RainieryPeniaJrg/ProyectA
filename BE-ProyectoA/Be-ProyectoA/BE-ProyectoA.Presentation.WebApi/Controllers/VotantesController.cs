@@ -1,9 +1,9 @@
-﻿using BE_ProyectoA.Core.Application.Votantes.Commands.Create;
-using BE_ProyectoA.Core.Application.Votantes.Commands.Delete;
-using BE_ProyectoA.Core.Application.Votantes.Commands.Update;
-using BE_ProyectoA.Core.Application.Votantes.Querys.GetAll;
-using BE_ProyectoA.Core.Application.Votantes.Querys.GetByCedulaQuery;
-using BE_ProyectoA.Core.Application.Votantes.Querys.GetById;
+﻿using BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create;
+using BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Delete;
+using BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Update;
+using BE_ProyectoA.Core.Application.VotantesFeatures.Querys.GetAll;
+using BE_ProyectoA.Core.Application.VotantesFeatures.Querys.GetByCedulaQuery;
+using BE_ProyectoA.Core.Application.VotantesFeatures.Querys.GetById;
 using ErrorOr;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -64,7 +64,7 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
         [HttpDelete("Delete/{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var deleteResult = await _mediator.Send(new DeleteVotanteCommand(id));
+            var deleteResult = await _mediator.Send(new DeleteVotanteCommand (id));
 
             return deleteResult.Match(
                 votanteId => NoContent(),
@@ -75,7 +75,7 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
         [HttpGet("ById/{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
-            var votanteResult = await _mediator.Send(new GetByIdVotantesQuery(id));
+            var votanteResult = await _mediator.Send(new GetByIdVotantesQuery (id));
 
             return votanteResult.Match(
                 votante => Ok(votante),
@@ -87,7 +87,7 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
         [HttpGet("ByCedula/{cedula}")]
         public async Task<IActionResult> GetByCedula(string cedula)
         {
-            var votanteResult = await _mediator.Send(new GetByCedulaQuery(cedula));
+            var votanteResult = await _mediator.Send(new GetByCedulaQuery (cedula));
 
             return votanteResult.Match(
                 votante => Ok(votante),

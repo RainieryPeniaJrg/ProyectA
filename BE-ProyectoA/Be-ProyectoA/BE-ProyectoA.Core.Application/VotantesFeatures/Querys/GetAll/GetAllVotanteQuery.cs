@@ -1,8 +1,8 @@
-﻿using BE_ProyectoA.Core.Application.Votantes.Commons;
+﻿using BE_ProyectoA.Core.Application.VotantesFeatures.Commons;
 using ErrorOr;
 using MediatR;
 
-namespace BE_ProyectoA.Core.Application.Votantes.Querys.GetAll
+namespace BE_ProyectoA.Core.Application.VotantesFeatures.Querys.GetAll
 {
-    public record GetAllVotanteQuery(): IRequest<ErrorOr<IReadOnlyList<VotantesResponse>>>;
+    public record GetAllVotanteQuery() : IRequest<ErrorOr<IReadOnlyList<VotantesResponse>>>;
 }

@@ -5,7 +5,7 @@ using BE_ProyectoA.Core.Domain.ValueObjects;
 using ErrorOr;
 using MediatR;
 
-namespace BE_ProyectoA.Core.Application.Votantes.Commands.Create
+namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
 {
     public class CreateVotanteCommandHandler : IRequestHandler<CreateVotanteCommand, ErrorOr<Unit>>
     {
@@ -20,7 +20,7 @@ namespace BE_ProyectoA.Core.Application.Votantes.Commands.Create
 
         public async Task<ErrorOr<Unit>> Handle(CreateVotanteCommand command, CancellationToken cancellationToken)
         {
-          
+
             // Validar los datos de entrada
             var validationResult = ValueObjectValidators.ValidarDatos(command.Cedula, command.NumeroTelefono, command.Provincia, command.Sector, command.CasaElectoral);
             if (validationResult.IsError)
@@ -28,7 +28,7 @@ namespace BE_ProyectoA.Core.Application.Votantes.Commands.Create
 
             var numeroTelefono = NumeroTelefono.Create(command.NumeroTelefono);
             var cedula = Cedula.Create(command.Cedula);
-            var direccion = Direccion.Create(command.Provincia, command.Sector,command.CasaElectoral);
+            var direccion = Direccion.Create(command.Provincia, command.Sector, command.CasaElectoral);
             // Crear el votante
 
             var votante = new Votante(
@@ -48,8 +48,8 @@ namespace BE_ProyectoA.Core.Application.Votantes.Commands.Create
             return Unit.Value;
         }
 
-       
 
-      
+
+
     }
 }

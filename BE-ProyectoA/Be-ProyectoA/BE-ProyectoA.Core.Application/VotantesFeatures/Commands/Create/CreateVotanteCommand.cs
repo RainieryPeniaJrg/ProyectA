@@ -3,7 +3,7 @@ using ErrorOr;
 using MediatR;
 
 
-namespace BE_ProyectoA.Core.Application.Votantes.Commands.Create
+namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
 {
     public record CreateVotanteCommand
         (
