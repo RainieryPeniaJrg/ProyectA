@@ -8,65 +8,31 @@ namespace BE_ProyectoA.Core.Domain.Entities.GruposEntity
 {
     public sealed class Grupos : AggregateRoot
     {
+     
+        public GruposId Id { get; set; }
+        public string NombreGrupo { get; set; }
+        public ICollection<DirigentesMultiplicadores> DirigentesMultiplicadores { get; set; }
+        public CoordinadoresGeneralesId CoordinadoresGeneralId { get; set; }
+        public CoordinadoresGenerales CoordinadorGeneral { get; set; }
+        public ICollection<SubCoordinadores> SubCoordinadores { get; set; }
+        public bool Active { get; set; }
+
         public Grupos() { }
 
-        public Grupos(string nombreGrupo, GruposId id, DirigentesMultiplicadoresId dirigentesMultiplicadoresId, DirigentesMultiplicadores dirigentesMultiplicadores, CoordinadoresGeneralesId coordinadoresGeneralesId, CoordinadoresGenerales coordinadoresGenerales, SubCoordinadoresId subCoordinadoresId, SubCoordinadores subCoordinadores, bool active)
+        public Grupos(string nombreGrupo, GruposId id, ICollection<DirigentesMultiplicadores> dirigentesMultiplicadores, CoordinadoresGenerales coordinadoresGenerales, ICollection<SubCoordinadores> subCoordinadores, bool active)
         {
             Active = active;
-
             Id = id;
             NombreGrupo = nombreGrupo;
-
-            DirigentesMultiplicadoresId = dirigentesMultiplicadoresId;
             DirigentesMultiplicadores = dirigentesMultiplicadores;
-
+            CoordinadorGeneral = coordinadoresGenerales;
             SubCoordinadores = subCoordinadores;
-            SubCoordinadoresId = subCoordinadoresId;
-
-            CoordinadoresGenerales = coordinadoresGenerales;
-            CoordinadoresGeneralesId = coordinadoresGeneralesId;
-
         }
 
-        public Grupos(string nombreGrupo, GruposId id, DirigentesMultiplicadores dirigentesMultiplicadores,  CoordinadoresGenerales coordinadoresGenerales, SubCoordinadores subCoordinadores, bool active)
+        public static Grupos? Update(string nombreGrupo, Guid id, ICollection<DirigentesMultiplicadores> dirigentesMultiplicadores, CoordinadoresGenerales coordinadoresGenerales, ICollection<SubCoordinadores> subCoordinadores, bool active)
         {
-            Active = active;
-
-            Id = id;
-            NombreGrupo = nombreGrupo;
-
-         
-            DirigentesMultiplicadores = dirigentesMultiplicadores;
-
-            SubCoordinadores = subCoordinadores;
-          
-
-            CoordinadoresGenerales = coordinadoresGenerales;
-         
-
+            return new Grupos(nombreGrupo, new GruposId(id), dirigentesMultiplicadores, coordinadoresGenerales, subCoordinadores, active);
         }
-        public GruposId Id { get; private set; }
-        public string NombreGrupo { get; private set; }
-
-        //propiedades de navegacion para relacion uno a muchos 
-        public DirigentesMultiplicadoresId DirigentesMultiplicadoresId { get; private set; }
-        public DirigentesMultiplicadores DirigentesMultiplicadores { get; private set; }
-
-        //propiedades de navegacion para relacion uno a muchos 
-        public SubCoordinadoresId SubCoordinadoresId { get; private set; }
-        public SubCoordinadores SubCoordinadores { get; private set; }
-
-        //propiedades de navegacion para relacion uno a muchos 
-        public CoordinadoresGeneralesId CoordinadoresGeneralesId { get; private set; }
-        public CoordinadoresGenerales CoordinadoresGenerales { get; private set; }
-
-        public bool Active { get; private set; }
-
-        public static Grupos? Update(string nombreGrupo, Guid id, DirigentesMultiplicadoresId dirigentesMultiplicadoresId, DirigentesMultiplicadores dirigentesMultiplicadores, CoordinadoresGeneralesId coordinadoresGeneralesId, CoordinadoresGenerales coordinadoresGenerales, SubCoordinadoresId subCoordinadoresId, SubCoordinadores subCoordinadores, bool active)
-        {
-            return new Grupos(nombreGrupo, new GruposId(id), dirigentesMultiplicadoresId, dirigentesMultiplicadores, coordinadoresGeneralesId, coordinadoresGenerales, subCoordinadoresId, subCoordinadores, active);
-        }
-
 
 
 

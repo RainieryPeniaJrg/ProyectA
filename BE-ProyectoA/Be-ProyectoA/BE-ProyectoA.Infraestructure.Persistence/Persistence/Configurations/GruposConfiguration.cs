@@ -1,4 +1,6 @@
 ﻿using BE_ProyectoA.Core.Domain.Entities.GruposEntity;
+using BE_ProyectoA.Core.Domain.Entities.GruposEntity.GrupoDirigente;
+using BE_ProyectoA.Core.Domain.Entities.GruposEntity.GrupoSubCoordinador;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -10,31 +12,30 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
         {
             builder.HasKey(g => g.Id);
 
-            builder.Property(g => g.Id).HasConversion
-                (
-                grupoId => grupoId.Value,
-                value => new GruposId(value)
+            builder.Property(g => g.Id)
+                .HasConversion(
+                    grupoId => grupoId.Value,
+                    value => new GruposId(value)
                 );
 
-            builder.HasOne(g => g.CoordinadoresGenerales)
-                .WithMany(cg => cg.Grupos)
-                .HasForeignKey(g => g.CoordinadoresGeneralesId)
-                .OnDelete(DeleteBehavior.Restrict);
+            builder.HasMany(g => g.DirigentesMultiplicadores)
+                .WithMany(d => d.Grupos)
+                .UsingEntity<GrupoDirigente>(
+                    j => j.HasOne(gd => gd.Dirigente).WithMany(),
+                    j => j.HasOne(gd => gd.Grupo).WithMany()
+                );
 
-            builder.HasOne(g => g.DirigentesMultiplicadores)
-               .WithMany(cg => cg.Grupos)
-               .HasForeignKey(g => g.DirigentesMultiplicadoresId)
-               .OnDelete(DeleteBehavior.Restrict);
+            builder.HasMany(g => g.SubCoordinadores)
+                .WithMany(s => s.Grupos)
+                .UsingEntity<GrupoSubCoordinador>(
+                    j => j.HasOne(gs => gs.SubCoordinador).WithMany(),
+                    j => j.HasOne(gs => gs.Grupo).WithMany()
+                );
 
-
-            builder.HasOne(g => g.SubCoordinadores)
-               .WithMany(cg => cg.Grupos)
-               .HasForeignKey(g => g.SubCoordinadoresId)
-               .OnDelete(DeleteBehavior.Restrict);
-
-            builder.Property(g => g.NombreGrupo);
-
-            builder.Property(g => g.Active);
+            builder.HasOne(g => g.CoordinadorGeneral)
+                .WithMany()
+                .HasForeignKey(g => g.CoordinadoresGeneralId)
+                .OnDelete(DeleteBehavior.NoAction); // Especifica cómo manejar las eliminaciones
         }
     }
 }

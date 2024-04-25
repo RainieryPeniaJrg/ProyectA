@@ -11,18 +11,22 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
         {
             builder.HasKey(d => d.Id);
 
-            builder.Property(d => d.Id).HasConversion(
-                dId => dId.Value,
-                value => new DirigentesMultiplicadoresId(value));
+            builder.Property(d => d.Id)
+                .HasConversion(
+                    dId => dId.Value,
+                    value => new DirigentesMultiplicadoresId(value));
 
-            builder.Property(d => d.NumeroTelefono).HasConversion(
-              numeroTelefono => numeroTelefono.Value, value => NumeroTelefono.Create(value)!)
-              .HasMaxLength(20);
+            builder.Property(d => d.NumeroTelefono)
+                .HasConversion(
+                    numeroTelefono => numeroTelefono.Value,
+                    value => NumeroTelefono.Create(value)!)
+                .HasMaxLength(20);
 
-
-            builder.Property(d => d.Cedula).HasConversion(
-               cedula => cedula.Value, value => Cedula.Create(value)!)
-               .HasMaxLength(20);
+            builder.Property(d => d.Cedula)
+                .HasConversion(
+                    cedula => cedula.Value,
+                    value => Cedula.Create(value)!)
+                .HasMaxLength(20);
 
             builder.Property(d => d.Activo);
 
@@ -33,18 +37,17 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
                 direccionBuilder.Property(d => d.Provincia).HasMaxLength(30);
                 direccionBuilder.Property(d => d.Sector).HasMaxLength(30);
                 direccionBuilder.Property(d => d.CasaElectoral);
-
             });
 
             builder.Property(d => d.Nombre).HasMaxLength(30);
-
             builder.Property(d => d.Apellido).HasMaxLength(30);
 
             builder.Ignore(d => d.NombreCompleto);
 
             builder.HasOne(d => d.SubCoordinadores)
                 .WithMany(c => c.DirigentesMultiplicadores)
-                .HasForeignKey(d => d.SubCoordinadoresId);
+                .HasForeignKey(d => d.SubCoordinadoresId)
+                .OnDelete(DeleteBehavior.NoAction); // Especifica cómo manejar las eliminaciones
         }
     }
 }

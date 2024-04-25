@@ -50,12 +50,12 @@ namespace BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral
             SubCoordinadores = subCoordinadores;
         }
 
-        public CoordinadoresGeneralesId Id { get; set; }  
-        public string Nombre { get; set; }  = string.Empty;
+        public CoordinadoresGeneralesId Id { get; set; }
+        public string Nombre { get; set; } = string.Empty;
         public string Apellido { get; set; } = string.Empty;
         public string NombreCompleto => $"{Nombre} {Apellido}";
         public Cedula Cedula { get; set; }
-        public NumeroTelefono NumeroTelefono { get; set; } 
+        public NumeroTelefono NumeroTelefono { get; set; }
         public Direccion Direccion { get; set; }
         public int CantidadVotantes { get; set; }
         public bool Activo { get; set; }

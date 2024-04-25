@@ -6,6 +6,7 @@ using BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador;
 using BE_ProyectoA.Core.Domain.Entities.GruposEntity;
 using BE_ProyectoA.Core.Domain.Entities.Votantes;
 using BE_ProyectoA.Core.Domain.Primitivies;
+using BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,6 +26,10 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+          
+
+        
+
         }
 
 

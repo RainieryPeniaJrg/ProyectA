@@ -13,12 +13,12 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repos
             _context = context; 
         }
 
-        public async Task<List<Grupos>> GetAllGrupos(CancellationToken cancellationToken = default)
-        {
-            return await _context.Set<Grupos>()
-                .Include(g=>g.CoordinadoresGenerales)
-                .Include(g=>g.SubCoordinadores)
-                .Include(g=>g.DirigentesMultiplicadores).ToListAsync();
-        }
+        //public async Task<List<Grupos>> GetAllGrupos(CancellationToken cancellationToken = default)
+        //{
+        //    return await _context.Set<Grupos>()
+        //        .Include(g=>g.CoordinadoresGenerales)
+        //        .Include(g=>g.SubCoordinadores)
+        //        .Include(g=>g.DirigentesMultiplicadores).ToListAsync();
+        //}
     }
 }

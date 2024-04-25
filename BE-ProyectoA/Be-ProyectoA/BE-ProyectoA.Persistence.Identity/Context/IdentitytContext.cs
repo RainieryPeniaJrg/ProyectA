@@ -8,6 +8,8 @@ namespace BE_ProyectoA.Persistence.Identity.Context
     {
         public IdentityContext(DbContextOptions<IdentityContext> options) : base(options)
         {
+
         }
+        public DbSet<RefreshToken> RefreshToken { get; set; }
     }
 }

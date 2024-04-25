@@ -12,7 +12,7 @@ namespace BE_ProyectoA.Core.Application.Interfaces
         Task<LoginResponse> LoginAccountAsync(LoginDTO model);
 
         Task<GeneralResponse> CreateRoleAsync(CreateRoleDTO model);
-
+        Task <LoginResponse> RefreshTokenAsync(RefreshTokenDTO model);
         Task<GeneralResponse> ChangeUserRoleAsync(CreateAccountDTO model);
         Task<IEnumerable<GetRoleDTO>>GetRolesAsync();
         Task<IEnumerable<GetUsersWithRoleDTO>> GetUsersWithRolesAsync();

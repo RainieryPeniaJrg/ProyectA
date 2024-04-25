@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BE_ProyectoA.Infraestructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240424010006_añadiendo_casa_Electoral")]
-    partial class añadiendo_casa_Electoral
+    [Migration("20240425002601_Correccion_de_relacion_grupos")]
+    partial class Correccion_de_relacion_grupos
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -179,6 +179,36 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Migrations
                     b.ToTable("DirigentesMultiplicadores");
                 });
 
+            modelBuilder.Entity("BE_ProyectoA.Core.Domain.Entities.GruposEntity.GrupoDirigente.GrupoDirigente", b =>
+                {
+                    b.Property<Guid>("GrupoId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("DirigenteId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("GrupoId", "DirigenteId");
+
+                    b.HasIndex("DirigenteId");
+
+                    b.ToTable("GrupoDirigente");
+                });
+
+            modelBuilder.Entity("BE_ProyectoA.Core.Domain.Entities.GruposEntity.GrupoSubCoordinador.GrupoSubCoordinador", b =>
+                {
+                    b.Property<Guid>("GrupoId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("SubCoordinadorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("GrupoId", "SubCoordinadorId");
+
+                    b.HasIndex("SubCoordinadorId");
+
+                    b.ToTable("GrupoSubCoordinador");
+                });
+
             modelBuilder.Entity("BE_ProyectoA.Core.Domain.Entities.GruposEntity.Grupos", b =>
                 {
                     b.Property<Guid>("Id")
@@ -187,26 +217,21 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Migrations
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
 
-                    b.Property<Guid>("CoordinadoresGeneralesId")
+                    b.Property<Guid>("CoordinadoresGeneralId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("DirigentesMultiplicadoresId")
+                    b.Property<Guid?>("CoordinadoresGeneralesId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("NombreGrupo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("SubCoordinadoresId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
+                    b.HasIndex("CoordinadoresGeneralId");
+
                     b.HasIndex("CoordinadoresGeneralesId");
-
-                    b.HasIndex("DirigentesMultiplicadoresId");
-
-                    b.HasIndex("SubCoordinadoresId");
 
                     b.ToTable("Grupos");
                 });
@@ -281,7 +306,7 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Migrations
                     b.HasOne("BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral.CoordinadoresGenerales", "Coordinadores")
                         .WithMany("SubCoordinadores")
                         .HasForeignKey("CoordinadorsGeneralesId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.OwnsOne("BE_ProyectoA.Core.Domain.ValueObjects.Direccion", "Direccion", b1 =>
@@ -321,7 +346,7 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Migrations
                     b.HasOne("BE_ProyectoA.Core.Domain.Entities.Coordinadores.SubCoordinadores", "SubCoordinadores")
                         .WithMany("DirigentesMultiplicadores")
                         .HasForeignKey("SubCoordinadoresId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.OwnsOne("BE_ProyectoA.Core.Domain.ValueObjects.Direccion", "Direccion", b1 =>
@@ -356,31 +381,57 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Migrations
                     b.Navigation("SubCoordinadores");
                 });
 
+            modelBuilder.Entity("BE_ProyectoA.Core.Domain.Entities.GruposEntity.GrupoDirigente.GrupoDirigente", b =>
+                {
+                    b.HasOne("BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador.DirigentesMultiplicadores", "Dirigente")
+                        .WithMany()
+                        .HasForeignKey("DirigenteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BE_ProyectoA.Core.Domain.Entities.GruposEntity.Grupos", "Grupo")
+                        .WithMany()
+                        .HasForeignKey("GrupoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Dirigente");
+
+                    b.Navigation("Grupo");
+                });
+
+            modelBuilder.Entity("BE_ProyectoA.Core.Domain.Entities.GruposEntity.GrupoSubCoordinador.GrupoSubCoordinador", b =>
+                {
+                    b.HasOne("BE_ProyectoA.Core.Domain.Entities.GruposEntity.Grupos", "Grupo")
+                        .WithMany()
+                        .HasForeignKey("GrupoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BE_ProyectoA.Core.Domain.Entities.Coordinadores.SubCoordinadores", "SubCoordinador")
+                        .WithMany()
+                        .HasForeignKey("SubCoordinadorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Grupo");
+
+                    b.Navigation("SubCoordinador");
+                });
+
             modelBuilder.Entity("BE_ProyectoA.Core.Domain.Entities.GruposEntity.Grupos", b =>
                 {
-                    b.HasOne("BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral.CoordinadoresGenerales", "CoordinadoresGenerales")
-                        .WithMany("Grupos")
-                        .HasForeignKey("CoordinadoresGeneralesId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                    b.HasOne("BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral.CoordinadoresGenerales", "CoordinadorGeneral")
+                        .WithMany()
+                        .HasForeignKey("CoordinadoresGeneralId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador.DirigentesMultiplicadores", "DirigentesMultiplicadores")
+                    b.HasOne("BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral.CoordinadoresGenerales", null)
                         .WithMany("Grupos")
-                        .HasForeignKey("DirigentesMultiplicadoresId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("CoordinadoresGeneralesId");
 
-                    b.HasOne("BE_ProyectoA.Core.Domain.Entities.Coordinadores.SubCoordinadores", "SubCoordinadores")
-                        .WithMany("Grupos")
-                        .HasForeignKey("SubCoordinadoresId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("CoordinadoresGenerales");
-
-                    b.Navigation("DirigentesMultiplicadores");
-
-                    b.Navigation("SubCoordinadores");
+                    b.Navigation("CoordinadorGeneral");
                 });
 
             modelBuilder.Entity("BE_ProyectoA.Core.Domain.Entities.Votantes.Votante", b =>
@@ -425,13 +476,6 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Migrations
             modelBuilder.Entity("BE_ProyectoA.Core.Domain.Entities.Coordinadores.SubCoordinadores", b =>
                 {
                     b.Navigation("DirigentesMultiplicadores");
-
-                    b.Navigation("Grupos");
-                });
-
-            modelBuilder.Entity("BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador.DirigentesMultiplicadores", b =>
-                {
-                    b.Navigation("Grupos");
                 });
 #pragma warning restore 612, 618
         }

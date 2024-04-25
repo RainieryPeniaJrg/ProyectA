@@ -73,7 +73,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador
         public Cedula Cedula { get; private set; }
         public NumeroTelefono NumeroTelefono { get; private set; }
         public Direccion Direccion { get; set; }
-        public bool Activo { get;  private set; }
+        public bool Activo { get; private set; }
         public ICollection<Grupos> Grupos { get; set; }
         public SubCoordinadoresId SubCoordinadoresId { get; set; } 
         public SubCoordinadores SubCoordinadores {  get; set; } 

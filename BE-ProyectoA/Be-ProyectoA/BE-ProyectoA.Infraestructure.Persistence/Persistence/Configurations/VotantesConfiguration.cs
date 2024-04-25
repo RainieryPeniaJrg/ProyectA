@@ -12,32 +12,33 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
         {
             builder.HasKey(v => v.Id);
 
-            builder.Property(v => v.Id).HasConversion(
-                cId => cId.Value,
-                value => new VotanteId(value));
+            builder.Property(v => v.Id)
+                .HasConversion(
+                    cId => cId.Value,
+                    value => new VotanteId(value));
 
-            builder.Property(v => v.NumeroTelefono).HasConversion(
-              numeroTelefono => numeroTelefono.Value, value => NumeroTelefono.Create(value)!)
-              .HasMaxLength(20);
+            builder.Property(v => v.NumeroTelefono)
+                .HasConversion(
+                    numeroTelefono => numeroTelefono.Value,
+                    value => NumeroTelefono.Create(value)!)
+                .HasMaxLength(20);
 
-
-            builder.Property(v => v.Cedula).HasConversion(
-               cedula => cedula.Value, value => Cedula.Create(value)!)
-               .HasMaxLength(20);
+            builder.Property(v => v.Cedula)
+                .HasConversion(
+                    cedula => cedula.Value,
+                    value => Cedula.Create(value)!)
+                .HasMaxLength(20);
 
             builder.Property(v => v.Activo);
-
 
             builder.OwnsOne(v => v.Direccion, direccionBuilder =>
             {
                 direccionBuilder.Property(d => d.Provincia).HasMaxLength(30);
                 direccionBuilder.Property(d => d.Sector).HasMaxLength(30);
                 direccionBuilder.Property(d => d.CasaElectoral);
-
             });
 
             builder.Property(v => v.Nombre).HasMaxLength(30);
-
             builder.Property(v => v.Apellido).HasMaxLength(30);
 
             builder.Ignore(v => v.NombreCompleto);
