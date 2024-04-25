@@ -1,9 +1,11 @@
 ﻿using BE_ProyectoA.Core.Application.Common.ValueObjectsValidators;
+using BE_ProyectoA.Core.Domain.Entities.Authentication;
 using BE_ProyectoA.Core.Domain.Entities.Votantes;
 using BE_ProyectoA.Core.Domain.Primitivies;
 using BE_ProyectoA.Core.Domain.ValueObjects;
 using ErrorOr;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 
 namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
 {
@@ -11,16 +13,21 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IVotanteRepository _votantesRepository;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private UserManager<ApplicationUser> _userManager;
 
-        public CreateVotanteCommandHandler(IUnitOfWork unitOfWork, IVotanteRepository votantesRepository)
+        public CreateVotanteCommandHandler(IUnitOfWork unitOfWork, IVotanteRepository votantesRepository, RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager)
         {
             _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
             _votantesRepository = votantesRepository ?? throw new ArgumentNullException(nameof(votantesRepository));
+            _roleManager = roleManager ?? throw new ArgumentNullException(nameof(roleManager));
+            _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
         }
 
         public async Task<ErrorOr<Unit>> Handle(CreateVotanteCommand command, CancellationToken cancellationToken)
         {
 
+            await _userManager.FindByIdAsync( command.MiembroId.ToString().ToLowerInvariant());
             // Validar los datos de entrada
             var validationResult = ValueObjectValidators.ValidarDatos(command.Cedula, command.NumeroTelefono, command.Provincia, command.Sector, command.CasaElectoral);
             if (validationResult.IsError)
@@ -41,7 +48,7 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
                 true
             );
 
-            // Guardar el votante y realizar cambios en la unidad de trabajo
+ 
             await _votantesRepository.AddAsync(votante, cancellationToken);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
 

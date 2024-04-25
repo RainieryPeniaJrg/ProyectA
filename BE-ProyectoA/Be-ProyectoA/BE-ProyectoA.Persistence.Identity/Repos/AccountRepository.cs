@@ -172,8 +172,8 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
                        cedula: Cedula.Create(model.Cedula)!,
                        numeroTelefono: NumeroTelefono.Create(model.NumeroTelefono)!,
                        activo: model.Activo,
+                       cantidadVotantes : CantidadVotos.Create(model.CantidadVotantes)!,
                        direccion: Direccion.Create(model.Provincia, model.Sector, model.casaElectoral)!
-
                    );
                         await coordinadorGeneralRepository.AddAsync(coordinador, cancellationToken);
                         await unitOfWork.SaveChangesAsync(cancellationToken);
@@ -202,7 +202,7 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
                         (id: new SubCoordinadoresId(Guid.Parse(requestId)),
                         nombre: model.Nombre,
                         apellido: model.Apellido,
-                        cantidadVotos: model.CantidadVotantes,
+                        cantidadVotos: CantidadVotos.Create(model.CantidadVotantes)!,
                         numeroTelefono: NumeroTelefono.Create(model.NumeroTelefono)!,
                         cedula: Cedula.Create(model.Cedula)!,
                         activo: model.Activo,
@@ -239,14 +239,14 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
                   apellido: model.Apellido,
                   activo: model.Activo,
                   direccion: Direccion.Create(model.Provincia, model.Sector, model.casaElectoral)!,
-                  model.CantidadVotantes,
+                  cantidadVotantes: CantidadVotos.Create(model.CantidadVotantes)!,
                   subCoordiadorId,
                   subCoordinador!
-                
-                 
-               
 
-                  );
+
+
+
+                  ); ; ;
                         await dirigenteMultiplicadorRepository.AddAsync(dirigente, cancellationToken);
                         await unitOfWork.SaveChangesAsync(cancellationToken);
                     }

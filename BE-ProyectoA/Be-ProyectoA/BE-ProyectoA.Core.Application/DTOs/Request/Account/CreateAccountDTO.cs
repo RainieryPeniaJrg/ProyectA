@@ -7,7 +7,6 @@ namespace BE_ProyectoA.Core.Application.DTOs.Request.Account
     {
         [Required]
         public string Nombre { get; set; } = string.Empty;
-
         [Required]
         public string Apellido { get; set; } = string.Empty;
         [Required]
@@ -21,7 +20,7 @@ namespace BE_ProyectoA.Core.Application.DTOs.Request.Account
         [Required]
         public int casaElectoral {get; set; }
         [Required]
-        public CantidadVotos CantidadVotantes { get; set; }
+        public int CantidadVotantes { get; set; }
    
         public bool Activo { get; set; }
 
