@@ -12,12 +12,12 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
     public class AccountController (IAccount account) : ControllerBase
     {
         [HttpPost("identity/create")]
-        public async Task<ActionResult<GeneralResponse>> CreateAccount(CreateAccountDTO model)
+        public async Task<ActionResult<GeneralResponse>> CreateAccount(CreateAccountDTO model,CancellationToken cancellationToken = default)
         {
             if(!ModelState.IsValid)
                 return BadRequest("model cannot be null");
 
-            return Ok(await account.CreateAccountAsync(model));
+            return Ok(await account.CreateAccountAsync(model, cancellationToken));
             
         }
 

@@ -4,10 +4,14 @@ using BE_ProyectoA.Core.Application.DirigentesFeatures.Commands.Update;
 using BE_ProyectoA.Core.Application.DirigentesFeatures.Querys.GetAll;
 using ErrorOr;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BE_ProyectoA.Presentation.WebApi.Controllers
 {
+    [Authorize(Roles = "Admin,SubCoordinador,Dirigente")]
+    [Route("api/[controller]")]
+    [ApiController]
     public class DirigentesController(ISender mediator) : ApiControllercs
     {
         private readonly ISender _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));

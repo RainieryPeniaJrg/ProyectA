@@ -7,7 +7,7 @@ namespace BE_ProyectoA.Core.Application.Interfaces
     public interface IAccount
     {
         Task CreateAdmin();
-        Task<GeneralResponse> CreateAccountAsync(CreateAccountDTO model);
+        Task<GeneralResponse> CreateAccountAsync(CreateAccountDTO model,CancellationToken cancellationToken);
 
         Task<LoginResponse> LoginAccountAsync(LoginDTO model);
 

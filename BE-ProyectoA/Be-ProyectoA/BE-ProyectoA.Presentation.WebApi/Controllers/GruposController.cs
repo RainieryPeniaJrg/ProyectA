@@ -1,10 +1,14 @@
 ﻿using BE_ProyectoA.Core.Application.GrupoFeatures.Commands.Create;
 using BE_ProyectoA.Core.Application.GrupoFeatures.Querys;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BE_ProyectoA.Presentation.WebApi.Controllers
 {
+    [Authorize(Roles = "Admin,CoordinadorGeneral")]
+    [Route("api/[controller]")]
+    [ApiController]
     public class GruposController(ISender mediator) : ApiControllercs
     {
         private readonly ISender _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));

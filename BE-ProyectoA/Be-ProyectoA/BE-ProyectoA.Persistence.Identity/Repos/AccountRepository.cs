@@ -1,18 +1,21 @@
-﻿using BE_ProyectoA.Core.Application.DTOs.Request.Account;
+﻿using BE_ProyectoA.Core.Application.Common.ValueObjectsValidators;
+using BE_ProyectoA.Core.Application.DTOs.Request.Account;
 using BE_ProyectoA.Core.Application.DTOs.Response;
 using BE_ProyectoA.Core.Application.DTOs.Response.Account;
-using BE_ProyectoA.Core.Application.Extensions;
 using BE_ProyectoA.Core.Application.Interfaces;
 using BE_ProyectoA.Core.Domain.Entities.Authentication;
+using BE_ProyectoA.Core.Domain.Entities.Coordinadores;
+using BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral;
+using BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador;
+using BE_ProyectoA.Core.Domain.Primitivies;
+using BE_ProyectoA.Core.Domain.ValueObjects;
 using BE_ProyectoA.Persistence.Identity.Context;
 using Mapster;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json.Linq;
 using System.IdentityModel.Tokens.Jwt;
-using System.Reflection.Metadata;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
@@ -25,7 +28,12 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
         RoleManager<IdentityRole> roleManager,
         UserManager<ApplicationUser> userManager, IConfiguration config,
         SignInManager<ApplicationUser> signInManager,
-        IdentityContext context
+        IdentityContext context,
+        ICoordinadorGeneralRepository coordinadorGeneralRepository,
+        ISubCoordinadorRepository subCoordinadorRepository,
+        IDirigenteMultiplicadorRepository dirigenteMultiplicadorRepository,
+        IUnitOfWork unitOfWork
+
         ) : IAccount
     {
         private async Task<ApplicationUser> FindUserByEmailAsync(string email) 
@@ -120,7 +128,7 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
     
         }
 
-        public async Task<GeneralResponse> CreateAccountAsync(CreateAccountDTO model)
+        public async Task<GeneralResponse> CreateAccountAsync(CreateAccountDTO model,CancellationToken cancellationToken= default)
         {
             try
             {
@@ -141,8 +149,83 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
                 if (!string.IsNullOrEmpty(error)) return new GeneralResponse(false, error);
 
                 var (flag,message) = await AssignUserToRole(user, new IdentityRole() { Name = model.Role });
+
+                if (model.Role == "CoordinadorGeneral")
+                {
+                    ValueObjectValidators.ValidarDatos(model.Cedula, model.NumeroTelefono, model.Provincia, model.Sector, model.casaElectoral);
+                    var coordinador = new CoordinadoresGenerales(
+                        id: new CoordinadoresGeneralesId(Guid.NewGuid()),
+                        nombre: model.Nombre,
+                        apellido: model.Apellido,
+                        cedula: Cedula.Create(model.Cedula)!,
+                        numeroTelefono: NumeroTelefono.Create(model.NumeroTelefono)!,
+                        activo: model.Activo,
+                        direccion: Direccion.Create(model.Provincia, model.Sector, model.casaElectoral)!
+
+                   
+                    ); ;
+                    await coordinadorGeneralRepository.AddAsync(coordinador, cancellationToken);
+                    await unitOfWork.SaveChangesAsync(cancellationToken);
+
+
+                }
+                if(model.Role == "SubCoordinador")
+                {
+                    ValueObjectValidators.ValidarDatos(model.Cedula, model.NumeroTelefono, model.Provincia, model.Sector, model.casaElectoral);
+
+                    var coordiadorGeneralId = new CoordinadoresGeneralesId(model.CoordinadorGeneralId);
+
+                    if(!await coordinadorGeneralRepository.ExistsAsync(coordiadorGeneralId, cancellationToken))
+                        return new GeneralResponse(false, "El coordinador general no existe");
+
+                    var coordinador = await coordinadorGeneralRepository.GetByIdAsync(coordiadorGeneralId, cancellationToken);
+
+                    var subCoordinador = new SubCoordinadores
+                        (id: new SubCoordinadoresId(Guid.NewGuid()),
+                        nombre: model.Nombre,
+                        apellido: model.Apellido,
+                        cantidadVotos: model.CantidadVotantes,
+                        numeroTelefono: NumeroTelefono.Create(model.NumeroTelefono)!,
+                        cedula: Cedula.Create(model.Cedula)!,
+                        activo: model.Activo,
+                        direccion: Direccion.Create(model.Provincia, model.Sector, model.casaElectoral)!,
+                        coordinadorsGeneralesId: coordiadorGeneralId,
+                        coordinador!
+                        ) ;
+
+                    await subCoordinadorRepository.AddAsync(subCoordinador, cancellationToken);
+                    await unitOfWork.SaveChangesAsync(cancellationToken);
+                }
+                if(model.Role == "Dirigente")
+                {
+                    ValueObjectValidators.ValidarDatos(model.Cedula, model.NumeroTelefono, model.Provincia, model.Sector, model.casaElectoral);
+                    var subCoordiadorId = new DirigentesMultiplicadoresId(model.SubCoordinadorId);
+                    if(!await subCoordinadorRepository.ExistsAsync(subCoordiadorId, cancellationToken))
+                        return new GeneralResponse(false, "El Subcoordinador  no existe");
+
+                    var subCoordinador = await subCoordinadorRepository.GetByIdAsync(subCoordiadorId, cancellationToken);
+
+                    var dirigente = new DirigentesMultiplicadores
+                        (
+                        id: new DirigentesMultiplicadoresId(Guid.NewGuid()),
+                        cedula: Cedula.Create(model.Cedula)!,
+                        numeroTelefono: NumeroTelefono.Create(model.NumeroTelefono)!,
+                        nombre: model.Nombre,
+                        apellido: model.Apellido,
+                        activo: model.Activo,
+                        direccion: Direccion.Create(model.Provincia,model.Sector,model.casaElectoral)!,
+                        model.CantidadVotantes,
+                        subCoordinador!
+                        
+                        );
+                    await dirigenteMultiplicadorRepository.AddAsync(dirigente, cancellationToken);
+                    await unitOfWork.SaveChangesAsync(cancellationToken);
+                }
+
+                 
                 return new GeneralResponse(flag, message);
                 
+
             }catch(Exception ex)
             {
 

@@ -57,6 +57,8 @@ namespace BE_ProyectoA.Core.Domain.Entities.Coordinadores
             Coordinadores = coordinadores;
           
         }
+
+    
         public SubCoordinadores(SubCoordinadoresId id, string nombre, string apellido, int cantidadVotos, NumeroTelefono numeroTelefono, Cedula cedula, bool activo, Direccion direccion,CoordinadoresGenerales coordinadores)
         {
             Id = id;

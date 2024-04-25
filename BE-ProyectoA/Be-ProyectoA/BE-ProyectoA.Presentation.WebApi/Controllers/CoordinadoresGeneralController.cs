@@ -4,10 +4,12 @@ using BE_ProyectoA.Core.Application.CoordinadoresGeneralesFeatures.Commands.Upda
 using BE_ProyectoA.Core.Application.CoordinadoresGeneralesFeatures.Query.GetAll;
 using ErrorOr;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BE_ProyectoA.Presentation.WebApi.Controllers
 {
+    [Authorize(Roles = "Admin,CoordinadorGeneral")]
     public class CoordinadoresGeneralController(ISender mediator) : ApiControllercs
     {
         private readonly ISender _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));

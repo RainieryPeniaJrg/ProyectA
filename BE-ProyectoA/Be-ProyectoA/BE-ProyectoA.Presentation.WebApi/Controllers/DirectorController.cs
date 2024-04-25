@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace BE_ProyectoA.Presentation.WebApi.Controllers
 {
     [Authorize(Roles = "Admin")]
+    [Route("api/[controller]")]
+    [ApiController]
     public class DirectorController(ISender mediator) : ApiControllercs
     {
         private readonly ISender _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
