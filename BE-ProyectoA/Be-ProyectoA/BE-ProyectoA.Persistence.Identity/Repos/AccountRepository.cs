@@ -150,22 +150,36 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
 
                 var (flag,message) = await AssignUserToRole(user, new IdentityRole() { Name = model.Role });
 
+
+
+
                 if (model.Role == "CoordinadorGeneral")
                 {
-                    ValueObjectValidators.ValidarDatos(model.Cedula, model.NumeroTelefono, model.Provincia, model.Sector, model.casaElectoral);
-                    var coordinador = new CoordinadoresGenerales(
-                        id: new CoordinadoresGeneralesId(Guid.NewGuid()),
-                        nombre: model.Nombre,
-                        apellido: model.Apellido,
-                        cedula: Cedula.Create(model.Cedula)!,
-                        numeroTelefono: NumeroTelefono.Create(model.NumeroTelefono)!,
-                        activo: model.Activo,
-                        direccion: Direccion.Create(model.Provincia, model.Sector, model.casaElectoral)!
 
-                   
-                    ); ;
-                    await coordinadorGeneralRepository.AddAsync(coordinador, cancellationToken);
-                    await unitOfWork.SaveChangesAsync(cancellationToken);
+                 
+
+                    ValueObjectValidators.ValidarDatos(model.Cedula, model.NumeroTelefono, model.Provincia, model.Sector, model.casaElectoral);
+
+                    var userRequest = await userManager.FindByEmailAsync(model.Email);
+                    if(userRequest != null)
+                    {
+                        var requestId = userRequest.Id;
+
+                        var coordinador = new CoordinadoresGenerales(
+                       id: new CoordinadoresGeneralesId(Guid.Parse(requestId)),
+                       nombre: model.Nombre,
+                       apellido: model.Apellido,
+                       cedula: Cedula.Create(model.Cedula)!,
+                       numeroTelefono: NumeroTelefono.Create(model.NumeroTelefono)!,
+                       activo: model.Activo,
+                       direccion: Direccion.Create(model.Provincia, model.Sector, model.casaElectoral)!
+
+
+                   );
+                        await coordinadorGeneralRepository.AddAsync(coordinador, cancellationToken);
+                        await unitOfWork.SaveChangesAsync(cancellationToken);
+
+                    }
 
 
                 }
@@ -180,8 +194,13 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
 
                     var coordinador = await coordinadorGeneralRepository.GetByIdAsync(coordiadorGeneralId, cancellationToken);
 
-                    var subCoordinador = new SubCoordinadores
-                        (id: new SubCoordinadoresId(Guid.NewGuid()),
+
+                    var userRequest = await userManager.FindByEmailAsync(model.Email);
+                    if (userRequest != null)
+                    {
+                        var requestId = userRequest.Id;
+                        var subCoordinador = new SubCoordinadores
+                        (id: new SubCoordinadoresId(Guid.Parse(requestId)),
                         nombre: model.Nombre,
                         apellido: model.Apellido,
                         cantidadVotos: model.CantidadVotantes,
@@ -191,35 +210,49 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
                         direccion: Direccion.Create(model.Provincia, model.Sector, model.casaElectoral)!,
                         coordinadorsGeneralesId: coordiadorGeneralId,
                         coordinador!
-                        ) ;
+                        );
+                        await subCoordinadorRepository.AddAsync(subCoordinador, cancellationToken);
 
-                    await subCoordinadorRepository.AddAsync(subCoordinador, cancellationToken);
-                    await unitOfWork.SaveChangesAsync(cancellationToken);
+                        await unitOfWork.SaveChangesAsync(cancellationToken);
+                    }
+                       
+
+                   
                 }
                 if(model.Role == "Dirigente")
                 {
                     ValueObjectValidators.ValidarDatos(model.Cedula, model.NumeroTelefono, model.Provincia, model.Sector, model.casaElectoral);
-                    var subCoordiadorId = new DirigentesMultiplicadoresId(model.SubCoordinadorId);
+                    var subCoordiadorId = new SubCoordinadoresId(model.SubCoordinadorId);
                     if(!await subCoordinadorRepository.ExistsAsync(subCoordiadorId, cancellationToken))
                         return new GeneralResponse(false, "El Subcoordinador  no existe");
 
-                    var subCoordinador = await subCoordinadorRepository.GetByIdAsync(subCoordiadorId, cancellationToken);
+                  var subCoordinador = await subCoordinadorRepository.GetByIdAsync(subCoordiadorId, cancellationToken);
+                  var userRequest =  await userManager.FindByEmailAsync(model.Email);
+                  if(userRequest != null)
+                    {
+                        var requestId = userRequest.Id;
+                        var dirigente = new DirigentesMultiplicadores
+                  (
+                  id: new DirigentesMultiplicadoresId(Guid.Parse(requestId)),
+                  cedula: Cedula.Create(model.Cedula)!,
+                  numeroTelefono: NumeroTelefono.Create(model.NumeroTelefono)!,
+                  nombre: model.Nombre,
+                  apellido: model.Apellido,
+                  activo: model.Activo,
+                  direccion: Direccion.Create(model.Provincia, model.Sector, model.casaElectoral)!,
+                  model.CantidadVotantes,
+                  subCoordiadorId,
+                  subCoordinador!
+                
+                  
+                  
+               
 
-                    var dirigente = new DirigentesMultiplicadores
-                        (
-                        id: new DirigentesMultiplicadoresId(Guid.NewGuid()),
-                        cedula: Cedula.Create(model.Cedula)!,
-                        numeroTelefono: NumeroTelefono.Create(model.NumeroTelefono)!,
-                        nombre: model.Nombre,
-                        apellido: model.Apellido,
-                        activo: model.Activo,
-                        direccion: Direccion.Create(model.Provincia,model.Sector,model.casaElectoral)!,
-                        model.CantidadVotantes,
-                        subCoordinador!
-                        
-                        );
-                    await dirigenteMultiplicadorRepository.AddAsync(dirigente, cancellationToken);
-                    await unitOfWork.SaveChangesAsync(cancellationToken);
+                  );
+                        await dirigenteMultiplicadorRepository.AddAsync(dirigente, cancellationToken);
+                        await unitOfWork.SaveChangesAsync(cancellationToken);
+                    }
+              
                 }
 
                  
