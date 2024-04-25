@@ -4,10 +4,13 @@ using BE_ProyectoA.Core.Application.DTOs.Response.Account;
 using BE_ProyectoA.Core.Application.Extensions;
 using BE_ProyectoA.Core.Application.Interfaces;
 using BE_ProyectoA.Core.Domain.Entities.Authentication;
+using BE_ProyectoA.Persistence.Identity.Context;
 using Mapster;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Linq;
 using System.IdentityModel.Tokens.Jwt;
 using System.Reflection.Metadata;
 using System.Security.Claims;
@@ -21,7 +24,8 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
         (
         RoleManager<IdentityRole> roleManager,
         UserManager<ApplicationUser> userManager, IConfiguration config,
-        SignInManager<ApplicationUser> signInManager
+        SignInManager<ApplicationUser> signInManager,
+        IdentityContext context
         ) : IAccount
     {
         private async Task<ApplicationUser> FindUserByEmailAsync(string email) 
@@ -96,9 +100,24 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
             return null!;
         }
 
-        public Task<GeneralResponse> ChangeUserRoleAsync(CreateAccountDTO model)
+        public async Task<GeneralResponse> ChangeUserRoleAsync(ChangeRoleRequestDTO model)
         {
-            throw new NotImplementedException();
+            if (await FindByRoleNameAsync(model.RoleName) is null) return new GeneralResponse(false, "rol no encontrado");
+            if (await FindUserByEmailAsync(model.UserEmail) is null) return new GeneralResponse(false, "Usuario no encontrado");
+
+            var user = await FindUserByEmailAsync(model.UserEmail);
+            var previousRole = (await userManager.GetRolesAsync(user)).FirstOrDefault();
+            var removeRoleOldRole = await userManager.RemoveFromRoleAsync(user,previousRole);
+
+            var error = CheckResponse(removeRoleOldRole);
+            if (!string.IsNullOrEmpty(error)) return new GeneralResponse(false, error);
+
+            var result = await userManager.AddToRoleAsync(user,model.RoleName);
+            var response = CheckResponse(result);
+            if (!string.IsNullOrEmpty(response)) return new GeneralResponse(false, response);
+            else
+                return new GeneralResponse(true, "Role cambiado");
+    
         }
 
         public async Task<GeneralResponse> CreateAccountAsync(CreateAccountDTO model)
@@ -135,7 +154,8 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
         {
             try
             {
-                if ((await FindUserByEmailAsync(Constant.Role.Admin)) == null) return;
+                if ((await FindUserByEmailAsync(Constant.Role.Admin)) != null) 
+                    return;
 
                 var admin = new CreateAccountDTO()
                 {
@@ -148,19 +168,52 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
             }catch { }
         }
 
-        public Task<GeneralResponse> CreateRoleAsync(CreateRoleDTO model)
+        public async Task<GeneralResponse> CreateRoleAsync(CreateRoleDTO model)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if ((await FindByRoleNameAsync(model.Name) == null))
+                {
+                    var response = await roleManager.CreateAsync(new IdentityRole(model.Name)); 
+                    var error = CheckResponse(response);
+                    if (!string.IsNullOrEmpty(error))
+                        throw new Exception(error);
+                    else
+                        return new GeneralResponse(true, $"{model.Name} Creado");
+                }
+
+                return new GeneralResponse(false, $"{model.Name} ya existe");
+
+            }catch (
+            Exception ex) 
+            { throw new Exception(ex.Message); }
         }
 
-        public Task<IEnumerable<GetRoleDTO>> GetRolesAsync()
+        public async Task<IEnumerable<GetRoleDTO>> GetRolesAsync() =>(await roleManager.Roles.ToListAsync()).Adapt<IEnumerable<GetRoleDTO>>();
+      
+        public async Task<IEnumerable<GetUsersWithRoleDTO>> GetUsersWithRolesAsync()
         {
-            throw new NotImplementedException();
-        }
+            var allUser = await userManager.Users.ToListAsync();
 
-        public Task<IEnumerable<GetUsersWithRoleDTO>> GetUsersWithRolesAsync()
-        {
-            throw new NotImplementedException();
+            if (allUser is null) return null;
+
+            var List = new List<GetUsersWithRoleDTO>();
+
+            foreach (var user in allUser)
+            {
+                var getUserRole = (await userManager.GetRolesAsync(user)).FirstOrDefault();
+                var getRoleInfo = await roleManager.Roles.FirstOrDefaultAsync(r=>r.Name.ToLower() == getUserRole.ToLower());
+
+                List.Add(new GetUsersWithRoleDTO()
+                {
+                    Name = user.Nombre,
+                    Email = user.Email,
+                    RoleId = getRoleInfo.Id,
+                    RoleName = getRoleInfo.Name,
+                });
+
+            }
+            return List;
         }
 
         public async Task<LoginResponse> LoginAccountAsync(LoginDTO model)
@@ -188,11 +241,18 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
                 string jwtToken = await GenerateToken(user);
                 string refreshToken = GenerateRefreshToken();
 
-                if (string.IsNullOrEmpty(jwtToken) || string.IsNullOrEmpty(refreshToken))
-                    return new LoginResponse(false, "Error ocurrido mientras inicia sesion, favor contacta con el adiministrador");
+               if(string.IsNullOrEmpty(jwtToken) || string.IsNullOrEmpty(refreshToken))
+                    {
+                    return new LoginResponse(false, "Ha ocurrido un error al iniciar sesion, contacte con el administrador");
+                     }
                 else
-                    return new LoginResponse(true,$"{user.Nombre} ha iniciado sesion correctamente",jwtToken,refreshToken);
-
+                {
+                    var SaveResult = await SaveRefreshToken(user.Id, refreshToken);
+                    if (SaveResult.Flag)
+                        return new LoginResponse(true, $"{user.Nombre} ha iniciado sesesion correctamente", jwtToken, refreshToken);
+                    else
+                        return new LoginResponse();
+                }
             }
             catch (Exception ex)
             {
@@ -200,9 +260,45 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
             }
         }
 
-        public Task<LoginResponse> RefreshTokenAsync(RefreshTokenDTO model)
+        public async Task<LoginResponse> RefreshTokenAsync(RefreshTokenDTO model)
         {
-            throw new NotImplementedException();
+            var token = await context.RefreshToken.FirstOrDefaultAsync(t => t.Token == model.Token);
+            if (token == null) return new LoginResponse();
+
+            var user = await userManager.FindByIdAsync(token.UserId!);
+            string newToken = await GenerateToken(user!);
+            string newRefreshToken = GenerateRefreshToken();
+
+            var saveResult = await SaveRefreshToken(user.Id, newRefreshToken);
+
+            if (saveResult.Flag)
+                return new LoginResponse(true, $"{user.Nombre} ha iniciado sesesion correctamente", newToken, newRefreshToken);
+            else
+                return new LoginResponse();
+
+        }
+
+        private async Task<GeneralResponse>SaveRefreshToken(string userId,string token)
+        {
+            try
+            {
+                var user = await context.RefreshToken.FirstOrDefaultAsync(t => t.UserId == userId);
+
+                if (user == null)
+                    context.RefreshToken.Add(new RefreshToken() { UserId = userId, Token = token });
+                else
+                    user.Token = token;
+                    return new GeneralResponse(true, null!);
+                
+            }
+            catch (Exception ex) 
+            {
+
+                return new GeneralResponse(false, ex.Message);
+            }
+            
+                
+            
         }
     }
 }

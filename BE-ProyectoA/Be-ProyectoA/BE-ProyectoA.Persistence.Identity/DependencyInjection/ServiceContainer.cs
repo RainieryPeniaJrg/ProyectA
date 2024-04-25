@@ -1,5 +1,7 @@
-﻿using BE_ProyectoA.Core.Domain.Entities.Authentication;
+﻿using BE_ProyectoA.Core.Application.Interfaces;
+using BE_ProyectoA.Core.Domain.Entities.Authentication;
 using BE_ProyectoA.Persistence.Identity.Context;
+using BE_ProyectoA.Persistence.Identity.Repos;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -61,7 +63,7 @@ namespace BE_ProyectoA.Persistence.Identity.DependencyInjection
                     );
                     
                 });
-
+            services.AddScoped<IAccount, AccountRepository>();
             return services;
             
         

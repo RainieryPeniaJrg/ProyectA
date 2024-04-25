@@ -2,15 +2,16 @@
 using BE_ProyectoA.Core.Application.Director.Commands.Delete;
 using BE_ProyectoA.Core.Domain.Entities.Director;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BE_ProyectoA.Presentation.WebApi.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class DirectorController(ISender mediator) : ApiControllercs
     {
         private readonly ISender _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
 
-      
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] DirectorCreateCommand command)
         {

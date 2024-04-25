@@ -11,8 +11,8 @@ namespace BE_ProyectoA.Core.Application.DTOs.Request.Account
         public string Email { get; set; } = string.Empty;
 
         [Required]
-        [RegularExpression("^(?=.*?[A-Z])(?=.*?>[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*]).{8,}$",
-            ErrorMessage = "Su contraseña debe de tener un digito numerico y caracter especial")]
+        [RegularExpression("^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*]).{8,}$",
+     ErrorMessage = "Su contraseña debe contener al menos una letra minúscula, una letra mayúscula, un dígito numérico y un carácter especial.")]
         public string Password { get; set; } = string.Empty;
     }
 }

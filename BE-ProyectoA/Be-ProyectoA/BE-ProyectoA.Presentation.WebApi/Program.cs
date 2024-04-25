@@ -32,7 +32,7 @@ if (app.Environment.IsDevelopment())
     app.ApplyMigration();
 }
 app.UseCors("DefaultPolicy");
-
+app.UseCors("WebUi");
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
