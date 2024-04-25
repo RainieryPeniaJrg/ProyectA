@@ -1,5 +1,4 @@
 ﻿using BE_ProyectoA.Core.Domain.Entities.GruposEntity;
-using BE_ProyectoA.Core.Domain.Entities.Votantes;
 using BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repository;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,15 +9,16 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repos
         private readonly ApplicationDbContext _context;
         public GruposRepository(ApplicationDbContext context) : base(context)
         {
-            _context = context; 
+            _context = context;
         }
 
-        //public async Task<List<Grupos>> GetAllGrupos(CancellationToken cancellationToken = default)
-        //{
-        //    return await _context.Set<Grupos>()
-        //        .Include(g=>g.CoordinadoresGenerales)
-        //        .Include(g=>g.SubCoordinadores)
-        //        .Include(g=>g.DirigentesMultiplicadores).ToListAsync();
-        //}
+        public async Task<IReadOnlyList<Grupos>> GetAllGrupos(CancellationToken cancellationToken)
+        {
+            return await _context.Grupos
+                .Include(g => g.DirigentesMultiplicadores)
+                .Include(g => g.CoordinadorGeneral)
+                .Include(g => g.SubCoordinadores)
+                .ToListAsync(cancellationToken);
+        }
     }
 }

@@ -8,10 +8,10 @@ namespace BE_ProyectoA.Core.Application.GrupoFeatures.Commands.Create
         (
 
           string NombreGrupo,
-        ICollection<Guid> DirigentesMultiplicadoresIds,
-        ICollection<Guid> CoordinadoresGeneralesIds,
-        ICollection<Guid> SubCoordinadoresIds,
-        bool Active 
+          ICollection<Guid> DirigentesMultiplicadoresIds,
+         Guid CoordinadoresGeneralesId,
+         ICollection<Guid> SubCoordinadoresIds,
+         bool Active 
         
         )
         : IRequest<ErrorOr<Unit>>;

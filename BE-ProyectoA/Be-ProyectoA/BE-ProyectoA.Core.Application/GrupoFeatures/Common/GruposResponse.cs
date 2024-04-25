@@ -1,50 +1,26 @@
-﻿
-using BE_ProyectoA.Core.Domain.ValueObjects;
-
-namespace BE_ProyectoA.Core.Application.GrupoFeatures.Common
+﻿namespace BE_ProyectoA.Core.Application.GrupoFeatures.Common
 {
-    public record GruposResponse
-        (
-        string NombreGrupo,
-        CoordinadorGeneralResponse CoordinadorGeneralResponse,
-        SubCoordinadorResponse SubCoordinadorResponse,
-        DirigenteResponse DirigenteResponse
-        );
-    
-        
+    public record GrupoResponse(
+     Guid Id,
+     string NombreGrupo,
+     List<DirigenteMultiplicadorResponse> DirigentesMultiplicadores,
+     CoordinadorGeneralResponse CoordinadorGeneral,
+     List<SubCoordinadorResponse> SubCoordinadores,
+     bool Active
+ );
 
-    
-
-    public record DirigenteResponse
-       (
-           Guid Id,
-           string NombreCompleto,
-           int CantidadVotantes,
-           Cedula Cedula,
-           NumeroTelefono NumeroTelefono,
-           Direccion Direccion,
-           bool Activo
-       );
-
-    public record SubCoordinadorResponse
-   (
-       Guid Id,
-       string NombreCompleto,
-       int CantidadVotantes,
-       Cedula Cedula,
-       NumeroTelefono NumeroTelefono,
-       Direccion Direccion,
-       bool Activo
-   );
-
-    public record CoordinadorGeneralResponse
-    (
+    public record DirigenteMultiplicadorResponse(
         Guid Id,
-        string NombreCompleto,
-        int CantidadVotantes,
-        Cedula Cedula,
-        NumeroTelefono NumeroTelefono,
-        Direccion Direccion,
-        bool Activo
+        string NombreCompleto
+    );
+
+    public record CoordinadorGeneralResponse(
+        Guid Id,
+        string NombreCompleto
+    );
+
+    public record SubCoordinadorResponse(
+        Guid Id,
+        string NombreCompleto
     );
 }

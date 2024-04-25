@@ -18,6 +18,11 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
                     value => new GruposId(value)
                 );
 
+            builder.HasOne(g => g.CoordinadorGeneral)
+                .WithMany(c=>c.Grupos)
+                .HasForeignKey(g => g.CoordinadoresGeneralesId)
+                .OnDelete(DeleteBehavior.NoAction);
+
             builder.HasMany(g => g.DirigentesMultiplicadores)
                 .WithMany(d => d.Grupos)
                 .UsingEntity<GrupoDirigente>(
@@ -32,10 +37,11 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
                     j => j.HasOne(gs => gs.Grupo).WithMany()
                 );
 
-            builder.HasOne(g => g.CoordinadorGeneral)
-                .WithMany()
-                .HasForeignKey(g => g.CoordinadoresGeneralId)
-                .OnDelete(DeleteBehavior.NoAction); // Especifica cómo manejar las eliminaciones
+        
+          //  builder.HasOne(g => g.CoordinadorGeneral)
+          //.WithMany()
+          //.HasForeignKey(g => g.CoordinadorGeneralId)
+          //.OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

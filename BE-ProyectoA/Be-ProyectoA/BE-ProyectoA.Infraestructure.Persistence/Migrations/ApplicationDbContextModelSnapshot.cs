@@ -214,10 +214,7 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Migrations
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
 
-                    b.Property<Guid>("CoordinadoresGeneralId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("CoordinadoresGeneralesId")
+                    b.Property<Guid>("CoordinadoresGeneralesId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("NombreGrupo")
@@ -225,8 +222,6 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CoordinadoresGeneralId");
 
                     b.HasIndex("CoordinadoresGeneralesId");
 
@@ -419,14 +414,10 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Migrations
             modelBuilder.Entity("BE_ProyectoA.Core.Domain.Entities.GruposEntity.Grupos", b =>
                 {
                     b.HasOne("BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral.CoordinadoresGenerales", "CoordinadorGeneral")
-                        .WithMany()
-                        .HasForeignKey("CoordinadoresGeneralId")
+                        .WithMany("Grupos")
+                        .HasForeignKey("CoordinadoresGeneralesId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
-
-                    b.HasOne("BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral.CoordinadoresGenerales", null)
-                        .WithMany("Grupos")
-                        .HasForeignKey("CoordinadoresGeneralesId");
 
                     b.Navigation("CoordinadorGeneral");
                 });

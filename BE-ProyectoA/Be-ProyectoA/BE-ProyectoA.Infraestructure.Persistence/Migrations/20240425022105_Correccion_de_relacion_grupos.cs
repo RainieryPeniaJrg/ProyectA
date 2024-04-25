@@ -73,18 +73,12 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     NombreGrupo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CoordinadoresGeneralId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Active = table.Column<bool>(type: "bit", nullable: false),
-                    CoordinadoresGeneralesId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    CoordinadoresGeneralesId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Active = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Grupos", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Grupos_CoordinadoresGenerales_CoordinadoresGeneralId",
-                        column: x => x.CoordinadoresGeneralId,
-                        principalTable: "CoordinadoresGenerales",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Grupos_CoordinadoresGenerales_CoordinadoresGeneralesId",
                         column: x => x.CoordinadoresGeneralesId,
@@ -206,11 +200,6 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Migrations
                 name: "IX_Grupos_CoordinadoresGeneralesId",
                 table: "Grupos",
                 column: "CoordinadoresGeneralesId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Grupos_CoordinadoresGeneralId",
-                table: "Grupos",
-                column: "CoordinadoresGeneralId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_GrupoSubCoordinador_SubCoordinadorId",

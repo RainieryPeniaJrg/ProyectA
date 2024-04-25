@@ -49,18 +49,20 @@ namespace BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral
             Grupos = grupos;
             SubCoordinadores = subCoordinadores;
         }
-
         public CoordinadoresGeneralesId Id { get; set; }
-        public string Nombre { get; set; } = string.Empty;
-        public string Apellido { get; set; } = string.Empty;
-        public string NombreCompleto => $"{Nombre} {Apellido}";
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
         public Cedula Cedula { get; set; }
         public NumeroTelefono NumeroTelefono { get; set; }
         public Direccion Direccion { get; set; }
         public int CantidadVotantes { get; set; }
         public bool Activo { get; set; }
         public ICollection<Grupos> Grupos { get; set; }
-        public ICollection <SubCoordinadores> SubCoordinadores { get; set;}
+        public ICollection<SubCoordinadores> SubCoordinadores { get; set; }
+
+        public string NombreCompleto => $"{Nombre} {Apellido}";
+        // Propiedad de navegación inversa
+  
 
         public static CoordinadoresGenerales? UpdateWithRelationShip(Guid id,string nombre,string apellido,Cedula cedula,NumeroTelefono numeroTelefono,Direccion direccion,ICollection<Grupos> grupos, ICollection<SubCoordinadores> subCoordinadores,bool activo, int cantidadVotantes)
         {

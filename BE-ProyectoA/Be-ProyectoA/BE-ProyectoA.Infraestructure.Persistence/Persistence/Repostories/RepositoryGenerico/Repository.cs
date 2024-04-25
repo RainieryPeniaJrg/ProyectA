@@ -37,8 +37,9 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repos
         public async Task<List<T>> GetAll(CancellationToken cancellationToken = default) =>
             await _context.Set<T>().ToListAsync(cancellationToken);
 
-        public Task<List<T>> GetBy(Func<T, bool> predicate, CancellationToken cancellationToken = default) =>
-                          Task.FromResult(_context.Set<T>().Where(predicate).ToList());
+        public async Task<List<T>> GetBy(Func<T, bool> predicate, CancellationToken cancellationToken = default) =>
+         await _context.Set<T>().Where(predicate).AsQueryable().ToListAsync(cancellationToken);
+
     }
 }
     

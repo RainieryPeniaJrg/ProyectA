@@ -2,20 +2,22 @@
 using BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral;
 using BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador;
 using BE_ProyectoA.Core.Domain.Primitivies;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace BE_ProyectoA.Core.Domain.Entities.GruposEntity
 {
     public sealed class Grupos : AggregateRoot
     {
-     
+
         public GruposId Id { get; set; }
         public string NombreGrupo { get; set; }
         public ICollection<DirigentesMultiplicadores> DirigentesMultiplicadores { get; set; }
-        public CoordinadoresGeneralesId CoordinadoresGeneralId { get; set; }
         public CoordinadoresGenerales CoordinadorGeneral { get; set; }
+        public CoordinadoresGeneralesId CoordinadoresGeneralesId { get; set; }
         public ICollection<SubCoordinadores> SubCoordinadores { get; set; }
         public bool Active { get; set; }
+    
 
         public Grupos() { }
 
