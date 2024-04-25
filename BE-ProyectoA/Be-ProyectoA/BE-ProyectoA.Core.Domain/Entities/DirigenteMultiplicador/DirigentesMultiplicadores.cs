@@ -1,5 +1,6 @@
 ﻿using BE_ProyectoA.Core.Domain.Entities.Coordinadores;
 using BE_ProyectoA.Core.Domain.Entities.GruposEntity;
+using BE_ProyectoA.Core.Domain.Entities.Votantes;
 using BE_ProyectoA.Core.Domain.Primitivies;
 using BE_ProyectoA.Core.Domain.ValueObjects;
 
@@ -11,7 +12,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador
         public DirigentesMultiplicadores() { }
 
         //constructor para inicilizar los atributos
-        public DirigentesMultiplicadores(DirigentesMultiplicadoresId id,Cedula cedula,NumeroTelefono numeroTelefono, string nombre,string apellido,bool activo, Direccion direccion, int cantidadVotantes)
+        public DirigentesMultiplicadores(DirigentesMultiplicadoresId id,Cedula cedula,NumeroTelefono numeroTelefono, string nombre,string apellido,bool activo, Direccion direccion, CantidadVotos cantidadVotantes)
         {
             Id = id;
             Nombre = nombre;
@@ -23,7 +24,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador
             CantidadVotantes = cantidadVotantes;
         }
 
-        public DirigentesMultiplicadores(DirigentesMultiplicadoresId id, Cedula cedula, NumeroTelefono numeroTelefono, string nombre, string apellido, bool activo, Direccion direccion, int cantidadVotantes, SubCoordinadoresId subCoordinadoresId, SubCoordinadores subCoordinadores, ICollection<Grupos> grupos)
+        public DirigentesMultiplicadores(DirigentesMultiplicadoresId id, Cedula cedula, NumeroTelefono numeroTelefono, string nombre, string apellido, bool activo, Direccion direccion, CantidadVotos cantidadVotantes, SubCoordinadoresId subCoordinadoresId, SubCoordinadores subCoordinadores, ICollection<Grupos> grupos)
         {
             Id = id;
             Nombre = nombre;
@@ -38,7 +39,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador
             SubCoordinadoresId = subCoordinadoresId;
         }
 
-        public DirigentesMultiplicadores(DirigentesMultiplicadoresId id, Cedula cedula, NumeroTelefono numeroTelefono, string nombre, string apellido, bool activo, Direccion direccion, int cantidadVotantes, SubCoordinadoresId subCoordinadoresId, SubCoordinadores subCoordinadores)
+        public DirigentesMultiplicadores(DirigentesMultiplicadoresId id, Cedula cedula, NumeroTelefono numeroTelefono, string nombre, string apellido, bool activo, Direccion direccion, CantidadVotos cantidadVotantes, SubCoordinadoresId subCoordinadoresId, SubCoordinadores subCoordinadores)
         {
             Id = id;
             Nombre = nombre;
@@ -52,7 +53,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador
             SubCoordinadoresId = subCoordinadoresId;
         }
 
-        public DirigentesMultiplicadores(DirigentesMultiplicadoresId id, Cedula cedula, NumeroTelefono numeroTelefono, string nombre, string apellido, bool activo, Direccion direccion, int cantidadVotantes, SubCoordinadores subCoordinadores)
+        public DirigentesMultiplicadores(DirigentesMultiplicadoresId id, Cedula cedula, NumeroTelefono numeroTelefono, string nombre, string apellido, bool activo, Direccion direccion, CantidadVotos cantidadVotantes, SubCoordinadores subCoordinadores)
         {
             Id = id;
             Nombre = nombre;
@@ -69,16 +70,17 @@ namespace BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador
         public string Nombre { get; set; } = string.Empty;
         public string Apellido { get; set; } = string.Empty;
         public string NombreCompleto => $"{Nombre} {Apellido}";
-        public int CantidadVotantes { get; set; }
+        public CantidadVotos CantidadVotantes { get; set; }
         public Cedula Cedula { get; private set; }
         public NumeroTelefono NumeroTelefono { get; private set; }
         public Direccion Direccion { get; set; }
         public bool Activo { get; private set; }
         public ICollection<Grupos> Grupos { get; set; }
+        public ICollection<Votante> Votantes { get; set; }
         public SubCoordinadoresId SubCoordinadoresId { get; set; } 
         public SubCoordinadores SubCoordinadores {  get; set; } 
 
-        public static DirigentesMultiplicadores Update(Guid id, Cedula cedula, NumeroTelefono numeroTelefono, string nombre, string apellido, bool activo, Direccion direccion, int cantidadVotantes, SubCoordinadores subCoordinadores)
+        public static DirigentesMultiplicadores Update(Guid id, Cedula cedula, NumeroTelefono numeroTelefono, string nombre, string apellido, bool activo, Direccion direccion, CantidadVotos cantidadVotantes, SubCoordinadores subCoordinadores)
         {
             return new DirigentesMultiplicadores(new DirigentesMultiplicadoresId(id),cedula,numeroTelefono,nombre,apellido,activo,direccion,cantidadVotantes,subCoordinadores);
         }

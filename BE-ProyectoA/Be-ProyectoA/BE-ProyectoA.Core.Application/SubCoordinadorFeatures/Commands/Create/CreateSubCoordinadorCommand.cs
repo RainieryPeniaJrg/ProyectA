@@ -9,7 +9,7 @@ namespace BE_ProyectoA.Core.Application.SubCoordinadorFeatures.Commands.Create
 
      string Nombre,
      string Apellido,
-     int CantidadVotantes,
+     CantidadVotos CantidadVotantes,
      string Cedula,
      bool Activo,
      string Provincia,

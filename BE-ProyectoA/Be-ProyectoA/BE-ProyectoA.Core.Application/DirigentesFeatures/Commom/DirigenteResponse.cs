@@ -6,7 +6,7 @@ namespace BE_ProyectoA.Core.Application.DirigentesFeatures.Commom
        (
            Guid Id,
            string NombreCompleto,
-           int CantidadVotantes,
+           CantidadVotos CantidadVotantes,
            Cedula Cedula,
            NumeroTelefono NumeroTelefono,
            DireccionResponseDirigente Direccion,
@@ -24,7 +24,7 @@ namespace BE_ProyectoA.Core.Application.DirigentesFeatures.Commom
      (
          Guid Id,
          string NombreCompleto,
-         int CantidadVotantes,
+         CantidadVotos CantidadVotantes,
          Cedula Cedula,
          NumeroTelefono NumeroTelefono,
 

@@ -31,7 +31,7 @@ namespace BE_ProyectoA.Core.Application.CoordinadoresGeneralesFeatures.Commands.
 
             var numeroTelefono = NumeroTelefono.Create(command.NumeroTelefono);
             var cedula = Cedula.Create(command.Cedula);
-            var direccion = Direccion.Create(command.Provincia, command.Sector, command.CantidadVotantes);
+            var direccion = Direccion.Create(command.Provincia, command.Sector, command.casaElectoral);
 
             var coordinador = new CoordinadoresGenerales
                 (

@@ -30,14 +30,24 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
 
             builder.Property(c => c.Activo);
 
-            builder.Property(c => c.CantidadVotantes);
-
             builder.OwnsOne(c => c.Direccion, direccionBuilder =>
             {
                 direccionBuilder.Property(d => d.Provincia).HasMaxLength(30);
                 direccionBuilder.Property(d => d.Sector).HasMaxLength(30);
                 direccionBuilder.Property(d => d.CasaElectoral);
             });
+
+            builder.Property(d => d.CantidadVotantes)
+                .HasConversion(
+                    cedula => cedula.Value,
+                    value => CantidadVotos.Create(value)!);
+
+
+            builder.HasMany(c => c.Votantes)
+                .WithOne(v => v.CoordinadorGeneral)
+                .HasForeignKey(v => v.CoordinadorGeneralId)
+                  .HasPrincipalKey(c => c.Id)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(c => c.SubCoordinadores)
                 .WithOne(sc => sc.Coordinadores)

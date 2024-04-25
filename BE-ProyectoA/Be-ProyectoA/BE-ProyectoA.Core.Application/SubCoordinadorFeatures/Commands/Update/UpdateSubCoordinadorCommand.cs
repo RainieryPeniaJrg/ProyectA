@@ -1,4 +1,5 @@
-﻿using ErrorOr;
+﻿using BE_ProyectoA.Core.Domain.ValueObjects;
+using ErrorOr;
 using MediatR;
 
 namespace BE_ProyectoA.Core.Application.SubCoordinadorFeatures.Commands.Update
@@ -9,7 +10,7 @@ namespace BE_ProyectoA.Core.Application.SubCoordinadorFeatures.Commands.Update
         Guid Id,
         string Nombre,
      string Apellido,
-     int CantidadVotantes,
+     CantidadVotos CantidadVotantes,
      string Cedula,
      bool Activo,
      string Provincia,

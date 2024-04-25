@@ -7,7 +7,7 @@ namespace BE_ProyectoA.Core.Application.CoordinadoresGeneralesFeatures.Common
        (
            Guid Id,
            string NombreCompleto,
-           int CantidadVotantes,
+           CantidadVotos CantidadVotantes,
            Cedula Cedula,
            NumeroTelefono NumeroTelefono,
            DireccionResponseCoordinador Direccion,

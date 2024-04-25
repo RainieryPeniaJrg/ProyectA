@@ -2,6 +2,7 @@
 using BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral;
 using BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador;
 using BE_ProyectoA.Core.Domain.Primitivies;
+using BE_ProyectoA.Core.Domain.ValueObjects;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
@@ -17,7 +18,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.GruposEntity
         public CoordinadoresGeneralesId CoordinadoresGeneralesId { get; set; }
         public ICollection<SubCoordinadores> SubCoordinadores { get; set; }
         public bool Active { get; set; }
-    
+        public CantidadVotos CantidadVotos  { get; set; }
 
         public Grupos() { }
 

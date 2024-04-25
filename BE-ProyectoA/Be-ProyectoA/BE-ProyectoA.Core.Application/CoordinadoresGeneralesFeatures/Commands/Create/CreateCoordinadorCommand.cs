@@ -3,6 +3,7 @@
 
 
 
+using BE_ProyectoA.Core.Domain.ValueObjects;
 using ErrorOr;
 using MediatR;
 
@@ -17,7 +18,7 @@ namespace BE_ProyectoA.Core.Application.CoordinadoresGeneralesFeatures.Commands.
      string Provincia,
      string Sector,
      int casaElectoral,
-     int CantidadVotantes,
+     CantidadVotos CantidadVotantes,
      bool Activo
         ) : IRequest<ErrorOr<Unit>>;
 

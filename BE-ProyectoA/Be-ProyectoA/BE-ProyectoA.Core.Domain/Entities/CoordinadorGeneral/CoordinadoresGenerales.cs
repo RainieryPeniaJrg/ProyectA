@@ -4,6 +4,7 @@ using BE_ProyectoA.Core.Domain.Primitivies;
 using BE_ProyectoA.Core.Domain.ValueObjects;
 using System.Collections.Generic;
 using System;
+using BE_ProyectoA.Core.Domain.Entities.Votantes;
 
 
 namespace BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral
@@ -12,7 +13,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral
     {
 
        public CoordinadoresGenerales() { }
-       public CoordinadoresGenerales(CoordinadoresGeneralesId id, string nombre,string apellido, Cedula cedula, NumeroTelefono numeroTelefono, bool activo,Direccion direccion,int cantidadVotantes)    
+       public CoordinadoresGenerales(CoordinadoresGeneralesId id, string nombre,string apellido, Cedula cedula, NumeroTelefono numeroTelefono, bool activo,Direccion direccion, CantidadVotos cantidadVotantes)    
         { 
             Id = id;
             Nombre = nombre;
@@ -36,7 +37,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral
           
         }
 
-        public CoordinadoresGenerales(CoordinadoresGeneralesId id, string nombre, string apellido, Cedula cedula, NumeroTelefono numeroTelefono, bool activo, Direccion direccion, int cantidadVotantes, ICollection<Grupos> grupos, ICollection<SubCoordinadores> subCoordinadores)
+        public CoordinadoresGenerales(CoordinadoresGeneralesId id, string nombre, string apellido, Cedula cedula, NumeroTelefono numeroTelefono, bool activo, Direccion direccion, CantidadVotos cantidadVotantes, ICollection<Grupos> grupos, ICollection<SubCoordinadores> subCoordinadores)
         {
             Id = id;
             Nombre = nombre;
@@ -55,16 +56,16 @@ namespace BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral
         public Cedula Cedula { get; set; }
         public NumeroTelefono NumeroTelefono { get; set; }
         public Direccion Direccion { get; set; }
-        public int CantidadVotantes { get; set; }
+        public CantidadVotos CantidadVotantes { get; set; }
         public bool Activo { get; set; }
         public ICollection<Grupos> Grupos { get; set; }
         public ICollection<SubCoordinadores> SubCoordinadores { get; set; }
-
+        public ICollection<Votante> Votantes { get; set; }
         public string NombreCompleto => $"{Nombre} {Apellido}";
-        // Propiedad de navegación inversa
+   
   
 
-        public static CoordinadoresGenerales? UpdateWithRelationShip(Guid id,string nombre,string apellido,Cedula cedula,NumeroTelefono numeroTelefono,Direccion direccion,ICollection<Grupos> grupos, ICollection<SubCoordinadores> subCoordinadores,bool activo, int cantidadVotantes)
+        public static CoordinadoresGenerales? UpdateWithRelationShip(Guid id,string nombre,string apellido,Cedula cedula,NumeroTelefono numeroTelefono,Direccion direccion,ICollection<Grupos> grupos, ICollection<SubCoordinadores> subCoordinadores,bool activo, CantidadVotos cantidadVotantes)
         {
             return new CoordinadoresGenerales(new CoordinadoresGeneralesId(id), nombre, apellido, cedula, numeroTelefono, activo, direccion, cantidadVotantes, grupos, subCoordinadores);
         }

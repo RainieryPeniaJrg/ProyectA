@@ -6,7 +6,7 @@ namespace BE_ProyectoA.Core.Application.SubCoordinadorFeatures.Common
       (
           Guid Id,
           string NombreCompleto,
-          int CantidadVotantes,
+          CantidadVotos CantidadVotantes,
           Cedula Cedula,
           NumeroTelefono NumeroTelefono,
           DireccionResponseCoordinador Direccion,
@@ -24,7 +24,7 @@ namespace BE_ProyectoA.Core.Application.SubCoordinadorFeatures.Common
      (
          Guid Id,
          string NombreCompleto,
-         int CantidadVotantes,
+         CantidadVotos CantidadVotantes,
          Cedula Cedula,
          NumeroTelefono NumeroTelefono,
          bool Activo

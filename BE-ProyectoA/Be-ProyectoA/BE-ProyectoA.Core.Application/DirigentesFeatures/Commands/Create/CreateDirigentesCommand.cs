@@ -11,7 +11,7 @@ namespace BE_ProyectoA.Core.Application.DirigentesFeatures.Commands.Create
   
      string Nombre ,
      string Apellido,
-     int CantidadVotantes,
+     CantidadVotos CantidadVotantes,
      string Cedula,
      string NumeroTelefono,
      string Provincia,

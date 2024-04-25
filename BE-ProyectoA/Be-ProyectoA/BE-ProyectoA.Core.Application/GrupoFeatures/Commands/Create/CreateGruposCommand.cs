@@ -7,8 +7,8 @@ namespace BE_ProyectoA.Core.Application.GrupoFeatures.Commands.Create
  
         (
 
-          string NombreGrupo,
-          ICollection<Guid> DirigentesMultiplicadoresIds,
+         string NombreGrupo,
+         ICollection<Guid> DirigentesMultiplicadoresIds,
          Guid CoordinadoresGeneralesId,
          ICollection<Guid> SubCoordinadoresIds,
          bool Active 

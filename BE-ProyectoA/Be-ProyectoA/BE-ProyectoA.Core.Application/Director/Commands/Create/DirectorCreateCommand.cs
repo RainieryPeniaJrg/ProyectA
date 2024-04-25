@@ -8,10 +8,10 @@ namespace BE_ProyectoA.Core.Application.Director.Commands.Create
 {
     public record DirectorCreateCommand
         (
-         DirectoresId Id,
+      
          string Nombre,
-         string Apellido, 
-        int CantidadVotantes,
+         string Apellido,
+        CantidadVotos CantidadVotantes,
         string Cedula,
         string NumeroTelefono,
         bool Activo,

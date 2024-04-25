@@ -35,7 +35,15 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
 
             builder.Property(D => D.Activo);
 
-            builder.Property(D => D.CantidadVotantes);
+            builder.Property(d => d.CantidadVotantes)
+                 .HasConversion(
+                     cedula => cedula.Value,
+                     value => CantidadVotos.Create(value)!);
+
+            builder.HasMany(c => c.Votantes)
+              .WithOne(v => v.Director)
+              .HasForeignKey(v => v.DirectorId)
+              .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

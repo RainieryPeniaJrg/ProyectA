@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BE_ProyectoA.Core.Domain.ValueObjects;
+using System.ComponentModel.DataAnnotations;
 
 namespace BE_ProyectoA.Core.Application.DTOs.Request.Account
 {
@@ -20,7 +21,7 @@ namespace BE_ProyectoA.Core.Application.DTOs.Request.Account
         [Required]
         public int casaElectoral {get; set; }
         [Required]
-        public int CantidadVotantes { get; set; }
+        public CantidadVotos CantidadVotantes { get; set; }
         [Required]
         public bool Activo { get; set; }
 
