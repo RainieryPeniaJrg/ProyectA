@@ -13,12 +13,4 @@
     <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="8.0.4" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ValueObjects\VotantesDirector\" />
-    <Folder Include="ValueObjects\VotantesGrupos\" />
-    <Folder Include="ValueObjects\VotantesCoordinadorGeneral\" />
-    <Folder Include="ValueObjects\VotantesSubCoordinadores\" />
-    <Folder Include="ValueObjects\VotantesDirigentes\" />
-  </ItemGroup>
-
 </Project>

@@ -22,7 +22,8 @@ builder.Services.AddCors(options =>
     });
 });
 var app = builder.Build();
-
+app.UseCors("DefaultPolicy");
+app.UseCors("WebUi");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -31,8 +32,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.ApplyMigration();
 }
-app.UseCors("DefaultPolicy");
-app.UseCors("WebUi");
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

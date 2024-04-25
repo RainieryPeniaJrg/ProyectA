@@ -165,7 +165,7 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
                     {
                         var requestId = userRequest.Id;
 
-                        var coordinador = new CoordinadoresGenerales(
+                       var coordinador = new CoordinadoresGenerales(
                        id: new CoordinadoresGeneralesId(Guid.Parse(requestId)),
                        nombre: model.Nombre,
                        apellido: model.Apellido,
@@ -173,7 +173,6 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
                        numeroTelefono: NumeroTelefono.Create(model.NumeroTelefono)!,
                        activo: model.Activo,
                        direccion: Direccion.Create(model.Provincia, model.Sector, model.casaElectoral)!
-
 
                    );
                         await coordinadorGeneralRepository.AddAsync(coordinador, cancellationToken);
@@ -244,8 +243,7 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
                   subCoordiadorId,
                   subCoordinador!
                 
-                  
-                  
+                 
                
 
                   );
