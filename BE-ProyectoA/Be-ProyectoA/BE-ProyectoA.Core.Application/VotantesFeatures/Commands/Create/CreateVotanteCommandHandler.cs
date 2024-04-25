@@ -1,5 +1,8 @@
 ﻿using BE_ProyectoA.Core.Application.Common.ValueObjectsValidators;
+using BE_ProyectoA.Core.Application.Extensions;
+using BE_ProyectoA.Core.Application.Interfaces;
 using BE_ProyectoA.Core.Domain.Entities.Authentication;
+using BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral;
 using BE_ProyectoA.Core.Domain.Entities.Votantes;
 using BE_ProyectoA.Core.Domain.Primitivies;
 using BE_ProyectoA.Core.Domain.ValueObjects;
@@ -13,21 +16,28 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IVotanteRepository _votantesRepository;
-        private readonly RoleManager<IdentityRole> _roleManager;
-        private UserManager<ApplicationUser> _userManager;
+        private readonly IAccount _account;
+        private readonly ICoordinadorGeneralRepository _coordinadorGeneralRepository;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public CreateVotanteCommandHandler(IUnitOfWork unitOfWork, IVotanteRepository votantesRepository, RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager)
+        public CreateVotanteCommandHandler(IUnitOfWork unitOfWork,
+            IVotanteRepository votantesRepository,
+                IAccount account,
+            ICoordinadorGeneralRepository coordinadorGeneralRepository,
+            UserManager<ApplicationUser> userManager
+            )
         {
             _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
             _votantesRepository = votantesRepository ?? throw new ArgumentNullException(nameof(votantesRepository));
-            _roleManager = roleManager ?? throw new ArgumentNullException(nameof(roleManager));
-            _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+            _account = account;
+            _coordinadorGeneralRepository = coordinadorGeneralRepository;
+            _userManager = userManager;
         }
 
         public async Task<ErrorOr<Unit>> Handle(CreateVotanteCommand command, CancellationToken cancellationToken)
         {
 
-            await _userManager.FindByIdAsync( command.MiembroId.ToString().ToLowerInvariant());
+            var userRequest = await _userManager.FindByIdAsync(command.MiembroId.ToString().ToLowerInvariant());
             // Validar los datos de entrada
             var validationResult = ValueObjectValidators.ValidarDatos(command.Cedula, command.NumeroTelefono, command.Provincia, command.Sector, command.CasaElectoral);
             if (validationResult.IsError)
