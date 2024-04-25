@@ -1,3 +1,27 @@
 <main>
-    <h1>coordinadores</h1>
+    <div class="container">
+    <h1>Lista de coordinadores</h1>
+    <table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Cantidad de Votantes</th>
+            <th>Cédula</th>
+            <th>Número de Teléfono</th>
+            <th>Dirección</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each coordinadores}}
+        <tr>
+            <td>{{this.nombreCompleto}}</td>
+            <td>{{this.cantidadVotantes}}</td>
+            <td>{{this.cedula.value}}</td>
+            <td>{{this.numeroTelefono.value}}</td>
+            <td>{{this.direccion.provincia}}, {{this.direccion.sector}}, {{this.direccion.casaElectoral}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+</div>
 </main>

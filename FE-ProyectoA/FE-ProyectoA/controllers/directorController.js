@@ -1,4 +1,5 @@
 const axios = require("axios");
+const { METHODS } = require("http");
 const https = require('https');
 
 exports.getHome = async (req, res) => {
@@ -13,7 +14,7 @@ exports.getHome = async (req, res) => {
 
 exports.getGrupos = async (req, res) => {
     try {
-
+       
         const respuesta = await axios.get('http://localhost:3000/2');
 
 
@@ -34,12 +35,14 @@ exports.getGrupos = async (req, res) => {
 
 exports.getCoordinadores = async (req, res) => {
     try {
+        const agent = new https.Agent({ rejectUnauthorized: false });
         //NOTA> agregar url correcto de la api para traer los coordinadores
-        const respuesta = await axios.get('http://localhost:3000/2');
+        const respuesta = await axios.get('https://localhost:7299/api/CoordinadoresGeneral/GetAll',{ httpsAgent: agent });
+
 
 
         const coordinadores = respuesta.data;
-
+console.log(coordinadores)-
 
         res.render("director/coordinadores", {
             title: "Coordinadores",
@@ -100,10 +103,43 @@ exports.getDirigentes = async (req, res) => {
 exports.getAgregarGrupos = async (req, res, next) => {
     try {
       
+        const subcoordinadores = await axios.get('https://localhost:7299/api/SubCoordinador/GetAll',{
+            headers: {
+                'Content-Type': 'application/json',
+                'accept': '*/*'
+            },
+            httpsAgent: new https.Agent({ rejectUnauthorized: false }) 
+        });
+        const subCoordinador = subcoordinadores.data;
+
+
+
+        const dirigentes = await axios.get('https://localhost:7299/api/Dirigentes/GetAll',{
+            headers: {
+                'Content-Type': 'application/json',
+                'accept': '*/*'
+            },
+            httpsAgent: new https.Agent({ rejectUnauthorized: false }) 
+        });
+        const dirigente = dirigentes.data;
+
+
+        const coordinadores = await axios.get('https://localhost:7299/api/CoordinadoresGeneral/GetAll',{
+            headers: {
+                'Content-Type': 'application/json',
+                'accept': '*/*'
+            },
+            httpsAgent: new https.Agent({ rejectUnauthorized: false }) 
+        });
+        const coordinador = coordinadores.data;
+
 
      
-        res.render("director/agregar-grupo", {
+        res.render("miembros/agregar-grupos", {
             title: "Agregar Grupo",
+            subCoordinador: subCoordinador,
+            dirigente:dirigente,
+            coordinador:coordinador
           
         });
     } catch (error) {
@@ -117,28 +153,33 @@ exports.getAgregarGrupos = async (req, res, next) => {
 //Controlador para agregar grupo
 exports.PostAgregarGrupo = async (req, res) => {
     try {
-       
-        const { NombreGrupo, SubCoordinadores, Coordinadoresgeneral, Dirigentes, totalVotos } = req.body;
-
-      
-        const nuevoGrupo = {
-            NombreGrupo,
-            SubCoordinadores,
-            Coordinadoresgeneral,
-            Dirigentes,
-            totalVotos
-        };
-
-        console.log(nuevoGrupo)
-        const respuesta = await axios.post('URL api ', nuevoGrupo);
-
-       
-        res.status(201).json(respuesta.data);
-    } catch (error) {
         
+        const dirigentesIds = Array.isArray(dirigentesMultiplicadoresIds) ? dirigentesMultiplicadoresIds : [dirigentesMultiplicadoresIds];
+        const subCoordinadoresIds = Array.isArray(subCoordinadoresIds) ? subCoordinadoresIds : [subCoordinadoresIds];
+        const coordinadoresGeneralesIds = Array.isArray(coordinadoresGeneralesIds) ? coordinadoresGeneralesIds : [coordinadoresGeneralesIds];
+
+        const nuevoGrupo = {
+            nombreGrupo,
+            dirigentesMultiplicadoresIds: dirigentesIds,
+            subCoordinadoresIds,
+            coordinadoresGeneralesIds,
+            active
+        };
+        
+        const respuesta = await axios.post('https://localhost:7299/api/Grupos/Create', nuevoGrupo,  {
+            headers: {
+                'Content-Type': 'application/json',
+                'accept': '*/*'
+            },
+            httpsAgent: new https.Agent({ rejectUnauthorized: false }) 
+        });
+        res.redirect('/home'); 
+    } catch (error) {
+       console.log(error)
         console.error('Error al agregar el grupo:', error);
         res.status(500).json({ mensaje: 'Error al agregar el grupo' });
     }
+
 };
 
 
@@ -163,10 +204,8 @@ exports.getAgregarCoordinador = async (req, res, next) => {
 
 exports.postAñadirCoordinador = async (req, res, next) => {
     try {
-        // Obtener los datos del formulario enviado por el cliente
-        const { nombre, apellido, cedula, numeroTelefono, sector, provincia, Direccion_CasaElectoral } = req.body;
+        const { nombre, apellido, cedula, numeroTelefono, sector, provincia, casaElectoral, cantidadVotantes, activo } = req.body;
 
-        // Crear el objeto de coordinador con los datos recibidos
         const nuevoCoordinador = {
             nombre,
             apellido,
@@ -174,22 +213,23 @@ exports.postAñadirCoordinador = async (req, res, next) => {
             numeroTelefono,
             sector,
             provincia,
-            Direccion_CasaElectoral
+            Direccion_CasaElectoral: casaElectoral,
+            cantidadVotantes,
+            activo
         };
-
-        // Hacer la solicitud POST a la API para agregar un coordinador
+const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBhZG1pbi5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsIkZ1bGxOYW1lIjoiQWRtaW4iLCJleHAiOjE3MTQwNzAwNDgsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcyOTkiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQwMDAifQ.klpocRFo8KcdwOAEmY4kycI68-AwuxtO34LQgVK_P9I";
         const respuesta = await axios.post('https://localhost:7299/api/CoordinadoresGeneral/Create', nuevoCoordinador, {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'accept': '*/*'
+                'accept': '*/*',
+                "Authorization": `Bearer ${accessToken}`
             },
-            httpsAgent: new https.Agent({ rejectUnauthorized: false }) 
+            httpsAgent: new https.Agent({ rejectUnauthorized: false })
         });
 
-        // Redirigir al usuario a la página de inicio después de agregar el coordinador exitosamente
-        res.redirect('/home'); 
+        res.redirect('/home');
     } catch (error) {
-        // Manejar errores
         console.error('Error al añadir el coordinador:', error);
         res.status(500).json({ mensaje: 'Error al añadir el coordinador' });
     }

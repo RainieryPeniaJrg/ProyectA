@@ -3,6 +3,7 @@ const { engine } = require('express-handlebars');
 const path = require("path")
 const directorRoute = require('./routes/director')
 const votanteRoute = require("./routes/votantes")
+const sesionRoute = require("./routes/sesiones")
 const errorController = require("./controllers/errorController")
 const axios = require('axios')
 const bodyParser = require('body-parser');
@@ -19,8 +20,14 @@ app.set("views", "views")
 
 
 
+
+
+app.use(sesionRoute)
 app.use(directorRoute)
 app.use(votanteRoute)
+
+
+
 
 
 app.use(express.urlencoded({ extended: false }));

@@ -207,7 +207,6 @@ i {
   }
 
   .container {
-	margin-top: 20px;
 	background-color: #fff;
 	text-align: center;
   }
@@ -309,4 +308,83 @@ i {
   .form-container {
 	max-width: 300px;
 	margin: 0 auto; 
+	margin-top: 10px;
+
   }
+
+
+
+
+
+  .select-field {
+	position: relative;
+  }
+  
+  .select-field select {
+	padding: 10px 15px;
+	font-size: 1rem;
+	border-radius: 8px;
+	border: solid 1px #FF8911;
+	letter-spacing: 1px;
+	width: 100%;
+	appearance: none; 
+	-webkit-appearance: none; 
+	-moz-appearance: none; 
+	background: transparent; 
+  }
+  
+  .select-field select:focus,
+  .select-field select:valid {
+	outline: none;
+	border: solid 1px #FF8911;
+  }
+  
+  .select-field select:focus ~ label,
+  .select-field select:valid ~ label {
+	transform: translateY(-51%) translateX(-10px) scale(0.8);
+	background-color: #fff;
+	padding: 0px 5px;
+	color: #FF8911;
+	font-weight: bold;
+	letter-spacing: 1px;
+	border: none;
+	border-radius: 100px;
+  }
+
+
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+
+.logo-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+}
+
+.logo {
+	position: absolute;
+    top: 40%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
+}
