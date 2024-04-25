@@ -22,7 +22,7 @@ namespace BE_ProyectoA.Core.Application.DTOs.Request.Account
         public int casaElectoral {get; set; }
         [Required]
         public CantidadVotos CantidadVotantes { get; set; }
-        [Required]
+   
         public bool Activo { get; set; }
 
         public Guid SubCoordinadorId { get; set; }
