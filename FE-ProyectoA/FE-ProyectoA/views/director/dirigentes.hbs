@@ -1,3 +1,25 @@
 <main>
-    <h1>dirigente</h1>
+    <div class="container">
+    <h1>Lista de Dirigentes</h1>
+    <table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Cédula</th>
+            <th>Número de Teléfono</th>
+            <th>Dirección</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each Subcoordinadores}}
+        <tr>
+            <td>{{this.nombreCompleto}}</td>
+            <td>{{this.cedula.value}}</td>
+            <td>{{this.numeroTelefono.value}}</td>
+            <td>{{this.direccion.provincia}}, {{this.direccion.sector}}, {{this.direccion.casaElectoral}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+</div>
 </main>
