@@ -1,6 +1,6 @@
 const axios = require("axios");
 const https = require('https');
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBhZG1pbi5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsIkZ1bGxOYW1lIjoiQWRtaW4iLCJleHAiOjE3MTQxMDYzNTUsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcyOTkiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQwMDAifQ.K6mVq7JCOrYbjcfZJ-E9LcVnGDJgBnIstlECUZrkPrY'
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBhZG1pbi5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsIkZ1bGxOYW1lIjoiQWRtaW4iLCJleHAiOjE3MTQxMTA3NTEsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcyOTkiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQwMDAifQ.d28CmwuEa3zhZ20PNqigLPIXVPfiQt_rYpmYOZefRMo'
 
 
 exports.getAgregarVotante = async (req, res, next) => {
@@ -48,7 +48,7 @@ exports.postAñadirVotante = async (req, res, next) => {
         });
 
         
-        res.redirect('/director'); 
+        res.redirect('/dirigentes'); 
     } catch (error) {
         console.log(error.response.data.errors)
        // console.error('Error al añadir el votante:', error);
