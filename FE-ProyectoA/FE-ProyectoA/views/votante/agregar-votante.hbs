@@ -1,33 +1,38 @@
 <main>
-    <form action="/agregar-votante" method="POST">
-    <div>
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
+      <div class="container">
+        <div class="heading">Añadir Votante</div>
+        <div class="form-container">
+            <form action="/agregar-votante" method="POST" class="form">
+                <div class="input-field">
+                    <input type="text" id="nombre" name="nombre" required>
+                    <label for="nombre">Nombre:</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" id="apellido" name="apellido" required>
+                    <label for="apellido">Apellido:</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" id="cedula" name="cedula" required>
+                    <label for="cedula">Cédula:</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" id="numeroTelefono" name="numeroTelefono" required>
+                    <label for="numeroTelefono">Número de Teléfono:</label>
+                </div>
+               
+                <div class="input-field">
+                    <input type="text" id="sector" name="sector">
+                    <label for="sector">Sector:</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" id="provincia" name="provincia">
+                    <label for="provincia">Provincia:</label>
+                </div>
+                <input type="hidden" id="miembroId" name="miembroId" value="3c46b21a-1c5b-4d58-a4ec-a74ed1e17535">
+                <div class="btn-container"> 
+                    <button type="submit" class="btn">Agregar Votante</button>
+                </div>
+            </form>
+        </div>
     </div>
-    <div>
-        <label for="apellido">Apellido:</label>
-        <input type="text" id="apellido" name="apellido" required>
-    </div>
-    <div>
-        <label for="cedula">Cédula:</label>
-        <input type="text" id="cedula" name="cedula" required>
-    </div>
-    <div>
-        <label for="numeroTelefono">Número de Teléfono:</label>
-        <input type="text" id="numeroTelefono" name="numeroTelefono" required>
-    </div>
-    <div>
-        <label for="activo">Activo:</label>
-        <input type="checkbox" id="activo" name="activo">
-    </div>
-    <div>
-        <label for="sector">Sector:</label>
-        <input type="text" id="sector" name="sector">
-    </div>
-    <div>
-        <label for="provincia">Provincia:</label>
-        <input type="text" id="provincia" name="provincia">
-    </div>
-    <button type="submit">Agregar Votante</button>
-</form>
 </main>
