@@ -9,31 +9,21 @@ const axios = require('axios')
 const bodyParser = require('body-parser');
 const app = express();
 
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
 
 app.engine("hbs", engine({ layoutsDir: 'views/layouts/', defaultLayout: 'main-layout', extname: 'hbs' }));
 app.set("view engine", "hbs");
 app.set("views", "views") 
 
-
-
-
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use(sesionRoute)
 app.use(directorRoute)
 app.use(votanteRoute)
 
-
-
-
-
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "public")));
-
-
 //Error middleware
 app.use("/", errorController.Get404)
+
 app.listen(4000);

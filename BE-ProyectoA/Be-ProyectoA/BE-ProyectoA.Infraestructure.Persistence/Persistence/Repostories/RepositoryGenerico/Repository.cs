@@ -65,7 +65,7 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repos
             catch (Exception)
             {
                 await transaction.RollbackAsync(cancellationToken);
-                throw; // Re-lanzar la excepción para manejarla en un nivel superior si es necesario
+                throw; 
             }
         }
     }
