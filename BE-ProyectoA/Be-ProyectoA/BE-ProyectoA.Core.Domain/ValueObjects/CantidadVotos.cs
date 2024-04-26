@@ -1,4 +1,5 @@
-﻿using BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral;
+﻿using BE_ProyectoA.Core.Domain.Entities.Coordinadores;
+using BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral;
 using BE_ProyectoA.Core.Domain.Entities.Director;
 using BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador;
 using BE_ProyectoA.Core.Domain.Entities.Votantes;
@@ -18,13 +19,6 @@ namespace BE_ProyectoA.Core.Domain.ValueObjects
 
         public int Value { get; init; }
 
-        public static CantidadVotos CalcularCantidadVotos(List<Votante> votantes, Guid miembroId)
-        {
-            var coordinadorGeneralId = new CoordinadoresGeneralesId(miembroId);
-
-            int cantidadVotos = votantes.Count(v => v.CoordinadorGeneralId == coordinadorGeneralId);
-            return new CantidadVotos(cantidadVotos);
-        }
     }
   }
 

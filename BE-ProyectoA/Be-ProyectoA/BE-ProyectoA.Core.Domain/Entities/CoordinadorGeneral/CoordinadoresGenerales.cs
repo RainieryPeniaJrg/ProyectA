@@ -70,7 +70,11 @@ namespace BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral
             return new CoordinadoresGenerales(new CoordinadoresGeneralesId(id), nombre, apellido, cedula, numeroTelefono, activo, direccion, cantidadVotantes, grupos, subCoordinadores);
         }
 
-        public static CoordinadoresGenerales? UpdateWithOutRelationShip(Guid id, string nombre, string apellido, Cedula cedula, NumeroTelefono numeroTelefono, Direccion direccion, bool activo)
+        public static CoordinadoresGenerales? UpdateWithOutRelationShip(CoordinadoresGeneralesId id, string nombre, string apellido, Cedula cedula, NumeroTelefono numeroTelefono, Direccion direccion, bool activo,CantidadVotos cantidadVotos)
+        {
+            return new CoordinadoresGenerales(id, nombre, apellido, cedula, numeroTelefono, activo, direccion,cantidadVotos);
+        }
+        public static CoordinadoresGenerales? UpdateWithOutRelationShipAndWithOutVotes(Guid id, string nombre, string apellido, Cedula cedula, NumeroTelefono numeroTelefono, Direccion direccion, bool activo)
         {
             return new CoordinadoresGenerales(new CoordinadoresGeneralesId(id), nombre, apellido, cedula, numeroTelefono, activo, direccion);
         }

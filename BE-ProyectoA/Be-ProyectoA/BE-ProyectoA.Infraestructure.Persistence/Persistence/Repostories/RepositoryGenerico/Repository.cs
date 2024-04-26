@@ -15,8 +15,9 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repos
         {
             _context = context;
         }
+
         public async Task AddAsync(T entity, CancellationToken cancellationToken = default) =>
-        await _context.Set<T>().AddAsync(entity, cancellationToken);
+            await _context.Set<T>().AddAsync(entity, cancellationToken);
 
         public void Delete(T entity) => _context.Set<T>().Remove(entity);
 
@@ -32,14 +33,22 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repos
         public async Task<T?> GetByIdAsync(object id, CancellationToken cancellationToken = default)
         {
             var keyValues = new[] { id };
-            return await _context.Set<T>().FindAsync(keyValues, cancellationToken);
+            var entity = await _context.Set<T>().FindAsync(keyValues, cancellationToken);
+
+            if (entity != null)
+            {
+                _context.Entry(entity).State = EntityState.Detached;
+            }
+
+            return entity;
         }
+
         public async Task<List<T>> GetAll(CancellationToken cancellationToken = default) =>
-            await _context.Set<T>().ToListAsync(cancellationToken);
+            await _context.Set<T>().AsNoTracking().ToListAsync(cancellationToken);
 
         public async Task<List<T>> GetBy(Func<T, bool> predicate, CancellationToken cancellationToken = default) =>
-         await _context.Set<T>().Where(predicate).AsQueryable().ToListAsync(cancellationToken);
-
+            await _context.Set<T>().Where(predicate).AsQueryable().AsNoTracking().ToListAsync(cancellationToken);
     }
 }
+
     

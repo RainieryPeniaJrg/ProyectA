@@ -1,4 +1,6 @@
 ﻿using BE_ProyectoA.Core.Application.Common.Behaviors;
+using BE_ProyectoA.Core.Application.Common.CreadorCantidadVotantes;
+using BE_ProyectoA.Core.Application.Interfaces;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,6 +11,7 @@ namespace BE_ProyectoA.Core.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
+          
             services.AddMediatR(config =>
             {
                 config.RegisterServicesFromAssemblyContaining<ApplicationAsemblyReference>();
@@ -17,7 +20,6 @@ namespace BE_ProyectoA.Core.Application
             services.AddScoped(
                 typeof(IPipelineBehavior<,>),
                 typeof(ValidationBehavior<,>));
-
 
             services.AddValidatorsFromAssemblyContaining<ApplicationAsemblyReference>();
 

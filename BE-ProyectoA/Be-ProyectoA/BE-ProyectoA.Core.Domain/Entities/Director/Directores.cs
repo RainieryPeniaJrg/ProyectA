@@ -18,6 +18,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.Director
             Activo = activo;
         
         }
+      
         public DirectoresId Id { get; private set; }
         public string Nombre { get;  private set; } = string.Empty;
         public string Apellido { get; private set; } = string.Empty;
@@ -28,5 +29,9 @@ namespace BE_ProyectoA.Core.Domain.Entities.Director
         public bool Activo { get; set; }
         public ICollection<Votante> Votantes { get; set; }
 
+        public static Directores? Update(DirectoresId id, string nombre, string apellido, CantidadVotos cantidadVotantes, Cedula cedula, NumeroTelefono numeroTelefono, bool activo)
+        {
+            return new Directores(id, nombre, apellido, cantidadVotantes, cedula, numeroTelefono, activo);
+        }
     }
 }

@@ -25,7 +25,7 @@ namespace BE_ProyectoA.Core.Application.SubCoordinadorFeatures.Commands.Update
 
         public async Task<ErrorOr<Unit>> Handle(UpdateSubCoordinadorCommand command, CancellationToken cancellationToken)
         {
-
+            var id = new SubCoordinadoresId(command.Id);
             if(!await _subCoordinadorRepository.ExistsAsync(command.Id, cancellationToken))
             {
                 return Error.NotFound("SubCoordinador.NotFound", "El dirigente que selecciono no se encuentra, favor verificar campo");
@@ -48,8 +48,8 @@ namespace BE_ProyectoA.Core.Application.SubCoordinadorFeatures.Commands.Update
             var direccion = Direccion.Create(command.Provincia, command.Sector, command.CasaElectoral);
 
             if (CoordinadorGeneral is not null && direccion is not null && cedula is not null && numeroTelefono is not null)
-            {
-                SubCoordinadores subCoordinador = SubCoordinadores.Update(command.Id,command.Nombre,command.Apellido,command.CantidadVotantes,numeroTelefono,cedula,command.Activo,direccion,CoordinadorGeneral);
+            {   
+                SubCoordinadores subCoordinador = SubCoordinadores.Update(id, command.Nombre,command.Apellido,command.CantidadVotantes,numeroTelefono,cedula,command.Activo,direccion,CoordinadorGeneral);
                 _subCoordinadorRepository.Update(subCoordinador);
                 await _unitOfWork.SaveChangesAsync(cancellationToken);
             }

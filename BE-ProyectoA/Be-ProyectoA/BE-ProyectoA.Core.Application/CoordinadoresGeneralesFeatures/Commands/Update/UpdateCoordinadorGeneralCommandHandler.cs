@@ -35,14 +35,12 @@ namespace BE_ProyectoA.Core.Application.CoordinadoresGeneralesFeatures.Commands.
             var cedula = Cedula.Create(command.Cedula);
             var direccion = Direccion.Create(command.Provincia, command.Sector,command.CasaElectoral);
 
-            var coordinadores = CoordinadoresGenerales.UpdateWithOutRelationShip(command.Id, command.Nombre,
+            var coordinadores = CoordinadoresGenerales.UpdateWithOutRelationShipAndWithOutVotes(command.Id, command.Nombre,
                                                                                                     command.Apellido,
                                                                                                     cedula,
                                                                                                     numeroTelefono,
                                                                                                     direccion,
-                                                                                                    command.Activo);
-
-
+                                                                                           command.Activo);
 
             _coordinadorGeneralRepository.Update(coordinadores);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
