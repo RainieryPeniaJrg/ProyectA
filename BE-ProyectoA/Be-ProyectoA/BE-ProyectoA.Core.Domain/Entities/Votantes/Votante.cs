@@ -24,6 +24,57 @@ namespace BE_ProyectoA.Core.Domain.Entities.Votantes
             NumeroTelefono = numeroTelefono;
             Activo = activo;
         }
+
+    
+        public Votante(VotanteId id, string nombre, string apellido, Cedula cedula, Direccion direccion, NumeroTelefono numeroTelefono, bool activo,CoordinadoresGeneralesId miembroId)
+        {
+            Id = id;
+            Nombre = nombre;
+            Apellido = apellido;
+            Cedula = cedula;
+            Direccion = direccion;
+            NumeroTelefono = numeroTelefono;
+            Activo = activo;
+            CoordinadorGeneralId = miembroId;
+        }
+
+        public Votante(VotanteId id, string nombre, string apellido, Cedula cedula, Direccion direccion, NumeroTelefono numeroTelefono, bool activo, SubCoordinadoresId miembroId)
+        {
+            Id = id;
+            Nombre = nombre;
+            Apellido = apellido;
+            Cedula = cedula;
+            Direccion = direccion;
+            NumeroTelefono = numeroTelefono;
+            Activo = activo;
+            SubCoordinadorId = miembroId;
+        }
+
+        public Votante(VotanteId id, string nombre, string apellido, Cedula cedula, Direccion direccion, NumeroTelefono numeroTelefono, bool activo, DirigentesMultiplicadoresId miembroId)
+        {
+            Id = id;
+            Nombre = nombre;
+            Apellido = apellido;
+            Cedula = cedula;
+            Direccion = direccion;
+            NumeroTelefono = numeroTelefono;
+            Activo = activo;
+            DirigenteId = miembroId;
+        }
+
+        public Votante(VotanteId id, string nombre, string apellido, Cedula cedula, Direccion direccion, NumeroTelefono numeroTelefono, bool activo, DirectoresId miembroId)
+        {
+            Id = id;
+            Nombre = nombre;
+            Apellido = apellido;
+            Cedula = cedula;
+            Direccion = direccion;
+            NumeroTelefono = numeroTelefono;
+            Activo = activo;
+            DirectorId = miembroId;
+        }
+
+
         public VotanteId Id { get; private set; }
         public string Nombre { get; private set; } = string.Empty;
         public string Apellido { get; private set; } = string.Empty;

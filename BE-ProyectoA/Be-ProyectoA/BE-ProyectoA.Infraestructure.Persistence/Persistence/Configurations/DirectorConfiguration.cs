@@ -43,7 +43,8 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
             builder.HasMany(c => c.Votantes)
               .WithOne(v => v.Director)
               .HasForeignKey(v => v.DirectorId)
-              .OnDelete(DeleteBehavior.Restrict);
+              .OnDelete(DeleteBehavior.Restrict)
+              .IsRequired(false);
         }
     }
 }

@@ -47,7 +47,8 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
                 .WithOne(v => v.CoordinadorGeneral)
                 .HasForeignKey(v => v.CoordinadorGeneralId)
                   .HasPrincipalKey(c => c.Id)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired(false);
 
             builder.HasMany(c => c.SubCoordinadores)
                 .WithOne(sc => sc.Coordinadores)

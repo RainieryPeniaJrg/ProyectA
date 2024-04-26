@@ -1,5 +1,7 @@
 ﻿using BE_ProyectoA.Core.Domain.ValueObjects;
+using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace BE_ProyectoA.Core.Application.DTOs.Request.Account
 {
@@ -24,10 +26,13 @@ namespace BE_ProyectoA.Core.Application.DTOs.Request.Account
    
         public bool Activo { get; set; }
 
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public Guid SubCoordinadorId { get; set; }
 
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public Guid CoordinadorGeneralId { get; set; }
 
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public Guid DirigenteId { get; set; }
 
         [Required, Compare(nameof(Password))]

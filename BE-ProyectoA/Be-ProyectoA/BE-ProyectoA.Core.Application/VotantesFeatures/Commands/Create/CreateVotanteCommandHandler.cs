@@ -1,8 +1,9 @@
-﻿using BE_ProyectoA.Core.Application.Common.ValueObjectsValidators;
-using BE_ProyectoA.Core.Application.Extensions;
-using BE_ProyectoA.Core.Application.Interfaces;
+﻿using BE_ProyectoA.Core.Application.Interfaces;
 using BE_ProyectoA.Core.Domain.Entities.Authentication;
+using BE_ProyectoA.Core.Domain.Entities.Coordinadores;
 using BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral;
+using BE_ProyectoA.Core.Domain.Entities.Director;
+using BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador;
 using BE_ProyectoA.Core.Domain.Entities.Votantes;
 using BE_ProyectoA.Core.Domain.Primitivies;
 using BE_ProyectoA.Core.Domain.ValueObjects;
@@ -12,61 +13,113 @@ using Microsoft.AspNetCore.Identity;
 
 namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
 {
-    public class CreateVotanteCommandHandler : IRequestHandler<CreateVotanteCommand, ErrorOr<Unit>>
+    public class CreateVotanteCommandHandler(IUnitOfWork unitOfWork,
+        IVotanteRepository votantesRepository,
+        IAccount account,
+        ICoordinadorGeneralRepository coordinadorGeneralRepository,
+        UserManager<ApplicationUser> userManager,
+        ISubCoordinadorRepository subCoordinadorRepository,
+        IDirigenteMultiplicadorRepository dirigenteMultiplicadorRepository,
+        IDirectoresRepository directoresRepository
+            ) : IRequestHandler<CreateVotanteCommand, ErrorOr<Unit>>
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IVotanteRepository _votantesRepository;
-        private readonly IAccount _account;
-        private readonly ICoordinadorGeneralRepository _coordinadorGeneralRepository;
-        private readonly UserManager<ApplicationUser> _userManager;
-
-        public CreateVotanteCommandHandler(IUnitOfWork unitOfWork,
-            IVotanteRepository votantesRepository,
-                IAccount account,
-            ICoordinadorGeneralRepository coordinadorGeneralRepository,
-            UserManager<ApplicationUser> userManager
-            )
-        {
-            _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
-            _votantesRepository = votantesRepository ?? throw new ArgumentNullException(nameof(votantesRepository));
-            _account = account;
-            _coordinadorGeneralRepository = coordinadorGeneralRepository;
-            _userManager = userManager;
-        }
+        private readonly IUnitOfWork _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
+        private readonly IVotanteRepository _votantesRepository = votantesRepository ?? throw new ArgumentNullException(nameof(votantesRepository));
 
         public async Task<ErrorOr<Unit>> Handle(CreateVotanteCommand command, CancellationToken cancellationToken)
         {
-
-            var userRequest = await _userManager.FindByIdAsync(command.MiembroId.ToString().ToLowerInvariant());
-            // Validar los datos de entrada
-            var validationResult = ValueObjectValidators.ValidarDatos(command.Cedula, command.NumeroTelefono, command.Provincia, command.Sector, command.CasaElectoral);
-            if (validationResult.IsError)
-                return validationResult;
-
             var numeroTelefono = NumeroTelefono.Create(command.NumeroTelefono);
             var cedula = Cedula.Create(command.Cedula);
             var direccion = Direccion.Create(command.Provincia, command.Sector, command.CasaElectoral);
-            // Crear el votante
 
-            var votante = new Votante(
-                new VotanteId(Guid.NewGuid()),
-                command.Nombre,
-                command.Apellido,
-                cedula,
-                direccion,
-                numeroTelefono,
-                true
-            );
+            var userRequest = await userManager.FindByIdAsync(command.MiembroId.ToString().ToLowerInvariant());
 
- 
-            await _votantesRepository.AddAsync(votante, cancellationToken);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            if (userRequest != null)
+            {
+              
+                var dirigenteId = new DirigentesMultiplicadoresId(Guid.Parse(userRequest.Id));
+                var subCoordinadorId = new SubCoordinadoresId(Guid.Parse(userRequest.Id));
+                var directorId = new DirectoresId(Guid.Parse(userRequest.Id));
+                var coordinadorGeneralId = new CoordinadoresGeneralesId(Guid.Parse(userRequest.Id));
 
+                if (await coordinadorGeneralRepository.ExistsAsync(coordinadorGeneralId, cancellationToken))
+                {
+                    var coordinadorGeneral = await coordinadorGeneralRepository.GetByIdAsync(coordinadorGeneralId, cancellationToken);
+
+                    if(coordinadorGeneral != null)
+                    {
+                        var votanteCoordinadorGeneral = new Votante(
+                         new VotanteId(Guid.NewGuid()),
+                            command.Nombre,
+                           command.Apellido,
+                           cedula!,
+                           direccion!,
+                           numeroTelefono!,
+                           true,
+                           coordinadorGeneral.Id
+              );
+
+                        await _votantesRepository.AddAsync(votanteCoordinadorGeneral, cancellationToken);
+                        await _unitOfWork.SaveChangesAsync(cancellationToken);
+
+                        return Unit.Value;
+                    }
+                   
+
+                }
+
+                if (await subCoordinadorRepository.ExistsAsync(subCoordinadorId, cancellationToken))
+                {
+                    var subCoordinador = await subCoordinadorRepository.GetByIdAsync(subCoordinadorId, cancellationToken);
+
+                    if (subCoordinador != null)
+                    {
+                        var votanteCoordinadorGeneral = new Votante(
+                         new VotanteId(Guid.NewGuid()),
+                            command.Nombre,
+                           command.Apellido,
+                           cedula!,
+                           direccion!,
+                           numeroTelefono!,
+                           true,
+                           subCoordinador.Id
+              );
+
+                        await _votantesRepository.AddAsync(votanteCoordinadorGeneral, cancellationToken);
+                        await _unitOfWork.SaveChangesAsync(cancellationToken);
+
+                        return Unit.Value;
+                    }
+                }
+
+                if(await dirigenteMultiplicadorRepository.ExistsAsync(dirigenteId, cancellationToken))
+                {
+                    var dirigente = await dirigenteMultiplicadorRepository.GetByIdAsync(dirigenteId,cancellationToken);
+
+                    if (dirigente != null)
+                    {
+                        var votanteCoordinadorGeneral = new Votante(
+                         new VotanteId(Guid.NewGuid()),
+                            command.Nombre,
+                           command.Apellido,
+                           cedula!,
+                           direccion!,
+                           numeroTelefono!,
+                           true,
+                           dirigente.Id
+              );
+
+                        await _votantesRepository.AddAsync(votanteCoordinadorGeneral, cancellationToken);
+                        await _unitOfWork.SaveChangesAsync(cancellationToken);
+
+                        return Unit.Value;
+                    }
+                }
+
+            }
+            
             return Unit.Value;
         }
-
-
-
 
     }
 }

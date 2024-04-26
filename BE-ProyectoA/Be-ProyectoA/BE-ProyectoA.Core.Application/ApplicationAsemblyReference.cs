@@ -6,5 +6,6 @@ namespace BE_ProyectoA.Core.Application
     {
         internal static readonly Assembly Assembly = typeof(ApplicationAsemblyReference).Assembly;
     }
+
   
 }

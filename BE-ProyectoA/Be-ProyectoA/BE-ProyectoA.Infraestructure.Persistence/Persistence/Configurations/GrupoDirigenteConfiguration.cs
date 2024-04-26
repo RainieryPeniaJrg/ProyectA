@@ -19,6 +19,7 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
             builder.HasOne(gd => gd.Dirigente)
                 .WithMany()
                 .HasForeignKey(gd => gd.DirigenteId);
+              
         }
     }
 }
