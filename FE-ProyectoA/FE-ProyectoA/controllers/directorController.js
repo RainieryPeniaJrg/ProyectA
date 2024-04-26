@@ -1,7 +1,13 @@
 const axios = require("axios");
 const { METHODS } = require("http");
 const https = require('https');
-
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBhZG1pbi5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsIkZ1bGxOYW1lIjoiQWRtaW4iLCJleHAiOjE3MTQxMDM5NTcsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcyOTkiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQwMDAifQ.K2reOgyczuJZ2ToWEvJuNq_MPGyRg8iIHporgRv_Oz8'
+const config = {
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  };
 exports.getHome = async (req, res) => {
 
 
@@ -35,19 +41,25 @@ exports.getGrupos = async (req, res) => {
 
 exports.getCoordinadores = async (req, res) => {
     try {
+        // Configura el agente HTTPS con la verificación del certificado deshabilitada
         const agent = new https.Agent({ rejectUnauthorized: false });
-        //NOTA> agregar url correcto de la api para traer los coordinadores
-        const respuesta = await axios.get('https://localhost:7299/api/CoordinadoresGeneral/GetAll',{ httpsAgent: agent });
 
-
+        // Realiza la solicitud con Axios, pasando el agente con la verificación del certificado deshabilitada
+        const respuesta = await axios.get('https://localhost:7299/api/CoordinadoresGeneral/GetAll', {
+            headers: {
+                'Content-Type': 'application/json',
+                'accept': '*/*',
+                'Authorization': `Bearer ${token}`
+            },
+            httpsAgent: agent // Utiliza el agente HTTPS configurado
+        });
 
         const coordinadores = respuesta.data;
-console.log(coordinadores)-
+        console.log(coordinadores);
 
         res.render("director/coordinadores", {
             title: "Coordinadores",
             coordinadores: coordinadores
-
         });
     } catch (error) {
         console.error('Error al obtener los coordinadores:', error);
@@ -56,12 +68,19 @@ console.log(coordinadores)-
 };
 
 
-
 exports.getSubCoordinadores = async (req, res) => {
     try {
         //NOTA> agregar url correcto de la api para traer los Subcoordinadores
-        const respuesta = await axios.get('http://localhost:3000/2');
+        const agent = new https.Agent({ rejectUnauthorized: false });
 
+        const respuesta = await axios.get('https://localhost:7299/api/SubCoordinador/GetAll', {
+            headers: {
+                'Content-Type': 'application/json',
+                'accept': '*/*',
+                'Authorization': `Bearer ${token}`
+            },
+            httpsAgent: agent // Utiliza el agente HTTPS configurado
+        });
 
         const subCoordinadores = respuesta.data;
 
@@ -81,7 +100,16 @@ exports.getSubCoordinadores = async (req, res) => {
 exports.getDirigentes = async (req, res) => {
     try {
         //NOTA> agregar url correcto de la api para traer los dirigentes
-        const respuesta = await axios.get('http://localhost:3000/2');
+        const agent = new https.Agent({ rejectUnauthorized: false });
+
+        const respuesta = await axios.get('https://localhost:7299/api/Dirigentes/GetAll',{
+            headers: {
+                'Content-Type': 'application/json',
+                'accept': '*/*',
+                'Authorization': `Bearer ${token}`
+            },
+            httpsAgent: agent // Utiliza el agente HTTPS configurado
+        });
 
 
         const dirigentes = respuesta.data;
