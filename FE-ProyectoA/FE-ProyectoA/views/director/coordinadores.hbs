@@ -9,16 +9,18 @@
             <th>Cédula</th>
             <th>Número de Teléfono</th>
             <th>Dirección</th>
+            <th>Casa Electoral</th>
         </tr>
     </thead>
     <tbody>
         {{#each coordinadores}}
         <tr>
             <td>{{this.nombreCompleto}}</td>
-            <td>{{this.cantidadVotantes}}</td>
+            <td>{{cantidadVotantes.value}}</td>
             <td>{{this.cedula.value}}</td>
             <td>{{this.numeroTelefono.value}}</td>
-            <td>{{this.direccion.provincia}}, {{this.direccion.sector}}, {{this.direccion.casaElectoral}}</td>
+            <td>{{this.direccion.provincia}}, {{this.direccion.sector}}</td>
+            <td>{{ direccion.casaElectoral }}</td>
         </tr>
         {{/each}}
     </tbody>

@@ -8,15 +8,50 @@ const config = {
       'Content-Type': 'application/json'
     }
   };
-exports.getHome = async (req, res) => {
+  exports.getHome = async (req, res) => {
+    try {
+        const agent = new https.Agent({ rejectUnauthorized: false });
+        const token = "<YourAccessToken>"; // Asegúrate de tener el token adecuado
 
+        // Función para obtener y sumar la cantidad de votantes de un endpoint
+        const obtenerYSumarCantidadVotantes = async (url) => {
+            const respuesta = await axios.get(url, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'accept': '*/*',
+                    'Authorization': `Bearer ${token}`
+                },
+                httpsAgent: agent
+            });
 
-    res.render("director/home", {
-        title: "Home"
-    });
-    res.status(200);
+            // Sumar la cantidad de votantes de todas las respuestas
+            return respuesta.data.reduce((total, item) => total + item.cantidadVotantes.value, 0);
+        };
 
-}
+        // URLs de los endpoints GetAll
+        const urls = [
+            'https://localhost:7299/api/CoordinadoresGeneral/GetAll',
+            'https://localhost:7299/api/SubCoordinador/GetAll',
+            'https://localhost:7299/api/Dirigentes/GetAll'
+        ];
+
+        // Sumar la cantidad de votantes de todos los endpoints
+        const sumaCantidadVotantes = await Promise.all(urls.map(obtenerYSumarCantidadVotantes));
+        
+        // Sumar todas las cantidades
+        const totalCantidadVotantes = sumaCantidadVotantes.reduce((total, cantidad) => total + cantidad, 0);
+
+        // Renderizar la vista home con el total de cantidad de votantes
+        res.render("director/home", {
+            title: "Home",
+            totalCantidadVotantes: totalCantidadVotantes
+        });
+
+    } catch (error) {
+        console.error('Error al obtener la información:', error);
+        res.status(500).json({ mensaje: 'Error al obtener la información' });
+    }
+};
 
 exports.getGrupos = async (req, res) => {
     try {
@@ -84,6 +119,7 @@ exports.getSubCoordinadores = async (req, res) => {
 
         const subCoordinadores = respuesta.data;
 
+        console.log(respuesta.data);
 
         res.render("director/Subcoordinadores", {
             title: "SubCoordinadores",
@@ -96,37 +132,32 @@ exports.getSubCoordinadores = async (req, res) => {
     }
 };
 
-
 exports.getDirigentes = async (req, res) => {
     try {
-        //NOTA> agregar url correcto de la api para traer los dirigentes
+        //NOTA: Asegúrate de agregar la URL correcta de la API para traer los dirigentes
         const agent = new https.Agent({ rejectUnauthorized: false });
 
-        const respuesta = await axios.get('https://localhost:7299/api/Dirigentes/GetAll',{
+        const respuesta = await axios.get('https://localhost:7299/api/Dirigentes/GetAll', {
             headers: {
                 'Content-Type': 'application/json',
                 'accept': '*/*',
-                'Authorization': `Bearer ${token}`
+                // No necesitas autorización en este caso
             },
             httpsAgent: agent // Utiliza el agente HTTPS configurado
         });
 
-
         const dirigentes = respuesta.data;
-
+        console.log(respuesta.data);
 
         res.render("director/dirigentes", {
-            title: "dirigentes",
+            title: "Dirigentes",
             dirigentes: dirigentes
-
         });
     } catch (error) {
         console.error('Error al obtener los dirigentes:', error);
         res.status(500).json({ mensaje: 'Error al obtener los dirigentes' });
     }
 };
-
-
 
 exports.getAgregarGrupos = async (req, res, next) => {
     try {

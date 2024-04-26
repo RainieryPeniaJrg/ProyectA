@@ -76,7 +76,7 @@ exports.getVotantes = async (req, res) => {
 
         // Extraer los datos de la respuesta
         const votantes = respuesta.data;
-
+        console.log(votantes);
         // Renderizar la vista con los datos de los votantes
         res.render("votante/lista-votantes", {
             title: "Votantes",

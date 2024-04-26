@@ -5,6 +5,7 @@ const directorRoute = require('./routes/director')
 const votanteRoute = require("./routes/votantes")
 const sesionRoute = require("./routes/sesiones")
 const errorController = require("./controllers/errorController")
+const { obtenerTotalCantidadVotantes } = require('./helpers/votosTotales') // Importa la función para obtener el total de cantidad de votantes
 const axios = require('axios')
 const bodyParser = require('body-parser');
 const app = express();
@@ -18,6 +19,21 @@ app.set("views", "views")
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use(async (req, res, next) => {
+    try {
+        // Obtener el total de cantidad de votantes
+        const totalCantidadVotantes = await obtenerTotalCantidadVotantes();
+        
+        // Establecer el totalCantidadVotantes como una variable local disponible en todas las vistas
+        res.locals.totalCantidadVotantes = totalCantidadVotantes;
+        next();
+    } catch (error) {
+        console.error('Error al obtener la información:', error);
+        res.locals.totalCantidadVotantes = 0; // Si ocurre un error, establecer el total en 0
+        next();
+    }
+});
 
 app.use(sesionRoute)
 app.use(directorRoute)
