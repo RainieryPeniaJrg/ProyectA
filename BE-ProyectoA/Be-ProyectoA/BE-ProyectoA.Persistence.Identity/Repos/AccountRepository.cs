@@ -199,7 +199,8 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
                     {
                         var requestId = userRequest.Id;
                         var subCoordinador = new SubCoordinadores
-                        (id: new SubCoordinadoresId(Guid.Parse(requestId)),
+                        (
+                         id: new SubCoordinadoresId(Guid.Parse(requestId)),
                         nombre: model.Nombre,
                         apellido: model.Apellido,
                         cantidadVotos: CantidadVotos.Create(model.CantidadVotantes)!,
@@ -242,10 +243,6 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
                   cantidadVotantes: CantidadVotos.Create(model.CantidadVotantes)!,
                   subCoordiadorId,
                   subCoordinador!
-
-
-
-
                   ); ; ;
                         await dirigenteMultiplicadorRepository.AddAsync(dirigente, cancellationToken);
                         await unitOfWork.SaveChangesAsync(cancellationToken);

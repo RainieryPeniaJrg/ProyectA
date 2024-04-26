@@ -1,9 +1,5 @@
 ﻿using BE_ProyectoA.Core.Domain.Inferfaces;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repository
 {
@@ -47,8 +43,30 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repos
             await _context.Set<T>().AsNoTracking().ToListAsync(cancellationToken);
 
         public async Task<List<T>> GetBy(Func<T, bool> predicate, CancellationToken cancellationToken = default) =>
-            await _context.Set<T>().Where(predicate).AsQueryable().AsNoTracking().ToListAsync(cancellationToken);
+             _context.Set<T>().AsNoTracking().Where(predicate).ToList();
+
+        public async Task<bool> ExecuteInTransaction(Func<Task<bool>> operation, CancellationToken cancellationToken = default)
+        {
+            await using var transaction = await _context.Database.BeginTransactionAsync(cancellationToken);
+            try
+            {
+                var success = await operation();
+                if (success)
+                {
+                    await transaction.CommitAsync(cancellationToken);
+                    return true;
+                }
+                else
+                {
+                    await transaction.RollbackAsync(cancellationToken);
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                await transaction.RollbackAsync(cancellationToken);
+                throw; // Re-lanzar la excepción para manejarla en un nivel superior si es necesario
+            }
+        }
     }
 }
-
-    

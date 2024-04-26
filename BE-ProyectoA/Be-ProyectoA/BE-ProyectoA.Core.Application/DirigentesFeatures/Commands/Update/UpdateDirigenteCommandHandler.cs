@@ -45,11 +45,11 @@ namespace BE_ProyectoA.Core.Application.DirigentesFeatures.Commands.Update
             var cedula = Cedula.Create(command.Cedula);
 
             var direccion = Direccion.Create(command.Provincia, command.Sector, command.CasaElectoral);
-
+            var subId = new SubCoordinadoresId(command.SubCoordinadoresId);
            
             if (subCoordinador is not null && direccion is not null && cedula is not null && numeroTelefono is not null)
             {
-                DirigentesMultiplicadores dirigentesMultiplicadores = DirigentesMultiplicadores.Update(id, cedula, numeroTelefono, command.Nombre, command.Apellido, command.Activo, direccion, command.CantidadVotantes, subCoordinador);
+                DirigentesMultiplicadores dirigentesMultiplicadores = DirigentesMultiplicadores.Update(id, cedula, numeroTelefono, command.Nombre, command.Apellido, command.Activo, direccion, command.CantidadVotantes, subCoordinador, subId);
                 _dirigenteMultiplicadorRepository.Update(dirigentesMultiplicadores);
                 await _unitOfWork.SaveChangesAsync(cancellationToken);
             }

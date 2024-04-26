@@ -15,25 +15,31 @@ using Microsoft.AspNetCore.Identity;
 
 namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
 {
-    public class CreateVotanteCommandHandler(
-        IUnitOfWork unitOfWork,
-        IVotanteRepository votantesRepository,
-        ICoordinadorGeneralRepository coordinadorGeneralRepository,
-        ISubCoordinadorRepository subCoordinadorRepository,
-        IDirigenteMultiplicadorRepository dirigenteMultiplicadorRepository,
-        UserManager<ApplicationUser> userManager,
-        IDirectoresRepository directoresRepository) : IRequestHandler<CreateVotanteCommand, ErrorOr<Unit>>
+    public class CreateVotanteCommandHandler : IRequestHandler<CreateVotanteCommand, ErrorOr<Unit>>
     {
-        private readonly IUnitOfWork _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
-        private readonly IVotanteRepository _votantesRepository = votantesRepository ?? throw new ArgumentNullException(nameof(votantesRepository));
-        private readonly ICoordinadorGeneralRepository _coordinadorGeneralRepository = coordinadorGeneralRepository ?? throw new ArgumentNullException(nameof(coordinadorGeneralRepository));
-        private readonly ISubCoordinadorRepository _subCoordinadorRepository = subCoordinadorRepository ?? throw new ArgumentNullException(nameof(subCoordinadorRepository));
-        private readonly IDirigenteMultiplicadorRepository _dirigenteMultiplicadorRepository = dirigenteMultiplicadorRepository ?? throw new ArgumentNullException(nameof(dirigenteMultiplicadorRepository));
-        private readonly IDirectoresRepository _directoresRepository = directoresRepository ?? throw new ArgumentNullException(nameof(directoresRepository));
-        private readonly UserManager<ApplicationUser> _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IVotanteRepository _votantesRepository;
+        private readonly ICoordinadorGeneralRepository _coordinadorGeneralRepository;
+        private readonly ISubCoordinadorRepository _subCoordinadorRepository;
+        private readonly IDirigenteMultiplicadorRepository _dirigenteMultiplicadorRepository;
+        private readonly IDirectoresRepository _directoresRepository;
+        private readonly UserManager<ApplicationUser> _userManager;
+        
+
+        public CreateVotanteCommandHandler(IUnitOfWork unitOfWork, IVotanteRepository votantesRepository, ICoordinadorGeneralRepository coordinadorGeneralRepository, ISubCoordinadorRepository subCoordinadorRepository, IDirigenteMultiplicadorRepository dirigenteMultiplicadorRepository, IDirectoresRepository directoresRepository, UserManager<ApplicationUser> userManager)
+        {
+            _unitOfWork = unitOfWork;
+            _votantesRepository = votantesRepository;
+            _coordinadorGeneralRepository = coordinadorGeneralRepository;
+            _subCoordinadorRepository = subCoordinadorRepository;
+            _dirigenteMultiplicadorRepository = dirigenteMultiplicadorRepository;
+            _directoresRepository = directoresRepository;
+            _userManager = userManager;
+        }
 
         public async Task<ErrorOr<Unit>> Handle(CreateVotanteCommand command, CancellationToken cancellationToken)
         {
+            
             var numeroTelefono = NumeroTelefono.Create(command.NumeroTelefono);
             var cedula = Cedula.Create(command.Cedula);
             var direccion = Direccion.Create(command.Provincia, command.Sector, command.CasaElectoral);
@@ -45,7 +51,7 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
                
                 var dirigenteId = new DirigentesMultiplicadoresId(Guid.Parse(userRequest.Id));
                 var subCoordinadorId = new SubCoordinadoresId(Guid.Parse(userRequest.Id));
-                var directorId = new DirectoresId(Guid.Parse(userRequest.Id));
+               
                 var coordinadorGeneralId = new CoordinadoresGeneralesId(Guid.Parse(userRequest.Id));
 
                 if (await _coordinadorGeneralRepository.ExistsAsync(coordinadorGeneralId, cancellationToken))
@@ -67,8 +73,8 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
 
                         await _votantesRepository.AddAsync(votanteCoordinadorGeneral, cancellationToken);
                         await _unitOfWork.SaveChangesAsync(cancellationToken);
+
                         await CalcularVotos(votantesList, command.MiembroId, TipoMiembro.CoordinadorGeneral, cancellationToken);
-                        await _unitOfWork.SaveChangesAsync(cancellationToken);
 
                         return Unit.Value;
                     }
@@ -93,7 +99,8 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
 
                         await _votantesRepository.AddAsync(votanteSubCoordinador, cancellationToken);
                         await _unitOfWork.SaveChangesAsync(cancellationToken);
-
+                        await CalcularVotos(votantesList, command.MiembroId, TipoMiembro.SubCoordinador, cancellationToken);
+                        await _unitOfWork.SaveChangesAsync(cancellationToken);
                         return Unit.Value;
                     }
                 }
@@ -116,6 +123,8 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
                         );
 
                         await _votantesRepository.AddAsync(votanteDirigente, cancellationToken);
+                        await _unitOfWork.SaveChangesAsync(cancellationToken);
+                        await CalcularVotos(votantesList, command.MiembroId, TipoMiembro.DirigenteMultiplicador, cancellationToken);
                         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
                         return Unit.Value;
@@ -155,6 +164,7 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
 
                             _coordinadorGeneralRepository.Update(coordinador!);
                             await _unitOfWork.SaveChangesAsync(cancellationToken);
+
                         }
                     }
                     break;
@@ -213,7 +223,9 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
                                 dirigenteDto.Activo,
                                 dirigenteDto.Direccion,
                                 votosTotales,
-                                dirigenteDto.SubCoordinadores
+                                dirigenteDto.SubCoordinadores,
+                                dirigenteDto.SubCoordinadoresId
+                               
 
                               );
 

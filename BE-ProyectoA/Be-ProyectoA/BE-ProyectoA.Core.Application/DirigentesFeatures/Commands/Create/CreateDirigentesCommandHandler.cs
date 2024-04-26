@@ -1,4 +1,5 @@
-﻿using BE_ProyectoA.Core.Application.Common.ValueObjectsValidators;
+﻿using BE_ProyectoA.Core.Application.Common.CreadorCantidadVotantes;
+using BE_ProyectoA.Core.Application.Common.ValueObjectsValidators;
 using BE_ProyectoA.Core.Domain.Entities.Coordinadores;
 using BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador;
 using BE_ProyectoA.Core.Domain.Primitivies;
@@ -39,16 +40,18 @@ namespace BE_ProyectoA.Core.Application.DirigentesFeatures.Commands.Create
             {
                 return Error.Validation("SubCoordinadores.NotFound", "El SubCoordinadores proporcionador no se encuentra");
             }
-
+            var votos = CantidadVotos.Create(0);
             var subCoordinador = await _subCoordinadorRepository.GetByIdAsync(IpSubCoordinador, cancellationToken);   
             
             if(subCoordinador != null)
             {
                 var dirigente = new DirigentesMultiplicadores
               (
-              new DirigentesMultiplicadoresId(Guid.NewGuid()),cedula, numeroTelefono,
+                  
+
+              new DirigentesMultiplicadoresId(Guid.NewGuid()),cedula!, numeroTelefono!,
               command.Nombre, command.Apellido, command.Activo, 
-              direccion, command.CantidadVotantes,subCoordinador
+              direccion!, votos, subCoordinador
                
               );
                 await _dirigenteMultiplicadorRepository.AddAsync(dirigente, cancellationToken);

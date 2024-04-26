@@ -80,9 +80,9 @@ namespace BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador
         public SubCoordinadoresId SubCoordinadoresId { get; set; } 
         public SubCoordinadores SubCoordinadores {  get; set; } 
 
-        public static DirigentesMultiplicadores Update(DirigentesMultiplicadoresId id, Cedula cedula, NumeroTelefono numeroTelefono, string nombre, string apellido, bool activo, Direccion direccion, CantidadVotos cantidadVotantes, SubCoordinadores subCoordinadores)
+        public static DirigentesMultiplicadores Update(DirigentesMultiplicadoresId id, Cedula cedula, NumeroTelefono numeroTelefono, string nombre, string apellido, bool activo, Direccion direccion, CantidadVotos cantidadVotantes, SubCoordinadores subCoordinadores,SubCoordinadoresId subCoordinadoresId)
         {
-            return new DirigentesMultiplicadores(id,cedula,numeroTelefono,nombre,apellido,activo,direccion,cantidadVotantes,subCoordinadores);
+            return new DirigentesMultiplicadores(id,cedula,numeroTelefono,nombre,apellido,activo,direccion,cantidadVotantes,subCoordinadoresId,subCoordinadores);
         }
 
     }
