@@ -4,6 +4,7 @@ using BE_ProyectoA.Infraestructure.Persistence.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BE_ProyectoA.Infraestructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240426164552_permitiendo_nulabilidad_de_campos")]
+    partial class permitiendo_nulabilidad_de_campos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -285,9 +288,8 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Migrations
                             b1.Property<Guid>("CoordinadoresGeneralesId")
                                 .HasColumnType("uniqueidentifier");
 
-                            b1.Property<string>("CasaElectoral")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
+                            b1.Property<int>("CasaElectoral")
+                                .HasColumnType("int");
 
                             b1.Property<string>("Provincia")
                                 .IsRequired()
@@ -324,9 +326,8 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Migrations
                             b1.Property<Guid>("SubCoordinadoresId")
                                 .HasColumnType("uniqueidentifier");
 
-                            b1.Property<string>("CasaElectoral")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
+                            b1.Property<int>("CasaElectoral")
+                                .HasColumnType("int");
 
                             b1.Property<string>("Provincia")
                                 .IsRequired()
@@ -365,9 +366,8 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Migrations
                             b1.Property<Guid>("DirigentesMultiplicadoresId")
                                 .HasColumnType("uniqueidentifier");
 
-                            b1.Property<string>("CasaElectoral")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
+                            b1.Property<int>("CasaElectoral")
+                                .HasColumnType("int");
 
                             b1.Property<string>("Provincia")
                                 .IsRequired()
@@ -469,9 +469,8 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Migrations
                             b1.Property<Guid>("VotanteId")
                                 .HasColumnType("uniqueidentifier");
 
-                            b1.Property<string>("CasaElectoral")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
+                            b1.Property<int>("CasaElectoral")
+                                .HasColumnType("int");
 
                             b1.Property<string>("Provincia")
                                 .IsRequired()

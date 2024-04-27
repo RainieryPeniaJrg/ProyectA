@@ -15,7 +15,7 @@ namespace BE_ProyectoA.Core.Application.DirigentesFeatures.Commands.Create
      string NumeroTelefono,
      string Provincia,
      string Sector,
-     int CasaElectoral,
+     string CasaElectoral,
      bool Activo,
      Guid SubCoordinadoresId
 

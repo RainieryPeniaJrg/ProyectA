@@ -21,7 +21,7 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
                 .HasConversion(
                     numeroTelefono => numeroTelefono.Value,
                     value => NumeroTelefono.Create(value)!)
-                .HasMaxLength(20);
+                .HasMaxLength(20).IsRequired(false);
 
             builder.Property(sc => sc.Cedula)
                 .HasConversion(
@@ -40,13 +40,13 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
 
             builder.OwnsOne(sc => sc.Direccion, direccionBuilder =>
             {
-                direccionBuilder.Property(d => d.Provincia).HasMaxLength(30);
-                direccionBuilder.Property(d => d.Sector).HasMaxLength(30);
+                direccionBuilder.Property(d => d.Provincia).HasMaxLength(50);
+                direccionBuilder.Property(d => d.Sector).HasMaxLength(50);
                 direccionBuilder.Property(d => d.CasaElectoral);
             });
 
-            builder.Property(sc => sc.Nombre).HasMaxLength(30);
-            builder.Property(sc => sc.Apellido).HasMaxLength(30);
+            builder.Property(sc => sc.Nombre).HasMaxLength(50);
+            builder.Property(sc => sc.Apellido).HasMaxLength(50);
 
             builder.Ignore(sc => sc.NombreCompleto);
 

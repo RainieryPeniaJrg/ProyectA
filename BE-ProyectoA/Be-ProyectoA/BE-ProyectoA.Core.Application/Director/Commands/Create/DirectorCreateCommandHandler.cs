@@ -35,7 +35,7 @@ namespace BE_ProyectoA.Core.Application.Director.Commands.Create
                     new DirectoresId(Guid.NewGuid()),
                     command.Nombre,
                     command.Apellido,
-                    command.CantidadVotantes,
+                    CantidadVotos.Create(1090),
                     cedula,
                     numeroTelefono,
                     true

@@ -40,7 +40,7 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
             builder.Property(d => d.CantidadVotantes)
                 .HasConversion(
                     cedula => cedula.Value,
-                    value => CantidadVotos.Create(value)!);
+                    value => CantidadVotos.Create(value)!).IsRequired(false);
 
 
             builder.HasMany(c => c.Votantes)
@@ -55,8 +55,8 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
                 .HasForeignKey(c => c.CoordinadorsGeneralesId)
                 .OnDelete(DeleteBehavior.NoAction); // Especifica cómo manejar las eliminaciones
 
-            builder.Property(c => c.Nombre).HasMaxLength(30);
-            builder.Property(c => c.Apellido).HasMaxLength(30);
+            builder.Property(c => c.Nombre).HasMaxLength(50);
+            builder.Property(c => c.Apellido).HasMaxLength(50);
 
             builder.Ignore(c => c.NombreCompleto);
         }

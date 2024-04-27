@@ -17,7 +17,7 @@ namespace BE_ProyectoA.Core.Application.CoordinadoresGeneralesFeatures.Commands.
      string NumeroTelefono,
      string Provincia,
      string Sector,
-     int casaElectoral,
+     string casaElectoral,
      CantidadVotos CantidadVotantes,
      bool Activo
         ) : IRequest<ErrorOr<Unit>>;

@@ -29,7 +29,7 @@ namespace BE_ProyectoA.Core.Application.Common.ValueObjectsValidators
             return numeroTelefono;
         }
 
-        public static ErrorOr<Direccion> DireccionValidator(string provincia,string sector, int casaElectoral)
+        public static ErrorOr<Direccion> DireccionValidator(string provincia,string sector, string casaElectoral)
         {
 
             if (Direccion.Create(provincia,sector, casaElectoral) is not Direccion direccion)
@@ -40,7 +40,7 @@ namespace BE_ProyectoA.Core.Application.Common.ValueObjectsValidators
             return direccion;
         }
 
-        public static ErrorOr<Unit> ValidarDatos(string cedulaParam, string numeroParams, string provincia, string sector,int casaElectoral)
+        public static ErrorOr<Unit> ValidarDatos(string cedulaParam, string numeroParams, string provincia, string sector, string casaElectoral)
         {
             var cedulaResult = CedulaValidator(cedulaParam);
             var numeroResult = NumeroValidator(numeroParams);

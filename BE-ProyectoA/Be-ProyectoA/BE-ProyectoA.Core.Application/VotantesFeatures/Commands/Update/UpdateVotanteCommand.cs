@@ -14,7 +14,7 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Update
         bool Activo,
         string Sector,
         string Provincia,
-        int CasaElectoral
+        string CasaElectoral
         ) : IRequest<ErrorOr<Unit>>;
 
 }

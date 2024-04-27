@@ -15,7 +15,7 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
         bool Activo,
         string Sector,
         string Provincia,
-        int CasaElectoral,
+        string CasaElectoral,
         Guid MiembroId
         ) : IRequest<ErrorOr<Unit>>;
 

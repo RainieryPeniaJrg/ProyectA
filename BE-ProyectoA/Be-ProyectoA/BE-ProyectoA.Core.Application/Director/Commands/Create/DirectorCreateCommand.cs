@@ -11,7 +11,7 @@ namespace BE_ProyectoA.Core.Application.Director.Commands.Create
       
          string Nombre,
          string Apellido,
-        CantidadVotos CantidadVotantes,
+        int CantidadVotantes,
         string Cedula,
         string NumeroTelefono,
         bool Activo,

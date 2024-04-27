@@ -13,7 +13,7 @@ namespace BE_ProyectoA.Core.Application.CoordinadoresGeneralesFeatures.Commands.
     string NumeroTelefono,
     string Provincia,
     string Sector,
-    int CasaElectoral,
+    string CasaElectoral,
     int CantidadVotantes,
     bool Activo
    

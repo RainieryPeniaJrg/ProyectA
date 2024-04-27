@@ -11,10 +11,19 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repos
         {
             _context = context;
         }
+        public async Task AddAsync(T entity, CancellationToken cancellationToken = default)
+        {
+            if (entity != null)
+            {
+                await _context.Set<T>().AddAsync(entity!, cancellationToken);
 
-        public async Task AddAsync(T entity, CancellationToken cancellationToken = default) =>
-            await _context.Set<T>().AddAsync(entity, cancellationToken);
-
+                _context.Entry(entity).State = EntityState.Added;
+            }
+            else
+            {
+                await _context.Set<T>().AddAsync(entity!, cancellationToken);
+            }
+        }
         public void Delete(T entity) => _context.Set<T>().Remove(entity);
 
         public void Update(T entity) => _context.Set<T>().Update(entity);
@@ -67,6 +76,14 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repos
                 await transaction.RollbackAsync(cancellationToken);
                 throw; 
             }
+        }
+
+        public async Task<T?> GetByIdAsync2(object id, CancellationToken cancellationToken = default)
+        {
+            var keyValues = new object[] { id };
+            var entity = await _context.Set<T>().FindAsync(keyValues, cancellationToken);
+
+            return entity;
         }
     }
 }

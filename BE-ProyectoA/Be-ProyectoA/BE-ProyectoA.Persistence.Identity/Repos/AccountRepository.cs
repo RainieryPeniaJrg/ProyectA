@@ -158,7 +158,7 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
 
                  
 
-                    ValueObjectValidators.ValidarDatos(model.Cedula, model.NumeroTelefono, model.Provincia, model.Sector, model.casaElectoral);
+                    ValueObjectValidators.ValidarDatos(model.Cedula, model.NumeroTelefono, model.Provincia, model.Sector, model.CasaElectoral);
 
                     var userRequest = await userManager.FindByEmailAsync(model.Email);
                     if(userRequest != null)
@@ -173,7 +173,7 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
                        numeroTelefono: NumeroTelefono.Create(model.NumeroTelefono)!,
                        activo: model.Activo,
                        cantidadVotantes : CantidadVotos.Create(model.CantidadVotantes)!,
-                       direccion: Direccion.Create(model.Provincia, model.Sector, model.casaElectoral)!
+                       direccion: Direccion.Create(model.Provincia, model.Sector, model.CasaElectoral)!
                    );
                         await coordinadorGeneralRepository.AddAsync(coordinador, cancellationToken);
                         await unitOfWork.SaveChangesAsync(cancellationToken);
@@ -184,15 +184,11 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
                 }
                 if(model.Role == "SubCoordinador")
                 {
-                    ValueObjectValidators.ValidarDatos(model.Cedula, model.NumeroTelefono, model.Provincia, model.Sector, model.casaElectoral);
+                    ValueObjectValidators.ValidarDatos(model.Cedula, model.NumeroTelefono, model.Provincia, model.Sector,model.CasaElectoral);
 
                     var coordiadorGeneralId = new CoordinadoresGeneralesId(model.CoordinadorGeneralId);
 
-                    if(!await coordinadorGeneralRepository.ExistsAsync(coordiadorGeneralId, cancellationToken))
-                        return new GeneralResponse(false, "El coordinador general no existe");
-
-                    var coordinador = await coordinadorGeneralRepository.GetByIdAsync(coordiadorGeneralId, cancellationToken);
-
+                    var coordinador = await coordinadorGeneralRepository.GetByIdAsync2(coordiadorGeneralId, cancellationToken);
 
                     var userRequest = await userManager.FindByEmailAsync(model.Email);
                     if (userRequest != null)
@@ -207,7 +203,7 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
                         numeroTelefono: NumeroTelefono.Create(model.NumeroTelefono)!,
                         cedula: Cedula.Create(model.Cedula)!,
                         activo: model.Activo,
-                        direccion: Direccion.Create(model.Provincia, model.Sector, model.casaElectoral)!,
+                        direccion: Direccion.Create(model.Provincia,model.Sector, model.CasaElectoral)!,
                         coordinadorsGeneralesId: coordiadorGeneralId,
                         coordinador!
                         );
@@ -221,12 +217,12 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
                 }
                 if(model.Role == "Dirigente")
                 {
-                    ValueObjectValidators.ValidarDatos(model.Cedula, model.NumeroTelefono, model.Provincia, model.Sector, model.casaElectoral);
+                    ValueObjectValidators.ValidarDatos(model.Cedula, model.NumeroTelefono, model.Provincia, model.Sector, model.CasaElectoral);
                     var subCoordiadorId = new SubCoordinadoresId(model.SubCoordinadorId);
                     if(!await subCoordinadorRepository.ExistsAsync(subCoordiadorId, cancellationToken))
                         return new GeneralResponse(false, "El Subcoordinador  no existe");
 
-                  var subCoordinador = await subCoordinadorRepository.GetByIdAsync(subCoordiadorId, cancellationToken);
+                  var subCoordinador = await subCoordinadorRepository.GetByIdAsync2(subCoordiadorId, cancellationToken);
                   var userRequest =  await userManager.FindByEmailAsync(model.Email);
                   if(userRequest != null)
                     {
@@ -239,7 +235,7 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
                   nombre: model.Nombre,
                   apellido: model.Apellido,
                   activo: model.Activo,
-                  direccion: Direccion.Create(model.Provincia, model.Sector, model.casaElectoral)!,
+                  direccion: Direccion.Create(model.Provincia, model.Sector, model.CasaElectoral)!,
                   cantidadVotantes: CantidadVotos.Create(model.CantidadVotantes)!,
                   subCoordiadorId,
                   subCoordinador!

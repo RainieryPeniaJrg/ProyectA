@@ -20,7 +20,7 @@ namespace BE_ProyectoA.Core.Application.DTOs.Request.Account
         [Required]
         public string Sector { get; set; } = string.Empty;
         [Required]
-        public int casaElectoral {get; set; }
+        public string CasaElectoral { get; set; } = string.Empty;
         [Required]
         public int CantidadVotantes { get; set; }
    

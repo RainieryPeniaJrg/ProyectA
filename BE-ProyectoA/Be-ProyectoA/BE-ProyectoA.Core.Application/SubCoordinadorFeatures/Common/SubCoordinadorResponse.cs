@@ -17,7 +17,7 @@ namespace BE_ProyectoA.Core.Application.SubCoordinadorFeatures.Common
 
        (string Provincia,
          string Sector,
-         int CasaElectoral
+         string CasaElectoral
        );
 
     public record GerenteGeneralResponsse

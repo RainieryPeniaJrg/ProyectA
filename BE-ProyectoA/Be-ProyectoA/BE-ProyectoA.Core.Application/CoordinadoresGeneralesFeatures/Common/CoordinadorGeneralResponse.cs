@@ -17,6 +17,6 @@ namespace BE_ProyectoA.Core.Application.CoordinadoresGeneralesFeatures.Common
 
        (string Provincia,
          string Sector,
-         int CasaElectoral
+         string CasaElectoral
        );
 }

@@ -17,7 +17,7 @@ namespace BE_ProyectoA.Core.Application.DirigentesFeatures.Commom
 
        (string Provincia,
          string Sector,
-         int CasaElectoral
+         string CasaElectoral
        );
 
     public record CoordinadorResponse

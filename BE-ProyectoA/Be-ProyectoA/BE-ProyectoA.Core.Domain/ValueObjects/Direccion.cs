@@ -2,7 +2,7 @@
 {
     public partial record Direccion
     {
-        public Direccion(string provincia, string sector, int casaElectoral)
+        public Direccion(string provincia, string sector, string casaElectoral)
         {
             Provincia = provincia;
             Sector = sector;
@@ -10,11 +10,11 @@
         }
         public string Provincia { get; set; }
         public string Sector { get; set; }
-        public int CasaElectoral { get; set; }
+        public string CasaElectoral { get; set; }
 
-        public static Direccion? Create(string provincia, string sector, int casaElectoral)
+        public static Direccion? Create(string provincia, string sector, string casaElectoral)
         {
-            if (string.IsNullOrEmpty(provincia) || string.IsNullOrEmpty(sector))
+            if (string.IsNullOrEmpty(provincia) || string.IsNullOrEmpty(sector) || string.IsNullOrEmpty(casaElectoral))
             {
                 return null;
             }

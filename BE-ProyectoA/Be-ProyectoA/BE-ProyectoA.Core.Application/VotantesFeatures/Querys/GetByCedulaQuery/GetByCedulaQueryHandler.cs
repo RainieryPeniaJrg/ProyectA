@@ -6,30 +6,30 @@ using ErrorOr;
 using MediatR;
 
 
-namespace BE_ProyectoA.Core.Application.VotantesFeatures.Querys.GetByCedulaQuery
-{
-    public class GetByCedulaQueryHandler : IRequestHandler<GetByCedulaQuery, ErrorOr<VotantesResponse>>
-    {
+namespace BE_ProyectoA.Core.Application.VotantesFeatures.Querys.GetByCedulaQuery { }
 
-        private readonly IVotanteRepository _votanteRepository;
+//    public class GetByCedulaQueryHandler : IRequestHandler<GetByCedulaQuery, ErrorOr<VotantesResponse>>
+//    {
 
-        public GetByCedulaQueryHandler(IVotanteRepository votanteRepository)
-        {
-            _votanteRepository = votanteRepository;
-        }
+//        private readonly IVotanteRepository _votanteRepository;
 
-        public async Task<ErrorOr<VotantesResponse>> Handle(GetByCedulaQuery query, CancellationToken cancellationToken)
-        {
-            var votante = (await _votanteRepository.GetBy(v => v.Cedula == Cedula.Create(query.Cedula), cancellationToken)).FirstOrDefault();
+//        public GetByCedulaQueryHandler(IVotanteRepository votanteRepository)
+//        {
+//            _votanteRepository = votanteRepository;
+//        }
 
-            if (votante == null)
-            {
-                return Error.NotFound("Votantes.NotFound", "El votante con esta cédula no ha sido encontrado");
-            }
+//        public async Task<ErrorOr<VotantesResponse>> Handle(GetByCedulaQuery query, CancellationToken cancellationToken)
+//        {
+//            var votante = (await _votanteRepository.GetBy(v => v.Cedula == Cedula.Create(query.Cedula), cancellationToken)).FirstOrDefault();
 
-            return new VotantesResponse(
-                votante.Id.Value, votante.NombreCompleto, votante.Cedula, votante.NumeroTelefono,
-                new DireccionResponse(votante.Direccion.Provincia, votante.Direccion.Sector), votante.Activo);
-        }
-    }
-}
+//            if (votante == null)
+//            {
+//                return Error.NotFound("Votantes.NotFound", "El votante con esta cédula no ha sido encontrado");
+//            }
+
+//            return new VotantesResponse(
+//                votante.Id.Value, votante.NombreCompleto, votante.Cedula, votante.NumeroTelefono,
+//                new DireccionResponse(votante.Direccion.Provincia, votante.Direccion.Sector), votante.Activo);
+//        }
+//    }
+//}

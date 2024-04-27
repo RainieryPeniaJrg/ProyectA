@@ -19,7 +19,7 @@ const votosTotales = async () => {
             });
 
             // Sumar la cantidad de votantes de todas las respuestas
-            return respuesta.data.reduce((total, item) => total + item.cantidadVotantes.value, 0);
+            return respuesta.data.reduce((total, item) => total + item.cantidadVotantes, 0);
         };
 
         // URLs de los endpoints GetAll

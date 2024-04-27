@@ -14,7 +14,7 @@ namespace BE_ProyectoA.Core.Application.SubCoordinadorFeatures.Commands.Create
      bool Activo,
      string Provincia,
      string Sector,
-     int CasaElectoral,
+     string CasaElectoral,
      string NumeroTelefono,
      Guid CoordinadorsGeneralesId 
         ):IRequest<ErrorOr<Unit>>;
