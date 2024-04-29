@@ -2,6 +2,10 @@
 using BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral;
 using BE_ProyectoA.Core.Domain.Entities.Director;
 using BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador;
+using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesCoordinadorGeneral;
+using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesDirector;
+using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesDirigentesEntity;
+using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesSubCoordinadores;
 using BE_ProyectoA.Core.Domain.Primitivies;
 using BE_ProyectoA.Core.Domain.ValueObjects;
 
@@ -92,7 +96,11 @@ namespace BE_ProyectoA.Core.Domain.Entities.Votantes
         public CoordinadoresGeneralesId CoordinadorGeneralId { get; set; }
         public DirigentesMultiplicadores Dirigente { get; set; }
         public DirigentesMultiplicadoresId DirigenteId { get; set; }
+        public VotantesDirectores VotantesDirector { get; set; }  
+        public VotantesDirigentes VotantesDirigentes { get; set; }
+        public VotantesCoordinadoresGenerales VotantesCoordinadoresGenerales { get; set; }
 
+        public VotantesSubCoordinador VotantesSubCoordinador { get; set; }  
         public static Votante UpdateVotante(Guid Id, string nombre,string apellido,Cedula cedula,Direccion direccion, NumeroTelefono numeroTelefono,bool activo)
         {
             return new Votante(new VotanteId(Id),nombre, apellido, cedula, direccion, numeroTelefono, activo);

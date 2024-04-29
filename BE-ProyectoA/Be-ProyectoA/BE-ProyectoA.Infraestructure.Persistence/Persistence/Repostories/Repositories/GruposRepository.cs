@@ -1,5 +1,5 @@
 ﻿using BE_ProyectoA.Core.Domain.Entities.GruposEntity;
-using BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repository;
+using BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.RepositoryGenerico;
 using Microsoft.EntityFrameworkCore;
 
 namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repositories

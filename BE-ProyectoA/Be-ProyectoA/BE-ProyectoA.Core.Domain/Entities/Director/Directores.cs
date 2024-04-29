@@ -1,4 +1,5 @@
 ﻿using BE_ProyectoA.Core.Domain.Entities.Votantes;
+using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesDirector;
 using BE_ProyectoA.Core.Domain.Primitivies;
 using BE_ProyectoA.Core.Domain.ValueObjects;
 
@@ -28,6 +29,8 @@ namespace BE_ProyectoA.Core.Domain.Entities.Director
         public NumeroTelefono NumeroTelefono { get; private set; }
         public bool Activo { get; set; }
         public ICollection<Votante> Votantes { get; set; }
+
+        public VotantesDirectores VotantesDirector { get; set; }
 
         public static Directores? Update(DirectoresId id, string nombre, string apellido, CantidadVotos cantidadVotantes, Cedula cedula, NumeroTelefono numeroTelefono, bool activo)
         {

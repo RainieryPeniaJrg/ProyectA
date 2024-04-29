@@ -5,6 +5,10 @@ using BE_ProyectoA.Core.Domain.Entities.Director;
 using BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador;
 using BE_ProyectoA.Core.Domain.Entities.GruposEntity;
 using BE_ProyectoA.Core.Domain.Entities.Votantes;
+using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesCoordinadorGeneral;
+using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesDirector;
+using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesDirigentesEntity;
+using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesSubCoordinadores;
 using BE_ProyectoA.Core.Domain.Primitivies;
 using BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations;
 using MediatR;
@@ -57,6 +61,9 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence
         public DbSet<DirigentesMultiplicadores> DirigentesMultiplicadores { get; set ; }
         public DbSet<Grupos> Grupos { get ; set ; }
         public DbSet<Votante> Votantes { get ; set  ; }
-
+        public DbSet<VotantesCoordinadoresGenerales> VotantesCoordinadores { get; set; }
+        public DbSet<VotantesDirectores> VotantesDirectors { get; set ; }
+        public DbSet<VotantesDirigentes> VotantesDirigentes { get; set; }
+        public DbSet<VotantesSubCoordinador> VotantesSubCoordinadores { get; set; }
     }
 }

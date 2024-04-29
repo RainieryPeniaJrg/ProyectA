@@ -2,6 +2,8 @@
 using BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador;
 using BE_ProyectoA.Core.Domain.Entities.GruposEntity;
 using BE_ProyectoA.Core.Domain.Entities.Votantes;
+using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesCoordinadorGeneral;
+using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesSubCoordinadores;
 using BE_ProyectoA.Core.Domain.Primitivies;
 using BE_ProyectoA.Core.Domain.ValueObjects;
 
@@ -88,6 +90,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.Coordinadores
         public CoordinadoresGeneralesId CoordinadorsGeneralesId { get; set; }
         public CoordinadoresGenerales Coordinadores { get; set; }
         public ICollection<Votante> Votantes { get; set; }
+        public VotantesSubCoordinador VotantesSubCoordinador { get; set; }  
         public static SubCoordinadores Update(SubCoordinadoresId id, string nombre, string apellido, CantidadVotos cantidadVotos, NumeroTelefono numeroTelefono, Cedula cedula, bool activo, Direccion direccion,CoordinadoresGenerales coordinadores)
         {
             return new SubCoordinadores(id,nombre, apellido,cantidadVotos,numeroTelefono,cedula,activo, direccion, coordinadores);

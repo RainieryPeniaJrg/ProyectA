@@ -1,7 +1,7 @@
 ﻿using BE_ProyectoA.Core.Domain.Inferfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repository
+namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.RepositoryGenerico
 {
     public class Repository<T> : IRepository<T> where T : class
     {
@@ -74,7 +74,7 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repos
             catch (Exception)
             {
                 await transaction.RollbackAsync(cancellationToken);
-                throw; 
+                throw;
             }
         }
 

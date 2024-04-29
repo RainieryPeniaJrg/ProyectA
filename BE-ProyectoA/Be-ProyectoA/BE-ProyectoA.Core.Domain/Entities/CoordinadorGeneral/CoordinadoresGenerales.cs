@@ -5,6 +5,7 @@ using BE_ProyectoA.Core.Domain.ValueObjects;
 using System.Collections.Generic;
 using System;
 using BE_ProyectoA.Core.Domain.Entities.Votantes;
+using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesCoordinadorGeneral;
 
 
 namespace BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral
@@ -62,6 +63,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral
         public ICollection<SubCoordinadores> SubCoordinadores { get; set; }
         public ICollection<Votante> Votantes { get; set; }
         public string NombreCompleto => $"{Nombre} {Apellido}";
+        public VotantesCoordinadoresGenerales VotantesCoordinadoresGenerales { get; set; }  
    
   
 
