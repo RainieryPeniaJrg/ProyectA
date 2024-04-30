@@ -1,5 +1,4 @@
-﻿using BE_ProyectoA.Core.Application.Common.ValueObjectsValidators;
-using BE_ProyectoA.Core.Application.DTOs.Request.Account;
+﻿using BE_ProyectoA.Core.Application.DTOs.Request.Account;
 using BE_ProyectoA.Core.Application.DTOs.Response;
 using BE_ProyectoA.Core.Application.DTOs.Response.Account;
 using BE_ProyectoA.Core.Application.Interfaces;
@@ -37,7 +36,6 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
         ) : IAccount
     {
 
-     
         private async Task<ApplicationUser> FindUserByEmailAsync(string email) 
             => await userManager.FindByEmailAsync(email);
 
@@ -129,54 +127,54 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
                 return new GeneralResponse(true, "Role cambiado");
     
         }
+
         public async Task<GeneralResponse> CreateAccountAsync(CreateAccountDTO model, CancellationToken cancellationToken = default)
         {
-            using (var transaction = await context.Database.BeginTransactionAsync(cancellationToken))
+            using var transaction = await context.Database.BeginTransactionAsync(cancellationToken);
+            try
             {
-                try
+                // Crear la cuenta de usuario en la base de datos Identity
+                var user = await CreateUserAsync(model);
+
+                // Validar las operaciones en los repositorios antes de crear el usuario
+                switch (model.Role)
                 {
-                    // Crear la cuenta de usuario en la base de datos Identity
-                    var user = await CreateUserAsync(model);
+                    case "CoordinadorGeneral":
+                        // Crear Coordinador General y validar
+                        await CreateCoordinadorGeneralAsync(model, user, cancellationToken);
+                        break;
 
-                    // Validar las operaciones en los repositorios antes de crear el usuario
-                    switch (model.Role)
-                    {
-                        case "CoordinadorGeneral":
-                            // Crear Coordinador General y validar
-                            await CreateCoordinadorGeneralAsync(model, user, cancellationToken);
-                            break;
+                    case "SubCoordinador":
+                        // Crear SubCoordinador y validar
+                        await CreateSubCoordinadorAsync(model, user, cancellationToken);
+                        break;
 
-                        case "SubCoordinador":
-                            // Crear SubCoordinador y validar
-                            await CreateSubCoordinadorAsync(model, user, cancellationToken);
-                            break;
+                    case "Dirigente":
+                        // Crear Dirigente y validar
+                        await CreateDirigenteAsync(model, user, cancellationToken);
+                        break;
 
-                        case "Dirigente":
-                            // Crear Dirigente y validar
-                            await CreateDirigenteAsync(model, user, cancellationToken);
-                            break;
-
-                        default:
-                            return new GeneralResponse(false, "Rol de usuario no válido");
-                    }
-
-                    var role = new IdentityRole { Name = model.Role };
-                    var assignRoleResponse = await AssignUserToRole(user, role);
-                    if (!assignRoleResponse.Flag)
-                        return assignRoleResponse;
-
-                    // Commit de la transacción si todo fue exitoso
-                    await transaction.CommitAsync(cancellationToken);
-
-                    return new GeneralResponse(true, "Usuario creado exitosamente");
+                    default:
+                        return new GeneralResponse(false, "Rol de usuario no válido");
                 }
-                catch (Exception ex)
-                {
-                    await transaction.RollbackAsync(cancellationToken);
-                    return new GeneralResponse(false, ex.Message);
-                }
+
+                var role = new IdentityRole { Name = model.Role };
+                var assignRoleResponse = await AssignUserToRole(user, role);
+                if (!assignRoleResponse.Flag)
+                    return assignRoleResponse;
+
+                // Commit de la transacción si todo fue exitoso
+                await transaction.CommitAsync(cancellationToken);
+
+                return new GeneralResponse(true, "Usuario creado exitosamente");
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync(cancellationToken);
+                return new GeneralResponse(false, ex.Message);
             }
         }
+
         private async Task CreateCoordinadorGeneralAsync(CreateAccountDTO model, ApplicationUser user, CancellationToken cancellationToken)
         {
             // Crear Coordinador General

@@ -1,12 +1,13 @@
-﻿using BE_ProyectoA.Core.Application.Common.CreadorCantidadVotantes;
-using BE_ProyectoA.Core.Application.Common.Enums;
-using BE_ProyectoA.Core.Application.Interfaces;
+﻿using BE_ProyectoA.Core.Application.Common.Enums;
 using BE_ProyectoA.Core.Domain.Entities.Authentication;
 using BE_ProyectoA.Core.Domain.Entities.Coordinadores;
 using BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral;
 using BE_ProyectoA.Core.Domain.Entities.Director;
 using BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador;
 using BE_ProyectoA.Core.Domain.Entities.Votantes;
+using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesCoordinadorGeneral;
+using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesDirigentesEntity;
+using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesSubCoordinadores;
 using BE_ProyectoA.Core.Domain.Primitivies;
 using BE_ProyectoA.Core.Domain.ValueObjects;
 using ErrorOr;
@@ -23,6 +24,9 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
         private readonly ISubCoordinadorRepository _subCoordinadorRepository;
         private readonly IDirigenteMultiplicadorRepository _dirigenteMultiplicadorRepository;
         private readonly IDirectoresRepository _directoresRepository;
+        private readonly IVotanteCoordinadorRepository _VotanteCoordinadorRepository;
+        private readonly IVotantesDirigenteRepository _VotantesDirigenteRepository;
+        private readonly IVotantesSubCoordiandoresRepository _VotantesSubCoordiandoresRepository;
         private readonly UserManager<ApplicationUser> _userManager;
         
 
@@ -226,7 +230,6 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
                                 dirigenteDto.SubCoordinadores,
                                 dirigenteDto.SubCoordinadoresId
                                
-
                               );
 
                             _dirigenteMultiplicadorRepository.Update(dirigente!);
