@@ -6,6 +6,7 @@ using BE_ProyectoA.Core.Domain.Entities.Director;
 using BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador;
 using BE_ProyectoA.Core.Domain.Entities.Votantes;
 using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesCoordinadorGeneral;
+using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesDirector;
 using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesDirigentesEntity;
 using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesSubCoordinadores;
 using BE_ProyectoA.Core.Domain.Primitivies;
@@ -27,6 +28,7 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
         private readonly IVotanteCoordinadorRepository _VotanteCoordinadorRepository;
         private readonly IVotantesDirigenteRepository _VotantesDirigenteRepository;
         private readonly IVotantesSubCoordiandoresRepository _VotantesSubCoordiandoresRepository;
+        private readonly IVotantesDirectorRepository _VotantesDirectorRepository;
         private readonly UserManager<ApplicationUser> _userManager;
         
 
@@ -55,7 +57,7 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
                
                 var dirigenteId = new DirigentesMultiplicadoresId(Guid.Parse(userRequest.Id));
                 var subCoordinadorId = new SubCoordinadoresId(Guid.Parse(userRequest.Id));
-               
+         
                 var coordinadorGeneralId = new CoordinadoresGeneralesId(Guid.Parse(userRequest.Id));
 
                 if (await _coordinadorGeneralRepository.ExistsAsync(coordinadorGeneralId, cancellationToken))
@@ -64,8 +66,9 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
 
                     if (coordinadorGeneral != null)
                     {
+                        var votanteId = new VotanteId(Guid.NewGuid());
                         var votanteCoordinadorGeneral = new Votante(
-                            new VotanteId(Guid.NewGuid()),
+                            votanteId,
                             command.Nombre,
                             command.Apellido,
                             cedula!,
@@ -75,9 +78,13 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
                             coordinadorGeneral.Id
                         );
 
-                        await _votantesRepository.AddAsync(votanteCoordinadorGeneral, cancellationToken);
-                        await _unitOfWork.SaveChangesAsync(cancellationToken);
+                        var votanteRelacion = new VotantesCoordinadoresGenerales(coordinadorGeneral.Id,votanteId
+                            );
 
+                        await _votantesRepository.AddAsync(votanteCoordinadorGeneral, cancellationToken);
+  
+                        await _VotanteCoordinadorRepository.AddAsync(votanteRelacion, cancellationToken);
+                        await _unitOfWork.SaveChangesAsync(cancellationToken);
                         await CalcularVotos(votantesList, command.MiembroId, TipoMiembro.CoordinadorGeneral, cancellationToken);
 
                         return Unit.Value;
@@ -104,6 +111,7 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
                         await _votantesRepository.AddAsync(votanteSubCoordinador, cancellationToken);
                         await _unitOfWork.SaveChangesAsync(cancellationToken);
                         await CalcularVotos(votantesList, command.MiembroId, TipoMiembro.SubCoordinador, cancellationToken);
+                       
                         await _unitOfWork.SaveChangesAsync(cancellationToken);
                         return Unit.Value;
                     }

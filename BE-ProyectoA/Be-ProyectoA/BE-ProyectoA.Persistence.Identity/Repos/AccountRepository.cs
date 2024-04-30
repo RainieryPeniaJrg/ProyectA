@@ -293,28 +293,30 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
         }
 
         public async Task<IEnumerable<GetRoleDTO>> GetRolesAsync() =>(await roleManager.Roles.ToListAsync()).Adapt<IEnumerable<GetRoleDTO>>();
-      
         public async Task<IEnumerable<GetUsersWithRoleDTO>> GetUsersWithRolesAsync()
         {
             var allUser = await userManager.Users.ToListAsync();
 
-            if (allUser is null) return null;
+            if (allUser == null)
+            {
+                // Manejar el caso en el que no hay usuarios
+                return Enumerable.Empty<GetUsersWithRoleDTO>();
+            }
 
             var List = new List<GetUsersWithRoleDTO>();
 
-            foreach (var user in allUser)
+            foreach (var user in allUser.AsEnumerable())
             {
                 var getUserRole = (await userManager.GetRolesAsync(user)).FirstOrDefault();
-                var getRoleInfo = await roleManager.Roles.FirstOrDefaultAsync(r=>r.Name.ToLower() == getUserRole.ToLower());
+                var getRoleInfo = await roleManager.Roles.FirstOrDefaultAsync(r => r.Name.ToLower() == getUserRole.ToLower());
 
                 List.Add(new GetUsersWithRoleDTO()
                 {
                     Name = user.Nombre,
                     Email = user.Email,
-                    RoleId = getRoleInfo.Id,
-                    RoleName = getRoleInfo.Name,
+                    RoleId = getRoleInfo?.Id, // Asegúrate de manejar la posibilidad de que getRoleInfo sea nulo
+                    RoleName = getRoleInfo?.Name, // Asegúrate de manejar la posibilidad de que getRoleInfo sea nulo
                 });
-
             }
             return List;
         }
