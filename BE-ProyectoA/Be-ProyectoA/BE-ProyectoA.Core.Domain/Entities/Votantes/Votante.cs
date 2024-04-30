@@ -96,11 +96,10 @@ namespace BE_ProyectoA.Core.Domain.Entities.Votantes
         public CoordinadoresGeneralesId CoordinadorGeneralId { get; set; }
         public DirigentesMultiplicadores Dirigente { get; set; }
         public DirigentesMultiplicadoresId DirigenteId { get; set; }
-        public VotantesDirectores VotantesDirector { get; set; }  
-        public VotantesDirigentes VotantesDirigentes { get; set; }
-        public VotantesCoordinadoresGenerales VotantesCoordinadoresGenerales { get; set; }
-
-        public VotantesSubCoordinador VotantesSubCoordinador { get; set; }  
+        public ICollection<VotantesDirectores> VotantesDirector { get; set; }  
+        public ICollection<VotantesDirigentes> VotantesDirigentes { get; set; }
+        public ICollection<VotantesCoordinadoresGenerales> VotantesCoordinadoresGenerales { get; set; }
+        public  ICollection<VotantesSubCoordinador> VotantesSubCoordinador { get; set; }  
         public static Votante UpdateVotante(Guid Id, string nombre,string apellido,Cedula cedula,Direccion direccion, NumeroTelefono numeroTelefono,bool activo)
         {
             return new Votante(new VotanteId(Id),nombre, apellido, cedula, direccion, numeroTelefono, activo);

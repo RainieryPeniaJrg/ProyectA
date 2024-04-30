@@ -5,6 +5,10 @@ using BE_ProyectoA.Core.Domain.Entities.Director;
 using BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador;
 using BE_ProyectoA.Core.Domain.Entities.GruposEntity;
 using BE_ProyectoA.Core.Domain.Entities.Votantes;
+using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesCoordinadorGeneral;
+using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesDirector;
+using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesDirigentesEntity;
+using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesSubCoordinadores;
 using BE_ProyectoA.Core.Domain.Primitivies;
 using BE_ProyectoA.Infraestructure.Persistence.Persistence;
 using BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repositories;
@@ -37,6 +41,15 @@ namespace BE_ProyectoA.Infraestructure.Persistence
             services.AddScoped<IVotanteRepository, VotanteRepository>();
             services.AddScoped<IDirectoresRepository, DirectorRepository>();
             services.AddScoped<IGruposRepository, GruposRepository>();
+            services.AddScoped<IVotanteCoordinadorRepository,VotanteCoordiandorRepository >();
+
+            services.AddScoped<IVotantesDirectorRepository, VotanteDirectorRepository>();
+
+            services.AddScoped<IVotantesSubCoordiandoresRepository, VotanteSubCoordinadorRepository>();
+
+            services.AddScoped<IVotantesDirigenteRepository, VotanteDirigenteRepository>();
+
+        
 
             return services;
         }

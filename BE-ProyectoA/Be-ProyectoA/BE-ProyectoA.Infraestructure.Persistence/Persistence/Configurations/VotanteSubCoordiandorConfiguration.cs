@@ -1,4 +1,6 @@
-﻿using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesDirector;
+﻿using BE_ProyectoA.Core.Domain.Entities.Coordinadores;
+using BE_ProyectoA.Core.Domain.Entities.Votantes;
+using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesDirector;
 using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesSubCoordinadores;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -14,17 +16,29 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<VotantesSubCoordinador> builder)
         {
-            builder.HasKey(gs => new { gs.VotanteId, gs.SubCoordinadorId });
+            builder.Property(sc => sc.VotanteId)
+             .HasConversion(
+                 cId => cId.Value,
+                 value => new VotanteId(value));
 
-            builder
-            .HasOne(vd => vd.Votante)
-            .WithOne(v => v.VotantesSubCoordinador)
-            .HasForeignKey<VotantesSubCoordinador>(vd => vd.VotanteId);
+            builder.Property(sc => sc.SubCoordinadorId)
+                .HasConversion(
+                    cId => cId.Value,
+                    value => new SubCoordinadoresId(value));
 
-            builder
-                .HasOne(vd => vd.SubCoordinadores)
-                .WithOne(sc=>sc.VotantesSubCoordinador)
-                .HasForeignKey<VotantesSubCoordinador>(vd => vd.SubCoordinadorId);
+            builder.HasKey(vs => new { vs.VotanteId, vs.SubCoordinadorId });
+
+            builder.HasOne(vs => vs.Votante)
+                   .WithMany(v => v.VotantesSubCoordinador)
+                   .HasForeignKey(vs => vs.VotanteId)
+                   .OnDelete(DeleteBehavior.NoAction);
+
+            builder.HasOne(vs => vs.SubCoordinador)
+                   .WithMany()
+                   .HasForeignKey(vs => vs.SubCoordinadorId)
+                     .OnDelete(DeleteBehavior.NoAction);
+
+
         }
     }
 }

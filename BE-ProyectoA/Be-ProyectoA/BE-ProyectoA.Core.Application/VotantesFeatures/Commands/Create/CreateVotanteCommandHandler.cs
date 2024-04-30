@@ -15,6 +15,7 @@ using ErrorOr;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 
+
 namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
 {
     public class CreateVotanteCommandHandler : IRequestHandler<CreateVotanteCommand, ErrorOr<Unit>>
@@ -32,7 +33,16 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
         private readonly UserManager<ApplicationUser> _userManager;
         
 
-        public CreateVotanteCommandHandler(IUnitOfWork unitOfWork, IVotanteRepository votantesRepository, ICoordinadorGeneralRepository coordinadorGeneralRepository, ISubCoordinadorRepository subCoordinadorRepository, IDirigenteMultiplicadorRepository dirigenteMultiplicadorRepository, IDirectoresRepository directoresRepository, UserManager<ApplicationUser> userManager)
+        public CreateVotanteCommandHandler(IUnitOfWork unitOfWork, 
+            IVotanteRepository votantesRepository, 
+            ICoordinadorGeneralRepository coordinadorGeneralRepository, 
+            ISubCoordinadorRepository subCoordinadorRepository, 
+            IDirigenteMultiplicadorRepository dirigenteMultiplicadorRepository, 
+            IDirectoresRepository directoresRepository, 
+            UserManager<ApplicationUser> userManager, 
+            IVotanteCoordinadorRepository votanteCoordinadorRepository, 
+            IVotantesDirigenteRepository votantesDirigenteRepository, 
+            IVotantesSubCoordiandoresRepository votantesSubCoordiandoresRepository)
         {
             _unitOfWork = unitOfWork;
             _votantesRepository = votantesRepository;
@@ -41,107 +51,136 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
             _dirigenteMultiplicadorRepository = dirigenteMultiplicadorRepository;
             _directoresRepository = directoresRepository;
             _userManager = userManager;
+            _VotanteCoordinadorRepository = votanteCoordinadorRepository;
+            _VotantesDirigenteRepository = votantesDirigenteRepository;
+            _VotantesSubCoordiandoresRepository = votantesSubCoordiandoresRepository;
+        }
+
+
+
+        private async Task<bool> TryCreateCoordinadorGeneralVotante(CreateVotanteCommand command, ApplicationUser userRequest, Cedula? cedula, Direccion? direccion, NumeroTelefono? numeroTelefono, CancellationToken cancellationToken)
+        {
+            var coordinadorGeneralId = new CoordinadoresGeneralesId(Guid.Parse(userRequest.Id));
+            if (!await _coordinadorGeneralRepository.ExistsAsync(coordinadorGeneralId, cancellationToken)) return false;
+
+            // Verificar si el votante ya existe
+            if (await _votantesRepository.ExistsByCoordinadorGeneralAsync(coordinadorGeneralId, command.Nombre, command.Apellido, cancellationToken))
+                return true;
+
+            var votanteId = new VotanteId(Guid.NewGuid());
+            var coordinadorGeneral = await _coordinadorGeneralRepository.GetByIdAsync(coordinadorGeneralId, cancellationToken);
+            if (coordinadorGeneral == null) return false;
+
+            var votanteCoordinadorGeneral = new Votante(
+                votanteId,
+                command.Nombre,
+                command.Apellido,
+                cedula!,
+                direccion!,
+                numeroTelefono!,
+                true,
+                coordinadorGeneral.Id
+            );
+
+         
+
+            await _votantesRepository.AddAsync(votanteCoordinadorGeneral, cancellationToken);
+          
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
+
+            return true;
+        }
+
+        private async Task<bool> TryCreateSubCoordinadorVotante(CreateVotanteCommand command, ApplicationUser userRequest, Cedula? cedula, Direccion? direccion, NumeroTelefono? numeroTelefono, CancellationToken cancellationToken)
+        {
+            var subCoordinadorId = new SubCoordinadoresId(Guid.Parse(userRequest.Id));
+            if (!await _subCoordinadorRepository.ExistsAsync(subCoordinadorId, cancellationToken)) return false;
+
+            // Verificar si el votante ya existe
+            if (await _votantesRepository.ExistsBySubCoordinadorAsync(subCoordinadorId, command.Nombre, command.Apellido, cancellationToken))
+                return true;
+
+            var votanteId = new VotanteId(Guid.NewGuid());
+            var subCoordinador = await _subCoordinadorRepository.GetByIdAsync(subCoordinadorId, cancellationToken);
+            if (subCoordinador == null) return false;
+
+            var votanteSubCoordinador = new Votante(
+                votanteId,
+                command.Nombre,
+                command.Apellido,
+                cedula!,
+                direccion!,
+                numeroTelefono!,
+                true,
+                subCoordinador.Id
+            );
+
+            
+            await _votantesRepository.AddAsync(votanteSubCoordinador, cancellationToken);
+        
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
+
+            return true;
+        }
+
+        private async Task<bool> TryCreateDirigenteVotante(CreateVotanteCommand command, ApplicationUser userRequest, Cedula? cedula, Direccion? direccion, NumeroTelefono? numeroTelefono, CancellationToken cancellationToken)
+        {
+            var votanteId = new VotanteId(Guid.NewGuid());
+            var dirigenteId = new DirigentesMultiplicadoresId(Guid.Parse(userRequest.Id));
+            if (!await _dirigenteMultiplicadorRepository.ExistsAsync(dirigenteId, cancellationToken)) return false;
+
+            // Verificar si el votante ya existe
+            if (await _votantesRepository.ExistsByDirigenteAsync(dirigenteId, command.Nombre, command.Apellido, cancellationToken))
+                return true;
+
+            var dirigente = await _dirigenteMultiplicadorRepository.GetByIdAsync(dirigenteId, cancellationToken);
+            if (dirigente == null) return false;
+
+            var votanteDirigente = new Votante(
+                votanteId,
+                command.Nombre,
+                command.Apellido,
+                cedula!,
+                direccion!,
+                numeroTelefono!,
+                true,
+                dirigente.Id
+            );
+
+         
+            await _votantesRepository.AddAsync(votanteDirigente, cancellationToken);
+          
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
+
+            return true;
         }
 
         public async Task<ErrorOr<Unit>> Handle(CreateVotanteCommand command, CancellationToken cancellationToken)
         {
-            
             var numeroTelefono = NumeroTelefono.Create(command.NumeroTelefono);
             var cedula = Cedula.Create(command.Cedula);
             var direccion = Direccion.Create(command.Provincia, command.Sector, command.CasaElectoral);
-            var votantesList = await  _votantesRepository.GetAll(cancellationToken);
+            var votantesList = await _votantesRepository.GetAll(cancellationToken);
             var userRequest = await _userManager.FindByIdAsync(command.MiembroId.ToString().ToLowerInvariant());
 
-            if (userRequest != null)
+            if (userRequest == null) return Unit.Value;
+
+            if (await TryCreateCoordinadorGeneralVotante(command, userRequest, cedula, direccion, numeroTelefono, cancellationToken))
             {
-               
-                var dirigenteId = new DirigentesMultiplicadoresId(Guid.Parse(userRequest.Id));
-                var subCoordinadorId = new SubCoordinadoresId(Guid.Parse(userRequest.Id));
-         
-                var coordinadorGeneralId = new CoordinadoresGeneralesId(Guid.Parse(userRequest.Id));
+                await CalcularVotos(votantesList, command.MiembroId, TipoMiembro.CoordinadorGeneral, cancellationToken);
+                return Unit.Value;
+            }
 
-                if (await _coordinadorGeneralRepository.ExistsAsync(coordinadorGeneralId, cancellationToken))
-                {
-                    var coordinadorGeneral = await _coordinadorGeneralRepository.GetByIdAsync(coordinadorGeneralId, cancellationToken);
+            if (await TryCreateSubCoordinadorVotante(command, userRequest, cedula, direccion, numeroTelefono, cancellationToken))
+            {
+                await CalcularVotos(votantesList, command.MiembroId, TipoMiembro.SubCoordinador, cancellationToken);
+                return Unit.Value;
+            }
 
-                    if (coordinadorGeneral != null)
-                    {
-                        var votanteId = new VotanteId(Guid.NewGuid());
-                        var votanteCoordinadorGeneral = new Votante(
-                            votanteId,
-                            command.Nombre,
-                            command.Apellido,
-                            cedula!,
-                            direccion!,
-                            numeroTelefono!,
-                            true,
-                            coordinadorGeneral.Id
-                        );
-
-                        var votanteRelacion = new VotantesCoordinadoresGenerales(coordinadorGeneral.Id,votanteId
-                            );
-
-                        await _votantesRepository.AddAsync(votanteCoordinadorGeneral, cancellationToken);
-  
-                        await _VotanteCoordinadorRepository.AddAsync(votanteRelacion, cancellationToken);
-                        await _unitOfWork.SaveChangesAsync(cancellationToken);
-                        await CalcularVotos(votantesList, command.MiembroId, TipoMiembro.CoordinadorGeneral, cancellationToken);
-
-                        return Unit.Value;
-                    }
-                }
-
-                if (await _subCoordinadorRepository.ExistsAsync(subCoordinadorId, cancellationToken))
-                {
-                    var subCoordinador = await _subCoordinadorRepository.GetByIdAsync(subCoordinadorId, cancellationToken);
-
-                    if (subCoordinador != null)
-                    {
-                        var votanteSubCoordinador = new Votante(
-                            new VotanteId(Guid.NewGuid()),
-                            command.Nombre,
-                            command.Apellido,
-                            cedula!,
-                            direccion!,
-                            numeroTelefono!,
-                            true,
-                            subCoordinador.Id
-                        );
-
-                        await _votantesRepository.AddAsync(votanteSubCoordinador, cancellationToken);
-                        await _unitOfWork.SaveChangesAsync(cancellationToken);
-                        await CalcularVotos(votantesList, command.MiembroId, TipoMiembro.SubCoordinador, cancellationToken);
-                       
-                        await _unitOfWork.SaveChangesAsync(cancellationToken);
-                        return Unit.Value;
-                    }
-                }
-
-                if (await _dirigenteMultiplicadorRepository.ExistsAsync(dirigenteId, cancellationToken))
-                {
-                    var dirigente = await _dirigenteMultiplicadorRepository.GetByIdAsync(dirigenteId, cancellationToken);
-
-                    if (dirigente != null)
-                    {
-                        var votanteDirigente = new Votante(
-                            new VotanteId(Guid.NewGuid()),
-                            command.Nombre,
-                            command.Apellido,
-                            cedula!,
-                            direccion!,
-                            numeroTelefono!,
-                            true,
-                            dirigente.Id
-                        );
-
-                        await _votantesRepository.AddAsync(votanteDirigente, cancellationToken);
-                        await _unitOfWork.SaveChangesAsync(cancellationToken);
-                        await CalcularVotos(votantesList, command.MiembroId, TipoMiembro.DirigenteMultiplicador, cancellationToken);
-                        await _unitOfWork.SaveChangesAsync(cancellationToken);
-
-                        return Unit.Value;
-                    }
-                }
+            if (await TryCreateDirigenteVotante(command, userRequest, cedula, direccion, numeroTelefono, cancellationToken))
+            {
+                await CalcularVotos(votantesList, command.MiembroId, TipoMiembro.DirigenteMultiplicador, cancellationToken);
+                return Unit.Value;
             }
 
             return Unit.Value;
