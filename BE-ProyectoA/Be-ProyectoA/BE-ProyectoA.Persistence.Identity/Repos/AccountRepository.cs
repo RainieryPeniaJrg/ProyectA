@@ -36,6 +36,8 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
 
         ) : IAccount
     {
+
+     
         private async Task<ApplicationUser> FindUserByEmailAsync(string email) 
             => await userManager.FindByEmailAsync(email);
 
@@ -81,21 +83,21 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
 
         private async Task<GeneralResponse> AssignUserToRole(ApplicationUser user, IdentityRole role)
         {
+            if (user is null || role is null)
+                return new GeneralResponse(false, "El usuario o el rol no pueden ser nulos");
 
-            if(user is null || role is null)return new GeneralResponse(false,"Model stato cannot be empty");
-
+            // Verificar si el rol existe, si no, crearlo
             if (await FindByRoleNameAsync(role.Name!) == null)
                 await CreateRoleAsync(role.Adapt(new CreateRoleDTO()));
 
+            // Asignar el rol al usuario
             IdentityResult result = await userManager.AddToRoleAsync(user, role.Name!);
 
             string error = CheckResponse(result);
-
             if (!string.IsNullOrEmpty(error))
                 return new GeneralResponse(false, error);
             else
-                return new GeneralResponse(true, $"{user.Nombre} assigned to {role.Name} role");
-
+                return new GeneralResponse(true, $"{user.Nombre} asignado al rol {role.Name}");
         }
 
         private static string CheckResponse(IdentityResult result)
@@ -127,134 +129,130 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
                 return new GeneralResponse(true, "Role cambiado");
     
         }
-
-        public async Task<GeneralResponse> CreateAccountAsync(CreateAccountDTO model,CancellationToken cancellationToken= default)
+        public async Task<GeneralResponse> CreateAccountAsync(CreateAccountDTO model, CancellationToken cancellationToken = default)
         {
-            try
+            using (var transaction = await context.Database.BeginTransactionAsync(cancellationToken))
             {
-
-                if (await FindUserByEmailAsync(model.Email) != null)
-                    return new GeneralResponse(false, "Lo sentimos, el usuario ya ha sido creado");
-
-                var user = new ApplicationUser()
+                try
                 {
-                    Email = model.Email,
-                    UserName = model.Email,
-                    Nombre = model.Nombre,
-                    PasswordHash = model.Password
-                };
-                var result = await userManager.CreateAsync(user, model.Password);
+                    // Crear la cuenta de usuario en la base de datos Identity
+                    var user = await CreateUserAsync(model);
 
-                string error = CheckResponse(result);
-                if (!string.IsNullOrEmpty(error)) return new GeneralResponse(false, error);
-
-                var (flag,message) = await AssignUserToRole(user, new IdentityRole() { Name = model.Role });
-
-
-
-
-                if (model.Role == "CoordinadorGeneral")
-                {
-
-                 
-
-                    ValueObjectValidators.ValidarDatos(model.Cedula, model.NumeroTelefono, model.Provincia, model.Sector, model.CasaElectoral);
-
-                    var userRequest = await userManager.FindByEmailAsync(model.Email);
-                    if(userRequest != null)
+                    // Validar las operaciones en los repositorios antes de crear el usuario
+                    switch (model.Role)
                     {
-                        var requestId = userRequest.Id;
+                        case "CoordinadorGeneral":
+                            // Crear Coordinador General y validar
+                            await CreateCoordinadorGeneralAsync(model, user, cancellationToken);
+                            break;
 
-                       var coordinador = new CoordinadoresGenerales(
-                       id: new CoordinadoresGeneralesId(Guid.Parse(requestId)),
-                       nombre: model.Nombre,
-                       apellido: model.Apellido,
-                       cedula: Cedula.Create(model.Cedula)!,
-                       numeroTelefono: NumeroTelefono.Create(model.NumeroTelefono)!,
-                       activo: model.Activo,
-                       cantidadVotantes : CantidadVotos.Create(model.CantidadVotantes)!,
-                       direccion: Direccion.Create(model.Provincia, model.Sector, model.CasaElectoral)!
-                   );
-                        await coordinadorGeneralRepository.AddAsync(coordinador, cancellationToken);
-                        await unitOfWork.SaveChangesAsync(cancellationToken);
+                        case "SubCoordinador":
+                            // Crear SubCoordinador y validar
+                            await CreateSubCoordinadorAsync(model, user, cancellationToken);
+                            break;
 
+                        case "Dirigente":
+                            // Crear Dirigente y validar
+                            await CreateDirigenteAsync(model, user, cancellationToken);
+                            break;
+
+                        default:
+                            return new GeneralResponse(false, "Rol de usuario no válido");
                     }
 
+                    var role = new IdentityRole { Name = model.Role };
+                    var assignRoleResponse = await AssignUserToRole(user, role);
+                    if (!assignRoleResponse.Flag)
+                        return assignRoleResponse;
 
+                    // Commit de la transacción si todo fue exitoso
+                    await transaction.CommitAsync(cancellationToken);
+
+                    return new GeneralResponse(true, "Usuario creado exitosamente");
                 }
-                if(model.Role == "SubCoordinador")
+                catch (Exception ex)
                 {
-                    ValueObjectValidators.ValidarDatos(model.Cedula, model.NumeroTelefono, model.Provincia, model.Sector,model.CasaElectoral);
-
-                    var coordiadorGeneralId = new CoordinadoresGeneralesId(model.CoordinadorGeneralId);
-
-                    var coordinador = await coordinadorGeneralRepository.GetByIdAsync2(coordiadorGeneralId, cancellationToken);
-
-                    var userRequest = await userManager.FindByEmailAsync(model.Email);
-                    if (userRequest != null)
-                    {
-                        var requestId = userRequest.Id;
-                        var subCoordinador = new SubCoordinadores
-                        (
-                         id: new SubCoordinadoresId(Guid.Parse(requestId)),
-                        nombre: model.Nombre,
-                        apellido: model.Apellido,
-                        cantidadVotos: CantidadVotos.Create(model.CantidadVotantes)!,
-                        numeroTelefono: NumeroTelefono.Create(model.NumeroTelefono)!,
-                        cedula: Cedula.Create(model.Cedula)!,
-                        activo: model.Activo,
-                        direccion: Direccion.Create(model.Provincia,model.Sector, model.CasaElectoral)!,
-                        coordinadorsGeneralesId: coordiadorGeneralId,
-                        coordinador!
-                        );
-                        await subCoordinadorRepository.AddAsync(subCoordinador, cancellationToken);
-
-                        await unitOfWork.SaveChangesAsync(cancellationToken);
-                    }
-                       
-
-                   
+                    await transaction.RollbackAsync(cancellationToken);
+                    return new GeneralResponse(false, ex.Message);
                 }
-                if(model.Role == "Dirigente")
-                {
-                    ValueObjectValidators.ValidarDatos(model.Cedula, model.NumeroTelefono, model.Provincia, model.Sector, model.CasaElectoral);
-                    var subCoordiadorId = new SubCoordinadoresId(model.SubCoordinadorId);
-                    if(!await subCoordinadorRepository.ExistsAsync(subCoordiadorId, cancellationToken))
-                        return new GeneralResponse(false, "El Subcoordinador  no existe");
-
-                  var subCoordinador = await subCoordinadorRepository.GetByIdAsync2(subCoordiadorId, cancellationToken);
-                  var userRequest =  await userManager.FindByEmailAsync(model.Email);
-                  if(userRequest != null)
-                    {
-                        var requestId = userRequest.Id;
-                        var dirigente = new DirigentesMultiplicadores
-                  (
-                  id: new DirigentesMultiplicadoresId(Guid.Parse(requestId)),
-                  cedula: Cedula.Create(model.Cedula)!,
-                  numeroTelefono: NumeroTelefono.Create(model.NumeroTelefono)!,
-                  nombre: model.Nombre,
-                  apellido: model.Apellido,
-                  activo: model.Activo,
-                  direccion: Direccion.Create(model.Provincia, model.Sector, model.CasaElectoral)!,
-                  cantidadVotantes: CantidadVotos.Create(model.CantidadVotantes)!,
-                  subCoordiadorId,
-                  subCoordinador!
-                  ); ; ;
-                        await dirigenteMultiplicadorRepository.AddAsync(dirigente, cancellationToken);
-                        await unitOfWork.SaveChangesAsync(cancellationToken);
-                    }
-              
-                }
-
-                 
-                return new GeneralResponse(flag, message);
-                
-
-            }catch(Exception ex)
-            {
-
-                return new GeneralResponse(false, ex.Message);
             }
+        }
+        private async Task CreateCoordinadorGeneralAsync(CreateAccountDTO model, ApplicationUser user, CancellationToken cancellationToken)
+        {
+            // Crear Coordinador General
+            var coordinador = new CoordinadoresGenerales(
+                id: new CoordinadoresGeneralesId(Guid.Parse(user.Id)),
+                nombre: model.Nombre,
+                apellido: model.Apellido,
+                cedula: Cedula.Create(model.Cedula)!,
+                numeroTelefono: NumeroTelefono.Create(model.NumeroTelefono)!,
+                activo: model.Activo,
+                cantidadVotantes: CantidadVotos.Create(model.CantidadVotantes)!,
+                direccion: Direccion.Create(model.Provincia, model.Sector, model.CasaElectoral)!
+            );
+            await coordinadorGeneralRepository.AddAsync(coordinador, cancellationToken);
+            await unitOfWork.SaveChangesAsync(cancellationToken);
+        }
+
+        private async Task CreateSubCoordinadorAsync(CreateAccountDTO model, ApplicationUser user, CancellationToken cancellationToken)
+        {
+            // Crear SubCoordinador
+            var coordinadorGeneralId = new CoordinadoresGeneralesId(model.CoordinadorGeneralId);
+            var coordinador = await coordinadorGeneralRepository.GetByIdAsync2(coordinadorGeneralId, cancellationToken);
+            var subCoordinador = new SubCoordinadores(
+                id: new SubCoordinadoresId(Guid.Parse(user.Id)),
+                nombre: model.Nombre,
+                apellido: model.Apellido,
+                cantidadVotos: CantidadVotos.Create(model.CantidadVotantes)!,
+                numeroTelefono: NumeroTelefono.Create(model.NumeroTelefono)!,
+                cedula: Cedula.Create(model.Cedula)!,
+                activo: model.Activo,
+                direccion: Direccion.Create(model.Provincia, model.Sector, model.CasaElectoral)!,
+                coordinadorsGeneralesId: coordinadorGeneralId,
+                coordinador!
+            );
+            await subCoordinadorRepository.AddAsync(subCoordinador, cancellationToken);
+            await unitOfWork.SaveChangesAsync(cancellationToken);
+        }
+
+        private async Task CreateDirigenteAsync(CreateAccountDTO model, ApplicationUser user, CancellationToken cancellationToken)
+        {
+            // Crear Dirigente
+            var subCoordiadorId = new SubCoordinadoresId(model.SubCoordinadorId);
+            if (!await subCoordinadorRepository.ExistsAsync(subCoordiadorId, cancellationToken))
+                throw new Exception("El Subcoordinador no existe");
+            var subCoordinador = await subCoordinadorRepository.GetByIdAsync2(subCoordiadorId, cancellationToken);
+            var dirigente = new DirigentesMultiplicadores(
+                id: new DirigentesMultiplicadoresId(Guid.Parse(user.Id)),
+                cedula: Cedula.Create(model.Cedula)!,
+                numeroTelefono: NumeroTelefono.Create(model.NumeroTelefono)!,
+                nombre: model.Nombre,
+                apellido: model.Apellido,
+                activo: model.Activo,
+                direccion: Direccion.Create(model.Provincia, model.Sector, model.CasaElectoral)!,
+                cantidadVotantes: CantidadVotos.Create(model.CantidadVotantes)!,
+                subCoordiadorId,
+                subCoordinador!
+            );
+            await dirigenteMultiplicadorRepository.AddAsync(dirigente, cancellationToken);
+            await unitOfWork.SaveChangesAsync(cancellationToken);
+        }
+
+        private async Task<ApplicationUser> CreateUserAsync(CreateAccountDTO model)
+        {
+            // Crear la cuenta de usuario en la base de datos Identity
+            var user = new ApplicationUser()
+            {
+                Email = model.Email,
+                UserName = model.Email,
+                Nombre = model.Nombre,
+                PasswordHash = model.Password
+            };
+            var result = await userManager.CreateAsync(user, model.Password);
+            string error = CheckResponse(result);
+            if (!string.IsNullOrEmpty(error))
+                throw new Exception(error);
+            return user;
         }
 
         public async Task CreateAdmin()

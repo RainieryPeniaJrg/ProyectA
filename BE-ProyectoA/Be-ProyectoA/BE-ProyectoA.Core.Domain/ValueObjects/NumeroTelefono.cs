@@ -6,7 +6,7 @@ namespace BE_ProyectoA.Core.Domain.ValueObjects
     {
 
 
-        //private const string Pattern = @"^(\+?1-)?(\()?((809)|(829)|(849))(\)?)\d{3}(\)?)\d{4}$";
+        private const string Pattern = @"^(809|829|849)\d{7}$";
 
         private NumeroTelefono(string value) => Value = value;
 
@@ -23,7 +23,7 @@ namespace BE_ProyectoA.Core.Domain.ValueObjects
 
         public string Value { get; init; }
 
-        //[GeneratedRegex(Pattern)]
-        //private static partial Regex PhoneNumberRegex();
+        [GeneratedRegex(Pattern)]
+        private static partial Regex PhoneNumberRegex();
     }
 }

@@ -4,8 +4,8 @@ namespace BE_ProyectoA.Core.Domain.ValueObjects
 {
     public partial record Cedula
     {
-       
-        private const string Pattern = @"^\d{3}\d{7}\d{1}$";
+
+        private const string Pattern = @"^\d{11}$";
 
         private Cedula(string value) => Value = value;
 
