@@ -28,6 +28,7 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
                     value => Cedula.Create(value)!)
                 .HasMaxLength(20);
 
+            builder.Ignore(d => d.VotantesDirigentes);
 
             builder.Property(d => d.CantidadVotantes)
                 .HasConversion(

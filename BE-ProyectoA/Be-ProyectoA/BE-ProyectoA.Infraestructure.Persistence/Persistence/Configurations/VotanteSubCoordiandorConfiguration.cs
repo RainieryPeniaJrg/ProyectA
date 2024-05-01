@@ -28,6 +28,7 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
 
             builder.HasKey(vs => new { vs.VotanteId, vs.SubCoordinadorId });
 
+
             builder.HasOne(vs => vs.Votante)
                    .WithMany(v => v.VotantesSubCoordinador)
                    .HasForeignKey(vs => vs.VotanteId)
@@ -36,8 +37,7 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
             builder.HasOne(vs => vs.SubCoordinador)
                    .WithMany()
                    .HasForeignKey(vs => vs.SubCoordinadorId)
-                     .OnDelete(DeleteBehavior.NoAction);
-
+                   .OnDelete(DeleteBehavior.NoAction);
 
         }
     }

@@ -34,6 +34,8 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
                   cedula => cedula.Value,
                   value => CantidadVotos.Create(value)!);
 
+            builder.Ignore(sc => sc.VotantesSubCoordinador);
+
             builder.Property(sc => sc.Activo);
 
             builder.Property(sc => sc.CantidadVotantes);

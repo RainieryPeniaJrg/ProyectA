@@ -49,7 +49,7 @@ namespace BE_ProyectoA.Core.Application.SubCoordinadorFeatures.Commands.Update
 
             if (CoordinadorGeneral is not null && direccion is not null && cedula is not null && numeroTelefono is not null)
             {   
-                SubCoordinadores subCoordinador = SubCoordinadores.Update(id, command.Nombre,command.Apellido,command.CantidadVotantes,numeroTelefono,cedula,command.Activo,direccion,CoordinadorGeneral);
+                SubCoordinadores subCoordinador = SubCoordinadores.Update(id, command.Nombre,command.Apellido,command.CantidadVotantes,numeroTelefono,cedula,command.Activo,direccion,CoordinadorGeneral.Id ,CoordinadorGeneral);
                 _subCoordinadorRepository.Update(subCoordinador);
                 await _unitOfWork.SaveChangesAsync(cancellationToken);
             }

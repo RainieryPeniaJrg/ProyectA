@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesDirector
 {
-    public class VotantesDirectores
+    public class VotantesDirectores : AggregateRoot
     {
         public VotanteId VotanteId { get; set; }
         public Votante Votante { get; set; }

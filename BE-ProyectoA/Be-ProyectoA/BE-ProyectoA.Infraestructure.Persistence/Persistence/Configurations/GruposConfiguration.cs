@@ -37,11 +37,7 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
                     j => j.HasOne(gs => gs.Grupo).WithMany()
                 );
 
-        
-          //  builder.HasOne(g => g.CoordinadorGeneral)
-          //.WithMany()
-          //.HasForeignKey(g => g.CoordinadorGeneralId)
-          //.OnDelete(DeleteBehavior.NoAction);
+       
         }
     }
 }

@@ -22,6 +22,7 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
                     value => NumeroTelefono.Create(value)!)
                 .HasMaxLength(20);
 
+            builder.Ignore(d => d.VotantesDirector);
             builder.Property(D => D.Nombre).HasMaxLength(50);
             builder.Property(D => D.Apellido).HasMaxLength(50);
 

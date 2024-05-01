@@ -1,14 +1,8 @@
 ﻿using BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador;
 using BE_ProyectoA.Core.Domain.Entities.Votantes;
-using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesDirector;
 using BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesDirigentesEntity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
 {

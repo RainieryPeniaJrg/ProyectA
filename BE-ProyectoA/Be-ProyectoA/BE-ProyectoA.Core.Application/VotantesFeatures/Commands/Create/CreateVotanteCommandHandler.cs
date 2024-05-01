@@ -82,10 +82,10 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
                 coordinadorGeneral.Id
             );
 
-         
 
+            var coordinadorVotante = new VotantesCoordinadoresGenerales(coordinadorGeneralId.Value, votanteId.Value);
             await _votantesRepository.AddAsync(votanteCoordinadorGeneral, cancellationToken);
-          
+            await _VotanteCoordinadorRepository.AddAsync(coordinadorVotante);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             return true;
@@ -99,9 +99,9 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
             // Verificar si el votante ya existe
             if (await _votantesRepository.ExistsBySubCoordinadorAsync(subCoordinadorId, command.Nombre, command.Apellido, cancellationToken))
                 return true;
-
+           
             var votanteId = new VotanteId(Guid.NewGuid());
-            var subCoordinador = await _subCoordinadorRepository.GetByIdAsync(subCoordinadorId, cancellationToken);
+            var subCoordinador = await _subCoordinadorRepository.GetByIdAsync2(subCoordinadorId, cancellationToken);
             if (subCoordinador == null) return false;
 
             var votanteSubCoordinador = new Votante(
@@ -115,9 +115,10 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
                 subCoordinador.Id
             );
 
+            var subCoordinadorVotante = new VotantesSubCoordinador(subCoordinadorId.Value, votanteId.Value);
             
             await _votantesRepository.AddAsync(votanteSubCoordinador, cancellationToken);
-        
+            await _VotantesSubCoordiandoresRepository.AddAsync(subCoordinadorVotante, cancellationToken);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             return true;
@@ -147,9 +148,10 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
                 dirigente.Id
             );
 
+            var dirigenteVotante = new VotantesDirigentes(dirigenteId.Value, votanteId.Value);
          
             await _votantesRepository.AddAsync(votanteDirigente, cancellationToken);
-          
+            await _VotantesDirigenteRepository.AddAsync(dirigenteVotante, cancellationToken);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
 
             return true;
@@ -227,7 +229,7 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
                         var subCoordinadorDto = await _subCoordinadorRepository.GetByIdAsync(subCoordinadorId, cancellationToken);
                         if (subCoordinadorDto != null)
                         {
-                            var votos = votantes.Count(v => v.SubCoordinadorId == subCoordinadorId);
+                            var votos = votantes.Count(v => v.SubCoordinadorId == subCoordinadorId );
                             if (votos == 0)
                                 votos++;
 
@@ -242,6 +244,7 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
                                 subCoordinadorDto.Cedula,
                                 subCoordinadorDto.Activo,
                                 subCoordinadorDto.Direccion,
+                                subCoordinadorDto.CoordinadorsGeneralesId,
                                 subCoordinadorDto.Coordinadores
 
                               );

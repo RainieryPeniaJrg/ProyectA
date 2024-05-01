@@ -12,17 +12,8 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<VotantesCoordinadoresGenerales> builder)
         {
-            builder.Property(sc => sc.VotanteId)
-           .HasConversion(
-               cId => cId.Value,
-               value => new VotanteId(value));
-
-            builder.Property(sc => sc.CoordinadorId)
-                .HasConversion(
-                    cId => cId.Value,
-                    value => new CoordinadoresGeneralesId(value));
-
             builder.HasKey(vc => new { vc.VotanteId, vc.CoordinadorId });
+
 
 
             builder.HasOne(vc => vc.Votante)
@@ -33,8 +24,17 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
             builder.HasOne(vc => vc.Coordinador)
                    .WithMany()
                    .HasForeignKey(vc => vc.CoordinadorId)
-                     .OnDelete(DeleteBehavior.NoAction);
+                   .OnDelete(DeleteBehavior.NoAction);
 
+            builder.Property(sc => sc.VotanteId)
+                .HasConversion(
+                    cId => cId.Value,
+                    value => new VotanteId(value));
+
+            builder.Property(sc => sc.CoordinadorId)
+                .HasConversion(
+                    cId => cId.Value,
+                    value => new CoordinadoresGeneralesId(value));
 
 
 

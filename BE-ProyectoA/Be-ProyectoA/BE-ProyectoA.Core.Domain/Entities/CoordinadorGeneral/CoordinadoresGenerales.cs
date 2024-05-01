@@ -63,9 +63,9 @@ namespace BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral
         public ICollection<SubCoordinadores> SubCoordinadores { get; set; }
         public ICollection<Votante> Votantes { get; set; }
         public string NombreCompleto => $"{Nombre} {Apellido}";
-        public VotantesCoordinadoresGenerales VotantesCoordinadoresGenerales { get; set; }  
-   
-  
+        public ICollection<VotantesCoordinadoresGenerales> VotantesCoordinadoresGenerales { get; set; }
+
+
 
         public static CoordinadoresGenerales? UpdateWithRelationShip(Guid id,string nombre,string apellido,Cedula cedula,NumeroTelefono numeroTelefono,Direccion direccion,ICollection<Grupos> grupos, ICollection<SubCoordinadores> subCoordinadores,bool activo, CantidadVotos cantidadVotantes)
         {

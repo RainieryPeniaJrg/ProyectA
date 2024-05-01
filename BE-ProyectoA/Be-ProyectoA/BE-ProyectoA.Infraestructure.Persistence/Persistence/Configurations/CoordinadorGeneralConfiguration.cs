@@ -37,23 +37,12 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
                 direccionBuilder.Property(d => d.CasaElectoral);
             });
 
+            builder.Ignore(c => c.VotantesCoordinadoresGenerales);
+
             builder.Property(d => d.CantidadVotantes)
                 .HasConversion(
                     cedula => cedula.Value,
                     value => CantidadVotos.Create(value)!).IsRequired(false);
-
-
-            builder.HasMany(c => c.Votantes)
-                .WithOne(v => v.CoordinadorGeneral)
-                .HasForeignKey(v => v.CoordinadorGeneralId)
-                  .HasPrincipalKey(c => c.Id)
-                .OnDelete(DeleteBehavior.Restrict)
-                .IsRequired(false);
-
-            builder.HasMany(c => c.SubCoordinadores)
-                .WithOne(sc => sc.Coordinadores)
-                .HasForeignKey(c => c.CoordinadorsGeneralesId)
-                .OnDelete(DeleteBehavior.NoAction); // Especifica cómo manejar las eliminaciones
 
             builder.Property(c => c.Nombre).HasMaxLength(50);
             builder.Property(c => c.Apellido).HasMaxLength(50);

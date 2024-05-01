@@ -38,6 +38,15 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
                 direccionBuilder.Property(d => d.CasaElectoral);
             });
 
+
+            builder.Property(v => v.CoordinadorGeneralId).IsRequired(false);
+
+            builder.Property(v => v.DirigenteId).IsRequired(false);
+
+            builder.Property(v => v.SubCoordinadorId).IsRequired(false);
+
+            builder.Property(v => v.DirectorId).IsRequired(false);
+
             builder.Property(v => v.Nombre).HasMaxLength(50);
             builder.Property(v => v.Apellido).HasMaxLength(50);
 
