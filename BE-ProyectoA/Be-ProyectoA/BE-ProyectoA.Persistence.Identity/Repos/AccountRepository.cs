@@ -150,12 +150,14 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
                         // Crear SubCoordinador y validar
                         await CreateSubCoordinadorAsync(model, user, cancellationToken);
                         break;
-
                     case "Dirigente":
                         // Crear Dirigente y validar
                         await CreateDirigenteAsync(model, user, cancellationToken);
                         break;
                     case "Director":
+                        await CreateDirectorAsync(model, user, cancellationToken);
+                        break;
+                    case "Admin":
                         await CreateDirectorAsync(model, user, cancellationToken);
                         break;
                     default:
