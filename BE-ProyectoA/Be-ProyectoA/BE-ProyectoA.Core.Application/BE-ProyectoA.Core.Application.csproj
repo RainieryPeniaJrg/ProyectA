@@ -33,6 +33,10 @@
     <Folder Include="CoordinadoresGeneralesFeatures\Query\GetById\" />
     <Folder Include="Director\Query\GetAll\" />
     <Folder Include="Director\Query\GetById\" />
+    <Folder Include="VotantesFeatures\VotantesCoordinador\Queries\GetAll\" />
+    <Folder Include="VotantesFeatures\VotantesDirigente\" />
+    <Folder Include="VotantesFeatures\VotantesDirector\" />
+    <Folder Include="VotantesFeatures\VotantesSubCoordinador\" />
   </ItemGroup>
 
 </Project>
