@@ -11,5 +11,16 @@ namespace BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesDirector
 
         public DirectoresId DirectorId { get; set; }
         public Directores Director { get; set; }
+        public VotantesDirectores()
+        {
+            
+        }
+
+        public VotantesDirectores(Guid directorId, Guid votanteId)
+        {
+            DirectorId = new DirectoresId(directorId);
+
+            VotanteId = new VotanteId(votanteId);
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using BE_ProyectoA.Core.Domain.Entities.Coordinadores;
 using BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral;
+using BE_ProyectoA.Core.Domain.Entities.Director;
 using BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador;
 using BE_ProyectoA.Core.Domain.Entities.Votantes;
 using BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.RepositoryGenerico;
@@ -56,6 +57,15 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repos
                 v.DirigenteId == dirigenteId &&
                 v.Nombre == nombre &&
                 v.Apellido == apellido, cancellationToken);
+        }
+
+
+        public async Task<bool> ExistsByDirectorAsync(DirectoresId directorId, string nombre, string apellido, CancellationToken cancellationToken)
+        {
+            return await _context.Votantes.AnyAsync(v =>
+             v.DirectorId == directorId &&
+             v.Nombre == nombre &&
+             v.Apellido == apellido, cancellationToken);
         }
 
         // Si necesitas agregar métodos específicos para el repositorio de votantes, puedes hacerlo aquí
