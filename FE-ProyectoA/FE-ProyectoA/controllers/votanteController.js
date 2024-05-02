@@ -37,7 +37,7 @@ exports.postAñadirVotante = async (req, res, next) => {
         };
 
         
-        const respuesta = await axios.post('https://localhost:7299/api/Votantes/Create', nuevoVotante, {
+        const respuesta = await axios.post('http://localhost:5030/api/Votantes/Create', nuevoVotante, {
             headers: {
                 'Content-Type': 'application/json',
                 'accept': '*/*',
@@ -64,7 +64,7 @@ exports.getVotantes = async (req, res) => {
         const agent = new https.Agent({ rejectUnauthorized: false });
 
         // Realizar la solicitud HTTP a la API con el agente configurado
-        const respuesta = await axios.get('https://localhost:7299/api/Votantes/GetAll',  {
+        const respuesta = await axios.get('http://localhost:5030/api/Votantes/GetAll',  {
             headers: {
                 'Content-Type': 'application/json',
                 'accept': '*/*',
