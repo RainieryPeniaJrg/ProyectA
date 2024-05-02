@@ -30,9 +30,9 @@ const config = {
 
         // URLs de los endpoints GetAll
         const urls = [
-            'https://localhost:7299/api/CoordinadoresGeneral/GetAll',
-            'https://localhost:7299/api/SubCoordinador/GetAll',
-            'https://localhost:7299/api/Dirigentes/GetAll'
+            'http://localhost:5030/api/CoordinadoresGeneral/GetAll',
+            'http://localhost:5030/api/SubCoordinador/GetAll',
+            'http://localhost:5030/api/Dirigentes/GetAll'
         ];
 
         // Sumar la cantidad de votantes de todos los endpoints
@@ -80,7 +80,7 @@ exports.getCoordinadores = async (req, res) => {
         const agent = new https.Agent({ rejectUnauthorized: false });
 
         // Realiza la solicitud con Axios, pasando el agente con la verificación del certificado deshabilitada
-        const respuesta = await axios.get('https://localhost:7299/api/CoordinadoresGeneral/GetAll', {
+        const respuesta = await axios.get('http://localhost:5030/api/CoordinadoresGeneral/GetAll', {
             headers: {
                 'Content-Type': 'application/json',
                 'accept': '*/*',
@@ -108,7 +108,7 @@ exports.getSubCoordinadores = async (req, res) => {
         //NOTA> agregar url correcto de la api para traer los Subcoordinadores
         const agent = new https.Agent({ rejectUnauthorized: false });
 
-        const respuesta = await axios.get('https://localhost:7299/api/SubCoordinador/GetAll', {
+        const respuesta = await axios.get('http://localhost:5030/api/SubCoordinador/GetAll', {
             headers: {
                 'Content-Type': 'application/json',
                 'accept': '*/*',
@@ -137,7 +137,7 @@ exports.getDirigentes = async (req, res) => {
         //NOTA: Asegúrate de agregar la URL correcta de la API para traer los dirigentes
         const agent = new https.Agent({ rejectUnauthorized: false });
 
-        const respuesta = await axios.get('https://localhost:7299/api/Dirigentes/GetAll', {
+        const respuesta = await axios.get('http://localhost:5030/api/Dirigentes/GetAll', {
             headers: {
                 'Content-Type': 'application/json',
                 'accept': '*/*',
@@ -162,7 +162,7 @@ exports.getDirigentes = async (req, res) => {
 exports.getAgregarGrupos = async (req, res, next) => {
     try {
       
-        const subcoordinadores = await axios.get('https://localhost:7299/api/SubCoordinador/GetAll',{
+        const subcoordinadores = await axios.get('http://localhost:5030/api/SubCoordinador/GetAll',{
             headers: {
                 'Content-Type': 'application/json',
                 'accept': '*/*'
@@ -173,7 +173,7 @@ exports.getAgregarGrupos = async (req, res, next) => {
 
 
 
-        const dirigentes = await axios.get('https://localhost:7299/api/Dirigentes/GetAll',{
+        const dirigentes = await axios.get('http://localhost:5030/api/Dirigentes/GetAlll',{
             headers: {
                 'Content-Type': 'application/json',
                 'accept': '*/*'
@@ -183,7 +183,7 @@ exports.getAgregarGrupos = async (req, res, next) => {
         const dirigente = dirigentes.data;
 
 
-        const coordinadores = await axios.get('https://localhost:7299/api/CoordinadoresGeneral/GetAll',{
+        const coordinadores = await axios.get('http://localhost:5030/api/CoordinadoresGeneral/GetAl',{
             headers: {
                 'Content-Type': 'application/json',
                 'accept': '*/*'
@@ -225,7 +225,7 @@ exports.PostAgregarGrupo = async (req, res) => {
             active
         };
         
-        const respuesta = await axios.post('https://localhost:7299/api/Grupos/Create', nuevoGrupo,  {
+        const respuesta = await axios.post('https://localhost:5030/api/Grupos/Create', nuevoGrupo,  {
             headers: {
                 'Content-Type': 'application/json',
                 'accept': '*/*'
@@ -277,7 +277,7 @@ exports.postAñadirCoordinador = async (req, res, next) => {
             activo
         };
 const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkBhZG1pbi5jb20iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiQWRtaW4iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsIkZ1bGxOYW1lIjoiQWRtaW4iLCJleHAiOjE3MTQwNzAwNDgsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcyOTkiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQwMDAifQ.klpocRFo8KcdwOAEmY4kycI68-AwuxtO34LQgVK_P9I";
-        const respuesta = await axios.post('https://localhost:7299/api/CoordinadoresGeneral/Create', nuevoCoordinador, {
+        const respuesta = await axios.post('http://localhost:5030/api/CoordinadoresGeneral/GetAl', nuevoCoordinador, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -329,7 +329,7 @@ exports.postAgregarSubcoordinador = async (req, res, next) => {
         };
 
         // Hacer la solicitud POST a la API para agregar un subcoordinador
-        const respuesta = await axios.post('https://localhost:7299/api/SubCoordinador/Create', nuevoSubcoordinador, {
+        const respuesta = await axios.post('https://localhost:5030/api/SubCoordinador/Create', nuevoSubcoordinador, {
             headers: {
                 'Content-Type': 'application/json',
                 'accept': '*/*'
@@ -379,7 +379,7 @@ exports.postAgregarDirigente = async (req, res) => {
             subCoordinadoresId
         };
 
-        const respuesta = await axios.post('https://localhost:7299/api/Dirigentes/Create', nuevoDirigente, {
+        const respuesta = await axios.post('https://localhost:5030/api/Dirigentes/Create', nuevoDirigente, {
             headers: {
                 'Content-Type': 'application/json',
                 'accept': '*/*'
