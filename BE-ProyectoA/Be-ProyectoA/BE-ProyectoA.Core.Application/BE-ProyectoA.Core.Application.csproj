@@ -33,6 +33,13 @@
     <Folder Include="CoordinadoresGeneralesFeatures\Query\GetById\" />
     <Folder Include="Director\Query\GetAll\" />
     <Folder Include="Director\Query\GetById\" />
+    <Folder Include="VotantesFeatures\VotantesCoordinador\Queries\GetAll\" />
+    <Folder Include="VotantesFeatures\VotantesCoordinador\Queries\GetById\" />
+    <Folder Include="VotantesFeatures\VotantesDirector\Queries\GetAll\" />
+    <Folder Include="VotantesFeatures\VotantesDirector\Queries\GetById\" />
+    <Folder Include="VotantesFeatures\VotantesDirigente\Queries\GetAll\" />
+    <Folder Include="VotantesFeatures\VotantesDirigente\Queries\GetById\" />
+    <Folder Include="VotantesFeatures\VotantesSubCoordinadorFeatures\Queries\GetById\" />
   </ItemGroup>
 
 </Project>

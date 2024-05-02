@@ -42,7 +42,9 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
             UserManager<ApplicationUser> userManager, 
             IVotanteCoordinadorRepository votanteCoordinadorRepository, 
             IVotantesDirigenteRepository votantesDirigenteRepository, 
-            IVotantesSubCoordiandoresRepository votantesSubCoordiandoresRepository)
+            IVotantesSubCoordiandoresRepository votantesSubCoordiandoresRepository,
+            IVotantesDirectorRepository votantesDirectorRepository
+            )
         {
             _unitOfWork = unitOfWork;
             _votantesRepository = votantesRepository;
@@ -54,9 +56,43 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
             _VotanteCoordinadorRepository = votanteCoordinadorRepository;
             _VotantesDirigenteRepository = votantesDirigenteRepository;
             _VotantesSubCoordiandoresRepository = votantesSubCoordiandoresRepository;
+            _VotantesDirectorRepository = votantesDirectorRepository;
         }
 
 
+        private async Task<bool> TryCreateDirectorVotante(CreateVotanteCommand command, ApplicationUser userRequest, Cedula? cedula, Direccion? direccion, NumeroTelefono? numeroTelefono, CancellationToken cancellationToken)
+        {
+            var directorGeneralId = new DirectoresId(Guid.Parse(userRequest.Id));
+            if (!await  _directoresRepository.ExistsAsync(directorGeneralId, cancellationToken)) return false;
+
+
+            // Verificar si el votante ya existe
+            if (await _votantesRepository.ExistsByDirectorAsync(directorGeneralId, command.Nombre, command.Apellido, cancellationToken))
+                return true;
+
+            var votanteId = new VotanteId(Guid.NewGuid());
+            var director = await _directoresRepository.GetByIdAsync(directorGeneralId, cancellationToken);
+            if (director == null) return false;
+
+            var votanteDirectorGeneral = new Votante(
+                votanteId,
+                command.Nombre,
+                command.Apellido,
+                cedula!,
+                direccion!,
+                numeroTelefono!,
+                true,
+                director.Id
+            );
+
+
+            var directorVotante = new VotantesDirectores(directorGeneralId.Value, votanteId.Value);
+            await _votantesRepository.AddAsync(votanteDirectorGeneral, cancellationToken);
+            await _VotantesDirectorRepository.AddAsync(directorVotante, cancellationToken);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
+
+            return true;
+        }
 
         private async Task<bool> TryCreateCoordinadorGeneralVotante(CreateVotanteCommand command, ApplicationUser userRequest, Cedula? cedula, Direccion? direccion, NumeroTelefono? numeroTelefono, CancellationToken cancellationToken)
         {
@@ -182,6 +218,12 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
             if (await TryCreateDirigenteVotante(command, userRequest, cedula, direccion, numeroTelefono, cancellationToken))
             {
                 await CalcularVotos(votantesList, command.MiembroId, TipoMiembro.DirigenteMultiplicador, cancellationToken);
+                return Unit.Value;
+            }
+
+            if (await TryCreateDirectorVotante(command, userRequest, cedula, direccion, numeroTelefono, cancellationToken))
+            {
+                await CalcularVotos(votantesList, command.MiembroId, TipoMiembro.Director, cancellationToken);
                 return Unit.Value;
             }
 

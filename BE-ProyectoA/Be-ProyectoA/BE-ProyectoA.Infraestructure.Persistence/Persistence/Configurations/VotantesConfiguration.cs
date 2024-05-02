@@ -33,9 +33,9 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
 
             builder.OwnsOne(v => v.Direccion, direccionBuilder =>
             {
-                direccionBuilder.Property(d => d.Provincia).HasMaxLength(50);
-                direccionBuilder.Property(d => d.Sector).HasMaxLength(50);
-                direccionBuilder.Property(d => d.CasaElectoral);
+                direccionBuilder.Property(d => d.Provincia).HasMaxLength(50).IsRequired(false);
+                direccionBuilder.Property(d => d.Sector).HasMaxLength(50).IsRequired(false);
+                direccionBuilder.Property(d => d.CasaElectoral).IsRequired(false);
             });
 
 

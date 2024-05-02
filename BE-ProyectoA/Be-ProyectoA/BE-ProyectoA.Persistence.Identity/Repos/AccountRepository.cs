@@ -5,6 +5,7 @@ using BE_ProyectoA.Core.Application.Interfaces;
 using BE_ProyectoA.Core.Domain.Entities.Authentication;
 using BE_ProyectoA.Core.Domain.Entities.Coordinadores;
 using BE_ProyectoA.Core.Domain.Entities.CoordinadorGeneral;
+using BE_ProyectoA.Core.Domain.Entities.Director;
 using BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador;
 using BE_ProyectoA.Core.Domain.Primitivies;
 using BE_ProyectoA.Core.Domain.ValueObjects;
@@ -31,6 +32,7 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
         ICoordinadorGeneralRepository coordinadorGeneralRepository,
         ISubCoordinadorRepository subCoordinadorRepository,
         IDirigenteMultiplicadorRepository dirigenteMultiplicadorRepository,
+        IDirectoresRepository directorRepository,
         IUnitOfWork unitOfWork
 
         ) : IAccount
@@ -148,12 +150,16 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
                         // Crear SubCoordinador y validar
                         await CreateSubCoordinadorAsync(model, user, cancellationToken);
                         break;
-
                     case "Dirigente":
                         // Crear Dirigente y validar
                         await CreateDirigenteAsync(model, user, cancellationToken);
                         break;
-
+                    case "Director":
+                        await CreateDirectorAsync(model, user, cancellationToken);
+                        break;
+                    case "Admin":
+                        await CreateDirectorAsync(model, user, cancellationToken);
+                        break;
                     default:
                         return new GeneralResponse(false, "Rol de usuario no válido");
                 }
@@ -174,6 +180,25 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
                 return new GeneralResponse(false, ex.Message);
             }
         }
+
+        private async Task CreateDirectorAsync(CreateAccountDTO model, ApplicationUser user, CancellationToken cancellationToken)
+        {
+            // Crear Director General
+            var director = new Directores (
+                
+                id: new DirectoresId(Guid.Parse(user.Id)),
+                nombre: model.Nombre,
+                apellido: model.Apellido,
+                cantidadVotantes: CantidadVotos.Create(model.CantidadVotantes)!,
+                cedula: Cedula.Create(model.Cedula)!,
+                numeroTelefono: NumeroTelefono.Create(model.NumeroTelefono)!,
+                activo: model.Activo
+              
+            );
+            await directorRepository.AddAsync(director, cancellationToken);
+            await unitOfWork.SaveChangesAsync(cancellationToken);
+        }
+
 
         private async Task CreateCoordinadorGeneralAsync(CreateAccountDTO model, ApplicationUser user, CancellationToken cancellationToken)
         {

@@ -7,7 +7,8 @@ namespace BE_ProyectoA.Core.Domain.Entities.Director
 {
     public sealed class Directores : AggregateRoot
     {
-        public Directores() { }
+     
+
         public Directores(DirectoresId id, string nombre, string apellido, CantidadVotos cantidadVotantes, Cedula cedula, NumeroTelefono numeroTelefono, bool activo)
         {
             Id = id;
