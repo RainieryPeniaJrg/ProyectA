@@ -6,29 +6,28 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.VotantesSubCoordinadorF
 
         (
 
-        VotantesResponse Votante,
-        SubCoordinadorResponse SubCoordinador
+        VotantesSubCoordinadorResponseDTO Votante
 
         );
 
 
     public record SubCoordinadorResponse(
-        string Nombre,
-        string Apellido
+        string Nombre
+  
     );
 
-    public record VotantesResponse(
+    public record VotantesSubCoordinadorResponseDTO(
          Guid Id,
          string NombreCompleto,
          Cedula Cedula,
          NumeroTelefono NumeroTelefono,
-         DireccionResponse Direccion,
+         DireccionVotantesSubCoordinadorResponse Direccion,
          bool Activo,
          SubCoordinadorResponse? CoordinadorGeneral
 
  );
 
-    public record DireccionResponse(
+    public record DireccionVotantesSubCoordinadorResponse(
      string Provincia,
      string Sector
  );

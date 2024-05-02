@@ -4,5 +4,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesDirector
 {
     public interface IVotantesDirectorRepository : IRepository<VotantesDirectores>
     {
-    }
+        Task<IReadOnlyList<VotantesDirectores>> GetAllVotantesDirector(CancellationToken cancellationToken);
+
+    }    
 }

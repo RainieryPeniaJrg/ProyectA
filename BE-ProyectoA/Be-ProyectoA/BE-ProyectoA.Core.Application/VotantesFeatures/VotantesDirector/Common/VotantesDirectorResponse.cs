@@ -4,27 +4,26 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.VotantesDirector.Common
 {
     public record VotantesDirectorResponse
         (
-
-
+         VotantesDirectorResponseDTO Votantes
         );
 
     public record DirectorResponse(
-          string Nombre,
-          string Apellido
+          string Nombre
+ 
       );
 
-    public record VotantesResponse(
+    public record VotantesDirectorResponseDTO(
     Guid Id,
     string NombreCompleto,
     Cedula Cedula,
     NumeroTelefono NumeroTelefono,
-    DireccionResponse Direccion,
+    DireccionVotantesDirectorResponse Direccion,
     bool Activo,
     DirectorResponse? CoordinadorGeneral
 
     );
 
-    public record DireccionResponse(
+    public record DireccionVotantesDirectorResponse(
      string Provincia,
      string Sector
  );
