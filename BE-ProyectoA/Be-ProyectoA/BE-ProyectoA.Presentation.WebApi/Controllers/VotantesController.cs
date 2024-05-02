@@ -10,7 +10,6 @@ using BE_ProyectoA.Core.Application.VotantesFeatures.VotantesDirigente.Queries.G
 using BE_ProyectoA.Core.Application.VotantesFeatures.VotantesSubCoordinadorFeatures.Queries.GetAll;
 using ErrorOr;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 

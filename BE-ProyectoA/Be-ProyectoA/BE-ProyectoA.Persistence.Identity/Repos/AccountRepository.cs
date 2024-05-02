@@ -324,8 +324,8 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
 
             if (allUser == null)
             {
-                // Manejar el caso en el que no hay usuarios
-                return Enumerable.Empty<GetUsersWithRoleDTO>();
+               
+                return [];
             }
 
             var List = new List<GetUsersWithRoleDTO>();
@@ -339,6 +339,7 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
                 {
                     Name = user.Nombre,
                     Email = user.Email,
+                    UserId = user.Id,
                     RoleId = getRoleInfo?.Id, // Asegúrate de manejar la posibilidad de que getRoleInfo sea nulo
                     RoleName = getRoleInfo?.Name, // Asegúrate de manejar la posibilidad de que getRoleInfo sea nulo
                 });
