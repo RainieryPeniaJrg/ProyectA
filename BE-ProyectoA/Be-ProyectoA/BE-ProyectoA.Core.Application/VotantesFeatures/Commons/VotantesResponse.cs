@@ -19,6 +19,7 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commons
         CoordinadorGeneralResponse? CoordinadorGeneral,
         DirigenteMultiplicadorResponse? Dirigente
         );
+
     public record DireccionResponse(
         string Provincia,
         string Sector

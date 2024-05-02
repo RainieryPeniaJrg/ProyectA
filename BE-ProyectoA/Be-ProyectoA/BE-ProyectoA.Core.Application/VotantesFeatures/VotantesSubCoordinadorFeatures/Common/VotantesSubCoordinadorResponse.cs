@@ -1,6 +1,6 @@
 ﻿using BE_ProyectoA.Core.Domain.ValueObjects;
 
-namespace BE_ProyectoA.Core.Application.VotantesFeatures.VotantesSubCoordinador.Common
+namespace BE_ProyectoA.Core.Application.VotantesFeatures.VotantesSubCoordinadorFeatures.Common
 {
     public record VotantesSubCoordinadorResponse
 
@@ -8,7 +8,7 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.VotantesSubCoordinador.
 
         VotantesResponse Votante,
         SubCoordinadorResponse SubCoordinador
-        
+
         );
 
 
