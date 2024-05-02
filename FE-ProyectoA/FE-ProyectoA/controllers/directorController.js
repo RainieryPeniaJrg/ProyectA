@@ -97,7 +97,7 @@ exports.getCoordinadores = async (req, res) => {
             coordinadores: coordinadores
         });
     } catch (error) {
-        console.error('Error al obtener los coordinadores:', error);
+        console.log(error.response.data.errors)
         res.status(500).json({ mensaje: 'Error al obtener los coordinadores' });
     }
 };
@@ -289,7 +289,7 @@ const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy
 
         res.redirect('/home');
     } catch (error) {
-        console.error('Error al añadir el coordinador:', error);
+        console.log(error.response.data.errors)
         res.status(500).json({ mensaje: 'Error al añadir el coordinador' });
     }
 };

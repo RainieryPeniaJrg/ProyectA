@@ -22,16 +22,11 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(async (req, res, next) => {
     try {
-        // Obtener el total de cantidad de votantes
-        const totalCantidadVotantes = await obtenerTotalCantidadVotantes();
+ next()
+    
         
-        // Establecer el totalCantidadVotantes como una variable local disponible en todas las vistas
-        res.locals.totalCantidadVotantes = totalCantidadVotantes;
-        next();
     } catch (error) {
-        console.error('Error al obtener la información:', error);
-        res.locals.totalCantidadVotantes = 0; // Si ocurre un error, establecer el total en 0
-        next();
+       next()
     }
 });
 

@@ -21,13 +21,12 @@ exports.getAgregarVotante = async (req, res, next) => {
 exports.postAñadirVotante = async (req, res, next) => {
     try {
         
-        const { nombre, apellido, cantidadVotantes, cedula, numeroTelefono, activo, sector, provincia,casaElectoral,miembroId } = req.body;
+        const { nombre, apellido,cedula, numeroTelefono, activo, sector, provincia,casaElectoral,miembroId } = req.body;
 
        
         const nuevoVotante = {
             nombre,
             apellido,
-            cantidadVotantes,
             cedula,
             numeroTelefono,
             activo,
@@ -48,7 +47,7 @@ exports.postAñadirVotante = async (req, res, next) => {
         });
 
         
-        res.redirect('/dirigentes'); 
+        res.redirect('/votantes'); 
     } catch (error) {
         console.log(error.response.data.errors)
        // console.error('Error al añadir el votante:', error);

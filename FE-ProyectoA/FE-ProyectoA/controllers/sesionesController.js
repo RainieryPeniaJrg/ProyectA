@@ -85,15 +85,15 @@ exports.registrarUsuario = async (req, res) => {
   
       // Handle successful registration
       if (respuesta.status === 200) {
-        res.status(200).json(respuesta.data);
+        res.redirect('/home');
+        //res.status(200).json(respuesta.data);
       } else {
         // Handle registration errors
         const errorMensaje = respuesta.data.message || "Error al registrar el usuario";
         res.status(respuesta.status).json({ mensaje: errorMensaje });
       }
     } catch (error) {
-        console.log(error)
-      console.error("Error al registrar el usuario:", error);
+      console.log(error.response.data.errors)
       res.status(500).json({ mensaje: "Error al registrar el usuario" });
     }
   };

@@ -265,3 +265,29 @@ tr:hover {
 	margin-bottom: 8px;
 	font-size: 1rem;
   }
+
+
+.Director{
+	margin-bottom: 40px;
+	width: 431px; 
+    display: flex;
+    align-items: center; 
+	margin-left: 740px;
+
+  }
+
+  .votos{
+margin-top: 20px;
+display: grid;
+place-items: center;
+
+  }
+
+
+  .navbar-brand{
+	margin: 0;
+	padding: 0;
+	display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /
+  }
