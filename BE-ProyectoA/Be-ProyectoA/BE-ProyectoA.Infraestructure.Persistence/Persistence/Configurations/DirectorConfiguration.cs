@@ -39,7 +39,8 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Configurations
             builder.Property(d => d.CantidadVotantes)
                  .HasConversion(
                      cedula => cedula.Value,
-                     value => CantidadVotos.Create(value)!);
+                     value => CantidadVotos.Create(value)!).
+                     IsRequired(false);
 
             builder.HasMany(c => c.Votantes)
               .WithOne(v => v.Director)
