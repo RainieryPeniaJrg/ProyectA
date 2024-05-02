@@ -8,20 +8,10 @@ exports.getRegistro = async (req, res) => {
 
 
 
-          const roles = await axios.get('https://localhost:7299/api/Account/identity/role-list',  {
-            headers: {
-                'Content-Type': 'application/json',
-                'accept': 'text/plain'
-            },
-            httpsAgent: new https.Agent({ rejectUnauthorized: false }) 
-
-        });
-
-        const rol = roles.data;
-
+        
         res.render('sesion/registro', {
             title: 'Registro de Usuario',
-            roles: rol
+           
         });
     } catch (error) {
         console.error('Error al mostrar el formulario de registro:', error);
@@ -85,7 +75,7 @@ exports.registrarUsuario = async (req, res) => {
   
       // Handle successful registration
       if (respuesta.status === 200) {
-        res.redirect('/home');
+        res.redirect('/coordinadores');
         //res.status(200).json(respuesta.data);
       } else {
         // Handle registration errors

@@ -1,6 +1,6 @@
 <main>
     <div class="container">
-    <div class="heading">Registrar Coordinador</div>
+    <div class="heading">Registro de miembro</div>
     <div class="form-container">
     <form action="/registro" method="POST" class="form">
         <div class="input-field">
@@ -49,27 +49,43 @@
            
         </div>
         <div class="input-field">
+               <input type="number" id="cantidadVotantes" name="cantidadVotantes" required>
+            <label for="cantidadVotantes">Cantidad de Votantes:</label>
+         
+        </div>
+
+        <div class="input-field">
+             <input type="text" id="subCoordinadorId" name="subCoordinadorId" >
+            <label for="subCoordinadorId">ID Subcoordinador:</label>
+           
+        </div>
+        <div class="input-field">
+            <input type="text" id="coordinadorGeneralId" name="coordinadorGeneralId" >
+            <label for="coordinadorGeneralId">ID Coordinador General:</label>
+            
+        </div>
+        <div class="input-field">
+             <input type="text" id="dirigenteId" name="dirigenteId" >
+            <label for="dirigenteId">ID Dirigente:</label>
+           
+        </div>
+        <div class="input-field">
              <input type="password" id="confirmPassword" name="confirmPassword" required>
             <label for="confirmPassword">Confirmar Contraseña:</label>
            
         </div>
-        <input type="hidden" name="role" id="role" name="role" value="CoordinadorGeneral">
-            
-        <!-- <div class="input-field">
+        <div class="input-field">
             <select id="role" name="role" required>
                 <option value="" disabled selected>Seleccionar Rol</option>
-               <option value="CoordinadorGeneral">Coordinador</option>
                 <option value="SubCoordinador">SubCoordinador</option>
                 <option value="SubCoordinador">DirigenteMultiplicador</option>
                 <option value="SubCoordinador">Director</option>
-                </select>
-                </div>
-        -->
+                
 
-            
-        
+            </select>
+        </div>
         <div class="btn-container">
-            <button type="submit" class="btn">Registrar coordinador</button>
+            <button type="submit" class="btn">Registrar</button>
             <button type="button" class="btn close">Cerrar</button>
         </div>
     </form>

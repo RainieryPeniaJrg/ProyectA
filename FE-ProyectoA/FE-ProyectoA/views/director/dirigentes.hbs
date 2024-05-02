@@ -13,11 +13,10 @@
                 <th>Nombre Completo del Dirigente</th>
                 <th>Cédula del Dirigente</th>
                 <th>Número de Teléfono del Dirigente</th>
-                <th>Cantidad de Votos del Dirigente</th>
                 <th>Nombre Completo del Coordinador</th>
                 <th>Cédula del Coordinador</th>
                 <th>Número de Teléfono del Coordinador</th>
-                <th>Cantidad de Votos del Coordinador</th>
+            
             </tr>
         </thead>
         <tbody>
@@ -26,12 +25,10 @@
                 <td>{{ nombreCompleto }}</td>
                 <td>{{ cedula.value }}</td>
                 <td>{{ numeroTelefono.value }}</td>
-                <td>{{ cantidadVotantes.value }}</td>
-                <!-- Acceder a los datos del coordinador asociado -->
                 <td>{{ coordinador.nombreCompleto }}</td>
                 <td>{{ coordinador.cedula.value }}</td>
                 <td>{{ coordinador.numeroTelefono.value }}</td>
-                <td>{{ coordinador.cantidadVotantes.value }}</td>
+               
             </tr>
             {{/each}}
         </tbody>
