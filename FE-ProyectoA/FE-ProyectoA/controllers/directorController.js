@@ -272,7 +272,7 @@ exports.postAñadirCoordinador = async (req, res, next) => {
             numeroTelefono,
             sector,
             provincia,
-            Direccion_CasaElectoral: casaElectoral,
+            casaElectoral,
             cantidadVotantes,
             activo
         };
