@@ -9,7 +9,7 @@ const router = express.Router();
 
 
 
-router.get("/", );
+router.get("/coordinador-home",coordinadorController.getHome );
 
 router.get("/coordinador-subcoordinadores", coordinadorController.getSubCoordinadoresCoo);
 router.get("/coordinador-dirigentes", coordinadorController.getDirigentes);

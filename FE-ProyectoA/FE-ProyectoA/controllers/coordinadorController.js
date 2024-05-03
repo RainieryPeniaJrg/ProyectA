@@ -1,6 +1,24 @@
 const axios = require("axios");
 const https = require('https');
 
+exports.getHome = async (req, res) => {
+    try {
+        const agent = new https.Agent({ rejectUnauthorized: false });
+        
+
+        // Renderizar la vista home con el total de cantidad de votantes
+        res.render("coordinador/coordinador-home", {
+            title: "Home",
+           
+        });
+
+    } catch (error) {
+        console.error('Error al obtener la información:', error);
+        res.status(500).json({ mensaje: 'Error al obtener la información' });
+    }
+};
+
+
 exports.getSubCoordinadoresCoo = async (req, res) => {
     try {
         //NOTA> agregar url correcto de la api para traer los Subcoordinadores
@@ -120,10 +138,11 @@ exports.getVotantesCoo = async (req, res) => {
         const agent = new https.Agent({ rejectUnauthorized: false });
 
         // Realizar la solicitud HTTP a la API con el agente configurado
-        const respuesta = await axios.get('https://localhost:7299/api/Votantes/GetAll',  {
+        const respuesta = await axios.get('https://localhost:7299/api/CoordinadoresGeneral/GetAllVotantesByMemberId0D687955-B91E-4F1F-B206-53319395B2E1',  {
             headers: {
                 'Content-Type': 'application/json',
                 'accept': '*/*',
+                
               
             },
             httpsAgent: agent // Utiliza el agente HTTPS configurado

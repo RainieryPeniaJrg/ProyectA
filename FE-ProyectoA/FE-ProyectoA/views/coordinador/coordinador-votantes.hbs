@@ -1,0 +1,34 @@
+
+
+<main>
+
+<table>
+  <thead>
+    <tr>
+        <th>#</th>
+      <th>Nombre Completo</th>
+      <th>Cédula</th>
+      <th>Número de Teléfono</th>
+      <th>Provincia</th>
+      <th>Sector</th>
+      <th>SubCoordinador</th>
+      <th>Dirigente</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each votantes}}
+      <tr>
+        <td>{{@index}}</td>
+        <td>{{votante.nombreCompleto}}</td>
+        <td>{{votante.cedula.value}}</td>
+        <td>{{votante.numeroTelefono.value}}</td>
+        <td>{{votante.direccion.provincia}}</td>
+        <td>{{votante.direccion.sector}}</td>
+        <td>{{#if coordinadorGeneral}}{{coordinadorGeneral.nombre}} {{coordinadorGeneral.apellido}}{{else}}No asignado{{/if}}</td>
+        <td>{{#if dirigente}}{{votante.dirigente.nombre}} {{dirigente.apellido}}{{else}}No asignado{{/if}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+</main>
