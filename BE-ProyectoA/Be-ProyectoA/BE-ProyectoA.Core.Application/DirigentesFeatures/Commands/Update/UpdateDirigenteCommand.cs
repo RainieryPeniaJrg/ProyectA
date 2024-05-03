@@ -9,7 +9,7 @@ namespace BE_ProyectoA.Core.Application.DirigentesFeatures.Commands.Update
      Guid Id,
      string Nombre,
      string Apellido,
-     CantidadVotos CantidadVotantes,
+     int CantidadVotantes,
      string Cedula,
      string NumeroTelefono,
      string Provincia,

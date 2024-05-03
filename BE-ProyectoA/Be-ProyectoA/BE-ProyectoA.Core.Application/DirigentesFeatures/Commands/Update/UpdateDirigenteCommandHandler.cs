@@ -26,35 +26,64 @@ namespace BE_ProyectoA.Core.Application.DirigentesFeatures.Commands.Update
         public async Task<ErrorOr<Unit>> Handle(UpdateDirigenteCommand command, CancellationToken cancellationToken)
         {
             var id = new DirigentesMultiplicadoresId(command.Id);
-            if(!await _dirigenteMultiplicadorRepository.ExistsAsync(command.Id, cancellationToken))
+
+            if (!await _subCoordinadorRepository.ExistsAsync(new SubCoordinadoresId(command.SubCoordinadoresId), cancellationToken))
             {
-                return Error.NotFound("Dirigente.NotFound", "El dirigente que selecciono no se encuentra, favor verificar campo");
+                return Error.NotFound("EntidadRelacionada.NotFound", "La entidad relacionada no se encuentra. Favor verificar el campo.");
             }
-            if (!await _subCoordinadorRepository.ExistsAsync(command.SubCoordinadoresId, cancellationToken))
+
+            var dirigente = await _dirigenteMultiplicadorRepository.GetByIdAsync(id, cancellationToken);
+
+            if (dirigente == null)
             {
-                return Error.NotFound("EntidadRelacionada.NotFound", "La entidad relacionada no se encuentra, favor verificar campo");
+                // Manejar el caso en el que no se pueda encontrar el dirigente
+                return Error.NotFound("Dirigente.NotFound", "El dirigente que seleccionó no se encuentra. Favor verificar el campo.");
             }
-            var subCoordinador = await _subCoordinadorRepository.GetByIdAsync(command.SubCoordinadoresId, cancellationToken);
+
+            var subCoordinador = await _subCoordinadorRepository.GetByIdAsync2(new SubCoordinadoresId(command.SubCoordinadoresId), cancellationToken);
 
             var validationResult = ValueObjectValidators.ValidarDatos(command.Cedula, command.NumeroTelefono, command.Provincia, command.Sector, command.CasaElectoral);
             if (validationResult.IsError)
+            {
                 return validationResult;
+            }
 
             var numeroTelefono = NumeroTelefono.Create(command.NumeroTelefono);
-
             var cedula = Cedula.Create(command.Cedula);
-
             var direccion = Direccion.Create(command.Provincia, command.Sector, command.CasaElectoral);
-            var subId = new SubCoordinadoresId(command.SubCoordinadoresId);
-           
+
             if (subCoordinador is not null && direccion is not null && cedula is not null && numeroTelefono is not null)
             {
-                DirigentesMultiplicadores dirigentesMultiplicadores = DirigentesMultiplicadores.Update(id, cedula, numeroTelefono, command.Nombre, command.Apellido, command.Activo, direccion, command.CantidadVotantes, subCoordinador, subId);
-                _dirigenteMultiplicadorRepository.Update(dirigentesMultiplicadores);
+                
+       
+                // Actualizamos los datos del dirigente multiplicador con los nuevos datos proporcionados
+                var dirigenteMultiplicador = DirigentesMultiplicadores.Update(
+                     id,
+                    cedula,
+                    numeroTelefono,
+                    command.Nombre,
+                    command.Apellido,
+                    command.Activo,
+                    direccion,
+                    CantidadVotos.Create(command.CantidadVotantes),
+                    subCoordinador,
+                    new SubCoordinadoresId(command.SubCoordinadoresId)
+
+
+                );
+
+                // Utilizamos el método Update del repositorio para actualizar el dirigente multiplicador
+                _dirigenteMultiplicadorRepository.Update2(dirigenteMultiplicador);
+
+                // Guardamos los cambios en la base de datos
                 await _unitOfWork.SaveChangesAsync(cancellationToken);
             }
 
             return Unit.Value;
         }
+
+       
     }
+
+
 }

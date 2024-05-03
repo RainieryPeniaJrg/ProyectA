@@ -21,29 +21,42 @@ namespace BE_ProyectoA.Core.Application.CoordinadoresGeneralesFeatures.Commands.
 
         public async Task<ErrorOr<Unit>> Handle(UpdateCoordinadorGeneralCommand command, CancellationToken cancellationToken)
         {
-            if(! await _coordinadorGeneralRepository.ExistsAsync(new CoordinadoresGeneralesId(command.Id)))
-                {
+            var coordinadorGeneralId = new CoordinadoresGeneralesId(command.Id);
 
-                return Error.Validation("CoordinadorGeneral.NotFound", "El coordinador proporcionador no se encuentra");
+            if (!await _coordinadorGeneralRepository.ExistsAsync(coordinadorGeneralId, cancellationToken))
+            {
+                return Error.Validation("CoordinadorGeneral.NotFound", "El coordinador proporcionado no se encuentra");
             }
 
-            var validationResult = ValueObjectValidators.ValidarDatos(command.Cedula, command.NumeroTelefono, command.Provincia, command.Sector,command.CasaElectoral);
-            if (validationResult.IsError)
-                return validationResult;
+            var coordinadorGeneral = await _coordinadorGeneralRepository.GetByIdAsync(coordinadorGeneralId, cancellationToken);
 
-            var numeroTelefono = NumeroTelefono.Create(command.NumeroTelefono);
-            var cedula = Cedula.Create(command.Cedula);
-            var direccion = Direccion.Create(command.Provincia, command.Sector,command.CasaElectoral);
+            if (coordinadorGeneral == null)
+            {
+                // Manejar el caso en el que no se pueda encontrar el coordinador general
+                return Error.Validation("CoordinadorGeneral.NotFound", "El coordinador proporcionado no se encuentra");
+            }
 
-            var coordinadores = CoordinadoresGenerales.UpdateWithOutRelationShipAndWithOutVotes(command.Id, command.Nombre,
-                                                                                                    command.Apellido,
-                                                                                                    cedula,
-                                                                                                    numeroTelefono,
-                                                                                                    direccion,
-                                                                                           command.Activo);
+         
+            var votosTotales = CantidadVotos.Create(command.CantidadVotantes);
 
-            _coordinadorGeneralRepository.Update(coordinadores);
+            // Actualizar los datos del coordinador general con los nuevos datos proporcionados
+            var coordinadorToUpdate = CoordinadoresGenerales.UpdateWithOutRelationShip(
+                coordinadorGeneralId,
+                command.Nombre,
+                command.Apellido,
+                coordinadorGeneral.Cedula,
+                coordinadorGeneral.NumeroTelefono,
+                coordinadorGeneral.Direccion,
+                command.Activo,
+                votosTotales
+            );
+
+            // Utilizar el método Update del repositorio genérico para actualizar el coordinador general
+            _coordinadorGeneralRepository.Update(coordinadorToUpdate!);
+
+            // Guardar los cambios en la base de datos
             await _unitOfWork.SaveChangesAsync(cancellationToken);
+
             return Unit.Value;
 
         }

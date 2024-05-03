@@ -11,6 +11,15 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repos
         {
             _context = context;
         }
+        public void Update2(T entity, bool detachEntity = true)
+        {
+           
+            if (detachEntity)
+            {
+                _context.Entry(entity).State = EntityState.Detached;
+            }
+            _context.Set<T>().Update(entity);
+        }
         public async Task AddAsync(T entity, CancellationToken cancellationToken = default)
         {
             if (entity != null)

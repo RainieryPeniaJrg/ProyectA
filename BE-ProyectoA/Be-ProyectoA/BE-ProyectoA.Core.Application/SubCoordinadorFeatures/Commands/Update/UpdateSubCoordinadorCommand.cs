@@ -10,7 +10,7 @@ namespace BE_ProyectoA.Core.Application.SubCoordinadorFeatures.Commands.Update
         Guid Id,
         string Nombre,
      string Apellido,
-     CantidadVotos CantidadVotantes,
+     int CantidadVotantes,
      string Cedula,
      bool Activo,
      string Provincia,
