@@ -1,5 +1,8 @@
 ﻿using BE_ProyectoA.Core.Application.Director.Commands.Create;
 using BE_ProyectoA.Core.Application.Director.Commands.Delete;
+using BE_ProyectoA.Core.Application.VotantesFeatures.VotantesDirector.Queries.GetAll;
+using BE_ProyectoA.Core.Application.VotantesFeatures.VotantesDirector.Queries.GetById;
+using BE_ProyectoA.Core.Application.VotantesFeatures.VotantesDirector.Queries.GetByMemberId;
 using BE_ProyectoA.Core.Domain.Entities.Director;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -24,46 +27,38 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
             );
         }
 
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> GetById(Guid id)
-        //{
-        //    var customerResult = await _mediator.Send(new GetCustomerByIdQuery(id));
+        [HttpGet("GetAllVotantes")]
+        public async Task<IActionResult> GetAllVotantesDirector()
+        {
+            var votanteResult = await _mediator.Send(new GetAllVotantesDirectorQuery());
 
-        //    return customerResult.Match(
-        //        customer => Ok(customer),
-        //        errors => Problem(errors)
-        //    );
-        //}
-        //[HttpPost]
-        //public async Task<IActionResult> Create([FromBody] CreateCustomerCommand command)
-        //{
-        //    var createResult = await _mediator.Send(command);
+            return votanteResult.Match(
+                Votante => Ok(Votante),
+                errors => Problem(errors)
+            );
+        }
+        [HttpGet("GetAllVotantesByMemberId{Id}")]
+        public async Task<IActionResult> GetAllVotantesDirectorByMemberId(Guid Id)
+        {
+            var votanteResult = await _mediator.Send(new GetByMemberIdVotantesDirectorQuery(Id));
 
-        //    return createResult.Match(
-        //        customerId => Ok(customerId),
-        //        errors => Problem(errors)
-        //    );
-        //}
+            return votanteResult.Match(
+                Votante => Ok(Votante),
+                errors => Problem(errors)
+            );
+        }
 
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> Update(Guid id, [FromBody] UpdateCustomerCommand command)
-        //{
-        //    if (command.Id != id)
-        //    {
-        //        List<Error> errors = new()
-        //        {
-        //            Error.Validation("Customer.UpdateInvalid", "The request Id does not match with the url Id.")
-        //        };
-        //        return Problem(errors);
-        //    }
+        [HttpGet("GetVotantesByIdWithMember{Id}")]
+        public async Task<IActionResult> GetAllVotantesDirectorByIdWithMember(Guid Id)
+        {
+            var votanteResult = await _mediator.Send(new GetByIdVotantesDirectorQuery(Id));
 
-        //    var updateResult = await _mediator.Send(command);
+            return votanteResult.Match(
+                Votante => Ok(Votante),
+                errors => Problem(errors)
+            );
+        }
 
-        //    return updateResult.Match(
-        //        customerId => NoContent(),
-        //        errors => Problem(errors)
-        //    );
-        //}
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)

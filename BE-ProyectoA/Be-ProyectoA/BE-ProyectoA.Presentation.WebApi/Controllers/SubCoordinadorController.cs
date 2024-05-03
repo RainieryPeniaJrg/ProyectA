@@ -2,6 +2,9 @@
 using BE_ProyectoA.Core.Application.SubCoordinadorFeatures.Commands.Delete;
 using BE_ProyectoA.Core.Application.SubCoordinadorFeatures.Commands.Update;
 using BE_ProyectoA.Core.Application.SubCoordinadorFeatures.Querys;
+using BE_ProyectoA.Core.Application.VotantesFeatures.VotantesSubCoordinadorFeatures.Queries.GetAll;
+using BE_ProyectoA.Core.Application.VotantesFeatures.VotantesSubCoordinadorFeatures.Queries.GetById;
+using BE_ProyectoA.Core.Application.VotantesFeatures.VotantesSubCoordinadorFeatures.Queries.GetByMemberId;
 using ErrorOr;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -74,27 +77,41 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
             );
         }
 
-        //[HttpGet("ById/{id}")]
-        //public async Task<IActionResult> GetById(Guid id)
-        //{
-        //    var votanteResult = await _mediator.Send(new GetByIdVotantesQuery(id));
+        [HttpGet("GetAllVotantes")]
+        public async Task<IActionResult> GetAllVotantesSubCoordinadores()
+        {
+            var votanteResult = await _mediator.Send(new GetAllVotantesSubCoordinadoresQuery());
 
-        //    return votanteResult.Match(
-        //        votante => Ok(votante),
-        //        errors => Problem(errors)
-        //    );
-        //}
+            return votanteResult.Match(
+                Votante => Ok(Votante),
+                errors => Problem(errors)
+            );
+        }
 
 
-        //[HttpGet("ByCedula/{cedula}")]
-        //public async Task<IActionResult> GetByCedula(string cedula)
-        //{
-        //    var votanteResult = await _mediator.Send(new GetByCedulaQuery(cedula));
+        [HttpGet("GetAllVotantesByMemberId{Id}")]
+        public async Task<IActionResult> GetAllVotantesSubCoordinadoresByMemberId(Guid Id)
+        {
+            var votanteResult = await _mediator.Send(new GetByMemberIdVotantesSubCoordinadorQuery(Id));
 
-        //    return votanteResult.Match(
-        //        votante => Ok(votante),
-        //        errors => Problem(errors)
-        //    );
-        //}
+            return votanteResult.Match(
+                Votante => Ok(Votante),
+                errors => Problem(errors)
+            );
+        }
+
+
+        [HttpGet("GetVotantesByIdWithMember{Id}")]
+        public async Task<IActionResult> GetAllVotantesSubCoordinadoresByIdWithMember(Guid Id)
+        {
+            var votanteResult = await _mediator.Send(new GetByIdVotantesSubCoordinadorQuery(Id));
+
+            return votanteResult.Match(
+                Votante => Ok(Votante),
+                errors => Problem(errors)
+            );
+        }
+
+
     }
 }

@@ -2,6 +2,9 @@
 using BE_ProyectoA.Core.Application.CoordinadoresGeneralesFeatures.Commands.Delete;
 using BE_ProyectoA.Core.Application.CoordinadoresGeneralesFeatures.Commands.Update;
 using BE_ProyectoA.Core.Application.CoordinadoresGeneralesFeatures.Query.GetAll;
+using BE_ProyectoA.Core.Application.VotantesFeatures.VotantesCoordinador.Queries.GetAll;
+using BE_ProyectoA.Core.Application.VotantesFeatures.VotantesCoordinador.Queries.GetById;
+using BE_ProyectoA.Core.Application.VotantesFeatures.VotantesCoordinador.Queries.GetByMember;
 using ErrorOr;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -25,6 +28,37 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
             );
         }
 
+        [HttpGet("GetAllVotantesByMemberId{Id}")]
+        public async Task<IActionResult> GetAllVotantesCoordinadoresByMemberId(Guid Id)
+        {
+            var coordinadorResult = await _mediator.Send(new GetByMemberIdVotantesCoordinadorQuery(Id));
+
+            return coordinadorResult.Match(
+                Votante => Ok(Votante),
+                errors => Problem(errors)
+            );
+        }
+        [HttpGet("GetVotantesByIdWithMember{Id}")]
+        public async Task<IActionResult> GetAllVotantesCoordinadoresByIdWithMember(Guid Id)
+        {
+            var coordinadorResult = await _mediator.Send(new GetByIdVotantesCoordinadorQuery(Id));
+
+            return coordinadorResult.Match(
+                Votante => Ok(Votante),
+                errors => Problem(errors)
+            );
+        }
+
+        [HttpGet("GetAllVotantes")]
+        public async Task<IActionResult> GetAllVotantesCoordinadores()
+        {
+            var coordinadorResult = await _mediator.Send(new GetAllVotantesCoordinadorQuery());
+
+            return coordinadorResult.Match(
+                Votante => Ok(Votante),
+                errors => Problem(errors)
+            );
+        }
 
 
         [HttpPost("Create")]

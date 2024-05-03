@@ -19,7 +19,7 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.VotantesDirector.Common
     NumeroTelefono NumeroTelefono,
     DireccionVotantesDirectorResponse Direccion,
     bool Activo,
-    DirectorResponse? CoordinadorGeneral
+    DirectorResponse? Director
 
     );
 

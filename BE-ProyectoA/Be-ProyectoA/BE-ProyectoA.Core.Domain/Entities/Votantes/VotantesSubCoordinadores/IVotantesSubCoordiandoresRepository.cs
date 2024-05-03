@@ -6,5 +6,7 @@ namespace BE_ProyectoA.Core.Domain.Entities.Votantes.VotantesSubCoordinadores
     {
 
         Task<IReadOnlyList<VotantesSubCoordinador>> GetAllVotantesSubCoordinador(CancellationToken cancellationToken);
+        Task<VotantesSubCoordinador?> GetByIdWithMembers(Guid subCoordinadorId, CancellationToken cancellationToken);
+        Task<IReadOnlyList<VotantesSubCoordinador>> GetByMemberId(Guid id, CancellationToken cancellation);
     }
 }

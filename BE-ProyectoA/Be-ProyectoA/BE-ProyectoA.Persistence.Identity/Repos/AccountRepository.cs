@@ -380,7 +380,7 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
                 {
                     var SaveResult = await SaveRefreshToken(user.Id, refreshToken);
                     if (SaveResult.Flag)
-                        return new LoginResponse(true, $"{user.Nombre} ha iniciado sesesion correctamente", jwtToken, refreshToken);
+                        return new LoginResponse(true, $"{user.Nombre} ha iniciado sesesion correctamente", jwtToken, refreshToken,user.Id);
                     else
                         return new LoginResponse();
                 }
