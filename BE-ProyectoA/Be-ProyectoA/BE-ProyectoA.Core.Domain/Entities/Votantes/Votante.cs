@@ -104,7 +104,27 @@ namespace BE_ProyectoA.Core.Domain.Entities.Votantes
         {
             return new Votante(new VotanteId(Id),nombre, apellido, cedula, direccion, numeroTelefono, activo);
         }
-        
+
+        public static Votante UpdateVotanteWithCoordinadorGeneral (Guid Id, string nombre, string apellido, Cedula cedula, Direccion direccion, NumeroTelefono numeroTelefono, bool activo, CoordinadoresGeneralesId miembroId)
+        {
+            return new Votante(new VotanteId(Id), nombre, apellido, cedula, direccion, numeroTelefono, activo, miembroId);
+        }
+
+        public static Votante UpdateVotanteWithSubCoordinador(Guid Id, string nombre, string apellido, Cedula cedula, Direccion direccion, NumeroTelefono numeroTelefono, bool activo, SubCoordinadoresId miembroId)
+        {
+            return new Votante(new VotanteId(Id), nombre, apellido, cedula, direccion, numeroTelefono, activo,miembroId);
+        }
+
+        public static Votante UpdateVotanteWithDirector(Guid Id, string nombre, string apellido, Cedula cedula, Direccion direccion, NumeroTelefono numeroTelefono, bool activo,DirectoresId miembroId)
+        {
+            return new Votante(new VotanteId(Id), nombre, apellido, cedula, direccion, numeroTelefono, activo, miembroId);
+        }
+
+        public static Votante UpdateVotanteWithDirigente(Guid Id, string nombre, string apellido, Cedula cedula, Direccion direccion, NumeroTelefono numeroTelefono, bool activo,DirigentesMultiplicadoresId miembroId)
+        {
+            return new Votante(new VotanteId(Id), nombre, apellido, cedula, direccion, numeroTelefono, activo,miembroId);
+        }
+
 
     }
 }
