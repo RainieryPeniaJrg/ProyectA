@@ -4,6 +4,7 @@ const path = require("path")
 const directorRoute = require('./routes/director')
 const votanteRoute = require("./routes/votantes")
 const sesionRoute = require("./routes/sesiones")
+const dirigenteRoute = require("./routes/dirigente")
 const errorController = require("./controllers/errorController")
 const { obtenerTotalCantidadVotantes } = require('./helpers/votosTotales') // Importa la función para obtener el total de cantidad de votantes
 const axios = require('axios')
@@ -33,6 +34,7 @@ app.use(async (req, res, next) => {
 app.use(sesionRoute)
 app.use(directorRoute)
 app.use(votanteRoute)
+app.use(dirigenteRoute)
 
 //Error middleware
 app.use("/", errorController.Get404)
