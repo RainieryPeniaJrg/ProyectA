@@ -17,7 +17,7 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repos
         public async Task<IReadOnlyList<VotantesDirigentes>> GetAllVotantesDirigente(CancellationToken cancellationToken)
         {
             return await _context.VotantesDirigentes
-                .Include(vc => vc.DirigenteId)
+                .Include(vc => vc.Dirigente)
                 .Include(vc => vc.Votante)
                 .Where(vc => vc.VotanteId != null && vc.DirigenteId != null)
                 .ToListAsync(cancellationToken);

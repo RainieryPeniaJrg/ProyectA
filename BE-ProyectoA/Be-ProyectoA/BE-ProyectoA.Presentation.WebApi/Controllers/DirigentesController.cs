@@ -46,10 +46,22 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
         }
 
 
+        [HttpGet("GetAllVotantes")]
+        public async Task<IActionResult> GetAllVotantesDiriegente()
+        {
+            var DirigenteResult = await _mediator.Send(new GetAllVotantesDirigenteQuery());
+
+            return DirigenteResult.Match(
+                Votante => Ok(Votante),
+                errors => Problem(errors)
+            );
+        }
+
+
         [HttpGet("GetAll")]
         public async Task<IActionResult> GetAllVotantesDirigente()
         {
-            var DirigenteResult = await _mediator.Send(new GetAllVotantesDirigenteQuery());
+            var DirigenteResult = await _mediator.Send(new GetAllDirigenteQuery());
 
             return DirigenteResult.Match(
                 Votante => Ok(Votante),
