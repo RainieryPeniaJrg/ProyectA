@@ -31,8 +31,7 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
         }
    
 
-       
-   
+ 
 
         // POST api/<VotantesController>
         [HttpPost ("Create")]

@@ -28,7 +28,7 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
             );
         }
 
-        [HttpGet("GetAllVotantesByMemberId{Id}")]
+        [HttpGet("GetAllVotantesByMemberId/{Id}")]
         public async Task<IActionResult> GetAllVotantesCoordinadoresByMemberId(Guid Id)
         {
             var coordinadorResult = await _mediator.Send(new GetByMemberIdVotantesCoordinadorQuery(Id));
@@ -38,7 +38,7 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
                 errors => Problem(errors)
             );
         }
-        [HttpGet("GetVotantesByIdWithMember{Id}")]
+        [HttpGet("GetVotantesByIdWithMember/{Id}")]
         public async Task<IActionResult> GetAllVotantesCoordinadoresByIdWithMember(Guid Id)
         {
             var coordinadorResult = await _mediator.Send(new GetByIdVotantesCoordinadorQuery(Id));
