@@ -1,5 +1,6 @@
 const axios = require("axios");
 const https = require('https');
+const id = "0D687955-B91E-4F1F-B206-53319395B2E1"
 
 exports.getHome = async (req, res) => {
     try {
@@ -138,7 +139,7 @@ exports.getVotantesCoo = async (req, res) => {
         const agent = new https.Agent({ rejectUnauthorized: false });
 
         // Realizar la solicitud HTTP a la API con el agente configurado
-        const respuesta = await axios.get('https://localhost:7299/api/CoordinadoresGeneral/GetAllVotantesByMemberId0D687955-B91E-4F1F-B206-53319395B2E1',  {
+        const respuesta = await axios.get(`https://localhost:7299/api/CoordinadoresGeneral/GetAllVotantesByMemberId/${id}`,  {
             headers: {
                 'Content-Type': 'application/json',
                 'accept': '*/*',
