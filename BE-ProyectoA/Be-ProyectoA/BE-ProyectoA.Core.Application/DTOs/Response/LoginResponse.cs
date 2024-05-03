@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BE_ProyectoA.Core.Application.DTOs.Response
-{   public record LoginResponse
+﻿namespace BE_ProyectoA.Core.Application.DTOs.Response
+{
+    public record LoginResponse
         (bool Flag = false, 
     string Message = null!
     ,string Token = null! 
-    ,string RefreshToken = null!);
+    ,string RefreshToken = null!,
+    string userId = null!);
    
 }

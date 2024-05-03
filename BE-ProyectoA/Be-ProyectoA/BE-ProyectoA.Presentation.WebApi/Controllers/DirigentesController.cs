@@ -2,6 +2,9 @@
 using BE_ProyectoA.Core.Application.DirigentesFeatures.Commands.Delete;
 using BE_ProyectoA.Core.Application.DirigentesFeatures.Commands.Update;
 using BE_ProyectoA.Core.Application.DirigentesFeatures.Querys.GetAll;
+using BE_ProyectoA.Core.Application.VotantesFeatures.VotantesDirigente.Queries.GetAll;
+using BE_ProyectoA.Core.Application.VotantesFeatures.VotantesDirigente.Queries.GetById;
+using BE_ProyectoA.Core.Application.VotantesFeatures.VotantesDirigente.Queries.GetByMemberId;
 using ErrorOr;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -16,17 +19,55 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
     {
         private readonly ISender _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
 
-        [HttpGet("GetAll")]
-        public async Task<IActionResult> GetAll()
-        {
-            var result = await _mediator.Send(new GetAllDirigenteQuery());
+  
 
-            return result.Match(
-                dirigente => Ok(dirigente),
+
+
+        [HttpGet("GetVotantesByIdWithMember{Id}")]
+        public async Task<IActionResult> GetAllVotantesDirigenteByIdWithMember(Guid Id)
+        {
+            var DirigenteResult = await _mediator.Send(new GetByIdVotantesDirigenteQuery(Id));
+
+            return DirigenteResult.Match(
+                Votante => Ok(Votante),
                 errors => Problem(errors)
             );
         }
 
+        [HttpGet("GetAllVotantesByMemberId{Id}")]
+        public async Task<IActionResult> GetAllVotantesDiriegenteByMemberId(Guid Id)
+        {
+            var DirigenteResult = await _mediator.Send(new GetByMemberIdVotantesDirigenteQuery(Id));
+
+            return DirigenteResult.Match(
+                Votante => Ok(Votante),
+                errors => Problem(errors)
+            );
+        }
+
+
+        [HttpGet("GetAllVotantes")]
+        public async Task<IActionResult> GetAllVotantesDiriegente()
+        {
+            var DirigenteResult = await _mediator.Send(new GetAllVotantesDirigenteQuery());
+
+            return DirigenteResult.Match(
+                Votante => Ok(Votante),
+                errors => Problem(errors)
+            );
+        }
+
+
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAllVotantesDirigente()
+        {
+            var DirigenteResult = await _mediator.Send(new GetAllDirigenteQuery());
+
+            return DirigenteResult.Match(
+                Votante => Ok(Votante),
+                errors => Problem(errors)
+            );
+        }
 
 
         [HttpPost("Create")]
@@ -71,27 +112,5 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
             );
         }
 
-        //[HttpGet("ById/{id}")]
-        //public async Task<IActionResult> GetById(Guid id)
-        //{
-        //    var votanteResult = await _mediator.Send(new GetByIdVotantesQuery(id));
-
-        //    return votanteResult.Match(
-        //        votante => Ok(votante),
-        //        errors => Problem(errors)
-        //    );
-        //}
-
-
-        //[HttpGet("ByCedula/{cedula}")]
-        //public async Task<IActionResult> GetByCedula(string cedula)
-        //{
-        //    var votanteResult = await _mediator.Send(new GetByCedulaQuery(cedula));
-
-        //    return votanteResult.Match(
-        //        votante => Ok(votante),
-        //        errors => Problem(errors)
-        //    );
-        //}
     }
 }

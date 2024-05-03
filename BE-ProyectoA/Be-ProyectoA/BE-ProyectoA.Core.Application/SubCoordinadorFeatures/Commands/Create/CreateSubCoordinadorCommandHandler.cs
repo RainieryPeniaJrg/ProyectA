@@ -47,7 +47,7 @@ namespace BE_ProyectoA.Core.Application.SubCoordinadorFeatures.Commands.Create
             {
                 var subCoordinador = new SubCoordinadores(
                     new SubCoordinadoresId(Guid.NewGuid()),
-                    command.Nombre,command.Apellido,command.CantidadVotantes,
+                    command.Nombre,command.Apellido,CantidadVotos.Create(command.CantidadVotos),
                     numeroTelefono,cedula,command.Activo,direccion,coordinadorGeneral);
 
                await _subCoordinadorRepository.AddAsync(subCoordinador,cancellationToken);

@@ -4,6 +4,7 @@
     {
         Task AddAsync(T entity, CancellationToken cancellationToken = default);
         void Delete(T entity);
+        void Update2(T entity, bool detachEntity = true);
         void Update(T entity);
         Task<bool> ExistsAsync(object id, CancellationToken cancellationToken = default);
         Task<T?> GetByIdAsync(object id, CancellationToken cancellationToken = default);

@@ -15,7 +15,8 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.VotantesDirigente.Commo
 
     public record DirigenteResponse(
         string Nombre,
-        string Apellido
+         string apellido
+
     );
 
     public record VotantesDirigenteResponseDTO(
@@ -25,7 +26,7 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.VotantesDirigente.Commo
     NumeroTelefono NumeroTelefono,
     DireccionVotantesDirigenteResponse Direccion,
     bool Activo,
-     DirigenteResponse? CoordinadorGeneral
+     DirigenteResponse? Dirigente
 
   );
 

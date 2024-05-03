@@ -26,36 +26,58 @@ namespace BE_ProyectoA.Core.Application.SubCoordinadorFeatures.Commands.Update
         public async Task<ErrorOr<Unit>> Handle(UpdateSubCoordinadorCommand command, CancellationToken cancellationToken)
         {
             var id = new SubCoordinadoresId(command.Id);
-            if(!await _subCoordinadorRepository.ExistsAsync(command.Id, cancellationToken))
+            var coordinadorGeneralId = new CoordinadoresGeneralesId(command.CoordinadorsGeneralesId);
+
+            if (!await _coordinadorGeneralRepository.ExistsAsync(coordinadorGeneralId, cancellationToken))
             {
-                return Error.NotFound("SubCoordinador.NotFound", "El dirigente que selecciono no se encuentra, favor verificar campo");
-            }
-            if(!await _coordinadorGeneralRepository.ExistsAsync(command.CoordinadorsGeneralesId, cancellationToken))
-            {
-                return Error.NotFound("CoordinadorGeneral.NotFound", "El dirigente que selecciono no se encuentra, favor verificar campo");
+                return Error.NotFound("CoordinadorGeneral.NotFound", "El coordinador general que seleccionó no se encuentra. Favor verificar el campo.");
             }
 
-            var CoordinadorGeneral = await _coordinadorGeneralRepository.GetByIdAsync(command.CoordinadorsGeneralesId, cancellationToken);
+            var coordinadorGeneral = await _coordinadorGeneralRepository.GetByIdAsync2(coordinadorGeneralId, cancellationToken);
+
+            if (coordinadorGeneral == null)
+            {
+                return Error.NotFound("CoordinadorGeneral.NotFound", "El coordinador general que seleccionó no se encuentra. Favor verificar el campo.");
+            }
+
+            var coordinador = await _subCoordinadorRepository.GetByIdAsync(id, cancellationToken);
+
+            if (coordinador == null)
+            {
+                // Manejar el caso en el que no se pueda encontrar el dirigente
+                return Error.NotFound("Coordinador.NotFound", "El coordinador que seleccionó no se encuentra. Favor verificar el campo.");
+            }
 
             var validationResult = ValueObjectValidators.ValidarDatos(command.Cedula, command.NumeroTelefono, command.Provincia, command.Sector, command.CasaElectoral);
             if (validationResult.IsError)
+            {
                 return validationResult;
+            }
 
             var numeroTelefono = NumeroTelefono.Create(command.NumeroTelefono);
-
             var cedula = Cedula.Create(command.Cedula);
-
             var direccion = Direccion.Create(command.Provincia, command.Sector, command.CasaElectoral);
 
-            if (CoordinadorGeneral is not null && direccion is not null && cedula is not null && numeroTelefono is not null)
-            {   
-                SubCoordinadores subCoordinador = SubCoordinadores.Update(id, command.Nombre,command.Apellido,command.CantidadVotantes,numeroTelefono,cedula,command.Activo,direccion,CoordinadorGeneral.Id ,CoordinadorGeneral);
-                _subCoordinadorRepository.Update(subCoordinador);
+            if (direccion is not null && cedula is not null && numeroTelefono is not null)
+            {
+                SubCoordinadores subCoordinador = SubCoordinadores.Update(
+                    id,
+                    command.Nombre,
+                    command.Apellido,
+                    CantidadVotos.Create(command.CantidadVotantes),
+                    numeroTelefono,
+                    cedula,
+                    command.Activo,
+                    direccion,
+                    coordinadorGeneral.Id,
+                    coordinadorGeneral
+                );
+
+                _subCoordinadorRepository.Update2(subCoordinador);
                 await _unitOfWork.SaveChangesAsync(cancellationToken);
             }
 
             return Unit.Value;
-            throw new NotImplementedException();
         }
     }
 }

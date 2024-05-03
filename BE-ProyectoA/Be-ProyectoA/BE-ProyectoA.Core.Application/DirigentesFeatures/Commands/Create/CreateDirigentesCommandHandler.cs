@@ -1,4 +1,4 @@
-﻿using BE_ProyectoA.Core.Application.Common.CreadorCantidadVotantes;
+﻿
 using BE_ProyectoA.Core.Application.Common.ValueObjectsValidators;
 using BE_ProyectoA.Core.Domain.Entities.Coordinadores;
 using BE_ProyectoA.Core.Domain.Entities.DirigenteMultiplicador;

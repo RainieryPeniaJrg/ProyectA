@@ -4,13 +4,8 @@ using BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Update;
 using BE_ProyectoA.Core.Application.VotantesFeatures.Querys.GetAll;
 using BE_ProyectoA.Core.Application.VotantesFeatures.Querys.GetByCedulaQuery;
 using BE_ProyectoA.Core.Application.VotantesFeatures.Querys.GetById;
-using BE_ProyectoA.Core.Application.VotantesFeatures.VotantesCoordinador.Queries.GetAll;
-using BE_ProyectoA.Core.Application.VotantesFeatures.VotantesDirector.Queries.GetAll;
-using BE_ProyectoA.Core.Application.VotantesFeatures.VotantesDirigente.Queries.GetAll;
-using BE_ProyectoA.Core.Application.VotantesFeatures.VotantesSubCoordinadorFeatures.Queries.GetAll;
 using ErrorOr;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -34,53 +29,10 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
                 errors => Problem(errors)
             );
         }
+   
 
-
-        [HttpGet("Coordinadores/GetAll")]
-        public async Task<IActionResult> GetAllVotantesCoordinadores()
-        {
-            var votanteResult = await _mediator.Send(new GetAllVotantesCoordinadorQuery());
-
-            return votanteResult.Match(
-                Votante => Ok(Votante),
-                errors => Problem(errors)
-            );
-        }
-
-        [HttpGet("Director/GetAll")]
-        public async Task<IActionResult> GetAllVotantesDirector()
-        {
-            var votanteResult = await _mediator.Send(new GetAllVotantesDirectorQuery());
-
-            return votanteResult.Match(
-                Votante => Ok(Votante),
-                errors => Problem(errors)
-            );
-        }
-
-
-        [HttpGet("SubCoordinadores/GetAll")]
-        public async Task<IActionResult> GetAllVotantesSubCoordinadores()
-        {
-            var votanteResult = await _mediator.Send(new GetAllVotantesSubCoordinadoresQuery());
-
-            return votanteResult.Match(
-                Votante => Ok(Votante),
-                errors => Problem(errors)
-            );
-        }
-
-
-        [HttpGet("Dirigente/GetAll")]
-        public async Task<IActionResult> GetAllVotantesDirigente()
-        {
-            var votanteResult = await _mediator.Send(new GetAllVotantesDirigenteQuery());
-
-            return votanteResult.Match(
-                Votante => Ok(Votante),
-                errors => Problem(errors)
-            );
-        }
+       
+   
 
         // POST api/<VotantesController>
         [HttpPost ("Create")]

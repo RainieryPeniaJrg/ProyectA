@@ -59,7 +59,6 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repos
                 v.Apellido == apellido, cancellationToken);
         }
 
-
         public async Task<bool> ExistsByDirectorAsync(DirectoresId directorId, string nombre, string apellido, CancellationToken cancellationToken)
         {
             return await _context.Votantes.AnyAsync(v =>
@@ -68,6 +67,17 @@ namespace BE_ProyectoA.Infraestructure.Persistence.Persistence.Repostories.Repos
              v.Apellido == apellido, cancellationToken);
         }
 
+        public async Task<Votante?> GetByIdWithMembers(Guid id, CancellationToken cancellationToken)
+        {
+            var votante = await _context.Votantes
+                .Include(v => v.Director)
+                .Include(v => v.SubCoordinador)
+                .Include(v => v.CoordinadorGeneral)
+                .Include(v => v.Dirigente)
+                .FirstOrDefaultAsync(v => v.Id == new VotanteId(id), cancellationToken);
+
+            return votante;
+        }
         // Si necesitas agregar métodos específicos para el repositorio de votantes, puedes hacerlo aquí
     }
 }

@@ -38,11 +38,11 @@ namespace BE_ProyectoA.Core.Application.CoordinadoresGeneralesFeatures.Commands.
                 new CoordinadoresGeneralesId(Guid.NewGuid()),
                 command.Nombre,
                 command.Apellido,
-                cedula,
-                numeroTelefono,
+                cedula!,
+                numeroTelefono!,
                 true,
-                direccion,
-                command.CantidadVotantes);
+                direccion!,
+                CantidadVotos.Create(command.CantidadVotantes));
             // Guardar el votante y realizar cambios en la unidad de trabajo
             await _coordinadorGeneralRepository.AddAsync(coordinador, cancellationToken);
             await _unitOfWork.SaveChangesAsync(cancellationToken);

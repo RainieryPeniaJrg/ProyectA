@@ -23,7 +23,7 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.VotantesSubCoordinadorF
          NumeroTelefono NumeroTelefono,
          DireccionVotantesSubCoordinadorResponse Direccion,
          bool Activo,
-         SubCoordinadorResponse? CoordinadorGeneral
+         SubCoordinadorResponse? SubCoordinador
 
  );
 
