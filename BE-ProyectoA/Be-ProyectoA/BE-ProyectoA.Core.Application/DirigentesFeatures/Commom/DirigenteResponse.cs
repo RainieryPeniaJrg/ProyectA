@@ -10,7 +10,7 @@ namespace BE_ProyectoA.Core.Application.DirigentesFeatures.Commom
            Cedula Cedula,
            NumeroTelefono NumeroTelefono,
            DireccionResponseDirigente Direccion,
-           CoordinadorResponse Coordinador,
+           CoordinadorResponse SubCoordinador,
            bool Activo
        );
     public record DireccionResponseDirigente

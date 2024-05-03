@@ -37,7 +37,7 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Update
 
             Votante votante = Votante.UpdateVotante(command.Id, command.Nombre, command.Apellido, cedula, direccion, numeroTelefono, command.Activo);
 
-            _votantesRepository.Update(votante);
+            _votantesRepository.Update2(votante);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
             return Unit.Value;
 
