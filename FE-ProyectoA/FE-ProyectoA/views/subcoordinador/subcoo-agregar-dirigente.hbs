@@ -59,20 +59,12 @@
     
         
 
-         <div class="input-field">
-            <select id="coordinadorGeneralId" name="subCoordinadorId" required>
-              <option value="" disabled selected>Seleccionar SubCoordinador</option>
-                {{#each subcoordinadores}}
-                
-               <option value="{{this.id}}">{{this.nombreCompleto}}</option>
-             {{/each}}
-                </select>
-                </div>
+        <input type="hidden" name="subCoordinadorId" value="FDBBFC74-5539-4AA3-8D69-283BF42E3132">
 
             
         
         <div class="btn-container">
-            <button type="submit" class="btn">Registrar coordinador</button>
+            <button type="submit" class="btn">Registrar Dirigente</button>
             <button type="button" class="btn close">Cerrar</button>
         </div>
     </form>
