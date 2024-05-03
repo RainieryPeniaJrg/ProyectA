@@ -7,25 +7,25 @@
       <th>Número de Teléfono</th>
       <th>Provincia</th>
       <th>Sector</th>
-      <th>Director</th>
-      <th>Coordinador General</th>
-      <th>Dirigente</th>
+   
+      <th>subCoordinador</th>
+
     </tr>
   </thead>
   <tbody>
     {{#each votantes}}
       <tr>
         <td>{{@index}}</td>
-        <td>{{nombreCompleto}}</td>
-        <td>{{cedula.value}}</td>
-        <td>{{numeroTelefono.value}}</td>
-        <td>{{direccion.provincia}}</td>
-        <td>{{direccion.sector}}</td>
+        <td>{{votante.nombreCompleto}}</td>
+        <td>{{votante.cedula.value}}</td>
+        <td>{{votante.numeroTelefono.value}}</td>
+        <td>{{votante.direccion.provincia}}</td>
+        <td>{{votante.direccion.sector}}</td>
    
-        <td>{{#if director}}{{director.nombre}} {{director.apellido}}{{else}}No asignado{{/if}}</td>
+       
    
-        <td>{{#if coordinadorGeneral}}{{coordinadorGeneral.nombre}} {{coordinadorGeneral.apellido}}{{else}}No asignado{{/if}}</td>
-        <td>{{#if dirigente}}{{dirigente.nombre}} {{dirigente.apellido}}{{else}}No asignado{{/if}}</td>
+        <td>{{#if votante.subCoordinador}}{{votante.subCoordinador.nombre}} {{subCoordinador.apellido}}{{else}}No asignado{{/if}}</td>
+        
       </tr>
     {{/each}}
   </tbody>

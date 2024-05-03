@@ -24,11 +24,11 @@
         <td>{{votante.numeroTelefono.value}}</td>
         <td>{{votante.direccion.provincia}}</td>
         <td>{{votante.direccion.sector}}</td>
-        <td>{{#if coordinadorGeneral}}{{votante.coordinadorGeneral.nombre}} {{coordinadorGeneral.apellido}}{{else}}No asignado{{/if}}</td>
-        <td>{{#if dirigente}}{{votante.dirigente.nombre}} {{dirigente.apellido}}{{else}}No asignado{{/if}}</td>
+        <td>{{#if votante.coordinadorGeneral}}{{votante.coordinadorGeneral.nombre}} {{coordinadorGeneral.apellido}}{{else}}No asignado{{/if}}</td>
+        <td>{{#if votante.dirigente}}{{votante.dirigente.nombre}} {{dirigente.apellido}}{{else}}No asignado{{/if}}</td>
       </tr>
     {{/each}}
   </tbody>
 </table>
 
-</main>
+</main> 

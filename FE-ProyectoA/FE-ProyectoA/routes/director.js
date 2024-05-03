@@ -14,6 +14,7 @@ router.get("/grupos", directorController.getGrupos);
 router.get("/coordinadores",directorController.getCoordinadores);
 router.get("/subcoordinadores", directorController.getSubCoordinadores);
 router.get("/dirigentes",directorController.getDirigentes );
+router.get("/director-votantes",directorController.getVotantesDirector );
 
 router.get("/agregar-grupo",directorController.getAgregarGrupos)
 router.get("/agregar-coordinadores",directorController.getAgregarCoordinador)
