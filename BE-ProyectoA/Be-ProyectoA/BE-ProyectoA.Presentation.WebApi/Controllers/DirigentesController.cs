@@ -23,7 +23,7 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
 
 
 
-        [HttpGet("GetVotantesByIdWithMember{Id}")]
+        [HttpGet("GetVotantesByIdWithMember/{Id}")]
         public async Task<IActionResult> GetAllVotantesDirigenteByIdWithMember(Guid Id)
         {
             var DirigenteResult = await _mediator.Send(new GetByIdVotantesDirigenteQuery(Id));
@@ -34,7 +34,7 @@ namespace BE_ProyectoA.Presentation.WebApi.Controllers
             );
         }
 
-        [HttpGet("GetAllVotantesByMemberId{Id}")]
+        [HttpGet("GetAllVotantesByMemberId/{Id}")]
         public async Task<IActionResult> GetAllVotantesDiriegenteByMemberId(Guid Id)
         {
             var DirigenteResult = await _mediator.Send(new GetByMemberIdVotantesDirigenteQuery(Id));
