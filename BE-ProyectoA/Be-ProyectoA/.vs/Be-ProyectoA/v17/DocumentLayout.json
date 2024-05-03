@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B5E5F0B0-0844-4314-B248-4CBA160808F0}|BE-ProyectoA.Presentation.WebApi\\BE-ProyectoA.Presentation.WebApi.csproj|c:\\users\\raini\\source\\repos\\rainierypeniajrg\\proyecta\\be-proyectoa\\be-proyectoa\\be-proyectoa.presentation.webapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B5E5F0B0-0844-4314-B248-4CBA160808F0}|BE-ProyectoA.Presentation.WebApi\\BE-ProyectoA.Presentation.WebApi.csproj|solutionrelative:be-proyectoa.presentation.webapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B5E5F0B0-0844-4314-B248-4CBA160808F0}|BE-ProyectoA.Presentation.WebApi\\BE-ProyectoA.Presentation.WebApi.csproj|c:\\users\\raini\\source\\repos\\rainierypeniajrg\\proyecta\\be-proyectoa\\be-proyectoa\\be-proyectoa.presentation.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B5E5F0B0-0844-4314-B248-4CBA160808F0}|BE-ProyectoA.Presentation.WebApi\\BE-ProyectoA.Presentation.WebApi.csproj|solutionrelative:be-proyectoa.presentation.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -338,10 +342,6 @@
       "RelativeMoniker": "D:0:0:{21DD2528-9C4F-4EB2-A51F-1C495D7259F5}|BE-ProyectoA.Persistence.Identity\\BE-ProyectoA.Persistence.Identity.csproj|solutionrelative:be-proyectoa.persistence.identity\\dependencyinjection\\servicecontainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B5E5F0B0-0844-4314-B248-4CBA160808F0}|BE-ProyectoA.Presentation.WebApi\\BE-ProyectoA.Presentation.WebApi.csproj|c:\\users\\raini\\source\\repos\\rainierypeniajrg\\proyecta\\be-proyectoa\\be-proyectoa\\be-proyectoa.presentation.webapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{B5E5F0B0-0844-4314-B248-4CBA160808F0}|BE-ProyectoA.Presentation.WebApi\\BE-ProyectoA.Presentation.WebApi.csproj|solutionrelative:be-proyectoa.presentation.webapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B9AAA864-7F54-4D8D-A520-349A845B12E5}|BE-ProyectoA.Core.Application\\BE-ProyectoA.Core.Application.csproj|c:\\users\\raini\\source\\repos\\rainierypeniajrg\\proyecta\\be-proyectoa\\be-proyectoa\\be-proyectoa.core.application\\votantesfeatures\\votantessubcoordinadorfeatures\\queries\\getall\\getallvotantessubcoordinadoresqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B9AAA864-7F54-4D8D-A520-349A845B12E5}|BE-ProyectoA.Core.Application\\BE-ProyectoA.Core.Application.csproj|solutionrelative:be-proyectoa.core.application\\votantesfeatures\\votantessubcoordinadorfeatures\\queries\\getall\\getallvotantessubcoordinadoresqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -620,15 +620,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Presentation.WebApi\\Program.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Presentation.WebApi\\Program.cs",
@@ -642,19 +638,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "GruposController.cs",
-              "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Presentation.WebApi\\Controllers\\GruposController.cs",
-              "RelativeDocumentMoniker": "BE-ProyectoA.Presentation.WebApi\\Controllers\\GruposController.cs",
-              "ToolTip": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Presentation.WebApi\\Controllers\\GruposController.cs",
-              "RelativeToolTip": "BE-ProyectoA.Presentation.WebApi\\Controllers\\GruposController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvwgAAAA1AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T07:45:10.27Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "ErrorsController.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Presentation.WebApi\\Controllers\\ErrorsController.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Presentation.WebApi\\Controllers\\ErrorsController.cs",
@@ -662,12 +645,11 @@
               "RelativeToolTip": "BE-ProyectoA.Presentation.WebApi\\Controllers\\ErrorsController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T07:45:08.943Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T07:45:08.943Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "DirigentesController.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Presentation.WebApi\\Controllers\\DirigentesController.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Presentation.WebApi\\Controllers\\DirigentesController.cs",
@@ -675,12 +657,11 @@
               "RelativeToolTip": "BE-ProyectoA.Presentation.WebApi\\Controllers\\DirigentesController.cs",
               "ViewState": "AQIAAFkAAAAAAAAAAAAlwBYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T05:15:15.854Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T05:15:15.854Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "DirectorController.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Presentation.WebApi\\Controllers\\DirectorController.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Presentation.WebApi\\Controllers\\DirectorController.cs",
@@ -688,25 +669,48 @@
               "RelativeToolTip": "BE-ProyectoA.Presentation.WebApi\\Controllers\\DirectorController.cs",
               "ViewState": "AQIAAC0AAAAAAAAAAAAcwDIAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T07:44:57.428Z",
+              "WhenOpened": "2024-04-26T07:44:57.428Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CoordinadoresGeneralController.cs",
+              "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Presentation.WebApi\\Controllers\\CoordinadoresGeneralController.cs",
+              "RelativeDocumentMoniker": "BE-ProyectoA.Presentation.WebApi\\Controllers\\CoordinadoresGeneralController.cs",
+              "ToolTip": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Presentation.WebApi\\Controllers\\CoordinadoresGeneralController.cs",
+              "RelativeToolTip": "BE-ProyectoA.Presentation.WebApi\\Controllers\\CoordinadoresGeneralController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-26T07:44:47.25Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Presentation.WebApi\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "BE-ProyectoA.Presentation.WebApi\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Presentation.WebApi\\appsettings.Development.json*",
+              "RelativeToolTip": "BE-ProyectoA.Presentation.WebApi\\appsettings.Development.json*",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAABFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-26T15:15:04.928Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GruposController.cs",
+              "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Presentation.WebApi\\Controllers\\GruposController.cs",
+              "RelativeDocumentMoniker": "BE-ProyectoA.Presentation.WebApi\\Controllers\\GruposController.cs",
+              "ToolTip": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Presentation.WebApi\\Controllers\\GruposController.cs",
+              "RelativeToolTip": "BE-ProyectoA.Presentation.WebApi\\Controllers\\GruposController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwgAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-26T07:45:10.27Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "CoordinadoresGeneralController.cs",
-              "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Presentation.WebApi\\Controllers\\CoordinadoresGeneralController.cs",
-              "RelativeDocumentMoniker": "BE-ProyectoA.Presentation.WebApi\\Controllers\\CoordinadoresGeneralController.cs",
-              "ToolTip": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Presentation.WebApi\\Controllers\\CoordinadoresGeneralController.cs*",
-              "RelativeToolTip": "BE-ProyectoA.Presentation.WebApi\\Controllers\\CoordinadoresGeneralController.cs*",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T07:44:47.25Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Presentation.WebApi\\appsettings.json",
               "RelativeDocumentMoniker": "BE-ProyectoA.Presentation.WebApi\\appsettings.json",
@@ -714,12 +718,11 @@
               "RelativeToolTip": "BE-ProyectoA.Presentation.WebApi\\appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-04-30T18:24:57.6Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-30T18:24:57.6Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "VotantesController.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Presentation.WebApi\\Controllers\\VotantesController.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Presentation.WebApi\\Controllers\\VotantesController.cs",
@@ -727,12 +730,11 @@
               "RelativeToolTip": "BE-ProyectoA.Presentation.WebApi\\Controllers\\VotantesController.cs",
               "ViewState": "AQIAAFgAAAAAAAAAAAAMwCEAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T07:45:16.083Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T07:45:16.083Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "SubCoordinadorController.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Presentation.WebApi\\Controllers\\SubCoordinadorController.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Presentation.WebApi\\Controllers\\SubCoordinadorController.cs",
@@ -740,12 +742,11 @@
               "RelativeToolTip": "BE-ProyectoA.Presentation.WebApi\\Controllers\\SubCoordinadorController.cs",
               "ViewState": "AQIAAFwAAAAAAAAAAAAMwFsAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T07:45:16.378Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T07:45:16.378Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "DirigenteMultiplicadorGrupoRepository.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\DirigenteMultiplicadorGrupoRepository.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\DirigenteMultiplicadorGrupoRepository.cs",
@@ -753,12 +754,11 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\DirigenteMultiplicadorGrupoRepository.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAuwAUAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-29T22:33:37.912Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-29T22:33:37.912Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "DirectorRepository.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\DirectorRepository.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\DirectorRepository.cs",
@@ -766,12 +766,11 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\DirectorRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAABPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-29T22:30:31.926Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-29T22:30:31.926Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "CoordinadoresGeneralesRepository.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\CoordinadoresGeneralesRepository.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\CoordinadoresGeneralesRepository.cs",
@@ -779,12 +778,11 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\CoordinadoresGeneralesRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-30T19:58:20.871Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-30T19:58:20.871Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "VotantesCoordinadorResponse.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesCoordinador\\Common\\VotantesCoordinadorResponse.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesCoordinador\\Common\\VotantesCoordinadorResponse.cs",
@@ -792,12 +790,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesCoordinador\\Common\\VotantesCoordinadorResponse.cs",
               "ViewState": "AQIAAAkAAAAAAAAAAAAAAAoAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-01T18:49:22.598Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-01T18:49:22.598Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "SubCoordinadorResponse.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\SubCoordinadorFeatures\\Common\\SubCoordinadorResponse.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\SubCoordinadorFeatures\\Common\\SubCoordinadorResponse.cs",
@@ -805,12 +802,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\SubCoordinadorFeatures\\Common\\SubCoordinadorResponse.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T17:39:34.539Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T17:39:34.539Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "ValidationBehavior.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\Common\\Behaviors\\ValidationBehavior.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\Common\\Behaviors\\ValidationBehavior.cs",
@@ -818,12 +814,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\Common\\Behaviors\\ValidationBehavior.cs",
               "ViewState": "AQIAABkAAAAAAAAAAAAxwCgAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T04:20:36.278Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-02T04:20:36.278Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "VotantesSubCoordinadorResponse.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesSubCoordinadorFeatures\\Common\\VotantesSubCoordinadorResponse.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesSubCoordinadorFeatures\\Common\\VotantesSubCoordinadorResponse.cs",
@@ -831,12 +826,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesSubCoordinadorFeatures\\Common\\VotantesSubCoordinadorResponse.cs",
               "ViewState": "AQIAAA0AAAAAAAAAAAAowBEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-01T18:52:10.947Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-01T18:52:10.947Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "VotanteRepository.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\VotanteRepository.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\VotanteRepository.cs",
@@ -844,12 +838,11 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\VotanteRepository.cs",
               "ViewState": "AQIAADQAAAAAAAAAAAAYwDsAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T20:06:58.059Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T20:06:58.059Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "UpdateVotanteCommandHandler.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\VotantesFeatures\\Commands\\Update\\UpdateVotanteCommandHandler.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\VotantesFeatures\\Commands\\Update\\UpdateVotanteCommandHandler.cs",
@@ -857,12 +850,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\Commands\\Update\\UpdateVotanteCommandHandler.cs",
               "ViewState": "AQIAADkAAAAAAAAAAAA1wFAAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T03:29:15.282Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T03:29:15.282Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "Votante.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\Votantes\\Votante.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Entities\\Votantes\\Votante.cs",
@@ -870,12 +862,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Domain\\Entities\\Votantes\\Votante.cs",
               "ViewState": "AQIAAGcAAAAAAAAAAAAAAHcAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T20:02:50.212Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T20:02:50.212Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "Repository.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\RepositoryGenerico\\Repository.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\RepositoryGenerico\\Repository.cs",
@@ -883,12 +874,11 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\RepositoryGenerico\\Repository.cs",
               "ViewState": "AQIAAAQAAAAAAAAAAAAmwBUAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T03:26:35.141Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T03:26:35.141Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Infraestructure.Persistence\\Persistence\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\ApplicationDbContext.cs",
@@ -896,12 +886,11 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\ApplicationDbContext.cs",
               "ViewState": "AQIAACMAAAAAAAAAAAAswDAAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T04:33:50.013Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T04:33:50.013Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "UpdateVotanteCommand.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\VotantesFeatures\\Commands\\Update\\UpdateVotanteCommand.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\VotantesFeatures\\Commands\\Update\\UpdateVotanteCommand.cs",
@@ -909,12 +898,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\Commands\\Update\\UpdateVotanteCommand.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAABEAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T03:29:14.536Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T03:29:14.536Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "CreateVotanteCommandHandler.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\VotantesFeatures\\Commands\\Create\\CreateVotanteCommandHandler.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\VotantesFeatures\\Commands\\Create\\CreateVotanteCommandHandler.cs",
@@ -922,12 +910,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\Commands\\Create\\CreateVotanteCommandHandler.cs",
               "ViewState": "AQIAAF4AAAAAAAAAAAAYwGAAAABYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T03:29:04.825Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T03:29:04.825Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "CreateVotanteCommand.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\VotantesFeatures\\Commands\\Create\\CreateVotanteCommand.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\VotantesFeatures\\Commands\\Create\\CreateVotanteCommand.cs",
@@ -935,12 +922,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\Commands\\Create\\CreateVotanteCommand.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwAcAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T03:29:19.667Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T03:29:19.667Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "IVotantesRepository.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\Votantes\\IVotantesRepository.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Entities\\Votantes\\IVotantesRepository.cs",
@@ -948,12 +934,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Domain\\Entities\\Votantes\\IVotantesRepository.cs",
               "ViewState": "AQIAAAgAAAAAAAAAAAAawA4AAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T20:02:24.947Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T20:02:24.947Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "UpdateDirigenteCommand.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\DirigentesFeatures\\Commands\\Update\\UpdateDirigenteCommand.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\DirigentesFeatures\\Commands\\Update\\UpdateDirigenteCommand.cs",
@@ -961,12 +946,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\DirigentesFeatures\\Commands\\Update\\UpdateDirigenteCommand.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAuwAoAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T06:32:09.587Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T06:32:09.587Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "UpdateDirigenteCommandHandler.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\DirigentesFeatures\\Commands\\Update\\UpdateDirigenteCommandHandler.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\DirigentesFeatures\\Commands\\Update\\UpdateDirigenteCommandHandler.cs",
@@ -974,12 +958,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\DirigentesFeatures\\Commands\\Update\\UpdateDirigenteCommandHandler.cs",
               "ViewState": "AQIAABkAAAAAAAAAAABCwCIAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T04:23:58.549Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T04:23:58.549Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "DirigenteResponse.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\DirigentesFeatures\\Commom\\DirigenteResponse.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\DirigentesFeatures\\Commom\\DirigenteResponse.cs",
@@ -987,12 +970,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\DirigentesFeatures\\Commom\\DirigenteResponse.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T17:39:48.546Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T17:39:48.546Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "CreateSubCoordinadorCommand.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\SubCoordinadorFeatures\\Commands\\Create\\CreateSubCoordinadorCommand.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\SubCoordinadorFeatures\\Commands\\Create\\CreateSubCoordinadorCommand.cs",
@@ -1000,12 +982,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\SubCoordinadorFeatures\\Commands\\Create\\CreateSubCoordinadorCommand.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T06:25:08.587Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T06:25:08.587Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "UpdateSubCoordinadorCoomandHandler.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\SubCoordinadorFeatures\\Commands\\Update\\UpdateSubCoordinadorCoomandHandler.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\SubCoordinadorFeatures\\Commands\\Update\\UpdateSubCoordinadorCoomandHandler.cs",
@@ -1013,12 +994,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\SubCoordinadorFeatures\\Commands\\Update\\UpdateSubCoordinadorCoomandHandler.cs",
               "ViewState": "AQIAAD8AAAAAAAAAAAA2wFAAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T04:23:08.169Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T04:23:08.169Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "UpdateSubCoordinadorCommand.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\SubCoordinadorFeatures\\Commands\\Update\\UpdateSubCoordinadorCommand.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\SubCoordinadorFeatures\\Commands\\Update\\UpdateSubCoordinadorCommand.cs",
@@ -1026,12 +1006,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\SubCoordinadorFeatures\\Commands\\Update\\UpdateSubCoordinadorCommand.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAuwAsAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T17:38:17.866Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T17:38:17.866Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "CreateCoordinadorGeneralCommandHandler.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\CoordinadoresGeneralesFeatures\\Commands\\Create\\CreateCoordinadorGeneralCommandHandler.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\CoordinadoresGeneralesFeatures\\Commands\\Create\\CreateCoordinadorGeneralCommandHandler.cs",
@@ -1039,12 +1018,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\CoordinadoresGeneralesFeatures\\Commands\\Create\\CreateCoordinadorGeneralCommandHandler.cs",
               "ViewState": "AQIAACAAAAAAAAAAAIAzwCoAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T17:37:44.246Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T17:37:44.246Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "CreateSubCoordinadorCommandHandler.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\SubCoordinadorFeatures\\Commands\\Create\\CreateSubCoordinadorCommandHandler.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\SubCoordinadorFeatures\\Commands\\Create\\CreateSubCoordinadorCommandHandler.cs",
@@ -1052,12 +1030,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\SubCoordinadorFeatures\\Commands\\Create\\CreateSubCoordinadorCommandHandler.cs",
               "ViewState": "AQIAACgAAAAAAAAAAADwvzAAAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T06:25:09.895Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T06:25:09.895Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "CreateCoordinadorCommand.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\CoordinadoresGeneralesFeatures\\Commands\\Create\\CreateCoordinadorCommand.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\CoordinadoresGeneralesFeatures\\Commands\\Create\\CreateCoordinadorCommand.cs",
@@ -1065,12 +1042,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\CoordinadoresGeneralesFeatures\\Commands\\Create\\CreateCoordinadorCommand.cs",
               "ViewState": "AQIAAAoAAAAAAAAAAIAzwBQAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T17:37:49.312Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T17:37:49.312Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "CreateDirigentesCommandHandler.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\DirigentesFeatures\\Commands\\Create\\CreateDirigentesCommandHandler.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\DirigentesFeatures\\Commands\\Create\\CreateDirigentesCommandHandler.cs",
@@ -1078,12 +1054,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\DirigentesFeatures\\Commands\\Create\\CreateDirigentesCommandHandler.cs",
               "ViewState": "AQIAACgAAAAAAAAAAADwvyoAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T05:04:25.193Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T05:04:25.193Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 36,
               "Title": "CreateDirigentesCommand.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\DirigentesFeatures\\Commands\\Create\\CreateDirigentesCommand.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\DirigentesFeatures\\Commands\\Create\\CreateDirigentesCommand.cs",
@@ -1091,12 +1066,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\DirigentesFeatures\\Commands\\Create\\CreateDirigentesCommand.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAAA8AAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T04:37:23.459Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T04:37:23.459Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 37,
               "Title": "SubCoordinadores.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\Coordinadores\\SubCoordinadores.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Entities\\Coordinadores\\SubCoordinadores.cs",
@@ -1104,12 +1078,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Domain\\Entities\\Coordinadores\\SubCoordinadores.cs",
               "ViewState": "AQIAAC0AAAAAAAAAAAAcwEAAAAByAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T03:50:44.369Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T03:50:44.369Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 38,
               "Title": "DirigentesMultiplicadores.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\DirigenteMultiplicador\\DirigentesMultiplicadores.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Entities\\DirigenteMultiplicador\\DirigentesMultiplicadores.cs",
@@ -1117,12 +1090,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Domain\\Entities\\DirigenteMultiplicador\\DirigentesMultiplicadores.cs",
               "ViewState": "AQIAAE4AAAAAAAAAAAA0wFcAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T03:59:05.814Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T03:59:05.814Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 39,
               "Title": "SubCoordinadoresId.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\Coordinadores\\SubCoordinadoresId.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Entities\\Coordinadores\\SubCoordinadoresId.cs",
@@ -1130,12 +1102,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Domain\\Entities\\Coordinadores\\SubCoordinadoresId.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-29T22:38:18.184Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-29T22:38:18.184Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 40,
               "Title": "CantidadVotos.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\ValueObjects\\CantidadVotos.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\ValueObjects\\CantidadVotos.cs",
@@ -1143,12 +1114,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Domain\\ValueObjects\\CantidadVotos.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwAsAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T05:05:56.006Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T05:05:56.006Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "Direccion.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\ValueObjects\\Direccion.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\ValueObjects\\Direccion.cs",
@@ -1156,12 +1126,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Domain\\ValueObjects\\Direccion.cs",
               "ViewState": "AQIAAAcAAAAAAAAAAIAywA8AAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T17:36:15.032Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T17:36:15.032Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 42,
               "Title": "Cedula.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\ValueObjects\\Cedula.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\ValueObjects\\Cedula.cs",
@@ -1169,12 +1138,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Domain\\ValueObjects\\Cedula.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwAwAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-30T18:17:44.981Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-30T18:17:44.981Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 43,
               "Title": "NumeroTelefono.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\ValueObjects\\NumeroTelefono.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\ValueObjects\\NumeroTelefono.cs",
@@ -1182,12 +1150,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Domain\\ValueObjects\\NumeroTelefono.cs",
               "ViewState": "AQIAAAUAAAAAAAAAAIAywA0AAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T18:55:05.346Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T18:55:05.346Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 44,
               "Title": "ValueObjectValidators.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\Common\\ValueObjectsValidators\\ValueObjectValidators.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\Common\\ValueObjectsValidators\\ValueObjectValidators.cs",
@@ -1195,12 +1162,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\Common\\ValueObjectsValidators\\ValueObjectValidators.cs",
               "ViewState": "AQIAACEAAAAAAAAAAAAswCsAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T03:26:00.969Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T03:26:00.969Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 45,
               "Title": "IRepository.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Inferfaces\\IRepository.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Inferfaces\\IRepository.cs",
@@ -1208,12 +1174,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Domain\\Inferfaces\\IRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwAYAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T06:02:06.73Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T06:02:06.73Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 46,
               "Title": "DirigentesMultiplicadoresRepository.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\DirigentesMultiplicadoresRepository.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\DirigentesMultiplicadoresRepository.cs",
@@ -1221,12 +1186,11 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\DirigentesMultiplicadoresRepository.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAADwvwcAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T04:43:46.354Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T04:43:46.354Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 47,
               "Title": "UpdateDirigenteCommandHandler.cs",
               "DocumentMoniker": "C:\\Users\\raini\\AppData\\Local\\SourceServer\\a93607347e35b3f3722994d9cb18ad6a205a32aa3e1d37ae91824ab5fd847b04\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\DirigentesFeatures\\Commands\\Update\\UpdateDirigenteCommandHandler.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\AppData\\Local\\SourceServer\\a93607347e35b3f3722994d9cb18ad6a205a32aa3e1d37ae91824ab5fd847b04\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\DirigentesFeatures\\Commands\\Update\\UpdateDirigenteCommandHandler.cs",
@@ -1239,7 +1203,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 48,
               "Title": "UpdateCoordinadorGeneralCommandHandler.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\CoordinadoresGeneralesFeatures\\Commands\\Update\\UpdateCoordinadorGeneralCommandHandler.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\CoordinadoresGeneralesFeatures\\Commands\\Update\\UpdateCoordinadorGeneralCommandHandler.cs",
@@ -1247,12 +1211,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\CoordinadoresGeneralesFeatures\\Commands\\Update\\UpdateCoordinadorGeneralCommandHandler.cs",
               "ViewState": "AQIAAB4AAAAAAAAAAADwvx4AAABPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T17:38:24.071Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T17:38:24.071Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 49,
               "Title": "UpdateCoordinadorGeneralCommand.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\CoordinadoresGeneralesFeatures\\Commands\\Update\\UpdateCoordinadorGeneralCommand.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\CoordinadoresGeneralesFeatures\\Commands\\Update\\UpdateCoordinadorGeneralCommand.cs",
@@ -1260,12 +1223,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\CoordinadoresGeneralesFeatures\\Commands\\Update\\UpdateCoordinadorGeneralCommand.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAuwAYAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T17:40:02.81Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T17:40:02.81Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 50,
               "Title": "AccountRepository.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Persistence.Identity\\Repos\\AccountRepository.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Persistence.Identity\\Repos\\AccountRepository.cs",
@@ -1273,12 +1235,11 @@
               "RelativeToolTip": "BE-ProyectoA.Persistence.Identity\\Repos\\AccountRepository.cs",
               "ViewState": "AQIAAO0AAAAAAAAAAAAQwPYAAABAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T04:12:04.702Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T04:12:04.702Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 51,
               "Title": "CoordinadoresGeneralesId.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\CoordinadorGeneral\\CoordinadoresGeneralesId.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Entities\\CoordinadorGeneral\\CoordinadoresGeneralesId.cs",
@@ -1286,12 +1247,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Domain\\Entities\\CoordinadorGeneral\\CoordinadoresGeneralesId.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwAUAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-29T22:50:18.281Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-29T22:50:18.281Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 52,
               "Title": "DirectorCreateCommandHandler.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\Director\\Commands\\Create\\DirectorCreateCommandHandler.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\Director\\Commands\\Create\\DirectorCreateCommandHandler.cs",
@@ -1299,12 +1259,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\Director\\Commands\\Create\\DirectorCreateCommandHandler.cs",
               "ViewState": "AQIAACMAAAAAAAAAAAAnwCUAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T20:32:36.317Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T20:32:36.317Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 53,
               "Title": "CoordinadoresGenerales.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\CoordinadorGeneral\\CoordinadoresGenerales.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Entities\\CoordinadorGeneral\\CoordinadoresGenerales.cs",
@@ -1312,12 +1271,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Domain\\Entities\\CoordinadorGeneral\\CoordinadoresGenerales.cs",
               "ViewState": "AQIAAEkAAAAAAAAAAAAzwFEAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-29T22:50:16.641Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-29T22:50:16.641Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 54,
               "Title": "ApiController.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Presentation.WebApi\\Controllers\\ApiController.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Presentation.WebApi\\Controllers\\ApiController.cs",
@@ -1325,12 +1283,11 @@
               "RelativeToolTip": "BE-ProyectoA.Presentation.WebApi\\Controllers\\ApiController.cs",
               "ViewState": "AQIAAAwAAAAAAAAAAAAowBkAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T07:52:08.402Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T07:52:08.402Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 55,
               "Title": "VotanteDirigenteRepository.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\VotanteDirigenteRepository.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\VotanteDirigenteRepository.cs",
@@ -1338,12 +1295,11 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\VotanteDirigenteRepository.cs",
               "ViewState": "AQIAAAEAAAAAAAAAAAAgwA8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-30T19:49:35.818Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-30T19:49:35.818Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 57,
               "Title": "GetAllVotantesDirigenteQuery.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirigente\\Queries\\GetAll\\GetAllVotantesDirigenteQuery.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirigente\\Queries\\GetAll\\GetAllVotantesDirigenteQuery.cs",
@@ -1351,12 +1307,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirigente\\Queries\\GetAll\\GetAllVotantesDirigenteQuery.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAABpAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T03:25:02.241Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-02T03:25:02.241Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 56,
               "Title": "VotantesDirigenteResponse.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirigente\\Common\\VotantesDirigenteResponse.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirigente\\Common\\VotantesDirigenteResponse.cs",
@@ -1364,12 +1319,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirigente\\Common\\VotantesDirigenteResponse.cs",
               "ViewState": "AQIAAAkAAAAAAAAAAAAAAAkAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-01T18:51:33.292Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-01T18:51:33.292Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 59,
               "Title": "GetByMemberIdVotantesDirectorQuery.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirector\\Queries\\GetByMemberId\\GetByMemberIdVotantesDirectorQuery.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirector\\Queries\\GetByMemberId\\GetByMemberIdVotantesDirectorQuery.cs",
@@ -1377,12 +1331,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirector\\Queries\\GetByMemberId\\GetByMemberIdVotantesDirectorQuery.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-03T01:19:05.72Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-03T01:19:05.72Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 58,
               "Title": "VotantesDirectorResponse.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirector\\Common\\VotantesDirectorResponse.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirector\\Common\\VotantesDirectorResponse.cs",
@@ -1390,12 +1343,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirector\\Common\\VotantesDirectorResponse.cs",
               "ViewState": "AQIAAAoAAAAAAAAAAAAwwBQAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-01T18:50:48.654Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-01T18:50:48.654Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 60,
               "Title": "GetByMemberIdVotantesDirectorQueryHandler.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirector\\Queries\\GetByMemberId\\GetByMemberIdVotantesDirectorQueryHandler.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirector\\Queries\\GetByMemberId\\GetByMemberIdVotantesDirectorQueryHandler.cs",
@@ -1403,12 +1355,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirector\\Queries\\GetByMemberId\\GetByMemberIdVotantesDirectorQueryHandler.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-03T01:20:15.226Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-03T01:20:15.226Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 61,
               "Title": "VotanteDirectorRepository.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\VotanteDirectorRepository.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\VotanteDirectorRepository.cs",
@@ -1416,12 +1367,11 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\VotanteDirectorRepository.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAAAkAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-30T19:49:58.851Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-30T19:49:58.851Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 62,
               "Title": "VotantesDirectorConfiguration.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Configurations\\VotantesDirectorConfiguration.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Configurations\\VotantesDirectorConfiguration.cs",
@@ -1429,12 +1379,11 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Configurations\\VotantesDirectorConfiguration.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAcwAkAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-29T22:35:00.369Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-29T22:35:00.369Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 63,
               "Title": "VotantesDirectores.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\Votantes\\VotantesDirector\\VotantesDirectores.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Entities\\Votantes\\VotantesDirector\\VotantesDirectores.cs",
@@ -1442,12 +1391,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Domain\\Entities\\Votantes\\VotantesDirector\\VotantesDirectores.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-29T22:25:58.981Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-29T22:25:58.981Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 64,
               "Title": "IVotantesDirectorRepository.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\Votantes\\VotantesDirector\\IVotantesDirectorRepository.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Entities\\Votantes\\VotantesDirector\\IVotantesDirectorRepository.cs",
@@ -1455,12 +1403,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Domain\\Entities\\Votantes\\VotantesDirector\\IVotantesDirectorRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-29T22:26:44.639Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-29T22:26:44.639Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 65,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Infraestructure.Persistence\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Infraestructure.Persistence\\DependencyInjection.cs",
@@ -1468,12 +1415,11 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\DependencyInjection.cs",
               "ViewState": "AQIAABcAAAAAAAAAAAAiwB8AAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-29T23:12:21.166Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-29T23:12:21.166Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 66,
               "Title": "VotanteCoordiandorRepository.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\VotanteCoordiandorRepository.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\VotanteCoordiandorRepository.cs",
@@ -1481,12 +1427,11 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\VotanteCoordiandorRepository.cs",
               "ViewState": "AQIAACUAAAAAAAAAAAAqwAoAAAB5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-30T19:53:55.836Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-30T19:53:55.836Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 67,
               "Title": "VotantesDirigenteConfiguration.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Configurations\\VotantesDirigenteConfiguration.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Configurations\\VotantesDirigenteConfiguration.cs",
@@ -1494,12 +1439,11 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Configurations\\VotantesDirigenteConfiguration.cs",
               "ViewState": "AQIAABMAAAAAAAAAAAAgwBAAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-29T22:34:22.977Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-29T22:34:22.977Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 68,
               "Title": "VotanteSubCoordiandorConfiguration.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Configurations\\VotanteSubCoordiandorConfiguration.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Configurations\\VotanteSubCoordiandorConfiguration.cs",
@@ -1507,12 +1451,11 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Configurations\\VotanteSubCoordiandorConfiguration.cs",
               "ViewState": "AQIAABcAAAAAAAAAAAAgwCUAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-29T22:34:48.627Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-29T22:34:48.627Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
+              "DocumentIndex": 69,
               "Title": "VotanteSubCoordinadorRepository.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\VotanteSubCoordinadorRepository.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\VotanteSubCoordinadorRepository.cs",
@@ -1520,12 +1463,11 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Repostories\\Repositories\\VotanteSubCoordinadorRepository.cs",
               "ViewState": "AQIAAB0AAAAAAAAAAAAQwAkAAAB6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-30T19:49:27.661Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-30T19:49:27.661Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 69,
+              "DocumentIndex": 70,
               "Title": "IVotantesSubCoordiandoresRepository.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\Votantes\\VotantesSubCoordinadores\\IVotantesSubCoordiandoresRepository.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Entities\\Votantes\\VotantesSubCoordinadores\\IVotantesSubCoordiandoresRepository.cs",
@@ -1533,12 +1475,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Domain\\Entities\\Votantes\\VotantesSubCoordinadores\\IVotantesSubCoordiandoresRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwAQAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-29T22:27:06.894Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-29T22:27:06.894Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 71,
+              "DocumentIndex": 72,
               "Title": "GetByMemberIdVotantesCoordinadorQueryHandler.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesCoordinador\\Queries\\GetByMember\\GetByMemberIdVotantesCoordinadorQueryHandler.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesCoordinador\\Queries\\GetByMember\\GetByMemberIdVotantesCoordinadorQueryHandler.cs",
@@ -1546,12 +1487,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesCoordinador\\Queries\\GetByMember\\GetByMemberIdVotantesCoordinadorQueryHandler.cs",
               "ViewState": "AQIAABAAAAAAAAAAAAAwwBQAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-03T01:29:37.815Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-03T01:29:37.815Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 70,
+              "DocumentIndex": 71,
               "Title": "GetAllVotantesCoordinadorQuery.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesCoordinador\\Queries\\GetAll\\GetAllVotantesCoordinadorQuery.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesCoordinador\\Queries\\GetAll\\GetAllVotantesCoordinadorQuery.cs",
@@ -1559,12 +1499,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesCoordinador\\Queries\\GetAll\\GetAllVotantesCoordinadorQuery.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T01:54:20.124Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-02T01:54:20.124Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 75,
+              "DocumentIndex": 76,
               "Title": "GetByIdVotantesCoordinadorQueryHandler.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesCoordinador\\Queries\\GetById\\GetByIdVotantesCoordinadorQueryHandler.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesCoordinador\\Queries\\GetById\\GetByIdVotantesCoordinadorQueryHandler.cs",
@@ -1572,12 +1511,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesCoordinador\\Queries\\GetById\\GetByIdVotantesCoordinadorQueryHandler.cs",
               "ViewState": "AQIAABYAAAAAAAAAAADwvyMAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-03T00:12:33.97Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-03T00:12:33.97Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 73,
+              "DocumentIndex": 74,
               "Title": "GetByMemberIdVotantesCoordinadorQuery.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesCoordinador\\Queries\\GetByMember\\GetByMemberIdVotantesCoordinadorQuery.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesCoordinador\\Queries\\GetByMember\\GetByMemberIdVotantesCoordinadorQuery.cs",
@@ -1585,12 +1523,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesCoordinador\\Queries\\GetByMember\\GetByMemberIdVotantesCoordinadorQuery.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-03T01:28:27.115Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-03T01:28:27.115Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 72,
+              "DocumentIndex": 73,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Presentation.WebApi\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Presentation.WebApi\\Controllers\\AccountController.cs",
@@ -1598,12 +1535,11 @@
               "RelativeToolTip": "BE-ProyectoA.Presentation.WebApi\\Controllers\\AccountController.cs",
               "ViewState": "AQIAAA0AAAAAAAAAAAAiwBUAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T04:29:58.628Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T04:29:58.628Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 74,
+              "DocumentIndex": 75,
               "Title": "GetAllVotantesCoordinadorQueryHandler.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesCoordinador\\Queries\\GetAll\\GetAllVotantesCoordinadorQueryHandler.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesCoordinador\\Queries\\GetAll\\GetAllVotantesCoordinadorQueryHandler.cs",
@@ -1611,12 +1547,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesCoordinador\\Queries\\GetAll\\GetAllVotantesCoordinadorQueryHandler.cs",
               "ViewState": "AQIAAA0AAAAAAAAAAAAwwBIAAABsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T01:57:54.838Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-02T01:57:54.838Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 76,
+              "DocumentIndex": 77,
               "Title": "GetByIdVotantesCoordinadorQuery.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesCoordinador\\Queries\\GetById\\GetByIdVotantesCoordinadorQuery.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesCoordinador\\Queries\\GetById\\GetByIdVotantesCoordinadorQuery.cs",
@@ -1624,12 +1559,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesCoordinador\\Queries\\GetById\\GetByIdVotantesCoordinadorQuery.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-03T00:07:44.968Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-03T00:07:44.968Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 77,
+              "DocumentIndex": 78,
               "Title": "GetByMemberIdVotantesDirigenteQueryHandler.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirigente\\Queries\\GetByMemberId\\GetByMemberIdVotantesDirigenteQueryHandler.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirigente\\Queries\\GetByMemberId\\GetByMemberIdVotantesDirigenteQueryHandler.cs",
@@ -1637,12 +1571,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirigente\\Queries\\GetByMemberId\\GetByMemberIdVotantesDirigenteQueryHandler.cs",
               "ViewState": "AQIAAAgAAAAAAAAAAAA3wCUAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-03T01:12:36.421Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-03T01:12:36.421Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 80,
+              "DocumentIndex": 81,
               "Title": "GetByMemberIdVotantesDirigenteQuery.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirigente\\Queries\\GetByMemberId\\GetByMemberIdVotantesDirigenteQuery.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirigente\\Queries\\GetByMemberId\\GetByMemberIdVotantesDirigenteQuery.cs",
@@ -1650,12 +1583,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirigente\\Queries\\GetByMemberId\\GetByMemberIdVotantesDirigenteQuery.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAB3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-03T01:07:40.382Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-03T01:07:40.382Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 78,
+              "DocumentIndex": 79,
               "Title": "GetByMemberIdVotantesSubCoordinadoQueryHandler.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesSubCoordinadorFeatures\\Queries\\GetByMemberId\\GetByMemberIdVotantesSubCoordinadoQueryHandler.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesSubCoordinadorFeatures\\Queries\\GetByMemberId\\GetByMemberIdVotantesSubCoordinadoQueryHandler.cs",
@@ -1663,12 +1595,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesSubCoordinadorFeatures\\Queries\\GetByMemberId\\GetByMemberIdVotantesSubCoordinadoQueryHandler.cs",
               "ViewState": "AQIAAA0AAAAAAAAAAAAwwCQAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-03T00:32:05.133Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-03T00:32:05.133Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 79,
+              "DocumentIndex": 80,
               "Title": "GetByMemberIdVotantesSubCoordinadorQuery.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesSubCoordinadorFeatures\\Queries\\GetByMemberId\\GetByMemberIdVotantesSubCoordinadorQuery.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesSubCoordinadorFeatures\\Queries\\GetByMemberId\\GetByMemberIdVotantesSubCoordinadorQuery.cs",
@@ -1676,12 +1607,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesSubCoordinadorFeatures\\Queries\\GetByMemberId\\GetByMemberIdVotantesSubCoordinadorQuery.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAABkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-03T00:30:45.385Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-03T00:30:45.385Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 81,
+              "DocumentIndex": 82,
               "Title": "IVotanteCoordinadorRepository.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\Votantes\\VotantesCoordinadorGeneral\\IVotanteCoordinadorRepository.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Entities\\Votantes\\VotantesCoordinadorGeneral\\IVotanteCoordinadorRepository.cs",
@@ -1689,12 +1619,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Domain\\Entities\\Votantes\\VotantesCoordinadorGeneral\\IVotanteCoordinadorRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-29T22:26:32.225Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-29T22:26:32.225Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 82,
+              "DocumentIndex": 83,
               "Title": "IVotantesDirigenteRepository.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Core.Domain\\Entities\\Votantes\\VotantesDirigentesEntity\\IVotantesDirigenteRepository.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Core.Domain\\Entities\\Votantes\\VotantesDirigentesEntity\\IVotantesDirigenteRepository.cs",
@@ -1702,12 +1631,11 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Domain\\Entities\\Votantes\\VotantesDirigentesEntity\\IVotantesDirigenteRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-29T22:26:55.16Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-29T22:26:55.16Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 83,
+              "DocumentIndex": 84,
               "Title": "ServiceContainer.cs",
               "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Persistence.Identity\\DependencyInjection\\ServiceContainer.cs",
               "RelativeDocumentMoniker": "BE-ProyectoA.Persistence.Identity\\DependencyInjection\\ServiceContainer.cs",
@@ -1715,21 +1643,7 @@
               "RelativeToolTip": "BE-ProyectoA.Persistence.Identity\\DependencyInjection\\ServiceContainer.cs",
               "ViewState": "AQIAAA4AAAAAAAAAAAAEwBQAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T22:11:57.741Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 84,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Presentation.WebApi\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "BE-ProyectoA.Presentation.WebApi\\appsettings.Development.json",
-              "ToolTip": "C:\\Users\\raini\\source\\repos\\RainieryPeniaJrg\\ProyectA\\BE-ProyectoA\\Be-ProyectoA\\BE-ProyectoA.Presentation.WebApi\\appsettings.Development.json",
-              "RelativeToolTip": "BE-ProyectoA.Presentation.WebApi\\appsettings.Development.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAABLAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-04-26T15:15:04.928Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-02T22:11:57.741Z"
             },
             {
               "$type": "Document",
@@ -1741,8 +1655,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesSubCoordinadorFeatures\\Queries\\GetAll\\GetAllVotantesSubCoordinadoresQueryHandler.cs",
               "ViewState": "AQIAAA0AAAAAAAAAAAAwwBUAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T03:41:47.252Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-02T03:41:47.252Z"
             },
             {
               "$type": "Document",
@@ -1754,8 +1667,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesSubCoordinadorFeatures\\Queries\\GetAll\\GetAllVotantesSubCoordinadoresQuery.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-01T18:57:10.515Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-01T18:57:10.515Z"
             },
             {
               "$type": "Document",
@@ -1767,8 +1679,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesSubCoordinadorFeatures\\Queries\\GetById\\GetByIdVotantesSubCoordinadorQuery.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAByAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T22:51:40Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-02T22:51:40Z"
             },
             {
               "$type": "Document",
@@ -1780,8 +1691,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesSubCoordinadorFeatures\\Queries\\GetById\\GetByIdVotantesSubCoordinadorQueryHandler.cs",
               "ViewState": "AQIAABYAAAAAAAAAAADwvykAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T22:53:04.564Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-02T22:53:04.564Z"
             },
             {
               "$type": "Document",
@@ -1793,8 +1703,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Domain\\Entities\\Votantes\\VotantesSubCoordinadores\\VotantesSubCoordinador.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAuwAYAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-29T22:26:13.382Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-29T22:26:13.382Z"
             },
             {
               "$type": "Document",
@@ -1806,8 +1715,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirector\\Queries\\GetById\\GetByIdVotantesDirectorQueryHandler.cs",
               "ViewState": "AQIAABEAAAAAAAAAAAAzwBQAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T23:58:34.271Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-02T23:58:34.271Z"
             },
             {
               "$type": "Document",
@@ -1819,8 +1727,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirector\\Queries\\GetById\\GetByIdVotantesDirectorQuery.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAABmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T23:57:28Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-02T23:57:28Z"
             },
             {
               "$type": "Document",
@@ -1832,8 +1739,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirigente\\Queries\\GetById\\GetByIdVotantesDirigenteQuery.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T23:45:28.228Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-02T23:45:28.228Z"
             },
             {
               "$type": "Document",
@@ -1845,8 +1751,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirigente\\Queries\\GetById\\GetByIdVotantesDirigenteQueryHandler.cs",
               "ViewState": "AQIAAA0AAAAAAAAAAAAuwCoAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T23:47:46.312Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-02T23:47:46.312Z"
             },
             {
               "$type": "Document",
@@ -1858,8 +1763,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirigente\\Queries\\GetAll\\GetAllVotantesDirigenteQueryHandler.cs",
               "ViewState": "AQIAABIAAAAAAAAAAAAMwCMAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T03:33:07.664Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-02T03:33:07.664Z"
             },
             {
               "$type": "Document",
@@ -1871,8 +1775,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\Querys\\GetById\\GetByIdVotantesQuery.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAABWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-01T18:49:26.264Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-01T18:49:26.264Z"
             },
             {
               "$type": "Document",
@@ -1884,8 +1787,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\Querys\\GetById\\GetByIdQueryHandler.cs",
               "ViewState": "AQIAAAgAAAAAAAAAAAAgwBgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T20:15:24.525Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T20:15:24.525Z"
             },
             {
               "$type": "Document",
@@ -1897,8 +1799,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\Querys\\GetByCedulaQuery\\GetByCedulaQueryHandler.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAAYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T20:14:54.03Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T20:14:54.03Z"
             },
             {
               "$type": "Document",
@@ -1910,8 +1811,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\Querys\\GetByCedulaQuery\\GetByCedulaQuery.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-01T18:49:30.2Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-01T18:49:30.2Z"
             },
             {
               "$type": "Document",
@@ -1923,8 +1823,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\Commons\\VotantesResponse.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T05:17:32.036Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T05:17:32.036Z"
             },
             {
               "$type": "Document",
@@ -1936,8 +1835,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\Querys\\GetAll\\GetAllVotanteQuery.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAABcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T19:40:20.041Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T19:40:20.041Z"
             },
             {
               "$type": "Document",
@@ -1949,8 +1847,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\Querys\\GetAll\\GetAllVotanteQueryHandler.cs",
               "ViewState": "AQIAAA0AAAAAAAAAAIAzwBEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T04:04:47.937Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T04:04:47.937Z"
             },
             {
               "$type": "Document",
@@ -1962,8 +1859,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\DTOs\\Response\\Account\\GetUsersWithRoleDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T04:27:31.543Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-02T04:27:31.543Z"
             },
             {
               "$type": "Document",
@@ -1975,8 +1871,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\DTOs\\Response\\LoginResponse.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T22:11:13.9Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-02T22:11:13.9Z"
             },
             {
               "$type": "Document",
@@ -1988,8 +1883,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\Interfaces\\IAccount.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-27T07:16:58.672Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-27T07:16:58.672Z"
             },
             {
               "$type": "Document",
@@ -2001,8 +1895,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\DependencyInjection.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T03:42:19.765Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T03:42:19.765Z"
             },
             {
               "$type": "Document",
@@ -2014,8 +1907,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirector\\Queries\\GetAll\\GetAllVotantesDirectorQueryHandler.cs",
               "ViewState": "AQIAABIAAAAAAAAAAAAYwBQAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T03:05:50.7Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-02T03:05:50.7Z"
             },
             {
               "$type": "Document",
@@ -2027,8 +1919,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\VotantesFeatures\\VotantesDirector\\Queries\\GetAll\\GetAllVotantesDirectorQuery.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwAcAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-02T03:04:25.313Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-02T03:04:25.313Z"
             },
             {
               "$type": "Document",
@@ -2040,8 +1931,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\ApplicationAsemblyReference.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T05:53:28.124Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T05:53:28.124Z"
             },
             {
               "$type": "Document",
@@ -2053,8 +1943,7 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Configurations\\VotanteCoordinadorConfiguration.cs",
               "ViewState": "AQIAAAoAAAAAAAAAAAAuwBAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-29T22:34:37.764Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-29T22:34:37.764Z"
             },
             {
               "$type": "Document",
@@ -2066,8 +1955,7 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Configurations\\DirectorConfiguration.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T16:26:38.723Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T16:26:38.723Z"
             },
             {
               "$type": "Document",
@@ -2079,8 +1967,7 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Configurations\\GruposConfiguration.cs",
               "ViewState": "AQIAAA0AAAAAAAAAAAAxwAgAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T16:40:24.646Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T16:40:24.646Z"
             },
             {
               "$type": "Document",
@@ -2092,8 +1979,7 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Configurations\\GrupoDirigenteConfiguration.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAABQAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T16:40:21.914Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T16:40:21.914Z"
             },
             {
               "$type": "Document",
@@ -2105,8 +1991,7 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Configurations\\DirigenteConfiguration.cs",
               "ViewState": "AQIAABEAAAAAAAAAAAAAACQAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T16:26:42.969Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T16:26:42.969Z"
             },
             {
               "$type": "Document",
@@ -2118,8 +2003,7 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Configurations\\CoordinadorGeneralConfiguration.cs",
               "ViewState": "AQIAABsAAAAAAAAAAAAcwCwAAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T16:25:13.013Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T16:25:13.013Z"
             },
             {
               "$type": "Document",
@@ -2131,8 +2015,7 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Configurations\\VotantesConfiguration.cs",
               "ViewState": "AQIAAAkAAAAAAAAAAAAmwBAAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T16:41:36.976Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T16:41:36.976Z"
             },
             {
               "$type": "Document",
@@ -2144,8 +2027,7 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Configurations\\GrupoSubCoordinadorConfiguration.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAAAYAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T16:40:33.59Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T16:40:33.59Z"
             },
             {
               "$type": "Document",
@@ -2157,8 +2039,7 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\Persistence\\Configurations\\SubCoordinadorConfiguration.cs",
               "ViewState": "AQIAABQAAAAAAAAAAAAgwCQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T16:40:37.16Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-26T16:40:37.16Z"
             },
             {
               "$type": "Document",
@@ -2170,8 +2051,7 @@
               "RelativeToolTip": "BE-ProyectoA.Infraestructure.Persistence\\Migrations\\20240501194002_permitiendo_nulabilidad_direccion.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAADwvxYAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-01T19:40:02.768Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-01T19:40:02.768Z"
             },
             {
               "$type": "Document",
@@ -2183,8 +2063,7 @@
               "RelativeToolTip": "BE-ProyectoA.Core.Application\\Extensions\\Constant.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-01T19:14:51.67Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-01T19:14:51.67Z"
             },
             {
               "$type": "Document",
