@@ -1,0 +1,34 @@
+<main>
+ <h1>{{title}}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Cédula</th>
+                <th>Número de Teléfono</th>
+                <th>Dirección</th>
+                <th>Coordinador</th>
+                <th>Cédula del Coordinador</th>
+                <th>Número de Teléfono del Coordinador</th>
+                        <th>Casa Electoral</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each subCoordinadores}}
+            <tr>
+                <td>{{nombreCompleto}}</td>
+                <td>{{cedula.value}}</td>
+                <td>{{numeroTelefono.value}}</td>
+                <td>{{direccion.provincia}}, {{direccion.sector}}, {{direccion.casaElectoral}}</td>
+            
+                <td>{{coordinador.nombreCompleto}}</td>
+             
+                <td>{{coordinador.cedula.value}}</td>
+                <td>{{coordinador.numeroTelefono.value}}</td>
+                <td>{{ direccion.casaElectoral }}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+</main>

@@ -75,7 +75,7 @@ exports.registrarUsuario = async (req, res) => {
   
       // Handle successful registration
       if (respuesta.status === 200) {
-        res.redirect('/coordinadores');
+        res.redirect('/home');
         //res.status(200).json(respuesta.data);
       } else {
         // Handle registration errors

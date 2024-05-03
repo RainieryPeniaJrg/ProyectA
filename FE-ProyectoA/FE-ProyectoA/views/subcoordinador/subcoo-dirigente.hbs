@@ -1,0 +1,30 @@
+<main>
+
+    <h1>{{ title }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre Completo del Dirigente</th>
+                <th>Cédula del Dirigente</th>
+                <th>Número de Teléfono del Dirigente</th>
+                <th>Nombre Completo del SubCoordinador</th>
+                <th>Cédula del SubCoordinador</th>
+                <th>Número de Teléfono del SubCoordinador</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+            {{#each dirigentes}}
+            <tr>
+                <td>{{ nombreCompleto }}</td>
+                <td>{{ cedula.value }}</td>
+                <td>{{ numeroTelefono.value }}</td>
+                <td>{{ coordinador.nombreCompleto }}</td>
+                <td>{{ coordinador.cedula.value }}</td>
+                <td>{{ coordinador.numeroTelefono.value }}</td>
+               
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</main>
