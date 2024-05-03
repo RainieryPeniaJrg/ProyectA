@@ -41,6 +41,7 @@ namespace BE_ProyectoA.Infraestructure.Persistence
             services.AddScoped<IVotanteRepository, VotanteRepository>();
             services.AddScoped<IDirectoresRepository, DirectorRepository>();
             services.AddScoped<IGruposRepository, GruposRepository>();
+
             services.AddScoped<IVotanteCoordinadorRepository,VotanteCoordiandorRepository >();
 
             services.AddScoped<IVotantesDirectorRepository, VotanteDirectorRepository>();

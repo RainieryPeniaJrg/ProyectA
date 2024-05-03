@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 namespace BE_ProyectoA.Core.Application.VotantesFeatures.VotantesDirigente.Common
 {
     public record VotantesDirigenteReponse(
-        
-        
+
+        VotantesDirigenteResponseDTO Votantes
+
         );
 
     public record DirigenteResponse(
@@ -17,18 +18,18 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.VotantesDirigente.Commo
         string Apellido
     );
 
-    public record VotantesResponse(
+    public record VotantesDirigenteResponseDTO(
     Guid Id,
     string NombreCompleto,
     Cedula Cedula,
     NumeroTelefono NumeroTelefono,
-    DireccionResponse Direccion,
+    DireccionVotantesDirigenteResponse Direccion,
     bool Activo,
      DirigenteResponse? CoordinadorGeneral
 
   );
 
-    public record DireccionResponse(
+    public record DireccionVotantesDirigenteResponse(
      string Provincia,
      string Sector
  );
