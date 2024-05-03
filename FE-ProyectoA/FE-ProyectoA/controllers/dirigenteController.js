@@ -1,6 +1,6 @@
 const https = require('https');
 const axios = require("axios");
-
+const id = '3A2E590D-732D-4342-A652-D6E038852BBA';
 exports.getHome = async (req, res) => {
     try {
         const agent = new https.Agent({ rejectUnauthorized: false });
@@ -81,7 +81,7 @@ exports.getVotantesDirigente = async (req, res) => {
         const agent = new https.Agent({ rejectUnauthorized: false });
 
         // Realizar la solicitud HTTP a la API con el agente configurado
-        const respuesta = await axios.get('https://localhost:7299/api/Votantes/GetAll',  {
+        const respuesta = await axios.get(`https://localhost:7299/api/Dirigentes/GetAllVotantesByMemberId/${id}`,  {
             headers: {
                 'Content-Type': 'application/json',
                 'accept': '*/*',
@@ -104,3 +104,5 @@ exports.getVotantesDirigente = async (req, res) => {
         res.status(500).json({ mensaje: 'Error al obtener los votantes' });
     }
 };
+
+
