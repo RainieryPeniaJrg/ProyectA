@@ -241,7 +241,7 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
                         var coordinadorGeneral = await _coordinadorGeneralRepository.GetByIdAsync(coordinadorGeneralId, cancellationToken);
                         if (coordinadorGeneral != null)
                         {
-                            var votos = votantes.Count(v => v.CoordinadorGeneralId == coordinadorGeneralId);
+                            var votos = votantes.Count(v => v.CoordinadorGeneralId == coordinadorGeneralId) + 1;
                             if (votos == 0)
                                 votos++;
 
@@ -271,7 +271,7 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
                         var subCoordinadorDto = await _subCoordinadorRepository.GetByIdAsync(subCoordinadorId, cancellationToken);
                         if (subCoordinadorDto != null)
                         {
-                            var votos = votantes.Count(v => v.SubCoordinadorId == subCoordinadorId );
+                            var votos = votantes.Count(v => v.SubCoordinadorId == subCoordinadorId ) + 1;
                             if (votos == 0)
                                 votos++;
 
@@ -304,7 +304,7 @@ namespace BE_ProyectoA.Core.Application.VotantesFeatures.Commands.Create
                         var dirigenteDto = await _dirigenteMultiplicadorRepository.GetByIdAsync(dirigenteId, cancellationToken);
                         if (dirigenteDto != null)
                         {
-                            var votos = votantes.Count(v => v.DirigenteId == dirigenteId);
+                            var votos = votantes.Count(v => v.DirigenteId == dirigenteId) + 1;
                             if (votos == 0)
                                 votos++;
 

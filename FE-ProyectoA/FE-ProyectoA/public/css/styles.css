@@ -291,3 +291,31 @@ place-items: center;
     justify-content: center; /* Centra horizontalmente */
     align-items: center; /
   }
+
+  .retroceder{
+	margin-left: 5px;
+margin-top: 5px;
+	width: 150px; 
+	padding: 10px;
+	
+	border: none;
+	border-radius: 5px;
+	background-color: #FFA500; 
+	color: white;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	text-align: center; 
+	text-decoration: none;
+ 
+  }
+
+  .select{
+	padding: 10px 15px;
+	font-size: 1rem;
+	border-radius: 8px;
+	border: solid 1px #FF8911; 
+	letter-spacing: 1px;
+	width: 100%;
+	border-color: #FF8911;
+}

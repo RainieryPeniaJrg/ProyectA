@@ -16,11 +16,11 @@
         {{#each coordinadores}}
         <tr>
             <td>{{this.nombreCompleto}}</td>
-            <td>{{cantidadVotantes.value}}</td>
+            <td>{{this.cantidadVotantes.value}}</td>
             <td>{{this.cedula.value}}</td>
             <td>{{this.numeroTelefono.value}}</td>
             <td>{{this.direccion.provincia}}, {{this.direccion.sector}}</td>
-            <td>{{ direccion.casaElectoral }}</td>
+            <td>{{this.direccion.casaElectoral }}</td>
         </tr>
         {{/each}}
     </tbody>

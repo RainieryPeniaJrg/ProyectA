@@ -14,7 +14,9 @@
                 <th>Cédula</th>
                 <th>Número de Teléfono</th>
                 <th>Dirección</th>
+                <th>Cantidad de Votos del Subcoordinador</th>
                 <th>Coordinador</th>
+                <th>Cantidad de Votos del Coordinador</th>
                 <th>Cédula del Coordinador</th>
                 <th>Número de Teléfono del Coordinador</th>
                         <th>Casa Electoral</th>
@@ -26,13 +28,14 @@
                 <td>{{nombreCompleto}}</td>
                 <td>{{cedula.value}}</td>
                 <td>{{numeroTelefono.value}}</td>
-                <td>{{direccion.provincia}}, {{direccion.sector}}, {{direccion.casaElectoral}}</td>
-            
+                <td>{{direccion.provincia}}, {{direccion.sector}}</td>
+                <td>{{cantidadVotantes.value}}</td>
                 <td>{{coordinador.nombreCompleto}}</td>
-             
+                <td>{{coordinador.cantidadVotantes.value}}</td>
                 <td>{{coordinador.cedula.value}}</td>
                 <td>{{coordinador.numeroTelefono.value}}</td>
-                <td>{{ direccion.casaElectoral }}</td>
+                <td>{{direccion.casaElectoral}}</td>
+                
             </tr>
             {{/each}}
         </tbody>

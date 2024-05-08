@@ -19,7 +19,7 @@ namespace BE_ProyectoA.Core.Application.SubCoordinadorFeatures.Querys
             var subCoordinadores = await _subCoordinadorRepository.GetAllSubCoordinadores(cancellationToken);
 
             var subCoordindoresRespose = subCoordinadores.Select(
-                sc => new SubCoordinadorResponse (sc.Id.Value,sc.Nombre,sc.CantidadVotantes,sc.Cedula,sc.NumeroTelefono,
+                sc => new SubCoordinadorResponse (sc.Id.Value,sc.NombreCompleto,sc.CantidadVotantes,sc.Cedula,sc.NumeroTelefono,
                 new DireccionResponseCoordinador(sc.Direccion.Provincia,sc.Direccion.Sector,
                 sc.Direccion.CasaElectoral),new GerenteGeneralResponsse(sc.CoordinadorsGeneralesId.Value,sc.Coordinadores.NombreCompleto,
                 sc.Coordinadores.CantidadVotantes,sc.Coordinadores.Cedula,

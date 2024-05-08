@@ -43,4 +43,4 @@ app.use(coordRoute)
 //Error middleware
 app.use("/", errorController.Get404)
 
-app.listen(4002);
+app.listen(3001);
