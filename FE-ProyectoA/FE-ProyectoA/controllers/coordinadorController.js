@@ -7,7 +7,7 @@ exports.getHome = async (req, res) => {
         const agent = new https.Agent({ rejectUnauthorized: false });
         
 
-        // Renderizar la vista home con el total de cantidad de votantes
+        
         res.render("coordinador/coordinador-home", {
             title: "Home",
            
@@ -22,7 +22,7 @@ exports.getHome = async (req, res) => {
 
 exports.getSubCoordinadoresCoo = async (req, res) => {
     try {
-        //NOTA> agregar url correcto de la api para traer los Subcoordinadores
+       
         const agent = new https.Agent({ rejectUnauthorized: false });
 
         const respuesta = await axios.get('https://localhost:7299/api/SubCoordinador/GetAll', {
@@ -31,7 +31,7 @@ exports.getSubCoordinadoresCoo = async (req, res) => {
                 'accept': '*/*',
                
             },
-            httpsAgent: agent // Utiliza el agente HTTPS configurado
+            httpsAgent: agent 
         });
 
         const subCoordinadores = respuesta.data;
@@ -135,10 +135,10 @@ exports.postAñadirVotanteCoo = async (req, res, next) => {
 
 exports.getVotantesCoo = async (req, res) => {
     try {
-        // Configurar el agente HTTPS para ignorar los errores de certificado
+        
         const agent = new https.Agent({ rejectUnauthorized: false });
 
-        // Realizar la solicitud HTTP a la API con el agente configurado
+       
         const respuesta = await axios.get(`https://localhost:7299/api/CoordinadoresGeneral/GetAllVotantesByMemberId/${id}`,  {
             headers: {
                 'Content-Type': 'application/json',
@@ -146,19 +146,19 @@ exports.getVotantesCoo = async (req, res) => {
                 
               
             },
-            httpsAgent: agent // Utiliza el agente HTTPS configurado
+            httpsAgent: agent 
         });
 
-        // Extraer los datos de la respuesta
+      
         const votantes = respuesta.data;
         console.log(votantes);
-        // Renderizar la vista con los datos de los votantes
+        
         res.render("coordinador/coordinador-votantes", {
             title: "Votantes",
             votantes: votantes
         });
     } catch (error) {
-        // Manejar cualquier error
+    
         console.error('Error al obtener los votantes:', error);
         res.status(500).json({ mensaje: 'Error al obtener los votantes' });
     }
