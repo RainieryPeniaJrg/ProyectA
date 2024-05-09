@@ -6,7 +6,7 @@ exports.getHome = async (req, res) => {
     try {
         const agent = new https.Agent({ rejectUnauthorized: false });
         
-
+//klk
         
         res.render("coordinador/coordinador-home", {
             title: "Home",
@@ -288,3 +288,4 @@ exports.postAgregarDirigenteCoo = async (req, res) => {
         res.status(500).json({ mensaje: 'Error al agregar el dirigente' });
     }
 };
+

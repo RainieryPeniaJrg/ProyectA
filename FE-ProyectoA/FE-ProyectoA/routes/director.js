@@ -21,10 +21,14 @@ router.get("/agregar-coordinadores",directorController.getAgregarCoordinador)
 router.get("/agregar-subcoordinadores",directorController.getAgregarSubCoordinador)
 router.get("/agregar-dirigente",directorController.getAgregarDirigente)
 
+
+router.get("/editar-coordinador/:coordinadorId", directorController.GetEditCoordinador);
+
+
 //RUTAS POR POST
 router.post("/agregar-grupo", directorController.PostAgregarGrupo);
 router.post("/agregar-coordinadores",directorController.postAñadirCoordinador);
 router.post("/agregar-subcoordinadores",directorController.postAgregarSubcoordinador);
 router.post("/agregar-dirigente",directorController.postAgregarDirigente)
-
+router.post("/editar-coordinador", directorController.PostEditCoordinador);
 module.exports = router;
