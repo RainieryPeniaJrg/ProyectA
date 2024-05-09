@@ -464,7 +464,7 @@ exports.GetEditCoordinador = (req, res, next) => {
     const edit = req.query.edit;
     if (!edit) {
         return res.redirect("/home")
-    }
+    }//
  
             res.render("miembros/agregar-coordinadores", {
                 pageTittle: "Editar coordinador",
