@@ -5,7 +5,6 @@ using BE_ProyectoA.Core.Domain.Primitivies;
 using BE_ProyectoA.Core.Domain.ValueObjects;
 using ErrorOr;
 using MediatR;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace BE_ProyectoA.Core.Application.SubCoordinadorFeatures.Commands.Create
 {

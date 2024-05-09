@@ -246,7 +246,7 @@ namespace BE_ProyectoA.Persistence.Identity.Repos
                 throw new Exception("El Subcoordinador no existe");
             var subCoordinador = await subCoordinadorRepository.GetByIdAsync2(subCoordiadorId, cancellationToken);
             var dirigente = new DirigentesMultiplicadores(
-                id: new DirigentesMultiplicadoresId(Guid.Parse(user.Id)),
+                id: new DirigentesMultiplicadoresId(Guid.Parse(user.Id)), 
                 cedula: Cedula.Create(model.Cedula)!,
                 numeroTelefono: NumeroTelefono.Create(model.NumeroTelefono)!,
                 nombre: model.Nombre,

@@ -25,7 +25,6 @@ namespace BE_ProyectoA.Core.Application.Data
         DbSet<VotantesDirigentes> VotantesDirigentes { get; set; }
         DbSet<VotantesSubCoordinador> VotantesSubCoordinadores { get; set; }
      
-     
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default); 
 
        
