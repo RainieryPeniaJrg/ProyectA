@@ -1,5 +1,3 @@
-const axios = require("axios");
-
 exports.getAgregarVotante = async (req, res, next) => {
     try {
         res.render("votante/agregar-votante", {
@@ -26,7 +24,7 @@ exports.postAñadirVotante = async (req, res, next) => {
             miembroId
         };
 
-        const respuesta = await axios.post('/Votantes/Create', nuevoVotante);
+        const respuesta = await req.axiosInstance.post('/Votantes/Create', nuevoVotante);
         res.redirect('/votantes');
     } catch (error) {
         console.error('Error al añadir el votante:', error);
@@ -36,7 +34,7 @@ exports.postAñadirVotante = async (req, res, next) => {
 
 exports.getVotantes = async (req, res) => {
     try {
-        const respuesta = await axios.get('/Votantes/GetAll');
+        const respuesta = await req.axiosInstance.get('/Votantes/GetAll');
         const votantes = respuesta.data;
         res.render("votante/lista-votantes", {
             title: "Votantes",
@@ -46,4 +44,4 @@ exports.getVotantes = async (req, res) => {
         console.error('Error al obtener los votantes:', error);
         res.status(error.response.status || 500).json({ mensaje: error.message || 'Error al obtener los votantes' });
     }
-}
+};

@@ -73,63 +73,43 @@ exports.getGrupos = async (req, res) => {
         console.error('Error al obtener los grupos:', error);
         res.status(500).json({ mensaje: 'Error al obtener los grupos' });
     }
-};
-
-exports.getCoordinadores = async (req, res) => {
+};exports.getCoordinadores = async (req, res) => {
     try {
-        // Configura el agente HTTPS con la verificación del certificado deshabilitada
-        const agent = new https.Agent({ rejectUnauthorized: false });
+        // Realizar la solicitud HTTP a la API utilizando el módulo Axios y el middleware configurado
+        const respuesta = await req.axiosInstance.get('/CoordinadoresGeneral/GetAll');
 
-        // Realiza la solicitud con Axios, pasando el agente con la verificación del certificado deshabilitada
-        const respuesta = await axios.get('https://localhost:7299/api/CoordinadoresGeneral/GetAll', {
-            headers: {
-                'Content-Type': 'application/json',
-                'accept': '*/*',
-                'Authorization': `Bearer ${token}`
-            },
-            httpsAgent: agent // Utiliza el agente HTTPS configurado
-        });
-
+        // Extraer los datos de la respuesta
         const coordinadores = respuesta.data;
-        console.log(coordinadores);
 
+        // Renderizar la vista con los datos de los coordinadores
         res.render("director/coordinadores", {
             title: "Coordinadores",
             coordinadores: coordinadores
         });
     } catch (error) {
-        console.log(error.response.data.errors)
-        res.status(500).json({ mensaje: 'Error al obtener los coordinadores' });
+        // Manejar cualquier error
+        console.error('Error al obtener los coordinadores:', error);
+        res.status(error.response.status || 500).json({ mensaje: error.message || 'Error al obtener los coordinadores' });
     }
 };
 
-
 exports.getSubCoordinadores = async (req, res) => {
     try {
-        //NOTA> agregar url correcto de la api para traer los Subcoordinadores
-        const agent = new https.Agent({ rejectUnauthorized: false });
+        // Realizar la solicitud HTTP a la API utilizando el módulo Axios y el middleware configurado
+        const respuesta = await req.axiosInstance.get('/SubCoordinador/GetAll');
 
-        const respuesta = await axios.get('https://localhost:7299/api/SubCoordinador/GetAll', {
-            headers: {
-                'Content-Type': 'application/json',
-                'accept': '*/*',
-                'Authorization': `Bearer ${token}`
-            },
-            httpsAgent: agent // Utiliza el agente HTTPS configurado
-        });
-
+        // Extraer los datos de la respuesta
         const subCoordinadores = respuesta.data;
 
-        console.log(respuesta.data);
-
+        // Renderizar la vista con los datos de los subcoordinadores
         res.render("director/Subcoordinadores", {
             title: "SubCoordinadores",
             subCoordinadores: subCoordinadores
-
         });
     } catch (error) {
+        // Manejar cualquier error
         console.error('Error al obtener los subcoordinadores:', error);
-        res.status(500).json({ mensaje: 'Error al obtener los subcoordinadores' });
+        res.status(error.response.status || 500).json({ mensaje: error.message || 'Error al obtener los subcoordinadores' });
     }
 };
 

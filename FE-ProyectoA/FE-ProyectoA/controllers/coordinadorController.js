@@ -1,23 +1,19 @@
 const axios = require("axios");
 const https = require('https');
-const id = "F8BD0159-B427-42F8-9CCD-EB5AF9BF5FF8"
+
 
 exports.getHome = async (req, res) => {
     try {
-        const agent = new https.Agent({ rejectUnauthorized: false });
-        
-
-        
+        // Renderizar la vista home con el título "Home"
         res.render("coordinador/coordinador-home", {
-            title: "Home",
-           
+            title: "Home"
         });
-
     } catch (error) {
+        // Manejar cualquier error
         console.error('Error al obtener la información:', error);
         res.status(500).json({ mensaje: 'Error al obtener la información' });
     }
-};
+}
 
 
 exports.getSubCoordinadoresCoo = async (req, res) => {
@@ -132,66 +128,49 @@ exports.postAñadirVotanteCoo = async (req, res, next) => {
         res.status(500).json({ mensaje: 'Error al añadir el votante' });
     }
 };
-
 exports.getVotantesCoo = async (req, res) => {
     try {
-        
-        const agent = new https.Agent({ rejectUnauthorized: false });
+        // Realizar la solicitud HTTP a la API utilizando el módulo Axios y el middleware configurado
+        const respuesta = await req.axiosInstance.get(`/CoordinadoresGeneral/GetAllVotantesByMemberId/${req.body.memberId}`);
 
-       
-        const respuesta = await axios.get(`https://localhost:7299/api/CoordinadoresGeneral/GetAllVotantesByMemberId/${id}`,  {
-            headers: {
-                'Content-Type': 'application/json',
-                'accept': '*/*',
-                
-              
-            },
-            httpsAgent: agent 
-        });
-
-      
+        // Extraer los datos de la respuesta
         const votantes = respuesta.data;
-        console.log(votantes);
-        
+
+        // Renderizar la vista con los datos de los votantes
         res.render("coordinador/coordinador-votantes", {
             title: "Votantes",
             votantes: votantes
         });
     } catch (error) {
-    
+        // Manejar cualquier error
         console.error('Error al obtener los votantes:', error);
-        res.status(500).json({ mensaje: 'Error al obtener los votantes' });
+        res.status(error.response.status || 500).json({ mensaje: error.message || 'Error al obtener los votantes' });
     }
 };
-
-
 exports.getAgregarSubCoordinadorCoo = async (req, res, next) => {
     try {
-        
-        const coordinadores = await axios.get('https://localhost:7299/api/CoordinadoresGeneral/GetAll', {
+        // Realizar la solicitud HTTP a la API utilizando el módulo Axios y el middleware configurado
+        const respuesta = await req.axiosInstance.get('/CoordinadoresGeneral/GetAll', {
             headers: {
-              'Content-Type': 'application/json',
-              'accept': 'text/plain'
-            },
-            httpsAgent: new https.Agent({ rejectUnauthorized: false })
-          }
-        );
+                'Content-Type': 'application/json',
+                'accept': 'text/plain'
+            }
+        });
 
-        const coordinador = coordinadores.data;
+        // Extraer los datos de la respuesta
+        const coordinador = respuesta.data;
 
-    
+        // Renderizar la vista con los datos de los coordinadores
         res.render("coordinador/coordinador-agregar-subcoo", {
             title: "Agregar SubCoordinador",
             coordinadores: coordinador
-       
         });
     } catch (error) {
-      
-        console.error('Error al mostrar el formulario de agregar Subcoordinaroes:', error);
-        next(error); 
+        // Manejar cualquier error
+        console.error('Error al mostrar el formulario de agregar Subcoordinadores:', error);
+        next(error);
     }
 };
-
 
 exports.postAgregarSubcoordinadorCoo = async (req, res, next) => {
     try {
@@ -210,63 +189,49 @@ exports.postAgregarSubcoordinadorCoo = async (req, res, next) => {
             coordinadorsGeneralesId
         };
 
-        // Hacer la solicitud POST a la API para agregar un subcoordinador
-        const respuesta = await axios.post('https://localhost:7299/api/SubCoordinador/Create', nuevoSubcoordinador, {
-            headers: {
-                'Content-Type': 'application/json',
-                'accept': '*/*'
-            },
-            httpsAgent: new https.Agent({ rejectUnauthorized: false }) 
-        });
+        // Hacer la solicitud POST a la API para agregar un subcoordinador utilizando el módulo Axios y el middleware configurado
+        const respuesta = await req.axiosInstance.post('/SubCoordinador/Create', nuevoSubcoordinador);
 
         // Redirigir al usuario a la página de inicio después de agregar el subcoordinador exitosamente
         res.redirect('/home'); 
     } catch (error) {
         // Manejar errores
         console.error('Error al añadir el subcoordinador:', error);
-        res.status(500).json({ mensaje: 'Error al añadir el subcoordinador' });
+        res.status(error.response.status || 500).json({ mensaje: error.message || 'Error al añadir el subcoordinador' });
     }
 };
-
-
 exports.getAgregarDirigenteCoo = async (req, res, next) => {
     try {
-
-
-
-        const subcoordinadores = await axios.get('https://localhost:7299/api/SubCoordinador/GetAll', {
+        // Realizar una solicitud para obtener la lista de subcoordinadores
+        const subcoordinadores = await req.axiosInstance.get('/SubCoordinador/GetAll', {
             headers: {
-              'Content-Type': 'application/json',
-              'accept': 'text/plain'
-            },
-            httpsAgent: new https.Agent({ rejectUnauthorized: false })
-          }
-        );
+                'Content-Type': 'application/json',
+                'accept': 'text/plain'
+            }
+        });
 
+        // Extraer los datos de la respuesta
         const subcoordinador = subcoordinadores.data;
 
+        // Renderizar la vista con los datos de los subcoordinadores
         res.render("coordinador/coordinador-agregar-dirigente", {
             title: "Agregar Dirigentes",
             subcoordinadores: subcoordinador
-
-       
         });
     } catch (error) {
-      
+        // Manejar cualquier error
         console.error('Error al mostrar el formulario de agregar Dirigentes:', error);
         next(error); 
     }
 };
 
-
 exports.postAgregarDirigenteCoo = async (req, res) => {
     try {
-        const { nombre, apellido, cantidadVotantes, cedula, numeroTelefono, provincia, sector, casaElectoral, activo, subCoordinadoresId } = req.body;
+        const { nombre, apellido, cedula, numeroTelefono, provincia, sector, casaElectoral, activo, subCoordinadoresId } = req.body;
 
         const nuevoDirigente = {
             nombre,
             apellido,
-        
             cedula,
             numeroTelefono,
             provincia,
@@ -275,16 +240,19 @@ exports.postAgregarDirigenteCoo = async (req, res) => {
             subCoordinadoresId
         };
 
-        const respuesta = await axios.post('https://localhost:7299/api/Dirigentes/Create', nuevoDirigente, {
+        // Hacer la solicitud POST a la API para agregar un dirigente usando el axiosInstance del middleware
+        const respuesta = await req.axiosInstance.post('/Dirigentes/Create', nuevoDirigente, {
             headers: {
                 'Content-Type': 'application/json',
                 'accept': '*/*'
-            },
-            httpsAgent: new https.Agent({ rejectUnauthorized: false }) 
+            }
         });
+
+        // Redirigir al usuario a la página de inicio después de agregar el dirigente exitosamente
         res.redirect('/home'); 
     } catch (error) {
+        // Manejar errores
         console.error('Error al agregar el dirigente:', error);
-        res.status(500).json({ mensaje: 'Error al agregar el dirigente' });
+        res.status(error.response.status || 500).json({ mensaje: error.message || 'Error al agregar el dirigente' });
     }
 };
