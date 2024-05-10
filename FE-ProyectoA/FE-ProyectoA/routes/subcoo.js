@@ -3,9 +3,6 @@ const subController = require("../controllers/SubController");
 const router = express.Router();
 
 
-
-
-
 router.get("/home-subcoordinador",subController.getHome)
 router.get("/subcoo-dirigente",subController.getDirigentesSubCoo)
 router.get("/votantes-subcoordinador", subController.getVotantesSubCoo)
