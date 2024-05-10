@@ -23,7 +23,7 @@ namespace BE_ProyectoA.Core.Application.CoordinadoresGeneralesFeatures.Query.Get
             return coordinadoresGenerales.Select
                 (
                 c => new
-                CoordinadorGeneralResponse(c.Id.Value, c.NombreCompleto, c.CantidadVotantes, c.Cedula, c.NumeroTelefono, new DireccionResponseCoordinador(c.Direccion.Provincia, c.Direccion.Sector, c.Direccion.CasaElectoral), c.Activo)
+                CoordinadorGeneralResponse(c.Id.Value, c.Nombre, c.CantidadVotantes, c.Cedula, c.NumeroTelefono, new DireccionResponseCoordinador(c.Direccion.Provincia, c.Direccion.Sector, c.Direccion.CasaElectoral), c.Activo)
                 ).ToList();
 
         }

@@ -439,3 +439,58 @@ exports.getVotantesDirector = async (req, res) => {
 };
 
 
+exports.GetEditCoordinador = (req, res, next) => {
+    const coordinadorId = req.params.coordinadorId;
+    const edit = req.query.edit;
+    if (!edit) {
+        return res.redirect("/home")
+    }//
+ 
+            res.render("miembros/agregar-coordinadores", {
+                pageTittle: "Editar coordinador",
+                editMode: edit,
+                coordinadorId
+            })
+        }
+
+
+
+
+        exports.PostEditCoordinador = async (req, res, next) => {
+       
+            try {
+               
+           
+                const { coordinadorId, nombre, apellido, cedula, numeroTelefono, sector, provincia, casaElectoral, activo, } = req.body;
+        
+                const editCoordinador = {
+                    coordinadorId,
+                    nombre,
+                    apellido,
+                    cedula,
+                    numeroTelefono,
+                    sector,
+                    provincia,
+                    casaElectoral,
+                  
+                    activo
+                }
+        
+                const respuesta = await axios.put(`https://localhost:7299/api/CoordinadoresGeneral/Update/${coordinadorId}`,editCoordinador, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'accept': '*/*'
+                    },
+                    httpsAgent: new https.Agent({ rejectUnauthorized: false }) 
+                });
+                res.redirect('/home'); 
+            } catch (error) {
+                console.log(error.response.data.errors)
+                res.status(500).json({ mensaje: 'Error al editar el dirigente' });
+            }
+        };
+        
+        
+
+
+      

@@ -1,4 +1,6 @@
-﻿using ErrorOr;
+﻿using BE_ProyectoA.Core.Domain.Entities.Director;
+using BE_ProyectoA.Core.Domain.ValueObjects;
+using ErrorOr;
 using MediatR;
 
 

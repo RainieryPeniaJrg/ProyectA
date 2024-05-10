@@ -1,10 +1,21 @@
 const axios = require("axios");
 const https = require('https');
+<<<<<<< HEAD
 
 
 exports.getHome = async (req, res) => {
     try {
         // Renderizar la vista home con el título "Home"
+=======
+const id = "0D687955-B91E-4F1F-B206-53319395B2E1"
+
+exports.getHome = async (req, res) => {
+    try {
+        const agent = new https.Agent({ rejectUnauthorized: false });
+        
+//klk
+        
+>>>>>>> f3be21692f754e7ff450d1ce313fd8da3c27df95
         res.render("coordinador/coordinador-home", {
             title: "Home"
         });
@@ -256,3 +267,4 @@ exports.postAgregarDirigenteCoo = async (req, res) => {
         res.status(error.response.status || 500).json({ mensaje: error.message || 'Error al agregar el dirigente' });
     }
 };
+

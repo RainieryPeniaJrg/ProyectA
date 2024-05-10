@@ -7,6 +7,7 @@ using BE_ProyectoA.Core.Application.VotantesFeatures.VotantesCoordinador.Queries
 using BE_ProyectoA.Core.Application.VotantesFeatures.VotantesCoordinador.Queries.GetByMember;
 using ErrorOr;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BE_ProyectoA.Presentation.WebApi.Controllers
