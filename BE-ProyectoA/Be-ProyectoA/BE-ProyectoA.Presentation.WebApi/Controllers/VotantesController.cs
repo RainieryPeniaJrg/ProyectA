@@ -6,12 +6,13 @@ using BE_ProyectoA.Core.Application.VotantesFeatures.Querys.GetByCedulaQuery;
 using BE_ProyectoA.Core.Application.VotantesFeatures.Querys.GetById;
 using ErrorOr;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
 namespace BE_ProyectoA.Presentation.WebApi.Controllers
 {
-    //[Authorize(Roles = "Admin,CoordinadorGeneral,SubCoordinador,Dirigente")]
+    [Authorize(Roles = "Director,CoordinadorGeneral,SubCoordinador,Dirigente")]
     [Route("api/[controller]")]
     [ApiController]
     public class VotantesController (ISender mediator) : ApiControllercs

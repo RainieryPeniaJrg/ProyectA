@@ -1,17 +1,34 @@
 express = require("express");
 const subController = require("../controllers/SubController");
 const router = express.Router();
+const authorizeRoles = require('../Middlewares/authorizeRole'); // Impor
+
+router.get("/subcoo-subcoordinador", (req, res, next) => {
+    authorizeRoles(["Subcoordinador"])(req, res, next);
+}, subController.getHome);
+
+router.get("/subcoo-dirigente", (req, res, next) => {
+    authorizeRoles(["Subcoordinador"])(req, res, next);
+}, subController.getDirigentesSubCoo);
+
+router.get("/votantes-subcoordinador", (req, res, next) => {
+    authorizeRoles(["Subcoordinador"])(req, res, next);
+}, subController.getVotantesSubCoo);
+
+router.get("/subcoo-agregar-votante", (req, res, next) => {
+    authorizeRoles(["Subcoordinador"])(req, res, next);
+}, subController.getAgregarVotanteSubCoo);
+
+router.get("/subcoo-agregar-dirigente", (req, res, next) => {
+    authorizeRoles(["Subcoordinador"])(req, res, next);
+}, subController.getAgregarDirigenteSubCoo);
 
 
+router.post("/subcoo-agregar-votante", (req, res, next) => {
+    authorizeRoles(["Subcoordinador"])(req, res, next);
+}, subController.postAñadirVotanteSubCoo);
 
-
-
-router.get("/home-subcoordinador",subController.getHome)
-router.get("/subcoo-dirigente",subController.getDirigentesSubCoo)
-router.get("/votantes-subcoordinador", subController.getVotantesSubCoo)
-router.get("/subcoo-agregar-votante",subController.getAgregarVotanteSubCoo)
-router.get("/subcoo-agregar-dirigente",subController.getAgregarDirigenteSubCoo)
-
-router.post("/subcoo-agregar-votante",subController.postAñadirVotanteSubCoo)
-router.post("/subcoo-agregar-dirigente", subController.postAgregarDirigenteSubCoo)
+router.post("/subcoo-agregar-dirigente", (req, res, next) => {
+    authorizeRoles(["Subcoordinador"])(req, res, next);
+}, subController.postAgregarDirigenteSubCoo);
 module.exports = router;

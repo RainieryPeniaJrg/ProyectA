@@ -5,6 +5,7 @@
     string Message = null!
     ,string Token = null! 
     ,string RefreshToken = null!,
-    string userId = null!);
+    string UserId = null!,
+    string UserRole = null!);
    
 }

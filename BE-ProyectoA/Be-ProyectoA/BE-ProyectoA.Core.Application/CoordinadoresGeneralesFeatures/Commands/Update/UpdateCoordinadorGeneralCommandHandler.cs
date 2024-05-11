@@ -39,14 +39,20 @@ namespace BE_ProyectoA.Core.Application.CoordinadoresGeneralesFeatures.Commands.
          
             var votosTotales = CantidadVotos.Create(command.CantidadVotantes);
 
+            var numeroTelefono = NumeroTelefono.Create(command.NumeroTelefono);
+
+            var cedula = Cedula.Create(command.Cedula);
+
+            var direccion = Direccion.Create(command.Provincia, command.Sector, command.CasaElectoral);
+
             // Actualizar los datos del coordinador general con los nuevos datos proporcionados
             var coordinadorToUpdate = CoordinadoresGenerales.UpdateWithOutRelationShip(
                 coordinadorGeneralId,
                 command.Nombre,
                 command.Apellido,
-                coordinadorGeneral.Cedula,
-                coordinadorGeneral.NumeroTelefono,
-                coordinadorGeneral.Direccion,
+                cedula,
+                numeroTelefono,
+                direccion,
                 command.Activo,
                 votosTotales
             );

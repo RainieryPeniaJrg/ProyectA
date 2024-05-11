@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BE_ProyectoA.Presentation.WebApi.Controllers
 {
-    //[Authorize(Roles = "Admin,CoordinadorGeneral")]
+    [Authorize(Roles = "Director,CoordinadorGeneral")]
     [Route("api/[controller]")]
     [ApiController]
     public class GruposController(ISender mediator) : ApiControllercs

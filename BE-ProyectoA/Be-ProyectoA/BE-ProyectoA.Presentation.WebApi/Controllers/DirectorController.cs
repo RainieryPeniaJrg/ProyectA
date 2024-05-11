@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BE_ProyectoA.Presentation.WebApi.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Director")]
     [Route("api/[controller]")]
     [ApiController]
     public class DirectorController(ISender mediator) : ApiControllercs

@@ -1,7 +1,7 @@
 express = require("express");
-const { post } = require("jquery");
-const coordinadorController = require("../controllers/coordinadorController");
 
+const coordinadorController = require("../controllers/coordinadorController");
+const authorizeRoles = require("../Middlewares/authorizeRole"); // Impor
 
 const router = express.Router();
 
@@ -9,17 +9,17 @@ const router = express.Router();
 
 
 
-router.get("/coordinador-home",coordinadorController.getHome );
+router.get("/coordinador-home",authorizeRoles,coordinadorController.getHome );
 
-router.get("/coordinador-subcoordinadores", coordinadorController.getSubCoordinadoresCoo);
-router.get("/coordinador-dirigentes", coordinadorController.getDirigentes);
-router.get("/coordinador-agregar-votante", coordinadorController.getAgregarVotanteCoo)
-router.get("/coordinador-agregar-subcoordinadores",coordinadorController.getAgregarSubCoordinadorCoo)
-router.get("/coordinador-agregar-dirigente", coordinadorController.getAgregarDirigenteCoo)
-router.get("/votantes-coordinador", coordinadorController.getVotantesCoo)
+router.get("/coordinador-subcoordinadores", authorizeRoles,coordinadorController.getSubCoordinadoresCoo);
+router.get("/coordinador-dirigentes",authorizeRoles, coordinadorController.getDirigentes);
+router.get("/coordinador-agregar-votante",authorizeRoles, coordinadorController.getAgregarVotanteCoo)
+router.get("/coordinador-agregar-subcoordinadores",authorizeRoles,coordinadorController.getAgregarSubCoordinadorCoo)
+router.get("/coordinador-agregar-dirigente",authorizeRoles, coordinadorController.getAgregarDirigenteCoo)
+router.get("/votantes-coordinador", authorizeRoles,coordinadorController.getVotantesCoo)
 //RUTAS POR POST
-router.post("/coordinador-agregar-votante", coordinadorController.postAñadirVotanteCoo)
-router.post("/coordinador-agregar-subcoordinadores",coordinadorController.postAgregarSubcoordinadorCoo);
-router.post("/coordinador-agregar-dirigente", coordinadorController.postAgregarDirigenteCoo)
+router.post("/coordinador-agregar-votante", authorizeRoles,coordinadorController.postAñadirVotanteCoo)
+router.post("/coordinador-agregar-subcoordinadores",authorizeRoles,coordinadorController.postAgregarSubcoordinadorCoo);
+router.post("/coordinador-agregar-dirigente", authorizeRoles,coordinadorController.postAgregarDirigenteCoo)
 
 module.exports = router;
