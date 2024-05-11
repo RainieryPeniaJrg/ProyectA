@@ -85,7 +85,7 @@ exports.getCoordinadores = async (req, res) => {
             headers: {
                 'Content-Type': 'application/json',
                 'accept': '*/*',
-                'Authorization': `Bearer ${token}`
+               
             },
             httpsAgent: agent // Utiliza el agente HTTPS configurado
         });
@@ -462,14 +462,19 @@ exports.getVotantesDirector = async (req, res) => {
 exports.GetEditCoordinador = (req, res, next) => {
     const coordinadorId = req.params.coordinadorId;
     const edit = req.query.edit;
+
+    
+
+
     if (!edit) {
-        return res.redirect("/home")
-    }//
+        return res.redirect("/coordinadores")
+    }
  
             res.render("miembros/agregar-coordinadores", {
                 pageTittle: "Editar coordinador",
                 editMode: edit,
-                coordinadorId
+                coordinadorId,
+                
             })
         }
 
@@ -484,7 +489,7 @@ exports.GetEditCoordinador = (req, res, next) => {
                 const { coordinadorId, nombre, apellido, cedula, numeroTelefono, sector, provincia, casaElectoral, activo, } = req.body;
         
                 const editCoordinador = {
-                    coordinadorId,
+                    id: coordinadorId,
                     nombre,
                     apellido,
                     cedula,
