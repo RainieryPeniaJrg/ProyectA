@@ -7,6 +7,7 @@ exports.getHome = async (req, res) => {
         res.render("subcoordinador/subcoo-home", {
             title: "Home",
         });
+        res.redirect('/subcoo-home')
     } catch (error) {
         console.error('Error al obtener la información:', error);
         res.status(500).json({ mensaje: 'Error al obtener la información' });

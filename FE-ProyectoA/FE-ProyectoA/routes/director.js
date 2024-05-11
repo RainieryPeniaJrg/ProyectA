@@ -1,34 +1,27 @@
-express = require("express");
-const { post } = require("jquery");
+const express = require("express");
 const directorController = require("../controllers/directorController");
-
+const authorizeRoles = require("../Middlewares/authorizeRole"); // Importa el middleware
 
 const router = express.Router();
 
+// Rutas sin protección de roles
+router.get("/director-home", authorizeRoles,directorController.getHome);
+router.get("/grupos", authorizeRoles,directorController.getGrupos);
+router.get("/coordinadores", authorizeRoles,directorController.getCoordinadores);
+router.get("/subcoordinadores", authorizeRoles,directorController.getSubCoordinadores);
+router.get("/dirigentes",authorizeRoles, directorController.getDirigentes);
+router.get("/votantes", authorizeRoles,directorController.getVotantesDirector);
 
+// Rutas protegidas con el middleware authorizeRoles
+router.get("/agregar-grupo", authorizeRoles, directorController.getAgregarGrupos);
+router.get("/agregar-coordinadores", authorizeRoles, directorController.getAgregarCoordinador);
+router.get("/agregar-subcoordinadores", authorizeRoles, directorController.getAgregarSubCoordinador);
+router.get("/agregar-dirigente", authorizeRoles, directorController.getAgregarDirigente);
 
+// Rutas por POST
+router.post("/agregar-grupo", authorizeRoles, directorController.PostAgregarGrupo);
+router.post("/agregar-coordinadores", authorizeRoles, directorController.postAñadirCoordinador);
+router.post("/agregar-subcoordinadores", authorizeRoles, directorController.postAgregarSubcoordinador);
+router.post("/agregar-dirigente", authorizeRoles, directorController.postAgregarDirigente);
 
-
-router.get("/", directorController.getHome);
-router.get("/grupos", directorController.getGrupos);
-router.get("/coordinadores",directorController.getCoordinadores);
-router.get("/subcoordinadores", directorController.getSubCoordinadores);
-router.get("/dirigentes",directorController.getDirigentes );
-router.get("/director-votantes",directorController.getVotantesDirector );
-
-router.get("/agregar-grupo",directorController.getAgregarGrupos)
-router.get("/agregar-coordinadores",directorController.getAgregarCoordinador)
-router.get("/agregar-subcoordinadores",directorController.getAgregarSubCoordinador)
-router.get("/agregar-dirigente",directorController.getAgregarDirigente)
-
-
-router.get("/editar-coordinador/:coordinadorId", directorController.GetEditCoordinador);
-
-
-//RUTAS POR POST
-router.post("/agregar-grupo", directorController.PostAgregarGrupo);
-router.post("/agregar-coordinadores",directorController.postAñadirCoordinador);
-router.post("/agregar-subcoordinadores",directorController.postAgregarSubcoordinador);
-router.post("/agregar-dirigente",directorController.postAgregarDirigente)
-router.post("/editar-coordinador", directorController.PostEditCoordinador);
 module.exports = router;

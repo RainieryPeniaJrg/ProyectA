@@ -1,18 +1,22 @@
 express = require("express");
-const { post } = require("jquery");
-const votanteController = require("../controllers/votanteController");
 
+const votanteController = require("../controllers/votanteController");
+const authorizeRoles = require('../Middlewares/authorizeRole'); // Impor
 
 const router = express.Router();
 
 
+router.get("/votantes", (req, res, next) => {
+    authorizeRoles(["Director", "Coordinador", "Dirigente", "Subcoordinador"])(req, res, next);
+}, votanteController.getVotantes);
 
+router.get("/agregar-votante", (req, res, next) => {
+    authorizeRoles(["Director", "Coordinador", "Dirigente", "Subcoordinador"])(req, res, next);
+}, votanteController.getAgregarVotante);
 
-router.get("/votantes", votanteController.getVotantes);
-router.get("/agregar-votante", votanteController.getAgregarVotante);
-router.post("/agregar-votante", votanteController.postAñadirVotante);
-
-
+router.post("/agregar-votante", (req, res, next) => {
+    authorizeRoles(["Director", "Coordinador", "Dirigente", "Subcoordinador"])(req, res, next);
+}, votanteController.postAñadirVotante);
 
 
 

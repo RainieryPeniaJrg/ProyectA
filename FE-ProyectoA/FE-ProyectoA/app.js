@@ -34,6 +34,9 @@ app.set("views", "views")
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
+
+
+
 app.use(async (req, res, next) => {
    try {
        const axiosInstance = axios.create({
@@ -51,6 +54,8 @@ app.use(async (req, res, next) => {
        }
 
        console.log('INICIO SESION '+ token);
+       console.log( req.session.userId);
+      res.locals.userId = req.session.userId;
        req.axiosInstance = axiosInstance; // Ajuste para adjuntar la instancia de Axios a req
        next();
    } catch (error) {
@@ -68,4 +73,4 @@ app.use(coordRoute)
 //Error middleware
 app.use("/", errorController.Get404)
 
-app.listen(4000);
+app.listen(3001);

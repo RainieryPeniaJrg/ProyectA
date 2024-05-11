@@ -1,54 +1,37 @@
 const axios = require("axios");
 const https = require('https');
-<<<<<<< HEAD
 
 
 exports.getHome = async (req, res) => {
     try {
-        // Renderizar la vista home con el título "Home"
-=======
-const id = "0D687955-B91E-4F1F-B206-53319395B2E1"
-
-exports.getHome = async (req, res) => {
-    try {
-        const agent = new https.Agent({ rejectUnauthorized: false });
-        
-//klk
-        
->>>>>>> f3be21692f754e7ff450d1ce313fd8da3c27df95
         res.render("coordinador/coordinador-home", {
             title: "Home"
         });
     } catch (error) {
-        // Manejar cualquier error
         console.error('Error al obtener la información:', error);
         res.status(500).json({ mensaje: 'Error al obtener la información' });
     }
-}
-
+};
 
 exports.getSubCoordinadoresCoo = async (req, res) => {
     try {
-       
-        const agent = new https.Agent({ rejectUnauthorized: false });
+        //NOTA: Asegúrate de agregar la URL correcta de la API para traer los subcoordinadores
 
-        const respuesta = await axios.get('https://localhost:7299/api/SubCoordinador/GetAll', {
+        // Realizar la solicitud GET a la API utilizando el módulo Axios y el middleware configurado
+        const respuesta = await req.axiosInstance.get('/SubCoordinador/GetAll', {
             headers: {
                 'Content-Type': 'application/json',
                 'accept': '*/*',
-               
-            },
-            httpsAgent: agent 
+            }
         });
 
+        // Extraer los datos de la respuesta
         const subCoordinadores = respuesta.data;
 
-        console.log(respuesta.data);
-
+        // Renderizar la vista con los datos de los subcoordinadores
         res.render("coordinador/coordinador-subcoordinadores", {
             title: "SubCoordinadores",
             subCoordinadores: subCoordinadores
-
         });
     } catch (error) {
         console.error('Error al obtener los subcoordinadores:', error);
@@ -56,24 +39,17 @@ exports.getSubCoordinadoresCoo = async (req, res) => {
     }
 };
 
-
 exports.getDirigentes = async (req, res) => {
     try {
         //NOTA: Asegúrate de agregar la URL correcta de la API para traer los dirigentes
-        const agent = new https.Agent({ rejectUnauthorized: false });
 
-        const respuesta = await axios.get('https://localhost:7299/api/Dirigentes/GetAll', {
-            headers: {
-                'Content-Type': 'application/json',
-                'accept': '*/*',
-                // No necesitas autorización en este caso
-            },
-            httpsAgent: agent // Utiliza el agente HTTPS configurado
-        });
+        // Realizar la solicitud GET a la API utilizando el módulo Axios y el middleware configurado
+        const respuesta = await req.axiosInstance.get('/Dirigentes/GetAll');
 
+        // Extraer los datos de la respuesta
         const dirigentes = respuesta.data;
-        console.log(respuesta.data);
 
+        // Renderizar la vista con los datos de los dirigentes
         res.render("coordinador/coordinador-dirigentes", {
             title: "Dirigentes",
             dirigentes: dirigentes
@@ -84,31 +60,22 @@ exports.getDirigentes = async (req, res) => {
     }
 };
 
-
 exports.getAgregarVotanteCoo = async (req, res, next) => {
     try {
-        
-
-    
         res.render("votante/agregar-votante", {
-            title: "Agregar Votante",
-       
+            title: "Agregar Votante"
         });
     } catch (error) {
-      
         console.error('Error al mostrar el formulario de agregar votante:', error);
-        next(error); 
+        next(error);
     }
 };
 
 
-
 exports.postAñadirVotanteCoo = async (req, res, next) => {
     try {
-         
-        const { nombre, apellido,cedula, numeroTelefono, activo, sector, provincia,casaElectoral,miembroId } = req.body;
+        const { nombre, apellido, cedula, numeroTelefono, activo, sector, provincia, casaElectoral, miembroId } = req.body;
 
-       
         const nuevoVotante = {
             nombre,
             apellido,
@@ -121,24 +88,17 @@ exports.postAñadirVotanteCoo = async (req, res, next) => {
             miembroId
         };
 
-        
-        const respuesta = await axios.post('https://localhost:7299/api/Votantes/Create', nuevoVotante, {
-            headers: {
-                'Content-Type': 'application/json',
-                'accept': '*/*',
-                
-            },
-            httpsAgent: new https.Agent({ rejectUnauthorized: false }) 
-        });
+        // Realizar la solicitud POST a la API utilizando el módulo Axios y el middleware configurado
+        await req.axiosInstance.post('/Votantes/Create', nuevoVotante);
 
-        
+        // Redirigir al usuario a la página de votantes después de agregar el votante
         res.redirect('/votantes'); 
     } catch (error) {
-        console.log(error.response.data.errors)
-       // console.error('Error al añadir el votante:', error);
+        console.error('Error al añadir el votante:', error);
         res.status(500).json({ mensaje: 'Error al añadir el votante' });
     }
 };
+
 exports.getVotantesCoo = async (req, res) => {
     try {
         // Realizar la solicitud HTTP a la API utilizando el módulo Axios y el middleware configurado

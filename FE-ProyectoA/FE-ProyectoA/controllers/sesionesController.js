@@ -106,10 +106,7 @@ exports.iniciarSesion = async (req, res) => {
            
 
             // Verificar si el token se guardó correctamente en req.session.token
-
-
-            res.send('Inicio de sesión exitoso');
-            res.redirect('/votantes'); 
+            res.redirect('/director-home'); 
         } else {
             const errorMensaje = respuesta.data.message || "Error al iniciar sesión";
             res.status(respuesta.status).json({ mensaje: errorMensaje });
