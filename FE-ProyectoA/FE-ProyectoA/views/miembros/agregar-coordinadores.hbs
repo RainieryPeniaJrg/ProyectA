@@ -9,10 +9,12 @@
         </div>
         <div class="form-container">
             <form action="{{#if editMode}}/editar-coordinador{{else}}/registro{{/if}}" method="POST" class="form">
+            {{#unless editMode}}
                 <div class="input-field">
                     <input type="email" id="email" name="email" required value="{{coordinadores.email}}">
                     <label for="email">Correo Electrónico:</label>
                 </div>
+                 {{/unless}}
                 {{#unless editMode}}
                 <div class="input-field">
                     <input type="password" id="password" name="password" required>

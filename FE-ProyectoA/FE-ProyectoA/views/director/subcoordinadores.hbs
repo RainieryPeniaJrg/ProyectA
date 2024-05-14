@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{title}}</title>
-</head>
-<body>
-    <h1>{{title}}</h1>
+<main>
+    <div class="container">
+          <h1>Lista de Subcoordinadores</h1>
     <table>
         <thead>
             <tr>
@@ -14,8 +8,7 @@
                 <th>Cédula</th>
                 <th>Número de Teléfono</th>
                 <th>Dirección</th>
-                <th>Coordinador</th>
-                <th>Cédula del Coordinador</th>
+                
                 <th>Número de Teléfono del Coordinador</th>
                 <th>Casa Electoral</th>
                 <th>Cantidad Votos</th>
@@ -28,10 +21,6 @@
                 <td>{{cedula.value}}</td>
                 <td>{{numeroTelefono.value}}</td>
                 <td>{{direccion.provincia}}, {{direccion.sector}}, {{direccion.casaElectoral}}</td>
-            
-                <td>{{coordinador.nombreCompleto}}</td>
-             
-                <td>{{coordinador.cedula.value}}</td>
                 <td>{{coordinador.numeroTelefono.value}}</td>
                 <td>{{direccion.casaElectoral }}</td>
                  <td>{{cantidadVotantes.value}}</td>
@@ -39,5 +28,5 @@
             {{/each}}
         </tbody>
     </table>
-</body>
-</html>
+  </div>
+</main>

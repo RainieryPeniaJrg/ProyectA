@@ -365,16 +365,15 @@ exports.GetEditCoordinador = (req, res, next) => {
         }
 
 
-
-
-        exports.PostEditCoordinador = async (req, res, next) => {
+ exports.PostEditCoordinador = async (req, res, next) => {
        
             try {
                
            
                 const { coordinadorId, nombre, apellido, cedula, numeroTelefono, sector, provincia, casaElectoral, activo, } = req.body;
-        
+
                 const editCoordinador = {
+                    coordinadorId,
                     id: coordinadorId,
                     nombre,
                     apellido,
@@ -399,9 +398,43 @@ exports.GetEditCoordinador = (req, res, next) => {
                 console.log(error.response.data.errors)
                 res.status(500).json({ mensaje: 'Error al editar el dirigente' });
             }
+        }
+
+
+        exports.getAgregarVotante = async (req, res, next) => {
+            try {
+                res.render("votante/agregar-votante", {
+                    title: "Agregar Votante",
+                });
+            } catch (error) {
+                console.error('Error al mostrar el formulario de agregar votante:', error);
+                next(error);
+            }
         };
+
+ exports.postAñadirVotante = async (req, res, next) => {
+            try {
+                const { nombre, apellido, cedula, numeroTelefono, activo, sector, provincia, casaElectoral, miembroId } = req.body;
+                const nuevoVotante = {
+                    nombre,
+                    apellido,
+                    cedula,
+                    numeroTelefono,
+                    activo,
+                    sector,
+                    provincia,
+                    casaElectoral,
+                    miembroId
+                };
         
-        
+                const respuesta = await req.axiosInstance.post('/Votantes/Create', nuevoVotante);
+                console.log(respuesta);
+                res.redirect('/votantes');
+            } catch (error) {
+                console.error('Error al añadir el votante:', error);
+                res.status(error.response.status || 500).json({ mensaje: error.message || 'Error al añadir el votante' });
+            }
+        };
 
 
       

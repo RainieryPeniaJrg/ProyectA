@@ -61,7 +61,7 @@ app.use(async (req, res, next) => {
        req.axiosInstance = axiosInstance; // Ajuste para adjuntar la instancia de Axios a req
        next();
    } catch (error) {
-       next(error);
+       next(error)
    }
 });
 
@@ -75,4 +75,4 @@ app.use(coordRoute)
 //Error middleware
 app.use("/", errorController.Get404)
 
-app.listen(3001);
+app.listen(4000)
