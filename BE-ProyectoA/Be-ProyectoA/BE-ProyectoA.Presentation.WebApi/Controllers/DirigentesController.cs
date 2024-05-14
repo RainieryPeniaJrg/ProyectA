@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BE_ProyectoA.Presentation.WebApi.Controllers
 {
-    [Authorize(Roles = "Director,SubCoordinador,Dirigente")]
+    //[Authorize(Roles = "Director,SubCoordinador,Dirigente")]
     [Route("api/[controller]")]
     [ApiController]
     public class DirigentesController(ISender mediator) : ApiControllercs

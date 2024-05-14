@@ -32,23 +32,14 @@ exports.getGrupos = async (req, res) => {
 };
 exports.getCoordinadores = async (req, res) => {
     try {
-<<<<<<< HEAD
+
         // Configura el agente HTTPS con la verificación del certificado deshabilitada
-        const agent = new https.Agent({ rejectUnauthorized: false });
+ 
 
         // Realiza la solicitud con Axios, pasando el agente con la verificación del certificado deshabilitada
-        const respuesta = await axios.get('https://localhost:7299/api/CoordinadoresGeneral/GetAll', {
-            headers: {
-                'Content-Type': 'application/json',
-                'accept': '*/*',
-               
-            },
-            httpsAgent: agent // Utiliza el agente HTTPS configurado
-        });
-=======
         // Realizar la solicitud HTTP a la API utilizando el middleware de Axios configurado en req.axiosInstance
         const respuesta = await req.axiosInstance.get('/CoordinadoresGeneral/GetAll');
->>>>>>> 125f42e861e5a24da6ec1be92ac33875c1e459a3
+
 
         // Extraer los datos de la respuesta
         const coordinadores = respuesta.data;
@@ -63,6 +54,7 @@ exports.getCoordinadores = async (req, res) => {
         console.error('Error al obtener los coordinadores:', error);
         res.status(error.response.status || 500).json({ mensaje: error.message || 'Error al obtener los coordinadores' });
     }
+
 };
 exports.getSubCoordinadores = async (req, res) => {
     try {
@@ -329,7 +321,7 @@ exports.postAgregarDirigente = async (req, res) => {
 exports.getVotantesDirector = async (req, res) => {
     try {
         // Realizar la solicitud HTTP a la API utilizando el módulo Axios y el middleware configurado
-        const respuesta = await req.axiosInstance.get(`/Director/GetAllVotantesByMemberId/${req.params.id}`, {
+        const respuesta = await req.axiosInstance.get(`/Votantes/GetAll`, {
             headers: {
                 'Content-Type': 'application/json',
                 'accept': '*/*'
@@ -351,7 +343,7 @@ exports.getVotantesDirector = async (req, res) => {
     }
 };
 
-<<<<<<< HEAD
+
 
 exports.GetEditCoordinador = (req, res, next) => {
     const coordinadorId = req.params.coordinadorId;
@@ -413,5 +405,4 @@ exports.GetEditCoordinador = (req, res, next) => {
 
 
       
-=======
->>>>>>> 125f42e861e5a24da6ec1be92ac33875c1e459a3
+

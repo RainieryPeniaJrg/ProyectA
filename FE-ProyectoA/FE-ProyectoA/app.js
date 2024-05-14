@@ -15,6 +15,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const axios = require('axios');
 const secret = crypto.randomBytes(64).toString('hex');
+const {obtenerTotalVotantes }= require('./helpers/obtenerTotalVotantes')
 //configuracion exrpess session
 app.use(session({
    secret: secret,
@@ -52,10 +53,11 @@ app.use(async (req, res, next) => {
        if (token) {
            axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
        }
-
-       console.log('INICIO SESION '+ token);
-       console.log( req.session.userId);
-      res.locals.userId = req.session.userId;
+  
+       console.log(await obtenerTotalVotantes())
+       const totalVotantes = await obtenerTotalVotantes();
+       res.locals.totalVotantes = totalVotantes;
+       res.locals.userId = req.session.userId;
        req.axiosInstance = axiosInstance; // Ajuste para adjuntar la instancia de Axios a req
        next();
    } catch (error) {

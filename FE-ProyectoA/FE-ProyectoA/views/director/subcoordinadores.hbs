@@ -17,7 +17,8 @@
                 <th>Coordinador</th>
                 <th>Cédula del Coordinador</th>
                 <th>Número de Teléfono del Coordinador</th>
-                        <th>Casa Electoral</th>
+                <th>Casa Electoral</th>
+                <th>Cantidad Votos</th>
             </tr>
         </thead>
         <tbody>
@@ -32,7 +33,8 @@
              
                 <td>{{coordinador.cedula.value}}</td>
                 <td>{{coordinador.numeroTelefono.value}}</td>
-                <td>{{ direccion.casaElectoral }}</td>
+                <td>{{direccion.casaElectoral }}</td>
+                 <td>{{cantidadVotantes.value}}</td>
             </tr>
             {{/each}}
         </tbody>

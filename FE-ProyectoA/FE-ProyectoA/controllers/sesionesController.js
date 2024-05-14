@@ -91,23 +91,40 @@ exports.getRegistro = async (req, res) => {
 
 exports.iniciarSesion = async (req, res) => {
     try {
+        // Extraer datos de usuario del cuerpo de la solicitud
         const { email, password } = req.body;
-        const credenciales = { email, password };
 
-        const respuesta = await req.axiosInstance.post(
-            "Account/identity/login",
-            credenciales
+        // Crear un objeto de usuario con los datos recibidos
+        const credenciales = {
+            email,
+            password
+        };
+
+        // Realizar una solicitud de inicio de sesión al punto final correspondiente
+        const respuesta = await axios.post(
+            "https://localhost:7299/api/Account/identity/login",
+            credenciales,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'accept': 'text/plain'
+                },
+                httpsAgent: new https.Agent({ rejectUnauthorized: false })
+            }
         );
 
+        // Manejar el inicio de sesión exitoso
         if (respuesta.status === 200) {
+            // Almacenar el token y el userId en la sesión del usuario
             req.session.token = respuesta.data.token;
             req.session.userId = respuesta.data.userId;
 
-           
+            console.log("Inicio de sesión exitoso");
+            console.log(respuesta.data);
 
-            // Verificar si el token se guardó correctamente en req.session.token
-            res.redirect('/director-home'); 
+            res.redirect('/director-home');
         } else {
+            // Manejar errores de inicio de sesión
             const errorMensaje = respuesta.data.message || "Error al iniciar sesión";
             res.status(respuesta.status).json({ mensaje: errorMensaje });
         }
