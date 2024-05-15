@@ -111,3 +111,31 @@ exports.postAgregarDirigenteSubCoo = async (req, res) => {
 }
 
 
+exports.getVotosSubId = async (req, res) => {
+    const { id } = req.params; // ID del coordinador obtenido de los parámetros de la URL
+    try {
+        // Realizar la solicitud HTTP al endpoint específico del coordinador
+        const respuesta = await req.axiosInstance.get(`/SubCoordinador/GetAllVotantesByMemberId/${id}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'accept': '*/*'
+            }
+        });
+
+        // Extraer los datos de la respuesta
+        const votantes = respuesta.data;
+
+        // Renderizar la vista con los datos de los votantes del coordinador
+        res.render("votantesWithId/VotanteS", {
+            title: "Votos del Sub Coordinador",
+            votantes: votantes,
+            
+            
+        });
+        console.log(votantes)
+    } catch (error) {
+        // Manejar cualquier error
+        console.error('Error al obtener los votos del Subcoordinador:', error);
+        res.status(500).json({ mensaje: 'Error al obtener los votos del Subcoordinador' });
+    }
+};

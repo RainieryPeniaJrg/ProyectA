@@ -17,8 +17,10 @@ router.get("/agregar-grupo", authorizeRoles, directorController.getAgregarGrupos
 router.get("/agregar-coordinadores", authorizeRoles,directorController.getAgregarCoordinador);
 router.get("/agregar-subcoordinadores", authorizeRoles,directorController.getAgregarSubCoordinador);
 router.get("/agregar-dirigente",  authorizeRoles,directorController.getAgregarDirigente);
-router.get("/director-agregar-votante", authorizeRoles,directorController.getAgregarVotante)
+router.get("/agregar-votante", directorController.getAgregarVotante)
 router.get("/editar-coordinador/:coordinadorId",authorizeRoles, directorController.GetEditCoordinador);
+
+
 
 // Rutas por POST
 router.post("/agregar-grupo", authorizeRoles, directorController.PostAgregarGrupo);
@@ -26,5 +28,5 @@ router.post("/agregar-coordinadores", authorizeRoles, directorController.postAñ
 router.post("/agregar-subcoordinadores", authorizeRoles, directorController.postAgregarSubcoordinador);
 router.post("/agregar-dirigente", authorizeRoles, directorController.postAgregarDirigente);
 router.post("/editar-coordinador", authorizeRoles,directorController.PostEditCoordinador);
-router.post("/director-agregar-votante",authorizeRoles,directorController.postAñadirVotante)
+router.post("/agregar-votante",directorController.postAñadirVotante)
 module.exports = router;

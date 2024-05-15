@@ -31,4 +31,6 @@ router.post("/subcoo-agregar-votante", (req, res, next) => {
 router.post("/subcoo-agregar-dirigente", (req, res, next) => {
     authorizeRoles(["Subcoordinador"])(req, res, next);
 }, subController.postAgregarDirigenteSubCoo);
+
+router.get('/votos-Sub/:id', subController.getVotosSubId)
 module.exports = router;

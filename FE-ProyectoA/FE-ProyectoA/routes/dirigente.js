@@ -5,7 +5,7 @@ const router = express.Router();
 router.get("/home-dirigente",authorizeRoles,dirigenteController.getHome)
 router.get("/votantes-dirigente",authorizeRoles,dirigenteController.getVotantesDirigente)
 router.get("/dirigente-agregar-votante", authorizeRoles,dirigenteController.getAgregarVotanteDirigente)
-
+router.get('/votos-Dirigente/:id', authorizeRoles,dirigenteController.getVotosDirigenteId)
 
 router.post("/dirigente-agregar-votante",authorizeRoles, dirigenteController.postAñadirVotanteDirigente)
 

@@ -164,7 +164,7 @@ exports.postAgregarSubcoordinadorCoo = async (req, res, next) => {
         const respuesta = await req.axiosInstance.post('/SubCoordinador/Create', nuevoSubcoordinador);
 
         // Redirigir al usuario a la página de inicio después de agregar el subcoordinador exitosamente
-        res.redirect('/home'); 
+        res.redirect('/coordinador-subcoordinadores'); 
     } catch (error) {
         // Manejar errores
         console.error('Error al añadir el subcoordinador:', error);
@@ -220,7 +220,7 @@ exports.postAgregarDirigenteCoo = async (req, res) => {
         });
 
         // Redirigir al usuario a la página de inicio después de agregar el dirigente exitosamente
-        res.redirect('/home'); 
+        res.redirect('/coordinador-dirigentes'); 
     } catch (error) {
         // Manejar errores
         console.error('Error al agregar el dirigente:', error);
@@ -228,3 +228,31 @@ exports.postAgregarDirigenteCoo = async (req, res) => {
     }
 };
 
+exports.getVotosCoordinadorId = async (req, res) => {
+    const { id } = req.params; // ID del coordinador obtenido de los parámetros de la URL
+    try {
+        // Realizar la solicitud HTTP al endpoint específico del coordinador
+        const respuesta = await req.axiosInstance.get(`/CoordinadoresGeneral/GetAllVotantesByMemberId/${id}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'accept': '*/*'
+            }
+        });
+
+        // Extraer los datos de la respuesta
+        const votantes = respuesta.data;
+
+        // Renderizar la vista con los datos de los votantes del coordinador
+        res.render("votantesWithId/VotanteC", {
+            title: "Votos del Coordinador",
+            votantes: votantes,
+            
+            
+        });
+        console.log(votantes)
+    } catch (error) {
+        // Manejar cualquier error
+        console.error('Error al obtener los votos del coordinador:', error);
+        res.status(500).json({ mensaje: 'Error al obtener los votos del coordinador' });
+    }
+};

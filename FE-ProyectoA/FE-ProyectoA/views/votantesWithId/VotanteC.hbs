@@ -1,0 +1,31 @@
+  <main>   
+
+        <div class="container">
+         {{#if votantes.length}}
+            <h1>Votantes de: {{votantes.[0].votante.coordinadorGeneral.nombre}} {{votantes.[0].votante.coordinadorGeneral.apellido}}</h1>
+        {{/if}}
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre Completo</th>
+                        <th>Cédula</th>
+                        <th>Provincia</th>
+                        <th>Sector</th>
+                       
+                    </tr>
+                </thead>
+               <tbody>
+  {{#each votantes}}
+    <tr> 
+        <td>{{@index}}</td>
+        <td>{{this.votante.nombreCompleto}}</td>
+        <td>{{this.votante.cedula.value}}</td>
+        <td>{{this.votante.direccion.provincia}}</td>
+        <td>{{this.votante.direccion.sector}}</td>
+    </tr>
+    {{/each}}
+</tbody>
+            </table>
+        </div>
+    </main>

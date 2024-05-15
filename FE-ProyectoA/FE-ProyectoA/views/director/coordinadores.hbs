@@ -23,7 +23,8 @@
                     <td>{{this.numeroTelefono.value}}</td>
                     <td>{{this.direccion.provincia}}, {{this.direccion.sector}}</td>
                     <td>{{this.direccion.casaElectoral}}</td>
-                    <td><a href="editar-coordinador/{{this.id}}?edit=true" class="btn btn-warning btn-sm">Edit</a></td> 
+                     {{!-- <td><a href="editar-coordinador/{{this.id}}?edit=true" class="btn btn-warning btn-sm">Edit</a></td>  --}}
+                    <td><a href="/votos-Coordinador/{{this.id}}" class="btn btn-primary btn-sm">Votos</a></td>  
                 </tr>
                 {{/each}}
             </tbody>

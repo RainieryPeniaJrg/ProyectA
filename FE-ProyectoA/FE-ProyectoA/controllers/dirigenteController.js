@@ -58,3 +58,32 @@ exports.getVotantesDirigente = async (req, res) => {
         res.status(error.response.status || 500).json({ mensaje: error.message || 'Error al obtener los votantes' });
     }
 };
+
+exports.getVotosDirigenteId = async (req, res) => {
+    const { id } = req.params; // ID del coordinador obtenido de los parámetros de la URL
+    try {
+        // Realizar la solicitud HTTP al endpoint específico del coordinador
+        const respuesta = await req.axiosInstance.get(`/Dirigentes/GetAllVotantesByMemberId/${id}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'accept': '*/*'
+            }
+        });
+
+        // Extraer los datos de la respuesta
+        const votantes = respuesta.data;
+
+        // Renderizar la vista con los datos de los votantes del coordinador
+        res.render("votantesWithId/VotantesD", {
+            title: "Votos del Dirigente",
+            votantes: votantes,
+            
+            
+        });
+        console.log(votantes)
+    } catch (error) {
+        // Manejar cualquier error
+        console.error('Error al obtener los votos del Dirigente:', error);
+        res.status(500).json({ mensaje: 'Error al obtener los votos del Dirigente' });
+    }
+};

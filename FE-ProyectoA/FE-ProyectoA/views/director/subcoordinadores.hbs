@@ -8,10 +8,13 @@
                 <th>Cédula</th>
                 <th>Número de Teléfono</th>
                 <th>Dirección</th>
+                 
                 
-                <th>Número de Teléfono del Coordinador</th>
+      
                 <th>Casa Electoral</th>
                 <th>Cantidad Votos</th>
+                 <th>Coordinador</th>
+                <th>Acciones</th> 
             </tr>
         </thead>
         <tbody>
@@ -21,9 +24,11 @@
                 <td>{{cedula.value}}</td>
                 <td>{{numeroTelefono.value}}</td>
                 <td>{{direccion.provincia}}, {{direccion.sector}}, {{direccion.casaElectoral}}</td>
-                <td>{{coordinador.numeroTelefono.value}}</td>
+        
                 <td>{{direccion.casaElectoral }}</td>
                  <td>{{cantidadVotantes.value}}</td>
+                 <td>{{coordinador.nombreCompleto}}</td>
+                  <td><a href="/votos-Sub/{{this.id}}" class="btn btn-primary btn-sm">Votos</a></td>  
             </tr>
             {{/each}}
         </tbody>

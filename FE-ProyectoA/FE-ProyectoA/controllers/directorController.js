@@ -198,7 +198,7 @@ exports.postAñadirCoordinador = async (req, res, next) => {
         });
 
         // Redirigir al usuario a la página de inicio después de agregar el coordinador exitosamente
-        res.redirect('/home');
+        res.redirect('/coordinadores');
     } catch (error) {
         console.error('Error al añadir el coordinador:', error);
         res.status(500).json({ mensaje: 'Error al añadir el coordinador' });
@@ -249,7 +249,7 @@ exports.postAgregarSubcoordinador = async (req, res, next) => {
         const respuesta = await req.axiosInstance.post('/SubCoordinador/Create', nuevoSubcoordinador);
 
         // Redirigir al usuario a la página de inicio después de agregar el subcoordinador exitosamente
-        res.redirect('/home');
+        res.redirect('/subcoordinadores');
     } catch (error) {
         // Manejar errores
         console.error('Error al añadir el subcoordinador:', error);
@@ -310,7 +310,7 @@ exports.postAgregarDirigente = async (req, res) => {
         const respuesta = await req.axiosInstance.post('/Dirigentes/Create', nuevoDirigente);
 
         // Redirigir al usuario a la página de inicio después de agregar el dirigente exitosamente
-        res.redirect('/home');
+        res.redirect('/dirigentes');
     } catch (error) {
         console.error('Error al agregar el dirigente:', error);
         res.status(500).json({ mensaje: 'Error al agregar el dirigente' });
@@ -393,7 +393,7 @@ exports.GetEditCoordinador = (req, res, next) => {
                     },
                     httpsAgent: new https.Agent({ rejectUnauthorized: false }) 
                 });
-                res.redirect('/home'); 
+                res.redirect('/coordinadores'); 
             } catch (error) {
                 console.log(error.response.data.errors)
                 res.status(500).json({ mensaje: 'Error al editar el dirigente' });
@@ -439,3 +439,27 @@ exports.GetEditCoordinador = (req, res, next) => {
 
       
 
+exports.getVotantesDirector = async (req, res) => {
+    try {
+        // Realizar la solicitud HTTP a la API utilizando el módulo Axios y el middleware configurado
+        const respuesta = await req.axiosInstance.get(`/Votantes/GetAll`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'accept': '*/*'
+            }
+        });
+
+        // Extraer los datos de la respuesta
+        const votantes = respuesta.data;
+
+        // Renderizar la vista con los datos de los votantes
+        res.render("votante/lista-votantes", {
+            title: "Votantes",
+            votantes: votantes
+        });
+    } catch (error) {
+        // Manejar cualquier error
+        console.error('Error al obtener los votantes:', error);
+        res.status(500).json({ mensaje: 'Error al obtener los votantes' });
+    }
+};

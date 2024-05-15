@@ -1,10 +1,13 @@
+<main>
+<div class="container">
+  <h1>Votantes</h1>
 <table>
   <thead>
     <tr>
         <th>#</th>
       <th>Nombre Completo</th>
       <th>Cédula</th>
-      <th>Número de Teléfono</th>
+      
       <th>Provincia</th>
       <th>Sector</th>
       <th>Director</th>
@@ -19,7 +22,7 @@
         <td>{{@index}}</td>
         <td>{{nombreCompleto}}</td>
         <td>{{cedula.value}}</td>
-        <td>{{numeroTelefono.value}}</td>
+      
         <td>{{direccion.provincia}}</td>
         <td>{{direccion.sector}}</td>
    
@@ -31,3 +34,5 @@
     {{/each}}
   </tbody>
 </table>
+</div>
+</main>
