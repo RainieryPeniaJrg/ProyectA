@@ -1,5 +1,6 @@
 const express = require("express");
 const { engine } = require('express-handlebars');
+
 const session = require('express-session');
 const path = require("path")
 const crypto = require('crypto');
@@ -64,6 +65,8 @@ app.use(async (req, res, next) => {
        next(error)
    }
 });
+
+
 
 app.use(sesionRoute)
 app.use(directorRoute)

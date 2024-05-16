@@ -1,38 +1,46 @@
 <main>
-<div class="container">
-  <h1>Votantes</h1>
-<table>
-  <thead>
-    <tr>
-        <th>#</th>
-      <th>Nombre Completo</th>
-      <th>Cédula</th>
-      
-      <th>Provincia</th>
-      <th>Sector</th>
-      <th>Director</th>
-      <th>Subcoordinador</th>
-      <th>Coordinador General</th>
-      <th>Dirigente</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each votantes}}
-      <tr>
-        <td>{{@index}}</td>
-        <td>{{nombreCompleto}}</td>
-        <td>{{cedula.value}}</td>
-      
-        <td>{{direccion.provincia}}</td>
-        <td>{{direccion.sector}}</td>
-   
-        <td>{{#if director}}{{director.nombre}} {{director.apellido}}{{else}}No asignado{{/if}}</td>
-        <td>{{#if subCoordinador}}{{subCoordinador.nombre}} {{subCoordinador.apellido}}{{else}}No asignado{{/if}}</td>
-        <td>{{#if coordinadorGeneral}}{{coordinadorGeneral.nombre}} {{coordinadorGeneral.apellido}}{{else}}No asignado{{/if}}</td>
-        <td>{{#if dirigente}}{{dirigente.nombre}} {{dirigente.apellido}}{{else}}No asignado{{/if}}</td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
-</div>
+    <div class="container">
+        <h1>Votantes</h1>
+        <table id="votantes-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre Completo</th>
+                    <th>Cédula</th>
+                    <th>Provincia</th>
+                    <th>Sector</th>
+                    <th>Director</th>
+                    <th>Subcoordinador</th>
+                    <th>Coordinador General</th>
+                    <th>Dirigente</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each votantes}}
+                <tr>
+                    <td></td> <!-- Espacio para el número de fila -->
+                    <td>{{nombreCompleto}}</td>
+                    <td>{{cedula.value}}</td>
+                    <td>{{direccion.provincia}}</td>
+                    <td>{{direccion.sector}}</td>
+                    <td>{{#if director}}{{director.nombre}} {{director.apellido}}{{else}}No asignado{{/if}}</td>
+                    <td>{{#if subCoordinador}}{{subCoordinador.nombre}} {{subCoordinador.apellido}}{{else}}No asignado{{/if}}</td>
+                    <td>{{#if coordinadorGeneral}}{{coordinadorGeneral.nombre}} {{coordinadorGeneral.apellido}}{{else}}No asignado{{/if}}</td>
+                    <td>{{#if dirigente}}{{dirigente.nombre}} {{dirigente.apellido}}{{else}}No asignado{{/if}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
 </main>
+
+<script>
+    
+    const rows = document.querySelectorAll('#votantes-table tbody tr');
+
+    
+    rows.forEach((row, index) => {
+        const numeroFila = index + 1;
+        row.cells[0].textContent = numeroFila;
+    });
+</script>
